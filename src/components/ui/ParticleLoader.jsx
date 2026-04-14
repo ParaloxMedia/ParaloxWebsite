@@ -26,8 +26,8 @@ export function ParticleLoader({ onDone }) {
     `;
     document.head.appendChild(styleEl);
 
-    // ── hard safety: always exit after 14 s ───────────────────────────────
-    const safetyTimer = setTimeout(() => { onDone && onDone(); }, 14000);
+    // ── hard safety: always exit after 8 s ───────────────────────────────
+    const safetyTimer = setTimeout(() => { onDone && onDone(); }, 9000);
 
     // ── size the canvas to exact pixel dimensions ─────────────────────────
     const W = window.innerWidth  || document.documentElement.clientWidth  || 1280;
@@ -134,7 +134,7 @@ export function ParticleLoader({ onDone }) {
         particles[i].scatter();
       }
 
-      // hold 2.8 s then advance
+      // hold 1.3 s then advance
       holdTimer = setTimeout(() => {
         const next = idx + 1;
         if (next < WORDS.length) {
@@ -145,9 +145,9 @@ export function ParticleLoader({ onDone }) {
           setTimeout(() => {
             clearTimeout(safetyTimer);
             onDone && onDone();
-          }, 900);
+          }, 800);
         }
-      }, 2800);
+      }, 2100);
     }
 
     // ── animation loop ────────────────────────────────────────────────────
