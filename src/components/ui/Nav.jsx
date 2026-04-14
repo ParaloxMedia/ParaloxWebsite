@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { T } from '../../data';
 
-const PAGES = ['home', 'about', 'services',  'packages', 'contact'];
+const PAGES = ['home', 'about', 'services', 'packages', 'contact'];
 // const PAGES = ['home', 'about', 'services', 'packages', 'gallery', 'contact'];
 
-export function Nav({ page, setPage, dark, setDark }) {
+const toPath = (p) => p === 'home' ? '/' : `/${p}`;
+
+export function Nav({ dark, setDark }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [sc,   setSc]   = useState(false);
+
+  const activePage = location.pathname === '/' ? 'home' : location.pathname.slice(1);
 
   useEffect(() => {
     const h = () => setSc(window.scrollY > 20);
@@ -17,7 +24,7 @@ export function Nav({ page, setPage, dark, setDark }) {
   }, []);
 
   const go = (p) => {
-    setPage(p);
+    navigate(toPath(p));
     setOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -54,9 +61,9 @@ export function Nav({ page, setPage, dark, setDark }) {
         <div className="nd" style={{ display: 'flex', gap: 2 }}>
           {PAGES.map(p => (
             <motion.button key={p} onClick={() => go(p)} whileHover={{ y: -1 }}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 11px', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: page === p ? 700 : 500, fontSize: '.85rem', color: page === p ? T.p1 : dark ? '#B8A0D8' : '#4B3275', borderRadius: 8, textTransform: 'capitalize', position: 'relative' }}>
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '6px 11px', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: activePage === p ? 700 : 500, fontSize: '.85rem', color: activePage === p ? T.p1 : dark ? '#B8A0D8' : '#4B3275', borderRadius: 8, textTransform: 'capitalize', position: 'relative' }}>
               {p}
-              {page === p && <motion.div layoutId="np" style={{ position: 'absolute', bottom: -2, left: '20%', width: '60%', height: 2, background: T.grad, borderRadius: 2, transform: 'translateX(-50%)' }} />}
+              {activePage === p && <motion.div layoutId="np" style={{ position: 'absolute', bottom: -2, left: '20%', width: '60%', height: 2, background: T.grad, borderRadius: 2, transform: 'translateX(-50%)' }} />}
             </motion.button>
           ))}
         </div>
@@ -85,7 +92,7 @@ export function Nav({ page, setPage, dark, setDark }) {
             style={{ position: 'fixed', top: 64, right: 0, bottom: 0, width: '76%', maxWidth: 290, zIndex: 999, background: dark ? 'rgba(8,5,16,.98)' : 'rgba(255,255,255,.98)', backdropFilter: 'blur(20px)', padding: '1.6rem 1.3rem', display: 'flex', flexDirection: 'column', gap: 4, boxShadow: '-5px 0 32px rgba(91,29,232,.13)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
             {PAGES.map((p, i) => (
               <motion.button key={p} initial={{ x: 32, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: i * 0.05 }} onClick={() => go(p)}
-                style={{ background: page === p ? 'rgba(91,29,232,.1)' : 'transparent', border: 'none', cursor: 'pointer', padding: '12px 15px', borderRadius: 11, textAlign: 'left', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: page === p ? 700 : 400, fontSize: '.98rem', color: page === p ? T.p1 : dark ? '#F0E8FF' : '#1A0A2E', textTransform: 'capitalize' }}>
+                style={{ background: activePage === p ? 'rgba(91,29,232,.1)' : 'transparent', border: 'none', cursor: 'pointer', padding: '12px 15px', borderRadius: 11, textAlign: 'left', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: activePage === p ? 700 : 400, fontSize: '.98rem', color: activePage === p ? T.p1 : dark ? '#F0E8FF' : '#1A0A2E', textTransform: 'capitalize' }}>
                 {p}
               </motion.button>
             ))}

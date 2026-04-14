@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Shield, Award, Globe, TrendingUp, Zap, Building2, Building, Flag, Navigation, MapPin } from 'lucide-react';
 import { T } from '../data';
@@ -15,7 +16,8 @@ const COUNTRIES = [
   { icon: '🇶🇦', n: 'Qatar' },
 ];
 
-export function AboutPage({ setPage, dark }) {
+export function AboutPage({ dark }) {
+  const navigate = useNavigate();
   const bd  = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.09)';
   const cBg = dark ? 'rgba(20,8,44,.5)'     : '#fff';
 
@@ -38,8 +40,8 @@ export function AboutPage({ setPage, dark }) {
                 Paralox Media powers modern businesses through cutting-edge AI technology and creative strategy. Established May 2025. Sri Lanka to the world.
               </p>
               <div style={{ display: 'flex', gap: 11, flexWrap: 'wrap' }}>
-                <motion.button whileHover={{ y: -2 }} onClick={() => setPage('contact')} style={{ padding: '11px 24px', borderRadius: 50, border: 'none', cursor: 'pointer', background: 'white', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 'clamp(.85rem,1.8vw,.9rem)' }}>Work With Us</motion.button>
-                <motion.button whileHover={{ y: -2 }} onClick={() => setPage('services')} style={{ padding: '11px 20px', borderRadius: 50, cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.35)', background: 'rgba(255,255,255,.08)', color: 'white', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 'clamp(.85rem,1.8vw,.9rem)', backdropFilter: 'blur(8px)' }}>Our Services</motion.button>
+                <motion.button whileHover={{ y: -2 }} onClick={() => navigate('/contact')} style={{ padding: '11px 24px', borderRadius: 50, border: 'none', cursor: 'pointer', background: 'white', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 'clamp(.85rem,1.8vw,.9rem)' }}>Work With Us</motion.button>
+                <motion.button whileHover={{ y: -2 }} onClick={() => navigate('/services')} style={{ padding: '11px 20px', borderRadius: 50, cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.35)', background: 'rgba(255,255,255,.08)', color: 'white', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 'clamp(.85rem,1.8vw,.9rem)', backdropFilter: 'blur(8px)' }}>Our Services</motion.button>
               </div>
             </div>
 

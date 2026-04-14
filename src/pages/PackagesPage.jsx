@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Brain, Code2, Video, Sparkles, Search, Layers } from 'lucide-react';
 import { T, SMM_PACKAGES, DM_PACKAGES, STARTUP_PACKAGES } from '../data';
@@ -14,7 +15,8 @@ const CUSTOM = [
   { icon: <Layers size={22}/>,   t: 'Brand Identity & Design',  d: 'Logo, brand guidelines, templates, and visual identity systems.',                   c: '#0891B2' },
 ];
 
-function PkgCard({ p, dark, setPage }) {
+function PkgCard({ p, dark }) {
+  const navigate = useNavigate();
   const bd  = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
   const bg  = dark ? 'rgba(12,4,26,.92)'    : '#fff';
 
@@ -41,7 +43,7 @@ function PkgCard({ p, dark, setPage }) {
           </div>
         ))}
       </div>
-      <motion.button whileTap={{ scale: .97 }} onClick={() => setPage('contact')}
+      <motion.button whileTap={{ scale: .97 }} onClick={() => navigate('/contact')}
         style={{ width: '100%', marginTop: 14, padding: '10px', borderRadius: 50, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.84rem', transition: 'all .25s', ...(p.feat ? { background: 'rgba(255,255,255,.17)', color: '#fff', border: '2px solid rgba(255,255,255,.3)' } : { background: 'transparent', border: `2px solid ${T.p1}`, color: T.p1 }) }}
         onMouseOver={e => { if (!p.feat) { e.currentTarget.style.background = T.p1; e.currentTarget.style.color = '#fff'; } }}
         onMouseOut={e  => { if (!p.feat) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.p1; } }}>
@@ -51,7 +53,8 @@ function PkgCard({ p, dark, setPage }) {
   );
 }
 
-export function PackagesPage({ setPage, dark }) {
+export function PackagesPage({ dark }) {
+  const navigate = useNavigate();
   const [tab, setTab] = useState(0);
   const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
 
@@ -81,17 +84,17 @@ export function PackagesPage({ setPage, dark }) {
           <motion.div key={tab} initial={{ opacity: 0, y: 11 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
             {tab === 0 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} setPage={setPage} /></FadeUp>)}
+                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
               </div>
             )}
             {tab === 1 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} setPage={setPage} /></FadeUp>)}
+                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
               </div>
             )}
             {tab === 2 && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, maxWidth: 600, alignItems: 'stretch' }} className="g1">
-                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} setPage={setPage} /></FadeUp>)}
+                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
               </div>
             )}
             {tab === 3 && (
@@ -107,7 +110,7 @@ export function PackagesPage({ setPage, dark }) {
                         <div>
                           <div style={{ fontWeight: 700, marginBottom: 5, fontSize: '.9rem', fontFamily: "'Plus Jakarta Sans',sans-serif", color: dark ? '#F0E8FF' : '#1A0A2E' }}>{t}</div>
                           <div style={{ fontSize: '.8rem', color: dark ? '#9B8BC0' : '#7B6A9A', lineHeight: 1.7, marginBottom: 10, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{d}</div>
-                          <motion.button whileHover={{ y: -1 }} onClick={() => setPage('contact')}
+                          <motion.button whileHover={{ y: -1 }} onClick={() => navigate('/contact')}
                             style={{ padding: '6px 14px', borderRadius: 50, cursor: 'pointer', border: `2px solid ${c}`, background: 'transparent', color: c, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.75rem', display: 'flex', alignItems: 'center', gap: 5, transition: 'all .25s' }}
                             onMouseOver={e => { e.currentTarget.style.background = c; e.currentTarget.style.color = '#fff'; }}
                             onMouseOut={e  => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = c; }}>
@@ -125,7 +128,7 @@ export function PackagesPage({ setPage, dark }) {
 
         <FadeUp delay={0.14}>
           <div style={{ marginTop: 24, padding: '13px 18px', borderRadius: 12, background: 'rgba(91,29,232,.05)', border: `1px solid ${bd}`, textAlign: 'center', fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 'clamp(.82rem,1.8vw,.87rem)', color: dark ? '#B8A0D8' : '#5B4080' }}>
-            All packages customisable <span onClick={() => setPage('contact')} style={{ color: T.p1, fontWeight: 700, cursor: 'pointer' }}>Contact us</span> for a tailored solution.
+            All packages customisable <span onClick={() => navigate('/contact')} style={{ color: T.p1, fontWeight: 700, cursor: 'pointer' }}>Contact us</span> for a tailored solution.
           </div>
         </FadeUp>
       </div>

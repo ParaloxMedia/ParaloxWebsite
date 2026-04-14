@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
   Rocket, Bot, Code2, Video, Megaphone, Search, BarChart2,
@@ -12,7 +13,8 @@ import { BrandSlider } from '../components/ui/BrandSlider';
 import { Testimonials } from '../components/ui/Testimonials';
 
 /* ─── HERO ──────────────────────────────────────────────────────────────── */
-function HeroSection({ setPage, dark }) {
+function HeroSection({ dark }) {
+  const navigate = useNavigate();
   const { scrollY } = useScroll();
   const yOrb = useTransform(scrollY, [0, 600], [0, -90]);
   const opH  = useTransform(scrollY, [0, 400], [1, 0]);
@@ -75,11 +77,11 @@ function HeroSection({ setPage, dark }) {
         {/* CTAs */}
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.8 }}
           className="hb" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 48 }}>
-          <motion.button whileHover={{ y: -3, boxShadow: '0 16px 44px rgba(255,255,255,.2)' }} whileTap={{ scale: .96 }} onClick={() => setPage('services')}
+          <motion.button whileHover={{ y: -3, boxShadow: '0 16px 44px rgba(255,255,255,.2)' }} whileTap={{ scale: .96 }} onClick={() => navigate('/services')}
             style={{ padding: 'clamp(12px,1.8vw,15px) clamp(22px,3.5vw,36px)', borderRadius: 50, border: 'none', cursor: 'pointer', background: '#fff', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: 'clamp(.88rem,1.8vw,1rem)', display: 'flex', alignItems: 'center', gap: 9, boxShadow: '0 8px 28px rgba(0,0,0,.28)' }}>
             <Rocket size={16} /> Explore Services
           </motion.button>
-          <motion.button whileHover={{ y: -2, background: 'rgba(255,255,255,.14)' }} whileTap={{ scale: .96 }} onClick={() => setPage('contact')}
+          <motion.button whileHover={{ y: -2, background: 'rgba(255,255,255,.14)' }} whileTap={{ scale: .96 }} onClick={() => navigate('/contact')}
             style={{ padding: 'clamp(12px,1.8vw,15px) clamp(18px,3vw,32px)', borderRadius: 50, cursor: 'pointer', border: '1.5px solid rgba(255,255,255,.32)', background: 'rgba(255,255,255,.07)', color: 'white', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 'clamp(.88rem,1.8vw,1rem)', display: 'flex', alignItems: 'center', gap: 9, backdropFilter: 'blur(10px)' }}>
             Get a Quote <ChevronRight size={15} />
           </motion.button>
@@ -110,7 +112,8 @@ function HeroSection({ setPage, dark }) {
 }
 
 /* ─── SERVICES GRID ──────────────────────────────────────────────────────── */
-function ServicesGrid({ setPage, dark }) {
+function ServicesGrid({ dark }) {
+  const navigate = useNavigate();
   const bg = dark ? '#0A0616' : '#F8F5FF';
   const cBg = dark ? 'rgba(20,8,44,.6)' : '#fff';
   const bd  = dark ? 'rgba(139,82,247,.15)' : 'rgba(91,29,232,.1)';
@@ -169,7 +172,7 @@ function ServicesGrid({ setPage, dark }) {
 
         <FadeUp delay={0.24}>
           <div style={{ textAlign: 'center', marginTop: 28 }}>
-            <motion.button whileHover={{ y: -2 }} onClick={() => setPage('services')}
+            <motion.button whileHover={{ y: -2 }} onClick={() => navigate('/services')}
               style={{ padding: '11px 28px', borderRadius: 50, cursor: 'pointer', border: `2px solid ${T.p1}`, background: 'transparent', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.9rem', display: 'inline-flex', alignItems: 'center', gap: 7, transition: 'all .25s' }}
               onMouseOver={e => { e.currentTarget.style.background = T.p1; e.currentTarget.style.color = '#fff'; }}
               onMouseOut={e  => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.p1; }}>
@@ -183,7 +186,8 @@ function ServicesGrid({ setPage, dark }) {
 }
 
 /* ─── PACKAGES PREVIEW ───────────────────────────────────────────────────── */
-function PackagesPreview({ setPage, dark, fmt }) {
+function PackagesPreview({ dark, fmt }) {
+  const navigate = useNavigate();
   const bg = dark ? 'rgba(12,4,26,.92)' : '#fff';
   const bd = dark ? 'rgba(139,82,247,.16)' : 'rgba(91,29,232,.09)';
 
@@ -215,7 +219,7 @@ function PackagesPreview({ setPage, dark, fmt }) {
                     </div>
                   ))}
                 </div>
-                <motion.button whileTap={{ scale: .97 }} onClick={() => setPage('packages')}
+                <motion.button whileTap={{ scale: .97 }} onClick={() => navigate('/packages')}
                   style={{ width: '100%', marginTop: 16, padding: '10px', borderRadius: 50, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.85rem', transition: 'all .25s', ...(p.feat ? { background: 'rgba(255,255,255,.16)', color: '#fff', border: '2px solid rgba(255,255,255,.3)' } : { background: 'transparent', border: `2px solid ${T.p1}`, color: T.p1 }) }}
                   onMouseOver={e => { if (!p.feat) { e.currentTarget.style.background = T.p1; e.currentTarget.style.color = '#fff'; } }}
                   onMouseOut={e  => { if (!p.feat) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.p1; } }}>
@@ -228,7 +232,7 @@ function PackagesPreview({ setPage, dark, fmt }) {
 
         <FadeUp delay={0.2}>
           <div style={{ textAlign: 'center', marginTop: 22 }}>
-            <motion.button whileHover={{ y: -2 }} onClick={() => setPage('packages')}
+            <motion.button whileHover={{ y: -2 }} onClick={() => navigate('/packages')}
               style={{ padding: '10px 26px', borderRadius: 50, cursor: 'pointer', border: `2px solid ${T.p1}`, background: 'transparent', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.88rem', display: 'inline-flex', alignItems: 'center', gap: 7, transition: 'all .25s' }}
               onMouseOver={e => { e.currentTarget.style.background = T.p1; e.currentTarget.style.color = '#fff'; }}
               onMouseOut={e  => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.p1; }}>
@@ -275,11 +279,12 @@ function PartnersSection({ dark }) {
 }
 
 /* ─── HOME PAGE EXPORT ───────────────────────────────────────────────────── */
-export function HomePage({ setPage, dark, fmt }) {
+export function HomePage({ dark, fmt }) {
+  const navigate = useNavigate();
   return (
     <div>
-      <HeroSection setPage={setPage} dark={dark} />
-      <ServicesGrid setPage={setPage} dark={dark} />
+      <HeroSection dark={dark} />
+      <ServicesGrid dark={dark} />
 
       {/* Marquee bar */}
       <div style={{ background: T.grad, padding: '11px 0', overflow: 'hidden' }}>
@@ -295,7 +300,7 @@ export function HomePage({ setPage, dark, fmt }) {
         </div>
       </div>
 
-      <PackagesPreview setPage={setPage} dark={dark} fmt={fmt} />
+      <PackagesPreview dark={dark} fmt={fmt} />
       <PartnersSection dark={dark} />
       <Testimonials dark={dark} />
 
@@ -317,7 +322,7 @@ export function HomePage({ setPage, dark, fmt }) {
                 <p style={{ color: 'rgba(255,255,255,.58)', fontSize: '.72rem', fontWeight: 700, letterSpacing: 2.5, textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Ready to grow?</p>
                 <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.7rem,3.8vw,3rem)', color: '#fff', letterSpacing: '-1.5px', marginBottom: 10, lineHeight: 1.15 }}>You have Goals.<br />We have the Road Map.</h2>
                 <p style={{ color: 'rgba(255,255,255,.62)', marginBottom: 24, maxWidth: 380, margin: '0 auto 24px', fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1.75, fontSize: '.9rem' }}>Turning your goals into milestones with digital strategy.</p>
-                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }} onClick={() => setPage('contact')}
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }} onClick={() => navigate('/contact')}
                   style={{ padding: '13px 36px', borderRadius: 50, border: 'none', cursor: 'pointer', background: '#fff', color: T.p1, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: '.93rem' }}>
                   Get In Touch
                 </motion.button>

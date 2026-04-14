@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Phone, Globe, MapPin, Facebook, Instagram, Linkedin, MessageCircle, Mail } from 'lucide-react';
 import { T } from '../../data';
@@ -5,8 +6,9 @@ import { T } from '../../data';
 const PAGES    = ['home','about','services','packages','gallery','contact'];
 const SERVICES = ['AI Marketing','Social Media','Web Dev','Video Production','AI Agents','Performance Marketing'];
 
-export function Footer({ setPage, dark }) {
-  const go = (p) => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+export function Footer({ dark }) {
+  const navigate = useNavigate();
+  const go = (p) => { navigate(p === 'home' ? '/' : `/${p}`); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   return (
     <footer style={{ background: dark ? '#050310' : '#09011A', borderTop: '1px solid rgba(139,82,247,.08)', padding: 'clamp(28px,5vw,36px) clamp(16px,5%,60px) clamp(18px,4vw,22px)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
