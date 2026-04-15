@@ -1,0 +1,6 @@
+name: paralox-website
+static_sites:
+  - name: paralox-website
+    build_command: npm run build
+    output_dir: build
+    catchall_document: index.html
