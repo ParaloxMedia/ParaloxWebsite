@@ -482,7 +482,7 @@ export function CareersPage({ dark }) {
             >
               <Briefcase size={16} /> View Open Roles
             </motion.button>
-            <motion.button
+            {/* <motion.button
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => { scrollToVacancies(); setTimeout(() => setActiveVacancy(VACANCIES[0]), 400); }}
@@ -496,7 +496,7 @@ export function CareersPage({ dark }) {
               }}
             >
               <ArrowRight size={16} /> Apply Now
-            </motion.button>
+            </motion.button> */}
           </motion.div>
 
           {/* Stats row */}
@@ -539,7 +539,7 @@ export function CareersPage({ dark }) {
           </FadeUp>
           <FadeUp delay={0.18}>
             <p style={{ fontSize: 'clamp(.88rem,1.8vw,1rem)', lineHeight: 1.9, color: dark ? '#B8A0D8' : '#5B4080', maxWidth: 680, margin: '0 auto' }}>
-              Paralox Media is an AI-driven digital agency helping brands across the globe grow through strategic social media, performance marketing, web development, and AI-powered solutions. Our team is small but mighty — and we're growing fast. If you're ambitious, creative, and excited by the future of digital, this is your place.
+              Paralox Media is an AI-driven digital agency helping brands across the globe grow through strategic social media, performance marketing, web development, and AI-powered solutions. Our team is small but mighty and we're growing fast. If you're ambitious, creative, and excited by the future of digital, this is your place.
             </p>
           </FadeUp>
         </div>
