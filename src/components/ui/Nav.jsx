@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { T } from '../../data';
 
-const PAGES = ['home', 'about', 'services', 'packages', 'contact'];
+const PAGES = ['home', 'about', 'services', 'packages', 'careers', 'contact'];
 // const PAGES = ['home', 'about', 'services', 'packages', 'gallery', 'contact'];
 
 const toPath = (p) => p === 'home' ? '/' : `/${p}`;

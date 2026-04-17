@@ -12,6 +12,7 @@ import { ServicesPage }   from './pages/ServicesPage';
 import { PackagesPage }   from './pages/PackagesPage';
 import { GalleryPage }    from './pages/GalleryPage';
 import { ContactPage }    from './pages/ContactPage';
+import { CareersPage }    from './pages/CareersPage';
 import { VapiWidget }     from './components/ui/VapiWidget';
 
 function SiteLayout({ dark, setDark }) {
@@ -36,6 +37,7 @@ function SiteLayout({ dark, setDark }) {
             <Route path="/packages" element={<PackagesPage dark={dark} />} />
             <Route path="/gallery"  element={<GalleryPage  dark={dark} />} />
             <Route path="/contact"  element={<ContactPage  dark={dark} />} />
+            <Route path="/careers"  element={<CareersPage  dark={dark} />} />
             <Route path="*"         element={<Navigate to="/" replace />} />
           </Routes>
         </motion.div>
