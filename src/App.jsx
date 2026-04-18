@@ -49,18 +49,23 @@ function SiteLayout({ dark, setDark }) {
 }
 
 export default function App() {
-  const [loaded,   setLoaded]   = useState(false);
-  const [showSite, setShowSite] = useState(false);
+  // Only show the loader when the visitor lands directly on the home page.
+  // Any other route (e.g. /about, /careers) skips it and renders instantly.
+  const isHome = window.location.pathname === '/';
+
+  const [loaded,   setLoaded]   = useState(!isHome);
+  const [showSite, setShowSite] = useState(!isHome);
   const [dark,     setDark]     = useState(false);
 
-  // Absolute safety net — show site after 15s even if loader never calls onDone
+  // Safety net — show site after 15s even if loader never calls onDone
   useEffect(() => {
+    if (!isHome) return;
     const t = setTimeout(() => {
       setLoaded(true);
       setShowSite(true);
     }, 15000);
     return () => clearTimeout(t);
-  }, []);
+  }, [isHome]);
 
   const handleDone = () => {
     setLoaded(true);
@@ -75,7 +80,7 @@ export default function App() {
         minHeight: '100vh',
         fontFamily: "'Plus Jakarta Sans', sans-serif",
       }}>
-        {/* Particle loader */}
+        {/* Particle loader — home page only */}
         <AnimatePresence>
           {!loaded && (
             <motion.div
