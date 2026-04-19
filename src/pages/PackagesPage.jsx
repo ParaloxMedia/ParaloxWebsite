@@ -94,17 +94,17 @@ export function PackagesPage({ dark }) {
           <motion.div key={tab} initial={{ opacity: 0, y: 11 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
             {tab === 0 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
+                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
               </div>
             )}
             {tab === 1 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
+                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
               </div>
             )}
             {tab === 2 && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, maxWidth: 600, alignItems: 'stretch' }} className="g1">
-                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} /></FadeUp>)}
+                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
               </div>
             )}
             {tab === 3 && (
