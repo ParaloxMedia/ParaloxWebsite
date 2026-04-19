@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Brain, Code2, Video, Sparkles, Search, Layers } from 'lucide-react';
@@ -15,7 +15,7 @@ const CUSTOM = [
   { icon: <Layers size={22}/>,   t: 'Brand Identity & Design',  d: 'Logo, brand guidelines, templates, and visual identity systems.',                   c: '#0891B2' },
 ];
 
-function PkgCard({ p, dark }) {
+function PkgCard({ p, dark, multiplier = 1 }) {
   const navigate = useNavigate();
   const bd  = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
   const bg  = dark ? 'rgba(12,4,26,.92)'    : '#fff';
@@ -32,7 +32,7 @@ function PkgCard({ p, dark }) {
       {p.badge && <div style={{ position: 'absolute', top: 12, right: 12, padding: '3px 9px', borderRadius: 20, fontSize: '.62rem', fontWeight: 800, background: badgeBg, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{p.badge}</div>}
       <div style={{ fontSize: '.64rem', fontWeight: 700, letterSpacing: 1.8, textTransform: 'uppercase', color: p.feat ? 'rgba(255,255,255,.5)' : '#9B8BC0', marginBottom: 3, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{p.sub}</div>
       <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(.98rem,1.8vw,1.12rem)', color: p.feat ? '#fff' : dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 5 }}>{p.n}</div>
-      <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.85rem)', lineHeight: 1.1, marginBottom: 3, ...(p.feat ? { color: '#fff' } : { background: `linear-gradient(135deg,${T.p1},${T.p3})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }) }}>LKR {p.price.toLocaleString()}</div>
+      <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.85rem)', lineHeight: 1.1, marginBottom: 3, ...(p.feat ? { color: '#fff' } : { background: `linear-gradient(135deg,${T.p1},${T.p3})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }) }}>LKR {Math.round(p.price * multiplier).toLocaleString()}</div>
       <div style={{ fontSize: '.7rem', color: p.feat ? 'rgba(255,255,255,.5)' : '#9B8BC0', marginBottom: 13, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>/month</div>
       <div style={{ height: 1, background: p.feat ? 'rgba(255,255,255,.17)' : bd, marginBottom: 13 }} />
       <div style={{ flex: 1 }}>
@@ -56,7 +56,17 @@ function PkgCard({ p, dark }) {
 export function PackagesPage({ dark }) {
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
+  const [isLK, setIsLK] = useState(true); // default true to avoid price flash
   const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
+
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(r => r.json())
+      .then(d => setIsLK(d.country_code === 'LK'))
+      .catch(() => setIsLK(true));
+  }, []);
+
+  const multiplier = isLK ? 1 : 1.2;
 
   const tabs = ['SMM Plans', 'Digital Marketing', 'Startup Special', 'Custom Services'];
 
