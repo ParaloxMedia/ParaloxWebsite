@@ -1,19 +1,36 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Target, Shield, Award, Globe, TrendingUp, Zap, Building2, Building, Flag, Navigation, MapPin } from 'lucide-react';
+import { Target, Shield, Award, Globe, TrendingUp, Zap } from 'lucide-react';
 import { T } from '../data';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 import { TeamCarousel } from '../components/ui/TeamCarousel';
 import { Testimonials } from '../components/ui/Testimonials';
+import { WorldMap } from '../components/ui/WorldMap';
 
-const COUNTRIES = [
-  { icon: '🇱🇰', n: 'Sri Lanka' },
-  { icon:' 🇦🇪', n: 'UAE' },
-  { icon: '🇸🇦', n: 'Saudi Arabia' },
-  { icon: '🇸🇬', n: 'Singapore' },
-  { icon: '🇵🇳', n: 'PNG' },
-  { icon: '🇶🇦', n: 'Qatar' },
+/* ── Country coordinates ── */
+const SL  = { lat: -8.1,   lng: 86.5,   label: '🇱🇰 Sri Lanka'    };
+const UAE = { lat: 23.42,  lng: 53.85,  label: '🇦🇪 UAE'           };
+const SA  = { lat: 23.89,  lng: 45.08,  label: '🇸🇦 Saudi Arabia'  };
+const SG  = { lat: 1.35,   lng: 103.82, label: '🇸🇬 Singapore'     };
+const PNG = { lat: -8.1,   lng: 143.96, label: '🇵🇬 PNG'           };
+const QA  = { lat: 25.35,  lng: 51.18,  label: '🇶🇦 Qatar'         };
+
+// viewBox: trim top/left more, extend right + bottom further
+const MAP_VIEWBOX = '315 45 530 265';
+
+const MAP_DOTS = [
+  // Sri Lanka as hub → all destinations
+  { start: SL,  end: UAE },
+  { start: SL,  end: SA  },
+  { start: SL,  end: SG  },
+  { start: SL,  end: PNG },
+  // Gulf cluster cross-links
+  { start: UAE, end: QA  },
+  { start: SA,  end: QA  },
+  { start: SA,  end: UAE },
+  // East cross-link
+  { start: SG,  end: PNG },
 ];
 
 export function AboutPage({ dark }) {
@@ -107,24 +124,47 @@ export function AboutPage({ dark }) {
           <Testimonials dark={dark} />
         </div>
 
-        {/* ── Countries ── */}
+        {/* ── Countries / World Map ── */}
         <FadeUp style={{ marginTop: 48 }}>
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', marginBottom: 28 }}>
             <Chip text="Global Reach" center />
             <Heading dark={dark} size="clamp(1.6rem,3vw,2.5rem)" center>
               Serving <GradText>5+ Countries</GradText>
             </Heading>
-            <div className="g2" style={{ display: 'grid', gridTemplateColumns: 'repeat(6,1fr)', gap: 12, marginTop: 26 }}>
-              {COUNTRIES.map(({ icon, n }, i) => (
-                <FadeUp key={n} delay={i * 0.06}>
-                  <motion.div whileHover={{ y: -4, borderColor: T.p1 }}
-                    style={{ padding: '16px 8px', textAlign: 'center', border: `1px solid ${dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.08)'}`, borderRadius: 14, background: cBg, transition: 'border-color .3s' }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>{icon}</div>
-                    <div style={{ fontSize: '.7rem', fontWeight: 700, fontFamily: "'Plus Jakarta Sans',sans-serif", color: dark ? '#F0E8FF' : '#1A0A2E' }}>{n}</div>
-                  </motion.div>
-                </FadeUp>
-              ))}
-            </div>
+            <p style={{ color: dark ? '#9B8BC0' : '#7B6A9A', marginTop: 10, maxWidth: 480, margin: '10px auto 0', fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1.75, fontSize: 'clamp(.84rem,1.8vw,.9rem)' }}>
+              From Sri Lanka to the Gulf, South-East Asia and the Pacific — our reach spans continents.
+            </p>
+          </div>
+
+          <WorldMap dots={MAP_DOTS} dark={dark} lineColor="#A855F7" animationDuration={2.2} loop region={MAP_VIEWBOX} />
+
+          {/* Country flag badges */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginTop: 22 }}>
+            {[
+              { flag: '🇱🇰', name: 'Sri Lanka'    },
+              { flag: '🇦🇪', name: 'UAE'           },
+              { flag: '🇸🇦', name: 'Saudi Arabia'  },
+              { flag: '🇸🇬', name: 'Singapore'     },
+              { flag: '🇵🇬', name: 'PNG'            },
+              { flag: '🇶🇦', name: 'Qatar'          },
+            ].map(({ flag, name }, i) => (
+              <FadeUp key={name} delay={i * 0.06}>
+                <motion.div
+                  whileHover={{ y: -3, borderColor: T.p1 }}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 7,
+                    padding: '8px 16px', borderRadius: 50,
+                    border: `1px solid ${dark ? 'rgba(139,82,247,.18)' : 'rgba(91,29,232,.12)'}`,
+                    background: dark ? 'rgba(91,29,232,.07)' : 'rgba(91,29,232,.04)',
+                    transition: 'border-color .25s',
+                    cursor: 'default',
+                  }}
+                >
+                  <span style={{ fontSize: '1rem' }}>{flag}</span>
+                  <span style={{ fontSize: '.75rem', fontWeight: 700, fontFamily: "'Plus Jakarta Sans',sans-serif", color: dark ? '#D4C0F8' : '#3D1F8A' }}>{name}</span>
+                </motion.div>
+              </FadeUp>
+            ))}
           </div>
         </FadeUp>
       </div>
