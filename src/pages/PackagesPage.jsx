@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Brain, Code2, Video, Sparkles, Search, Layers } from 'lucide-react';
-import { T, SMM_PACKAGES, DM_PACKAGES, STARTUP_PACKAGES } from '../data';
+import { T, SMM_PACKAGES, DM_PACKAGES, STARTUP_PACKAGES, CURRENCY_MAP } from '../data';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
@@ -15,7 +15,7 @@ const CUSTOM = [
   { icon: <Layers size={22}/>,   t: 'Brand Identity & Design',  d: 'Logo, brand guidelines, templates, and visual identity systems.',                   c: '#0891B2' },
 ];
 
-function PkgCard({ p, dark, multiplier = 1 }) {
+function PkgCard({ p, dark, currency = { s: 'LKR', r: 1 } }) {
   const navigate = useNavigate();
   const bd  = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
   const bg  = dark ? 'rgba(12,4,26,.92)'    : '#fff';
@@ -32,7 +32,7 @@ function PkgCard({ p, dark, multiplier = 1 }) {
       {p.badge && <div style={{ position: 'absolute', top: 12, right: 12, padding: '3px 9px', borderRadius: 20, fontSize: '.62rem', fontWeight: 800, background: badgeBg, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{p.badge}</div>}
       <div style={{ fontSize: '.64rem', fontWeight: 700, letterSpacing: 1.8, textTransform: 'uppercase', color: p.feat ? 'rgba(255,255,255,.5)' : '#9B8BC0', marginBottom: 3, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{p.sub}</div>
       <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(.98rem,1.8vw,1.12rem)', color: p.feat ? '#fff' : dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 5 }}>{p.n}</div>
-      <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.85rem)', lineHeight: 1.1, marginBottom: 3, ...(p.feat ? { color: '#fff' } : { background: `linear-gradient(135deg,${T.p1},${T.p3})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }) }}>LKR {Math.round(p.price * multiplier).toLocaleString()}</div>
+      <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.85rem)', lineHeight: 1.1, marginBottom: 3, ...(p.feat ? { color: '#fff' } : { background: `linear-gradient(135deg,${T.p1},${T.p3})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }) }}>{currency.s} {Math.round(p.price * currency.r * (currency.s === 'LKR' ? 1 : 1.2)).toLocaleString()}</div>
       <div style={{ fontSize: '.7rem', color: p.feat ? 'rgba(255,255,255,.5)' : '#9B8BC0', marginBottom: 13, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>/month</div>
       <div style={{ height: 1, background: p.feat ? 'rgba(255,255,255,.17)' : bd, marginBottom: 13 }} />
       <div style={{ flex: 1 }}>
@@ -56,17 +56,18 @@ function PkgCard({ p, dark, multiplier = 1 }) {
 export function PackagesPage({ dark }) {
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
-  const [isLK, setIsLK] = useState(true); // default true to avoid price flash
+  const [currency, setCurrency] = useState({ s: 'LKR', r: 1 });
   const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
 
   useEffect(() => {
     fetch('https://ipapi.co/json/')
       .then(r => r.json())
-      .then(d => setIsLK(d.country_code === 'LK'))
-      .catch(() => setIsLK(true));
+      .then(d => {
+        const code = d.country_code;
+        setCurrency(CURRENCY_MAP[code] ?? { s: 'LKR', r: 1 });
+      })
+      .catch(() => setCurrency({ s: 'LKR', r: 1 }));
   }, []);
-
-  const multiplier = isLK ? 1 : 1.2;
 
   const tabs = ['SMM Plans', 'Digital Marketing', 'Startup Special', 'Custom Services'];
 
@@ -94,17 +95,17 @@ export function PackagesPage({ dark }) {
           <motion.div key={tab} initial={{ opacity: 0, y: 11 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
             {tab === 0 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
+                {SMM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} currency={currency} /></FadeUp>)}
               </div>
             )}
             {tab === 1 && (
               <div className="pkg-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 15, alignItems: 'stretch' }}>
-                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
+                {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} currency={currency} /></FadeUp>)}
               </div>
             )}
             {tab === 2 && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, maxWidth: 600, alignItems: 'stretch' }} className="g1">
-                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} multiplier={multiplier} /></FadeUp>)}
+                {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} currency={currency} /></FadeUp>)}
               </div>
             )}
             {tab === 3 && (
