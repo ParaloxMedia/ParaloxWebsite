@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Shield, Award, Globe, TrendingUp, Zap } from 'lucide-react';
 import { T } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 import { TeamCarousel } from '../components/ui/TeamCarousel';
@@ -34,6 +35,10 @@ const MAP_DOTS = [
 ];
 
 export function AboutPage({ dark }) {
+  useSEO({
+    title: 'About Us | AI Agency Team & Mission — Paralox Media',
+    description: 'Learn about Paralox Media — a global AI agency founded in 2025. Meet our team of AI strategists, developers, designers, and marketers building AI-powered business solutions worldwide.',
+  });
   const navigate = useNavigate();
   const bd  = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.09)';
   const cBg = dark ? 'rgba(20,8,44,.5)'     : '#fff';

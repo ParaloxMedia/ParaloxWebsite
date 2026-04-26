@@ -7,6 +7,7 @@ import {
   Users, TrendingUp, Globe, Zap
 } from 'lucide-react';
 import { T, TAGWORDS, PREVIEW_PACKAGES } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 import { BrandSlider } from '../components/ui/BrandSlider';
@@ -281,6 +282,10 @@ function PartnersSection({ dark }) {
 /* ─── HOME PAGE EXPORT ───────────────────────────────────────────────────── */
 export function HomePage({ dark, fmt }) {
   const navigate = useNavigate();
+  useSEO({
+    title: 'Paralox Media | AI Agency & Digital Marketing | AI Agent Development',
+    description: 'Paralox Media is a leading AI agency offering AI agent development, AI-powered digital marketing, social media management, web development, and performance marketing worldwide.',
+  });
   return (
     <div>
       <HeroSection dark={dark} />

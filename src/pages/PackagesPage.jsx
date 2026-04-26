@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Brain, Code2, Video, Sparkles, Search, Layers } from 'lucide-react';
 import { T, SMM_PACKAGES, DM_PACKAGES, STARTUP_PACKAGES, CURRENCY_MAP } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
@@ -56,6 +57,10 @@ function PkgCard({ p, dark, currency = { s: 'LKR', r: 1 } }) {
 export function PackagesPage({ dark }) {
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
+  useSEO({
+    title: 'Pricing & Packages | AI Marketing & SMM Plans — Paralox Media',
+    description: 'Transparent pricing for AI-powered digital marketing, social media management, and performance marketing packages. Plans for startups to enterprises. Currency auto-detected by location.',
+  });
   const [currency, setCurrency] = useState({ s: 'LKR', r: 1 });
   const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
 

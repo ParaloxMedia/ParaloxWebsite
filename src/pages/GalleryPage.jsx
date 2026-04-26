@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Megaphone, Video, Code2, Bot, Sparkles, BarChart2, Search, Briefcase } from 'lucide-react';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
@@ -19,6 +20,10 @@ const ITEMS = [
 const BRANDS = ['WebXPay','RNB Special Tours','ZEN','ALFA Global','Sri Lanka Rugby','IDM','La Maison','PNG Embroidery','Big Plate',"Abid's Restaurant",'Third Space Global','Ceylon Shisha Lounge'];
 
 export function GalleryPage({ dark }) {
+  useSEO({
+    title: 'Portfolio & Gallery | AI Marketing & Creative Work — Paralox Media',
+    description: 'Browse Paralox Media\'s portfolio of AI-powered digital marketing campaigns, social media content, web development projects, video production, and brand design work.',
+  });
   const [act, setAct] = useState('All');
   const shown = act === 'All' ? ITEMS : ITEMS.filter(x => x.cat === act);
 

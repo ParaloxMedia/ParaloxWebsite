@@ -6,6 +6,7 @@ import {
   Brain, Rocket, Heart, TrendingUp,
 } from 'lucide-react';
 import { T } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { ApplicationModal } from '../components/careers/ApplicationModal';
 import { ShareModal } from '../components/careers/ShareModal';
@@ -399,6 +400,10 @@ function FaqItem({ q, a, dark, index }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export function CareersPage({ dark }) {
+  useSEO({
+    title: 'Careers | Join Our AI & Digital Marketing Team — Paralox Media',
+    description: 'Join Paralox Media — a fast-growing AI agency. We\'re hiring AI developers, digital marketers, designers, and more. Apply now and help shape the future of AI-powered business.',
+  });
   const [activeVacancy, setActiveVacancy] = useState(null);
   const [shareVacancy,  setShareVacancy]  = useState(null);
   const [search,        setSearch]        = useState('');

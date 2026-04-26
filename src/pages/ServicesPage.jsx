@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Bot, Code2, Brain, Sparkles, Search, BarChart2, Video, Smartphone } from 'lucide-react';
 import { T } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
@@ -23,6 +24,10 @@ const PROCESS = [
 ];
 
 export function ServicesPage({ dark }) {
+  useSEO({
+    title: 'Our Services | AI Agent Development & Digital Marketing — Paralox Media',
+    description: 'Explore Paralox Media\'s full range of services: AI agent development, AI-driven digital marketing, social media management, web & app development, SEO, video production, and performance marketing.',
+  });
   const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
 
   return (

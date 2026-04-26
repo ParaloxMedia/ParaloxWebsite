@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, MessageCircle, Globe, Facebook, Instagram, Linkedin, Send, Bot, BarChart2, Zap, CheckCircle2 } from 'lucide-react';
 import { T } from '../data';
+import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 
 const CONTACT_CARDS = [
@@ -14,6 +15,10 @@ const CONTACT_CARDS = [
 const SERVICES_LIST = ['Social Media Management','AI-Driven Digital Marketing','Website / App Development','AI Agent Development','Performance Marketing','Video Production','SEO & Content','Custom Package'];
 
 export function ContactPage({ dark }) {
+  useSEO({
+    title: 'Contact Us | Get a Free AI & Digital Marketing Quote — Paralox Media',
+    description: 'Contact Paralox Media to discuss AI agent development, digital marketing, social media management, or web development. Get a free consultation for your business today.',
+  });
   const [form, setForm] = useState({ fname: '', lname: '', email: '', phone: '', service: '', message: '' });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
