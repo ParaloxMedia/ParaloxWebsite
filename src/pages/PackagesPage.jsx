@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Brain, Code2, Video, Sparkles, Search, Layers } from 'lucide-react';
-import { T, SMM_PACKAGES, DM_PACKAGES, STARTUP_PACKAGES, CURRENCY_MAP } from '../data';
+import { T, SMM_PACKAGES, DM_PACKAGES, /* STARTUP_PACKAGES, */ CURRENCY_MAP } from '../data';
 import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
@@ -74,7 +74,7 @@ export function PackagesPage({ dark }) {
       .catch(() => setCurrency({ s: 'LKR', r: 1 }));
   }, []);
 
-  const tabs = ['SMM Plans', 'Digital Marketing', 'Startup Special', 'Custom Services'];
+  const tabs = ['SMM Plans', 'Digital Marketing', /* 'Startup Special', */ 'Custom Services'];
 
   return (
     <div style={{ paddingTop: 86, paddingBottom: 72 }}>
@@ -108,12 +108,14 @@ export function PackagesPage({ dark }) {
                 {DM_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} currency={currency} /></FadeUp>)}
               </div>
             )}
+            {/* Startup Special — temporarily hidden
             {tab === 2 && (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 15, maxWidth: 600, alignItems: 'stretch' }} className="g1">
                 {STARTUP_PACKAGES.map((p, i) => <FadeUp key={p.n} delay={i * 0.06} style={{ height: '100%' }}><PkgCard p={p} dark={dark} currency={currency} /></FadeUp>)}
               </div>
             )}
-            {tab === 3 && (
+            */}
+            {tab === 2 && (
               <div>
                 <p style={{ color: dark ? '#B8A0D8' : '#5B4080', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 'clamp(.86rem,1.8vw,.94rem)', lineHeight: 1.75, maxWidth: 540 }}>
                   These services are fully custom-scoped. Pricing is determined after consultation.

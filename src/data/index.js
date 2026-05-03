@@ -119,27 +119,27 @@ export const TESTIMONIALS = [
 
 // ─── PACKAGES ─────────────────────────────────────────────────────────────────
 export const SMM_PACKAGES = [
-  { n: 'Digital Core',    sub: 'SMM Only',     price: 95000,  badge: null,           feat: false, feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','Social Media Management (FB & IG)'] },
-  { n: 'Digital Core +',  sub: 'SMM + Paid Ads', price: 115000, badge: 'Most Popular', feat: true,  feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','SMM & Performance Marketing (FB & IG)'] },
-  { n: 'Digital Nexus',   sub: 'SMM Only',     price: 125000, badge: 'AI Powered',            feat: false, feats: ['13 HQ Static Posts','3 Promo Videos / UGC','Detailed Analytics','AI Powered Content','SMM (FB, IG & TikTok)'] },
-  { n: 'Digital Nexus +', sub: 'SMM + Paid Ads', price: 145000, badge: 'AI Powered',            feat: false, feats: ['13 HQ Static Posts','AI Powered Content','3 Promo / UGC','Detailed Analytics','SMM & Perf. Marketing'] },
-  { n: 'Digital Apex',    sub: 'SMM Only',     price: 149000, badge: 'AI Powered',            feat: false, feats: ['20 Platform-Optimised Posts','6 Promo Videos / UGC','SEO Blog Content','Business Consultation','Comment & Message Response','SMM (FB, IG & TikTok)'] },
-  { n: 'Digital Apex +',  sub: 'SMM + Paid Ads', price: 179000, badge: 'AI Powered',            feat: false, feats: ['20 Platform-Optimised Posts','6 Promo Videos / UGC','SEO Blog Content','SMM & Performance Marketing','Business Consultation','Comment & Message Response'] },
+  { n: 'Digital Core',    sub: 'SMM Only',       price: 104500, badge: null,           feat: false, feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','Social Media Management (FB & IG)'] },
+  { n: 'Digital Core +',  sub: 'SMM + Paid Ads', price: 126500, badge: 'Most Popular', feat: true,  feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','SMM & Performance Marketing (FB & IG)'] },
+  { n: 'Digital Nexus',   sub: 'SMM Only',       price: 137500, badge: 'AI Powered',   feat: false, feats: ['13 HQ Static Posts','3 Promo Videos / UGC','Detailed Analytics','AI Powered Content','SMM (FB, IG & TikTok)'] },
+  { n: 'Digital Nexus +', sub: 'SMM + Paid Ads', price: 159500, badge: 'AI Powered',   feat: false, feats: ['13 HQ Static Posts','AI Powered Content','3 Promo / UGC','Detailed Analytics','SMM & Perf. Marketing'] },
+  { n: 'Digital Apex',    sub: 'SMM Only',       price: 163900, badge: 'AI Powered',   feat: false, feats: ['20 Platform-Optimised Posts','6 Promo Videos / UGC','SEO Blog Content','Business Consultation','Comment & Message Response','SMM (FB, IG & TikTok)'] },
+  { n: 'Digital Apex +',  sub: 'SMM + Paid Ads', price: 196900, badge: 'AI Powered',   feat: false, feats: ['20 Platform-Optimised Posts','6 Promo Videos / UGC','SEO Blog Content','SMM & Performance Marketing','Business Consultation','Comment & Message Response'] },
 ];
 
 export const DM_PACKAGES = [
-  { n: 'DM Starter',  sub: 'Paid Ads Only',       price: 45000,  badge: null,      feat: false, feats: ['Google Ads Campaign','Meta Ads (FB & IG)','Monthly Report','Audience Targeting'] },
-  { n: 'DM Growth',   sub: 'Full Digital Marketing', price: 85000,  badge: 'Popular', feat: true,  feats: ['Google + Meta Ads','SEO Campaign','Content Strategy','Weekly Analytics','Competitor Analysis'] },
-  { n: 'DM Premium',  sub: '360° Digital Marketing', price: 135000, badge: 'AI Powered',      feat: false, feats: ['Google + Meta + TikTok Ads','Advanced SEO & GEO','Content Calendar','AI-Powered Targeting','Bi-weekly Strategy Calls','Full Analytics Dashboard'] },
+  { n: 'DM Starter',  sub: 'Paid Ads Only',         price: 49500,  badge: null,        feat: false, feats: ['Google Ads Campaign','Meta Ads (FB & IG)','Monthly Report','Audience Targeting'] },
+  { n: 'DM Growth',   sub: 'Full Digital Marketing', price: 93500,  badge: 'Popular',   feat: true,  feats: ['Google + Meta Ads','SEO Campaign','Content Strategy','Weekly Analytics','Competitor Analysis'] },
+  { n: 'DM Premium',  sub: '360° Digital Marketing', price: 148500, badge: 'AI Powered', feat: false, feats: ['Google + Meta + TikTok Ads','Advanced SEO & GEO','Content Calendar','AI-Powered Targeting','Bi-weekly Strategy Calls','Full Analytics Dashboard'] },
 ];
 
 export const STARTUP_PACKAGES = [
-  { n: 'Starter',      sub: 'SMM Only',     price: 60000, badge: 'Startup Special', feat: false, feats: ['8 Medium Quality Static Posts','2 Promo Videos / UGC','Business Consultation','Social Media Management (FB & IG)'] },
-  { n: 'Starter Plus', sub: 'SMM + Paid Ads', price: 75000, badge: 'Best Value',     feat: true,  feats: ['8 Medium Quality Static Posts','2 Promo Videos / UGC','SMM & Performance Marketing (FB & IG)','Business Consultation'] },
+  { n: 'Starter',      sub: 'SMM Only',       price: 66000, badge: 'Startup Special', feat: false, feats: ['8 Medium Quality Static Posts','2 Promo Videos / UGC','Business Consultation','Social Media Management (FB & IG)'] },
+  { n: 'Starter Plus', sub: 'SMM + Paid Ads', price: 82500, badge: 'Best Value',      feat: true,  feats: ['8 Medium Quality Static Posts','2 Promo Videos / UGC','SMM & Performance Marketing (FB & IG)','Business Consultation'] },
 ];
 
 export const PREVIEW_PACKAGES = [
-  { n: 'Starter',       price: 60000,  tag: 'Startup',      feats: ['8 Static Posts','2 Promo Videos','FB & IG Management','Business Consultation'], c: '#16A34A', feat: false },
-  { n: 'Digital Core +',price: 115000, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],       c: '#5B1DE8', feat: true  },
-  { n: 'Digital Apex +',price: 179000, tag: 'AI Powered',   feats: ['20 Platform Posts','6 Promo/UGC Videos','SEO Blog Content','Growth Planning'],  c: '#7C3AED', feat: false },
+  { n: 'Starter',       price: 66000,  tag: 'Startup',      feats: ['8 Static Posts','2 Promo Videos','FB & IG Management','Business Consultation'], c: '#16A34A', feat: false },
+  { n: 'Digital Core +',price: 126500, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],       c: '#5B1DE8', feat: true  },
+  { n: 'Digital Apex +',price: 196900, tag: 'AI Powered',   feats: ['20 Platform Posts','6 Promo/UGC Videos','SEO Blog Content','Growth Planning'],  c: '#7C3AED', feat: false },
 ];
