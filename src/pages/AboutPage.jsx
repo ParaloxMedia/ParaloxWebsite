@@ -36,7 +36,7 @@ const MAP_DOTS = [
 
 export function AboutPage({ dark }) {
   useSEO({
-    title: 'About Us | AI Agency Team & Mission — Paralox Media',
+    title: 'About Us | AI Agency Team & Mission | Paralox Media',
     description: 'Learn about Paralox Media — a global AI agency founded in 2025. Meet our team of AI strategists, developers, designers, and marketers building AI-powered business solutions worldwide.',
   });
   const navigate = useNavigate();

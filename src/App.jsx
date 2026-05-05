@@ -13,6 +13,8 @@ import { PackagesPage }   from './pages/PackagesPage';
 import { GalleryPage }    from './pages/GalleryPage';
 import { ContactPage }    from './pages/ContactPage';
 import { CareersPage }    from './pages/CareersPage';
+import { BlogPage }       from './pages/BlogPage';
+import { BlogPostPage }   from './pages/BlogPostPage';
 import { VapiWidget }     from './components/ui/VapiWidget';
 
 function SiteLayout({ dark, setDark }) {
@@ -38,6 +40,8 @@ function SiteLayout({ dark, setDark }) {
             <Route path="/gallery"  element={<GalleryPage  dark={dark} />} />
             <Route path="/contact"  element={<ContactPage  dark={dark} />} />
             <Route path="/careers"  element={<CareersPage  dark={dark} />} />
+            <Route path="/pulse"    element={<BlogPage     dark={dark} />} />
+            <Route path="/pulse/:id" element={<BlogPostPage dark={dark} />} />
             <Route path="*"         element={<Navigate to="/" replace />} />
           </Routes>
         </motion.div>

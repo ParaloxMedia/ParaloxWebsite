@@ -401,7 +401,7 @@ function FaqItem({ q, a, dark, index }) {
 
 export function CareersPage({ dark }) {
   useSEO({
-    title: 'Careers | Join Our AI & Digital Marketing Team — Paralox Media',
+    title: 'Careers | Join Our AI & Digital Marketing Team | Paralox Media',
     description: 'Join Paralox Media — a fast-growing AI agency. We\'re hiring AI developers, digital marketers, designers, and more. Apply now and help shape the future of AI-powered business.',
   });
   const [activeVacancy, setActiveVacancy] = useState(null);

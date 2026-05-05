@@ -21,7 +21,7 @@ const BRANDS = ['WebXPay','RNB Special Tours','ZEN','ALFA Global','Sri Lanka Rug
 
 export function GalleryPage({ dark }) {
   useSEO({
-    title: 'Portfolio & Gallery | AI Marketing & Creative Work — Paralox Media',
+    title: 'Portfolio & Gallery | AI Marketing & Creative Work | Paralox Media',
     description: 'Browse Paralox Media\'s portfolio of AI-powered digital marketing campaigns, social media content, web development projects, video production, and brand design work.',
   });
   const [act, setAct] = useState('All');

@@ -16,7 +16,7 @@ const SERVICES_LIST = ['Social Media Management','AI-Driven Digital Marketing','
 
 export function ContactPage({ dark }) {
   useSEO({
-    title: 'Contact Us | Get a Free AI & Digital Marketing Quote — Paralox Media',
+    title: 'Contact Us | Get a Free AI & Digital Marketing Quote | Paralox Media',
     description: 'Contact Paralox Media to discuss AI agent development, digital marketing, social media management, or web development. Get a free consultation for your business today.',
   });
   const [form, setForm] = useState({ fname: '', lname: '', email: '', phone: '', service: '', message: '' });

@@ -58,7 +58,7 @@ export function PackagesPage({ dark }) {
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
   useSEO({
-    title: 'Pricing & Packages | AI Marketing & SMM Plans — Paralox Media',
+    title: 'Pricing & Packages | AI Marketing & SMM Plans | Paralox Media',
     description: 'Transparent pricing for AI-powered digital marketing, social media management, and performance marketing packages. Plans for startups to enterprises. Currency auto-detected by location.',
   });
   const [currency, setCurrency] = useState({ s: 'LKR', r: 1 });
