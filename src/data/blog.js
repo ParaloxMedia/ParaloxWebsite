@@ -116,6 +116,38 @@ export const BLOG_POSTS = [
   // ─── NEWS & INSIGHTS ──────────────────────────────────────────────────────
 
   {
+    id: 'news-zahira-silver-sponsor-2025',
+    type: 'news',
+    status: null,
+    tag: 'Company News',
+    date: '2025-09-20',
+    dateLabel: 'Sep 2025',
+    title: 'Paralox Media — Silver Sponsor at Zahira College\'s 133rd Anniversary Cricket Tournament',
+    excerpt: 'Paralox Media proudly stepped in as Silver Sponsor for the Zahira College Group of 2010 Cricket Tournament, held as part of the institution\'s landmark 133rd Anniversary celebrations — a moment of giving back for our Founder and CEO Abubakker Bakthathi, a proud Zahira alumnus.',
+    body: 'There are moments in business that go beyond revenue, strategy, and growth. The Zahira College Group of 2010 Cricket Tournament was one of them.\n\nParalox Media was honoured to serve as Silver Sponsor for this prestigious event, held as part of Zahira College\'s 133rd Anniversary celebrations — one of Sri Lanka\'s most respected educational institutions with a legacy that spans over a century. For our Founder and CEO, Abubakker Bakthathi, this was deeply personal. He returned to his alma mater not just as a sponsor, but as a former student who credits Zahira College for shaping his values, discipline, and leadership foundation.\n\nThe tournament brought together alumni from the Group of 2010 — a reunion of old faces, shared memories, and the kind of bond that only school years can forge. Walking through the same halls, sitting in the same grounds, and seeing the next generation of students carry forward a tradition of excellence was a reminder of why giving back matters.\n\nBeyond the cricket field, the visit opened meaningful conversations. Abubakker had the opportunity to sit with the school leadership and engage in forward-looking discussions about the role of technology in education — how AI-driven tools, digital media, and modern communication strategies can be harnessed to empower students and prepare them for a rapidly changing world.\n\nAt Paralox Media, we believe that the most impactful thing a business can do is invest in the ecosystems that built it. Sponsoring this tournament was not a marketing decision. It was an act of gratitude — a way for us to honour the institution that shaped our founder, and a statement of our commitment to community, education, and the next generation of thinkers and leaders.\n\nForever grateful. Forever Zahira.',
+    location: 'Colombo, Sri Lanka',
+    venue: 'Zahira College, Maradana',
+    time: null,
+    seats: null,
+    cta: 'Work With Us',
+    ctaLink: '/contact',
+    color: '#16A34A',
+    featured: true,
+    photos: [
+      { src: '/images/events/zahira-1.jpg', caption: 'Abubakker representing Paralox Media at the 133rd Anniversary celebrations' },
+      { src: '/images/events/zahira-2.jpg', caption: 'Paralox Media — Silver Sponsor, G10 Premier League 2025' },
+      { src: '/images/events/zahira-3.jpg', caption: 'Proud moment — representing Paralox Media at the sponsorship handover' },
+    ],
+    highlights: [
+      { icon: '🏫', title: 'Back to Roots', text: 'Abubakker returned to Zahira College — his alma mater — for the first time in 6 years, as Founder of Paralox Media.' },
+      { icon: '🏆', title: 'Silver Sponsor', text: 'Paralox Media proudly served as Silver Sponsor for the Group of 2010 Cricket Tournament at Zahira\'s 133rd Anniversary.' },
+      { icon: '🤝', title: 'Giving Back', text: 'More than a sponsorship — a statement of gratitude to the institution that shaped our founder\'s values and leadership.' },
+      { icon: '💡', title: 'Tech & Education', text: 'Abubakker engaged with school leadership on AI, digital media, and how technology can empower the next generation of students.' },
+      { icon: '💚', title: 'Forever Zahira', text: 'A milestone moment that reminded us why community, roots, and giving back are just as important as business growth.' },
+    ],
+  },
+
+  {
     id: 'news-wpp-media-partnership-2025',
     type: 'news',
     status: null,
