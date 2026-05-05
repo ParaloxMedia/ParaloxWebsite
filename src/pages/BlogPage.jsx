@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Clock, Users, ArrowRight, Sparkles, Newspaper, Lightbulb, CheckCircle2, Zap, TrendingUp, BookOpen } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, ArrowRight, Sparkles, Newspaper, Lightbulb, CheckCircle2, TrendingUp } from 'lucide-react';
 import { T } from '../data';
 import { BLOG_POSTS } from '../data/blog';
 import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
-const FILTERS = ['All', 'Past Events', 'News', 'Insights'];
+const FILTERS = ['All', 'Rewind', 'News', 'Paralox Labs'];
 
 
 function matches(post, filter) {
   if (post.status === 'upcoming') return false;
   if (filter === 'All')         return true;
-  if (filter === 'Past Events') return post.status === 'past';
+  if (filter === 'Rewind')      return post.status === 'past';
   if (filter === 'News')        return post.type === 'news';
-  if (filter === 'Insights')    return post.type === 'insight';
+  if (filter === 'Paralox Labs') return post.type === 'insight';
   return true;
 }
 
@@ -43,198 +43,63 @@ function EventMeta({ post, dark }) {
   );
 }
 
-/* ── Upcoming Event Card — bold, energetic, dark gradient ── */
-function UpcomingCard({ post, dark }) {
-  const navigate = useNavigate();
-  return (
-    <motion.div whileHover={{ y: -6, boxShadow: `0 24px 56px ${post.color}33` }}
-      style={{ display: 'flex', flexDirection: 'column', borderRadius: 20, overflow: 'hidden', height: '100%', background: `linear-gradient(145deg,#0C0524,#180A44,${post.color}44)`, border: `1px solid ${post.color}55`, boxShadow: `0 8px 32px ${post.color}18`, position: 'relative' }}>
-      {/* Grid texture */}
-      <div style={{ position: 'absolute', inset: 0, opacity: .07, backgroundImage: 'linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
-      {/* Glow orb */}
-      <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '60%', height: '60%', borderRadius: '50%', background: `radial-gradient(circle,${post.color}44,transparent 70%)`, pointerEvents: 'none' }} />
+/* ── Uniform card — same layout, colour-themed per type ── */
+const TYPE_THEME = {
+  past:    { color: '#DC2626', icon: <CheckCircle2 size={10} />, label: 'Rewind',        cta: 'Read Recap'   },
+  news:    { color: '#1A56DB', icon: <Newspaper    size={10} />, label: 'Company News',  cta: 'Read Story'   },
+  insight: { color: '#7C3AED', icon: <Lightbulb    size={10} />, label: 'Paralox Labs',  cta: 'Read More'    },
+};
 
-      <div style={{ padding: 'clamp(20px,2.5vw,26px)', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative', zIndex: 1 }}>
-        {/* Tag + date */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 6 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '4px 11px', borderRadius: 20, fontSize: '.64rem', fontWeight: 700, background: post.color, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: .5 }}>
-            <Zap size={10} /> {post.tag}
-          </span>
-          <span style={{ fontSize: '.7rem', color: 'rgba(255,255,255,.45)', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Calendar size={10} /> {post.dateLabel}
-          </span>
-        </div>
-        {/* Title */}
-        <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1rem,1.8vw,1.15rem)', color: '#fff', lineHeight: 1.3, marginBottom: 10 }}>
-          {post.title}
-        </div>
-        {/* Excerpt */}
-        <p style={{ fontSize: 'clamp(.78rem,1.4vw,.84rem)', color: 'rgba(255,255,255,.55)', lineHeight: 1.8, fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: 10, flex: 1 }}>
-          {post.excerpt}
-        </p>
-        {/* Event meta */}
-        {(post.venue || post.time || post.seats) && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 5, marginBottom: 14, padding: '10px 12px', borderRadius: 10, background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)' }}>
-            {post.venue && <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '.74rem', color: 'rgba(255,255,255,.6)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}><MapPin size={10} color={post.color} /> {post.venue}</div>}
-            {post.time  && <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '.74rem', color: 'rgba(255,255,255,.6)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}><Clock size={10} color={post.color} /> {post.time}</div>}
-            {post.seats && <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '.74rem', color: 'rgba(255,255,255,.6)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}><Users size={10} color={post.color} /> {post.seats} seats only</div>}
-          </div>
-        )}
-        {/* CTA */}
-        <motion.button whileTap={{ scale: .97 }} whileHover={{ scale: 1.02 }}
-          onClick={() => { navigate(`/pulse/${post.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          style={{ width: '100%', padding: '10px', borderRadius: 50, border: 'none', cursor: 'pointer', background: post.color, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.8rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, boxShadow: `0 6px 20px ${post.color}55` }}>
-          View Event <ArrowRight size={13} />
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ── Past Event Card — retrospective, muted, archival ── */
-function PastCard({ post, dark }) {
+function BlogCard({ post, dark }) {
   const navigate = useNavigate();
-  const bd = dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)';
-  const bg = dark ? 'rgba(12,4,26,.85)' : '#fff';
-  return (
-    <motion.div whileHover={{ y: -5 }}
-      style={{ display: 'flex', flexDirection: 'column', borderRadius: 18, overflow: 'hidden', height: '100%', background: bg, border: `1px solid ${bd}`, borderTop: `3px solid ${post.color}` }}>
-      <div style={{ padding: 'clamp(18px,2.5vw,24px)', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        {/* Tag + date */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 6 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 6, fontSize: '.64rem', fontWeight: 700, background: dark ? 'rgba(22,163,74,.15)' : 'rgba(22,163,74,.1)', color: '#16A34A', fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: .5 }}>
-            <CheckCircle2 size={10} /> {post.tag}
-          </span>
-          <span style={{ fontSize: '.7rem', color: dark ? '#7B6A9A' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Calendar size={10} /> {post.dateLabel}
-          </span>
-        </div>
-        {/* Title */}
-        <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1rem,1.8vw,1.12rem)', color: dark ? '#D8C8F0' : '#1A0A2E', lineHeight: 1.35, marginBottom: 10 }}>
-          {post.title}
-        </div>
-        {/* Divider */}
-        <div style={{ height: 1, background: dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)', marginBottom: 10 }} />
-        {/* Excerpt */}
-        <p style={{ fontSize: 'clamp(.78rem,1.4vw,.84rem)', color: dark ? '#9B8BC0' : '#7B6A9A', lineHeight: 1.8, fontFamily: "'Plus Jakarta Sans',sans-serif", flex: 1, marginBottom: 12 }}>
-          {post.excerpt}
-        </p>
-        {/* Location pill */}
-        {post.venue && (
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: '.72rem', color: dark ? '#7B6A9A' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: 14 }}>
-            <MapPin size={10} color={post.color} /> {post.venue}
-          </div>
-        )}
-        {/* CTA */}
-        <motion.button whileTap={{ scale: .97 }}
-          onClick={() => { navigate(`/pulse/${post.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          style={{ alignSelf: 'flex-start', padding: '7px 16px', borderRadius: 50, border: `1.5px solid ${post.color}`, background: 'transparent', color: post.color, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.75rem', display: 'flex', alignItems: 'center', gap: 5 }}>
-          Read Recap <ArrowRight size={11} />
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ── News Card — editorial, newspaper-style ── */
-function NewsCard({ post, dark }) {
-  const navigate = useNavigate();
+  const theme = TYPE_THEME[post.status === 'past' ? 'past' : post.type] || TYPE_THEME.insight;
+  const c  = theme.color;
   const bg = dark ? 'rgba(12,4,26,.9)' : '#fff';
+
   return (
-    <motion.div whileHover={{ y: -5, boxShadow: `0 16px 48px ${post.color}18` }}
-      style={{ display: 'flex', flexDirection: 'column', borderRadius: 18, overflow: 'hidden', height: '100%', background: bg, border: `1px solid ${dark ? 'rgba(225,29,72,.15)' : 'rgba(225,29,72,.1)'}`, position: 'relative' }}>
+    <motion.div whileHover={{ y: -5, boxShadow: `0 16px 48px ${c}20` }}
+      style={{ display: 'flex', flexDirection: 'column', borderRadius: 18, overflow: 'hidden', height: '100%', background: bg, border: `1px solid ${c}22`, position: 'relative' }}>
+
       {/* Left accent bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, background: `linear-gradient(180deg,${post.color},${post.color}44)`, borderRadius: '18px 0 0 18px' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, background: `linear-gradient(180deg,${c},${c}44)`, borderRadius: '18px 0 0 18px' }} />
+
       <div style={{ padding: 'clamp(18px,2.5vw,24px) clamp(18px,2.5vw,24px) clamp(18px,2.5vw,24px) clamp(22px,3vw,28px)', display: 'flex', flexDirection: 'column', flex: 1 }}>
+
         {/* Tag + date */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 6 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 6, fontSize: '.64rem', fontWeight: 700, background: dark ? 'rgba(225,29,72,.15)' : 'rgba(225,29,72,.1)', color: post.color, fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: .5, textTransform: 'uppercase' }}>
-            <Newspaper size={10} /> {post.tag}
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 6, fontSize: '.64rem', fontWeight: 700, background: `${c}15`, color: c, fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: .5, textTransform: 'uppercase' }}>
+            {theme.icon} {theme.label}
           </span>
           <span style={{ fontSize: '.7rem', color: dark ? '#7B6A9A' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 4 }}>
             <Calendar size={10} /> {post.dateLabel}
           </span>
         </div>
+
         {/* Title */}
-        <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1rem,1.8vw,1.14rem)', color: dark ? '#F0E8FF' : '#1A0A2E', lineHeight: 1.35, marginBottom: 10 }}>
+        <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1rem,1.8vw,1.13rem)', color: dark ? '#F0E8FF' : '#1A0A2E', lineHeight: 1.35, marginBottom: 10 }}>
           {post.title}
         </div>
+
         {/* Excerpt */}
         <p style={{ fontSize: 'clamp(.78rem,1.4vw,.84rem)', color: dark ? '#9B8BC0' : '#7B6A9A', lineHeight: 1.8, fontFamily: "'Plus Jakarta Sans',sans-serif", flex: 1, marginBottom: 14 }}>
           {post.excerpt}
         </p>
-        {/* Trending indicator */}
+
+        {/* Indicator row */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 14 }}>
-          <TrendingUp size={11} color={post.color} />
-          <span style={{ fontSize: '.68rem', color: post.color, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700 }}>Company Update</span>
+          <TrendingUp size={11} color={c} />
+          <span style={{ fontSize: '.68rem', color: c, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700 }}>{theme.label}</span>
         </div>
+
         {/* CTA */}
         <motion.button whileTap={{ scale: .97 }}
           onClick={() => { navigate(`/pulse/${post.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          style={{ width: '100%', padding: '9px', borderRadius: 10, border: 'none', background: `linear-gradient(135deg,${post.color},${post.color}cc)`, color: '#fff', cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.78rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-          Read Full Story <ArrowRight size={12} />
+          style={{ width: '100%', padding: '9px', borderRadius: 10, border: 'none', background: `linear-gradient(135deg,${c},${c}cc)`, color: '#fff', cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.78rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+          {theme.cta} <ArrowRight size={12} />
         </motion.button>
       </div>
     </motion.div>
   );
-}
-
-/* ── Insight Card — magazine, editorial, thought-leadership ── */
-function InsightCard({ post, dark }) {
-  const navigate = useNavigate();
-  const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.08)';
-  const bg = dark ? 'rgba(12,4,26,.9)' : '#fff';
-  return (
-    <motion.div whileHover={{ y: -5 }}
-      style={{ display: 'flex', flexDirection: 'column', borderRadius: 18, overflow: 'hidden', height: '100%', background: bg, border: `1px solid ${bd}` }}>
-      {/* Top accent with icon */}
-      <div style={{ padding: '14px 20px', background: `linear-gradient(135deg,${post.color}18,${post.color}06)`, borderBottom: `1px solid ${post.color}22`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: `linear-gradient(135deg,${post.color},${post.color}88)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Lightbulb size={13} color='#fff' />
-          </div>
-          <span style={{ fontSize: '.64rem', fontWeight: 700, color: post.color, fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: 1, textTransform: 'uppercase' }}>Insight</span>
-        </div>
-        <span style={{ fontSize: '.68rem', color: dark ? '#7B6A9A' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 4 }}>
-          <Calendar size={10} /> {post.dateLabel}
-        </span>
-      </div>
-
-      <div style={{ padding: 'clamp(16px,2.5vw,22px)', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        {/* Title */}
-        <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1rem,1.8vw,1.12rem)', color: dark ? '#F0E8FF' : '#1A0A2E', lineHeight: 1.35, marginBottom: 10 }}>
-          {post.title}
-        </div>
-        {/* Pull quote style excerpt */}
-        <div style={{ borderLeft: `3px solid ${post.color}`, paddingLeft: 12, marginBottom: 14, flex: 1 }}>
-          <p style={{ fontSize: 'clamp(.78rem,1.4vw,.84rem)', color: dark ? '#B8A0D8' : '#5B4080', lineHeight: 1.8, fontFamily: "'Plus Jakarta Sans',sans-serif", margin: 0, fontStyle: 'italic' }}>
-            {post.excerpt}
-          </p>
-        </div>
-        {/* Read time indicator */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 14 }}>
-          <BookOpen size={11} color={dark ? '#7B6A9A' : '#9B8BC0'} />
-          <span style={{ fontSize: '.68rem', color: dark ? '#7B6A9A' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>3 min read</span>
-        </div>
-        {/* CTA */}
-        <motion.button whileTap={{ scale: .97 }}
-          onClick={() => { navigate(`/pulse/${post.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          style={{ alignSelf: 'flex-start', padding: '7px 18px', borderRadius: 50, border: `1.5px solid ${post.color}`, background: 'transparent', color: post.color, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.75rem', display: 'flex', alignItems: 'center', gap: 5, transition: 'all .2s' }}
-          onMouseOver={e => { e.currentTarget.style.background = post.color; e.currentTarget.style.color = '#fff'; }}
-          onMouseOut={e  => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = post.color; }}>
-          Read Insight <ArrowRight size={11} />
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ── Router: picks the right card per post type ── */
-function BlogCard({ post, dark }) {
-  if (post.status === 'upcoming') return <UpcomingCard post={post} dark={dark} />;
-  if (post.status === 'past')     return <PastCard     post={post} dark={dark} />;
-  if (post.type   === 'news')     return <NewsCard     post={post} dark={dark} />;
-  return                                 <InsightCard  post={post} dark={dark} />;
 }
 
 function UpcomingTimeline({ posts, dark }) {

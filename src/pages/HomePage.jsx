@@ -256,28 +256,28 @@ const PARTNERS = [
   { n: 'Facebook',  lg: <svg viewBox="0 0 24 24" width="19" height="19"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></svg> },
 ];
 
-function PartnersSection({ dark }) {
-  const bg = dark ? 'rgba(12,4,26,.9)' : '#fff';
-  const bd = dark ? 'rgba(139,82,247,.18)' : 'rgba(91,29,232,.09)';
-  const d  = [...PARTNERS, ...PARTNERS, ...PARTNERS];
-  return (
-    <section style={{ padding: '48px clamp(16px,5%,60px)', background: dark ? 'rgba(91,29,232,.03)' : 'rgba(91,29,232,.02)' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-        <FadeUp><p style={{ textAlign: 'center', fontSize: '.7rem', fontWeight: 700, letterSpacing: 2.8, color: '#9B8BC0', textTransform: 'uppercase', marginBottom: 20, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Partnered with the world's leading platforms</p></FadeUp>
-        <div style={{ overflow: 'hidden' }}>
-          <div className="sl" style={{ display: 'flex', gap: 13, width: 'max-content', alignItems: 'center' }}>
-            {d.map((p, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.06, y: -3 }} style={{ padding: '12px 22px', borderRadius: 13, background: bg, border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', gap: 9, minWidth: 124, justifyContent: 'center' }}>
-                <div>{p.lg}</div>
-                <span style={{ fontSize: '.82rem', fontWeight: 700, color: dark ? '#C4B0E8' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif", whiteSpace: 'nowrap' }}>{p.n}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+// function PartnersSection({ dark }) {
+//   const bg = dark ? 'rgba(12,4,26,.9)' : '#fff';
+//   const bd = dark ? 'rgba(139,82,247,.18)' : 'rgba(91,29,232,.09)';
+//   const d  = [...PARTNERS, ...PARTNERS, ...PARTNERS];
+//   return (
+//     <section style={{ padding: '48px clamp(16px,5%,60px)', background: dark ? 'rgba(91,29,232,.03)' : 'rgba(91,29,232,.02)' }}>
+//       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+//         <FadeUp><p style={{ textAlign: 'center', fontSize: '.7rem', fontWeight: 700, letterSpacing: 2.8, color: '#9B8BC0', textTransform: 'uppercase', marginBottom: 20, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Partnered with the world's leading platforms</p></FadeUp>
+//         <div style={{ overflow: 'hidden' }}>
+//           <div className="sl" style={{ display: 'flex', gap: 13, width: 'max-content', alignItems: 'center' }}>
+//             {d.map((p, i) => (
+//               <motion.div key={i} whileHover={{ scale: 1.06, y: -3 }} style={{ padding: '12px 22px', borderRadius: 13, background: bg, border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', gap: 9, minWidth: 124, justifyContent: 'center' }}>
+//                 <div>{p.lg}</div>
+//                 <span style={{ fontSize: '.82rem', fontWeight: 700, color: dark ? '#C4B0E8' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif", whiteSpace: 'nowrap' }}>{p.n}</span>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ─── HOME PAGE EXPORT ───────────────────────────────────────────────────── */
 export function HomePage({ dark, fmt }) {
@@ -306,7 +306,7 @@ export function HomePage({ dark, fmt }) {
       </div>
 
       <PackagesPreview dark={dark} fmt={fmt} />
-      <PartnersSection dark={dark} />
+      {/* <PartnersSection dark={dark} /> */}
       <Testimonials dark={dark} />
 
       {/* Brand strip */}
