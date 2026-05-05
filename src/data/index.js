@@ -104,6 +104,13 @@ export const BRANDS = [
   { n: "Abid's",         c: '#DC2626' },
   { n: 'Third Space',    c: '#1E40AF' },
   { n: 'Ceylon Shisha',  c: '#7C3AED' },
+  { n: 'Keells',          c: '#E11D48' },
+  { n: 'Edinborough',      c: '#1E3A5F' },
+  { n: 'Maliban',        c: '#D97706' },
+  { n: 'Yevan Devid',          c: '#059669' },
+  { n: 'Ritsbury',       c: '#7C3AED' },
+  { n: 'Kreset',         c: '#0284C7' },
+   { n: 'Masterchef Sri Lanka',         c: '#0284C7' },
 ];
 
 // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
@@ -139,7 +146,7 @@ export const STARTUP_PACKAGES = [
 ];
 
 export const PREVIEW_PACKAGES = [
-  { n: 'Starter',       price: 66000,  tag: 'Startup',      feats: ['8 Static Posts','2 Promo Videos','FB & IG Management','Business Consultation'], c: '#16A34A', feat: false },
-  { n: 'Digital Core +',price: 126500, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],       c: '#5B1DE8', feat: true  },
-  { n: 'Digital Apex +',price: 196900, tag: 'AI Powered',   feats: ['20 Platform Posts','6 Promo/UGC Videos','SEO Blog Content','Growth Planning'],  c: '#7C3AED', feat: false },
+  { n: 'Digital Core',   price: 104500, tag: 'SMM Only',     feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','FB & IG Management'],  c: '#0891B2', feat: false },
+  { n: 'Digital Core +', price: 126500, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],                   c: '#5B1DE8', feat: true  },
+  { n: 'Digital Apex +', price: 196900, tag: 'AI Powered',   feats: ['20 Platform Posts','6 Promo/UGC Videos','SEO Blog Content','Growth Planning'],            c: '#7C3AED', feat: false },
 ];
