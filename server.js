@@ -79,41 +79,43 @@ const MIME = {
 function injectMeta(html, url) {
   const route = url === '/' ? '/' : url.replace(/\/$/, '').split('?')[0];
 
-  /* Check if it's a blog post page: /pulse/:id */
   const pulseMatch = route.match(/^\/pulse\/(.+)$/);
   const meta = pulseMatch
     ? (PULSE_POSTS[pulseMatch[1]] || ROUTES['/pulse'])
     : (ROUTES[route] || ROUTES['/']);
 
   const canonical = `${BASE}${route}`;
-  /* Use post photo if available, otherwise fall back to Paralox logo */
-  const image = (meta.image) || OG_IMG;
+  const image = meta.image || OG_IMG;
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-  const esc = (s) => s.replace(/"/g, '&quot;');
+  /* 1. Fix title tag */
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`);
 
-  return html
-    .replace(/<title>[^<]*<\/title>/,
-      `<title>${esc(meta.title)}</title>`)
-    .replace(/(<meta name="description" content=")[^"]*(")/,
-      `$1${esc(meta.description)}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(")/,
-      `$1${esc(meta.title)}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(")/,
-      `$1${esc(meta.description)}$2`)
-    .replace(/(<meta property="og:url" content=")[^"]*(")/,
-      `$1${esc(canonical)}$2`)
-    .replace(/(<meta property="og:image" content=")[^"]*(")/,
-      `$1${esc(image)}$2`)
-    .replace(/(<meta property="og:image:alt" content=")[^"]*(")/,
-      `$1${esc(meta.title)}$2`)
-    .replace(/(<meta name="twitter:title" content=")[^"]*(")/,
-      `$1${esc(meta.title)}$2`)
-    .replace(/(<meta name="twitter:description" content=")[^"]*(")/,
-      `$1${esc(meta.description)}$2`)
-    .replace(/(<meta name="twitter:image" content=")[^"]*(")/,
-      `$1${esc(image)}$2`)
-    .replace(/(<link rel="canonical" href=")[^"]*(")/,
-      `$1${esc(canonical)}$2`);
+  /* 2. Strip ALL existing og/twitter/description/canonical tags so nothing is duplicated */
+  html = html.replace(/<meta\s+property="og:[^"]*"[^>]*\/?>/gi, '');
+  html = html.replace(/<meta\s+name="twitter:[^"]*"[^>]*\/?>/gi, '');
+  html = html.replace(/<meta\s+name="description"[^>]*\/?>/gi, '');
+  html = html.replace(/<link\s+rel="canonical"[^>]*\/?>/gi, '');
+
+  /* 3. Inject a fresh, complete set before </head> */
+  const tags = `
+<meta name="description" content="${esc(meta.description)}" />
+<link rel="canonical" href="${esc(canonical)}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Paralox Media" />
+<meta property="og:title" content="${esc(meta.title)}" />
+<meta property="og:description" content="${esc(meta.description)}" />
+<meta property="og:url" content="${esc(canonical)}" />
+<meta property="og:image" content="${esc(image)}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="${esc(meta.title)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${esc(meta.title)}" />
+<meta name="twitter:description" content="${esc(meta.description)}" />
+<meta name="twitter:image" content="${esc(image)}" />`;
+
+  return html.replace('</head>', `${tags}\n</head>`);
 }
 
 /* ── Server ────────────────────────────────────────────────────────────── */
