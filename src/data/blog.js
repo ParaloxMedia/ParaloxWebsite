@@ -1,32 +1,6 @@
 export const BLOG_POSTS = [
   // ─── UPCOMING EVENTS ──────────────────────────────────────────────────────
   {
-    id: 'upcoming-anniversary-2026',
-    type: 'event',
-    status: 'upcoming',
-    tag: 'Upcoming Event',
-    date: '2026-05-06',
-    dateLabel: 'May 6, 2026 — TODAY',
-    title: 'Paralox Media Turns 1 — Anniversary Celebration & Get Together',
-    excerpt: 'One year of building, growing, and delivering AI-powered digital solutions. Today we celebrate with our team, clients, and everyone who has been part of the journey.',
-    body: 'It has been an incredible first year. From our founding in May 2025 to serving clients across 7+ countries, building AI agents, managing iconic brands, and assembling an outstanding team — the Paralox journey has just begun. Join us today as we celebrate our 1st anniversary with a special get together for our team, partners, and valued clients. Here\'s to many more years of innovation, growth, and impact.',
-    location: 'Bambalapitiya, Colombo',
-    venue: 'Co Spaces, Bambalapitiya',
-    time: 'Evening — Details shared with invitees',
-    seats: null,
-    cta: 'Get in Touch',
-    ctaLink: '/contact',
-    color: '#FF6BFF',
-    featured: true,
-    highlights: [
-      { icon: '🎂', title: '1 Year Strong', text: 'From a bold idea in May 2025 to a globally recognised AI agency — 365 days of relentless execution.' },
-      { icon: '🌍', title: '7+ Countries', text: 'Active clients across Sri Lanka, UAE, Saudi Arabia, Singapore, UK, Australia, and Qatar.' },
-      { icon: '🤝', title: '35+ Brands', text: 'Trusted by iconic names including Keells, Maliban, Sri Lanka Rugby, ZEN, RNB Tours and more.' },
-      { icon: '🚀', title: 'What\'s Next', text: 'SMM Automation Tool launch, Gen AI Masterclass, and continued global expansion — the best is yet to come.' },
-      { icon: '📍', title: 'Venue', text: 'Co Spaces, Bambalapitiya, Colombo — a special evening with team, clients, and partners.' },
-    ],
-  },
-  {
     id: 'upcoming-smm-tool-launch-2026',
     type: 'event',
     status: 'upcoming',
