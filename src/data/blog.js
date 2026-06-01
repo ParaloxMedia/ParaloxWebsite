@@ -3,7 +3,7 @@ export const BLOG_POSTS = [
   {
     id: 'upcoming-smm-tool-launch-2026',
     type: 'event',
-    status: 'upcoming',
+    status: 'draft',
     tag: 'Upcoming Event',
     date: '2026-05-20',
     dateLabel: 'May 20, 2026',
