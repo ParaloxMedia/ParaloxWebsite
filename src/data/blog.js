@@ -90,6 +90,43 @@ export const BLOG_POSTS = [
   // ─── NEWS & INSIGHTS ──────────────────────────────────────────────────────
 
   {
+    id: 'news-paralox-1year-anniversary-2026',
+    type: 'news',
+    status: null,
+    tags: ['news', 'rewind'],
+    tag: 'Company News',
+    date: '2026-05-06',
+    dateLabel: 'May 6, 2026',
+    title: 'One Year of Paralox Media — Small Team. Big Vision. Endless Ambition.',
+    excerpt: 'We celebrated 1 year of Paralox Media at Co-Spaces Bambalapitiya — a milestone built from sleepless nights, bold ambitions, real partnerships, and a team that showed up every single day. Year 1 done. Now it\'s time to build bigger.',
+    body: 'One year ago, Paralox Media was a name on a slide deck, a domain name, and a very big ambition.\n\nToday, it is a team, a portfolio, a community of clients across seven countries, and the story of what happens when you decide not to wait for the right moment — and just build.\n\nOn 6th May 2026, we gathered at Co-Spaces Bambalapitiya to mark the official close of our first year. It was not a grand corporate event. It was ours — intimate, honest, and full of the kind of energy that only comes from a team that has been through something real together.\n\nYear One was not easy. There were late nights that stretched into early mornings. There were briefs we had to figure out from scratch, systems we had to build while using them, and moments where the only way through was through. There were lessons we paid for in time, not money — and those are the ones that stuck.\n\nBut there was also so much to be proud of.\n\nWe built partnerships with WPP Media Sri Lanka and MullenLowe Sri Lanka. We served clients across Sri Lanka, the UAE, Singapore, the UK, Saudi Arabia, Australia, and Qatar. We stepped onto stages and workshop floors to share knowledge. We sponsored events, onboarded iconic Sri Lankan brands — Keells, Maliban, Edinburgh, and more — and we shipped campaigns, built AI agents, produced creatives, and grew.\n\nMore than anything — we showed up. Every single day.\n\nWe are still a small team. But we are a team that knows exactly where we are going. The first year gave us the proof of concept. The second year is where we scale.\n\nTo every client, partner, collaborator, and supporter who was part of this year: you are in this story too.\n\nYear 1: done.\nNow it is time to build bigger — smarter, faster, and with the confidence that only comes from having already done the hard part.',
+    location: 'Colombo, Sri Lanka',
+    venue: 'Co-Spaces, Bambalapitiya',
+    time: null,
+    seats: null,
+    cta: 'Work With Us',
+    ctaLink: '/contact',
+    color: '#1A56DB',
+    featured: true,
+    photos: [
+      { src: '/images/events/paralox1/706318013_1009247568268180_8813175705318836351_n.jpg', caption: 'From big dreams to real results — the Paralox story, Year 1' },
+      { src: '/images/events/paralox1/703979204_1009247621601508_50292779292331069_n.jpg',   caption: 'The Paralox Media team — Year 1 celebrations at Co-Spaces Bambalapitiya' },
+      { src: '/images/events/paralox1/704980242_1009248018268135_8379566842936932734_n.jpg', caption: 'A milestone moment — marking one year of Paralox Media' },
+      { src: '/images/events/paralox1/705706137_1009247978268139_5386318013247158553_n.jpg', caption: 'Reflecting on the journey — Year 1 anniversary evening' },
+      { src: '/images/events/paralox1/705718158_1009247728268164_3222955320841243886_n.jpg', caption: 'The team behind the work — celebrating together at Co-Spaces' },
+      { src: '/images/events/paralox1/706218779_1009247804934823_957221078692973442_n.jpg', caption: 'One year of growth, partnerships, and building something real' },
+      { src: '/images/events/paralox1/706559720_1009247928268144_8681916466227575661_n.jpg', caption: 'Year 1 done. Now it\'s time to build bigger.' },
+    ],
+    highlights: [
+      { icon: '🏆', title: '1 Year Milestone',   text: 'From a slide deck and a domain name to a globally recognised AI agency — Paralox Media completes its first full year of operation.' },
+      { icon: '🎉', title: 'The Celebration',     text: 'The team gathered at Co-Spaces Bambalapitiya to mark the anniversary — an intimate, honest evening built on gratitude and momentum.' },
+      { icon: '🌐', title: 'Global Reach',        text: 'Year 1 saw Paralox serve clients across 7+ countries including Sri Lanka, UAE, Singapore, UK, Saudi Arabia, Australia, and Qatar.' },
+      { icon: '🤝', title: 'Major Partnerships',  text: 'WPP Media Sri Lanka, MullenLowe Sri Lanka (LoweDigital), Keells, Maliban, Edinburgh, and more — brands that chose Paralox in Year 1.' },
+      { icon: '🚀', title: 'What\'s Next',        text: 'Year 1 was the proof of concept. Year 2 is where we scale — with bigger goals, better systems, and a team that has already done the hard part.' },
+    ],
+  },
+
+  {
     id: 'news-zahira-silver-sponsor-2025',
     type: 'news',
     status: null,

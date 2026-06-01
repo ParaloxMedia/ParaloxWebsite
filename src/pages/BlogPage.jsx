@@ -13,9 +13,14 @@ const FILTERS = ['All', 'Rewind', 'News', 'Paralox Labs'];
 
 function matches(post, filter) {
   if (post.status === 'upcoming') return false;
-  if (filter === 'All')         return true;
-  if (filter === 'Rewind')      return post.status === 'past';
-  if (filter === 'News')        return post.type === 'news';
+  if (filter === 'All') return true;
+  if (post.tags) {
+    if (filter === 'Rewind')       return post.tags.includes('rewind');
+    if (filter === 'News')         return post.tags.includes('news');
+    if (filter === 'Paralox Labs') return post.tags.includes('insight');
+  }
+  if (filter === 'Rewind')       return post.status === 'past';
+  if (filter === 'News')         return post.type === 'news';
   if (filter === 'Paralox Labs') return post.type === 'insight';
   return true;
 }
