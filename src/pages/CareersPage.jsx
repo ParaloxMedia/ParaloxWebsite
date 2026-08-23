@@ -72,6 +72,26 @@ const VACANCIES = [
     color: '#60EFFF',
     gradient: 'linear-gradient(135deg,#0891B2,#60EFFF)',
   },
+  {
+    id: 'motion-graphics-video-editing-intern',
+    title: 'Motion Graphics & Video Editing Intern',
+    type: 'Internship',
+    location: 'Colombo / Remote / Hybrid',
+    category: 'Creative',
+    badge: 'Open',
+    summary: 'Paralox Media is looking for a creative and driven Motion Graphics & Video Editing Intern to join our production team. You\'ll get hands-on experience editing real client content, building motion graphics, and learning the full video production pipeline alongside experienced editors and designers.',
+    requirements: [
+      'Working knowledge of Adobe Premiere Pro and/or DaVinci Resolve',
+      'Basic to intermediate skills in After Effects for motion graphics and simple animations',
+      'An eye for pacing, composition, and visual storytelling',
+      'Willingness to learn color grading, sound design, and platform-specific formatting (YouTube, Instagram, TikTok)',
+      'Currently studying or recently graduated in a related field (film, design, multimedia, or self-taught with a strong portfolio)',
+      'A portfolio or reel showcasing past edits/motion graphics work (student, personal, or freelance projects welcome)',
+      'Reliable, detail-oriented, and able to meet deadlines in a fast-paced team environment',
+    ],
+    color: '#A855F7',
+    gradient: 'linear-gradient(135deg,#7C3AED,#A855F7)',
+  },
 ];
 
 const WHY_JOIN = [
