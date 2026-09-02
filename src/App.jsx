@@ -12,6 +12,7 @@ import { ServicesPage }   from './pages/ServicesPage';
 import { PackagesPage }   from './pages/PackagesPage';
 import { GalleryPage }    from './pages/GalleryPage';
 import { ContactPage }    from './pages/ContactPage';
+import { FeedbackPage }   from './pages/FeedbackPage';
 import { CareersPage }    from './pages/CareersPage';
 import { BlogPage }       from './pages/BlogPage';
 import { BlogPostPage }   from './pages/BlogPostPage';
@@ -39,6 +40,7 @@ function SiteLayout({ dark, setDark }) {
             <Route path="/packages" element={<PackagesPage dark={dark} />} />
             <Route path="/gallery"  element={<GalleryPage  dark={dark} />} />
             <Route path="/contact"  element={<ContactPage  dark={dark} />} />
+            <Route path="/feedback" element={<FeedbackPage dark={dark} />} />
             <Route path="/careers"  element={<CareersPage  dark={dark} />} />
             <Route path="/pulse"    element={<BlogPage     dark={dark} />} />
             <Route path="/pulse/:id" element={<BlogPostPage dark={dark} />} />
