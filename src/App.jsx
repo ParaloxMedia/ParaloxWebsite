@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCurrency } from './hooks/useCurrency';
 import './styles/global.css';
 import { Nav }            from './components/ui/Nav';
 import { Footer }         from './components/ui/Footer';
@@ -9,10 +8,10 @@ import { ParticleLoader } from './components/ui/ParticleLoader';
 import { HomePage }       from './pages/HomePage';
 import { AboutPage }      from './pages/AboutPage';
 import { ServicesPage }   from './pages/ServicesPage';
-import { PackagesPage }   from './pages/PackagesPage';
 import { GalleryPage }    from './pages/GalleryPage';
 import { ContactPage }    from './pages/ContactPage';
 import { FeedbackPage }   from './pages/FeedbackPage';
+import { RequirementsPage } from './pages/RequirementsPage';
 import { CareersPage }    from './pages/CareersPage';
 import { BlogPage }       from './pages/BlogPage';
 import { BlogPostPage }   from './pages/BlogPostPage';
@@ -20,7 +19,6 @@ import { VapiWidget }     from './components/ui/VapiWidget';
 
 function SiteLayout({ dark, setDark }) {
   const location = useLocation();
-  const { fmt } = useCurrency();
 
   return (
     <>
@@ -34,13 +32,13 @@ function SiteLayout({ dark, setDark }) {
           transition={{ duration: 0.33, ease: [0.22, 1, 0.36, 1] }}
         >
           <Routes location={location}>
-            <Route path="/"         element={<HomePage     dark={dark} fmt={fmt} />} />
+            <Route path="/"         element={<HomePage     dark={dark} />} />
             <Route path="/about"    element={<AboutPage    dark={dark} />} />
             <Route path="/services" element={<ServicesPage dark={dark} />} />
-            <Route path="/packages" element={<PackagesPage dark={dark} />} />
             <Route path="/gallery"  element={<GalleryPage  dark={dark} />} />
             <Route path="/contact"  element={<ContactPage  dark={dark} />} />
             <Route path="/feedback" element={<FeedbackPage dark={dark} />} />
+            <Route path="/get-started" element={<RequirementsPage dark={dark} />} />
             <Route path="/careers"  element={<CareersPage  dark={dark} />} />
             <Route path="/pulse"    element={<BlogPage     dark={dark} />} />
             <Route path="/pulse/:id" element={<BlogPostPage dark={dark} />} />

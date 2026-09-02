@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, Globe, MapPin, Facebook, Instagram, Linkedin, MessageCircle, Mail } from 'lucide-react';
 import { T } from '../../data';
 
-const PAGES    = ['home','about','services','packages','gallery','contact'];
+const PAGES    = ['home','about','services','gallery','contact'];
 const SERVICES = ['AI Marketing','Social Media','Web Dev','Video Production','AI Agents','Performance Marketing'];
 
 export function Footer({ dark }) {

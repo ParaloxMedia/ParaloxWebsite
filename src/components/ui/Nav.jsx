@@ -74,7 +74,7 @@ export function Nav({ dark, setDark }) {
             style={{ width: 35, height: 35, borderRadius: 9, border: dark ? '1px solid rgba(139,82,247,.3)' : '1px solid rgba(91,29,232,.14)', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: dark ? '#B8A0D8' : T.p1 }}>
             {dark ? <Sun size={15} /> : <Moon size={15} />}
           </motion.button>
-          <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} onClick={() => go('contact')}
+          <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} onClick={() => go('get-started')}
             style={{ padding: '8px 18px', borderRadius: 50, border: 'none', cursor: 'pointer', background: T.grad, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.83rem', display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 5px 16px rgba(91,29,232,.33)' }}>
             Get Started <ArrowRight size={13} />
           </motion.button>
@@ -96,7 +96,7 @@ export function Nav({ dark, setDark }) {
                 {p}
               </motion.button>
             ))}
-            <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.34 }} onClick={() => go('contact')}
+            <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.34 }} onClick={() => go('get-started')}
               style={{ marginTop: 10, padding: '12px', borderRadius: 50, border: 'none', cursor: 'pointer', background: T.grad, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.96rem' }}>
               Get Started
             </motion.button>
