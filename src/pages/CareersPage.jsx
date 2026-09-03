@@ -92,6 +92,27 @@ const VACANCIES = [
     color: '#A855F7',
     gradient: 'linear-gradient(135deg,#7C3AED,#A855F7)',
   },
+  {
+    id: 'junior-videographer-photographer',
+    title: 'Junior Videographer & Photographer',
+    type: 'Full-Time / Part-Time',
+    location: 'Colombo / On-Site & Field Shoots',
+    category: 'Creative',
+    badge: 'Open',
+    summary: 'Paralox Media is looking for a Junior Videographer & Photographer to capture content for our clients across shoots, events, and brand campaigns. You\'ll be behind the camera on real productions from day one — shooting, lighting, and framing — while learning studio and on-location technique from our senior creative team.',
+    requirements: [
+      'Hands-on experience with DSLR or mirrorless cameras (Canon, Sony, or Nikon) in both photo and video modes',
+      'Understanding of exposure fundamentals — aperture, shutter speed, ISO — and how to shoot in manual',
+      'Basic lighting knowledge for studio setups and on-location shoots, including natural light',
+      'Comfortable capturing product, food, portrait, and event content for social media',
+      'Familiarity with framing for vertical formats (Reels, TikTok, Shorts) as well as landscape',
+      'Basic editing ability in Lightroom, Photoshop, or Premiere Pro for first-pass culling and colour',
+      'A portfolio or showreel of photo/video work (student, personal, or freelance projects welcome)',
+      'Willing to travel to client locations, handle gear responsibly, and work flexible shoot schedules',
+    ],
+    color: '#F59E0B',
+    gradient: 'linear-gradient(135deg,#D97706,#F59E0B)',
+  },
 ];
 
 const WHY_JOIN = [
