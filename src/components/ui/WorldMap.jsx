@@ -14,7 +14,7 @@ import DottedMap from 'dotted-map';
  */
 export function WorldMap({
   dots = [],
-  lineColor = '#A855F7',
+  lineColor = '#B69CFF',
   dark = false,
   animationDuration = 2,
   loop = true,
@@ -45,7 +45,7 @@ export function WorldMap({
     () =>
       map.getSVG({
         radius: 0.22,
-        color: dark ? '#FFFFFF25' : '#5B1DE820',
+        color: dark ? '#FFFFFF25' : '#7C3AED20',
         shape: 'circle',
         backgroundColor: 'transparent',
       }),
@@ -77,8 +77,8 @@ export function WorldMap({
     position: 'relative',
     borderRadius: 16,
     overflow: 'hidden',
-    background: dark ? '#0A0616' : '#F8F5FF',
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    background: dark ? '#0D0B12' : '#F7F6FA',
+    fontFamily: "'Satoshi',sans-serif",
   };
 
   return (
@@ -234,14 +234,14 @@ export function WorldMap({
               position: 'absolute',
               bottom: 16,
               left: 16,
-              background: dark ? 'rgba(10,6,22,.9)' : 'rgba(255,255,255,.9)',
-              color: dark ? '#F0E8FF' : '#1A0A2E',
+              background: dark ? 'rgba(25,23,32,.9)' : 'rgba(255,255,255,.9)',
+              color: dark ? '#F7F6FA' : '#191720',
               padding: '6px 14px',
               borderRadius: 10,
               fontSize: '.8rem',
               fontWeight: 600,
               backdropFilter: 'blur(8px)',
-              border: `1px solid ${dark ? 'rgba(139,82,247,.25)' : 'rgba(91,29,232,.15)'}`,
+              border: `1px solid ${dark ? 'rgba(124,58,237,.25)' : 'rgba(124,58,237,.15)'}`,
             }}
           >
             {hoveredLocation}
@@ -295,12 +295,12 @@ function LocPoint({ x, y, label, lineColor, delay, onHover, dark }) {
                   fontWeight: 700,
                   padding: '2px 8px',
                   borderRadius: 6,
-                  background: dark ? 'rgba(10,6,22,.92)' : 'rgba(255,255,255,.95)',
-                  color: dark ? '#F0E8FF' : '#1A0A2E',
-                  border: `1px solid ${dark ? 'rgba(139,82,247,.3)' : 'rgba(91,29,232,.18)'}`,
+                  background: dark ? 'rgba(25,23,32,.92)' : 'rgba(255,255,255,.95)',
+                  color: dark ? '#F7F6FA' : '#191720',
+                  border: `1px solid ${dark ? 'rgba(124,58,237,.3)' : 'rgba(124,58,237,.18)'}`,
                   boxShadow: '0 2px 8px rgba(0,0,0,.12)',
                   whiteSpace: 'nowrap',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontFamily: "'Satoshi',sans-serif",
                 }}
               >
                 {label}

@@ -79,10 +79,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <div style={{
-        background: dark ? '#080510' : '#F8F5FF',
-        color: dark ? '#F0E8FF' : '#1A0A2E',
+        background: dark ? '#191720' : '#F7F6FA',
+        color: dark ? '#F7F6FA' : '#191720',
         minHeight: '100vh',
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontFamily: "'Satoshi',sans-serif",
       }}>
         {/* Particle loader — home page only */}
         <AnimatePresence>

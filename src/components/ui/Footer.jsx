@@ -11,14 +11,15 @@ export function Footer({ dark }) {
   const go = (p) => { navigate(p === 'home' ? '/' : `/${p}`); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   return (
-    <footer style={{ background: dark ? '#050310' : '#09011A', borderTop: '1px solid rgba(139,82,247,.08)', padding: 'clamp(28px,5vw,36px) clamp(16px,5%,60px) clamp(18px,4vw,22px)', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+    <footer style={{ background: dark ? '#0D0B12' : '#0D0B12', borderTop: '1px solid rgba(124,58,237,.08)', padding: 'clamp(28px,5vw,36px) clamp(16px,5%,60px) clamp(18px,4vw,22px)', fontFamily: "'Satoshi',sans-serif" }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div className="fcols" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: 'clamp(16px,3vw,2rem)', marginBottom: 24 }}>
 
           {/* Brand */}
           <div>
-            <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.3rem', background: 'linear-gradient(135deg,#A855F7,#60EFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: 7 }}>Paralox Media Private Limited</div>
-            <p style={{ fontSize: '.78rem', lineHeight: 1.75, color: 'rgba(255,255,255,.26)', maxWidth: 210, marginBottom: 13 }}>Building the Future of AI-Powered Business Solutions.</p>
+            <img src="/images/Logo/paralox-horizontal-white.png" alt="Paralox Media" style={{ height: 32, width: 'auto', display: 'block', marginBottom: 14 }} />
+            <p style={{ fontSize: '.95rem', fontWeight: 700, lineHeight: 1.4, color: '#FFFFFF', maxWidth: 240, marginBottom: 6 }}>Let’s create the future together.</p>
+            <p style={{ fontSize: '.66rem', letterSpacing: 1.4, color: '#A9A4B8', fontFamily: "'JetBrains Mono',monospace", textTransform: 'uppercase', marginBottom: 14 }}>AI / Engineering / Media / Growth</p>
             <div style={{ display: 'flex', gap: 7 }}>
               {[
                 { icon: <Facebook size={12}/>, link: 'https://www.facebook.com/paralox.media/' },
@@ -27,7 +28,7 @@ export function Footer({ dark }) {
                 { icon: <Globe size={12}/>, link: null }
               ].map(({ icon, link }, i) => (
                 <motion.a key={i} href={link || '#'} target={link ? '_blank' : undefined} rel="noreferrer" whileHover={{ y: -2 }}
-                  style={{ width: 29, height: 29, borderRadius: 7, background: 'rgba(139,82,247,.18)', border: '1px solid rgba(139,82,247,.22)', cursor: 'pointer', color: 'rgba(255,255,255,.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                  style={{ width: 29, height: 29, borderRadius: 7, background: 'rgba(124,58,237,.18)', border: '1px solid rgba(124,58,237,.22)', cursor: 'pointer', color: 'rgba(255,255,255,.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
                   {icon}
                 </motion.a>
               ))}
@@ -40,7 +41,7 @@ export function Footer({ dark }) {
             {PAGES.map(p => (
               <div key={p} onClick={() => go(p)}
                 style={{ fontSize: '.77rem', color: 'rgba(255,255,255,.27)', marginBottom: 7, cursor: 'pointer', textTransform: 'capitalize', transition: 'color .2s' }}
-                onMouseOver={e => e.target.style.color = 'rgba(168,85,247,.8)'}
+                onMouseOver={e => e.target.style.color = 'rgba(124,58,237,.8)'}
                 onMouseOut={e  => e.target.style.color = 'rgba(255,255,255,.27)'}>
                 {p}
               </div>
@@ -66,9 +67,9 @@ export function Footer({ dark }) {
             ].map(({ icon, v, href }) => (
               <a key={v} href={href || undefined} target={href ? '_blank' : undefined} rel="noreferrer"
                 style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,.27)', fontSize: '.76rem', textDecoration: 'none', marginBottom: 7, transition: 'color .2s' }}
-                onMouseOver={e => e.currentTarget.style.color = 'rgba(168,85,247,.7)'}
+                onMouseOver={e => e.currentTarget.style.color = 'rgba(124,58,237,.7)'}
                 onMouseOut={e  => e.currentTarget.style.color = 'rgba(255,255,255,.27)'}>
-                <span style={{ color: 'rgba(168,85,247,.52)' }}>{icon}</span>
+                <span style={{ color: 'rgba(124,58,237,.52)' }}>{icon}</span>
                 {v}
               </a>
             ))}

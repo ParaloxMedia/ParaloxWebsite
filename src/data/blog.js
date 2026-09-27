@@ -16,7 +16,7 @@ export const BLOG_POSTS = [
     seats: null,
     cta: 'Reserve Your Spot',
     ctaLink: '/contact',
-    color: '#5B1DE8',
+    color: '#7C3AED',
     featured: true,
     highlights: [
       { icon: '⚡', title: 'One Platform', text: 'Content scheduling, client approvals, performance reports — all in a single streamlined tool.' },
@@ -228,7 +228,7 @@ export const BLOG_POSTS = [
     seats: null,
     cta: 'Explore Our Services',
     ctaLink: '/services',
-    color: '#5B1DE8',
+    color: '#7C3AED',
     featured: false,
     highlights: [
       { icon: '✍️', title: 'Personalised Content at Scale', text: 'AI generates thousands of ad variations tailored to each audience segment — automatically and in seconds.' },
@@ -280,7 +280,7 @@ export const BLOG_POSTS = [
     seats: null,
     cta: 'See Careers',
     ctaLink: '/careers',
-    color: '#0891B2',
+    color: '#3E2087',
     featured: false,
     highlights: [
       { icon: '🇱🇰', title: 'Sri Lanka', text: 'Our home base — serving the island\'s top brands across retail, food, media, and sports.' },

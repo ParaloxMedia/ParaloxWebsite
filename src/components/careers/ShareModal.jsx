@@ -100,12 +100,12 @@ export function ShareModal({ dark, vacancy, onClose }) {
           onClick={e => e.stopPropagation()}
           style={{
             background: dark ? '#0D0520' : '#fff',
-            border: `1px solid ${dark ? 'rgba(139,82,247,.24)' : 'rgba(91,29,232,.14)'}`,
+            border: `1px solid ${dark ? 'rgba(124,58,237,.24)' : 'rgba(124,58,237,.14)'}`,
             borderRadius: 22,
             padding: '28px 26px',
             width: '100%', maxWidth: 400,
             boxShadow: '0 32px 80px rgba(0,0,0,.5)',
-            fontFamily: "'Plus Jakarta Sans',sans-serif",
+            fontFamily: "'Satoshi',sans-serif",
           }}
         >
           {/* Header */}
@@ -115,11 +115,11 @@ export function ShareModal({ dark, vacancy, onClose }) {
                 <div style={{ width: 30, height: 30, borderRadius: 8, background: T.grad, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
                   <Share2 size={14} />
                 </div>
-                <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.1rem', color: dark ? '#F0E8FF' : '#1A0A2E' }}>
+                <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.1rem', color: dark ? '#F7F6FA' : '#191720' }}>
                   Share This Role
                 </h3>
               </div>
-              <p style={{ fontSize: '.76rem', color: dark ? '#8870B8' : '#7B6A9A', paddingLeft: 38 }}>
+              <p style={{ fontSize: '.76rem', color: dark ? '#A9A4B8' : '#6B6778', paddingLeft: 38 }}>
                 {vacancy.title} · Paralox Media
               </p>
             </div>
@@ -129,10 +129,10 @@ export function ShareModal({ dark, vacancy, onClose }) {
               onClick={onClose}
               style={{
                 width: 32, height: 32, borderRadius: 9,
-                background: dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)',
-                border: `1px solid ${dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
+                background: dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)',
+                border: `1px solid ${dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: dark ? '#B8A0D8' : T.p1, flexShrink: 0,
+                color: dark ? '#C9C4D6' : T.p1, flexShrink: 0,
               }}
             >
               <X size={14} />
@@ -168,10 +168,10 @@ export function ShareModal({ dark, vacancy, onClose }) {
                 }}>
                   {icon}
                 </div>
-                <span style={{ fontWeight: 600, fontSize: '.9rem', color: dark ? '#E8D8FF' : '#1A0A2E', flex: 1 }}>
+                <span style={{ fontWeight: 600, fontSize: '.9rem', color: dark ? '#E9E3FA' : '#191720', flex: 1 }}>
                   Share on {label}
                 </span>
-                <ExternalLink size={13} style={{ color: dark ? '#6B5A88' : '#B8A0C8' }} />
+                <ExternalLink size={13} style={{ color: dark ? '#6B6778' : '#C9C4D6' }} />
               </motion.a>
             ))}
           </div>
@@ -180,10 +180,10 @@ export function ShareModal({ dark, vacancy, onClose }) {
           <div style={{ display: 'flex', gap: 8, alignItems: 'stretch' }}>
             <div style={{
               flex: 1, padding: '10px 12px', borderRadius: 10,
-              background: dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.04)',
-              border: `1px solid ${dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
+              background: dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.04)',
+              border: `1px solid ${dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
               fontFamily: 'monospace', fontSize: '.72rem',
-              color: dark ? '#B8A0D8' : '#5B4080',
+              color: dark ? '#C9C4D6' : '#4A4658',
               overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis',
               display: 'flex', alignItems: 'center',
             }}>
@@ -196,12 +196,12 @@ export function ShareModal({ dark, vacancy, onClose }) {
                 padding: '10px 16px', borderRadius: 10, border: 'none',
                 cursor: 'pointer',
                 background: copied ? 'linear-gradient(135deg,#16A34A,#22C55E)' : T.grad,
-                color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif",
+                color: '#fff', fontFamily: "'Satoshi',sans-serif",
                 fontWeight: 700, fontSize: '.8rem',
                 display: 'flex', alignItems: 'center', gap: 5,
                 whiteSpace: 'nowrap', flexShrink: 0,
                 transition: 'background .35s',
-                boxShadow: copied ? '0 4px 14px rgba(22,163,74,.35)' : '0 4px 14px rgba(91,29,232,.3)',
+                boxShadow: copied ? '0 4px 14px rgba(22,163,74,.35)' : '0 4px 14px rgba(124,58,237,.3)',
               }}
             >
               {copied ? <Check size={13} /> : <Link2 size={13} />}
@@ -218,10 +218,10 @@ export function ShareModal({ dark, vacancy, onClose }) {
               style={{
                 width: '100%', marginTop: 12,
                 padding: '10px', borderRadius: 10,
-                border: `1px dashed ${dark ? 'rgba(139,82,247,.3)' : 'rgba(91,29,232,.2)'}`,
+                border: `1px dashed ${dark ? 'rgba(124,58,237,.3)' : 'rgba(124,58,237,.2)'}`,
                 background: 'transparent', cursor: 'pointer',
-                fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600,
-                fontSize: '.82rem', color: dark ? '#B8A0D8' : T.p1,
+                fontFamily: "'Satoshi',sans-serif", fontWeight: 600,
+                fontSize: '.82rem', color: dark ? '#C9C4D6' : T.p1,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
               }}
             >

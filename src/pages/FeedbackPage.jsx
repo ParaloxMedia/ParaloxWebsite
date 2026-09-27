@@ -36,8 +36,8 @@ function StarRow({ value, onChange, dark }) {
         >
           <Star
             size={22}
-            fill={n <= value ? '#F59E0B' : 'none'}
-            color={n <= value ? '#F59E0B' : (dark ? 'rgba(240,232,255,.28)' : 'rgba(26,10,46,.22)')}
+            fill={n <= value ? '#7C3AED' : 'none'}
+            color={n <= value ? '#7C3AED' : (dark ? 'rgba(247,246,250,.28)' : 'rgba(25,23,32,.22)')}
             strokeWidth={1.6}
           />
         </button>
@@ -60,16 +60,16 @@ export function FeedbackPage({ dark }) {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.09)';
+  const bd = dark ? 'rgba(124,58,237,.13)' : 'rgba(124,58,237,.09)';
   const iS = {
     width: '100%', padding: '11px 13px', borderRadius: 10,
     border: `1.5px solid ${bd}`,
-    background: dark ? 'rgba(12,4,26,.8)' : '#F8F5FF',
-    color: dark ? '#F0E8FF' : '#1A0A2E',
-    fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.88rem',
+    background: dark ? 'rgba(34,31,44,.8)' : '#F7F6FA',
+    color: dark ? '#F7F6FA' : '#191720',
+    fontFamily: "'Satoshi',sans-serif", fontSize: '.88rem',
     outline: 'none', boxSizing: 'border-box', transition: 'border-color .25s,box-shadow .25s',
   };
-  const label = { display: 'block', fontSize: '.71rem', fontWeight: 600, color: dark ? '#B8A0D8' : '#5B4080', marginBottom: 6, fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: '.2px' };
+  const label = { display: 'block', fontSize: '.71rem', fontWeight: 600, color: dark ? '#C9C4D6' : '#4A4658', marginBottom: 6, fontFamily: "'Satoshi',sans-serif", letterSpacing: '.2px' };
 
   const h = e => setForm({ ...form, [e.target.name]: e.target.value });
   const setRating = (field, v) => setForm({ ...form, [field]: v });
@@ -127,10 +127,10 @@ export function FeedbackPage({ dark }) {
               style={{ width: 68, height: 68, borderRadius: '50%', background: 'rgba(34,197,94,.1)', border: '1px solid rgba(34,197,94,.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
               <CheckCircle2 size={32} color="#16A34A" />
             </motion.div>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 10, letterSpacing: '-.5px' }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: dark ? '#F7F6FA' : '#191720', marginBottom: 10, letterSpacing: '-.5px' }}>
               Thank You!
             </h2>
-            <p style={{ color: dark ? '#9B8BC0' : '#7B6A9A', fontSize: '.92rem', lineHeight: 1.75, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+            <p style={{ color: dark ? '#A9A4B8' : '#6B6778', fontSize: '.92rem', lineHeight: 1.75, fontFamily: "'Satoshi',sans-serif" }}>
               Your feedback means a lot to us. We use every response to sharpen how we work and serve clients like you.
             </p>
           </div>
@@ -143,21 +143,21 @@ export function FeedbackPage({ dark }) {
     <div style={{ paddingTop: 86, paddingBottom: 72 }}>
 
       {/* Header band */}
-      <div style={{ background: 'linear-gradient(135deg,#0C0524,#2A0868,#1A0A48)', padding: 'clamp(40px,7vw,52px) clamp(16px,5%,60px) clamp(40px,6vw,56px)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .11, backgroundImage: 'linear-gradient(rgba(139,82,247,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(139,82,247,.4) 1px,transparent 1px)', backgroundSize: '64px 64px' }} />
-        <div style={{ position: 'absolute', top: '-40%', right: '10%', width: 'min(380px,50vw)', height: 'min(380px,50vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(91,29,232,.42),transparent 68%)', pointerEvents: 'none' }} />
+      <div style={{ background: 'linear-gradient(135deg,#0D0B12,#191720 45%,#1E0F45)', padding: 'clamp(40px,7vw,52px) clamp(16px,5%,60px) clamp(40px,6vw,56px)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: .11, backgroundImage: 'linear-gradient(rgba(124,58,237,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.4) 1px,transparent 1px)', backgroundSize: '64px 64px' }} />
+        <div style={{ position: 'absolute', top: '-40%', right: '10%', width: 'min(380px,50vw)', height: 'min(380px,50vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(124,58,237,.42),transparent 68%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 720, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16, background: 'rgba(255,255,255,.09)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 30, padding: '6px 16px' }}>
-            <Heart size={12} color="#FF6BFF" fill="#FF6BFF" />
-            <span style={{ fontSize: '.68rem', fontWeight: 700, color: 'rgba(255,255,255,.85)', letterSpacing: 2, textTransform: 'uppercase', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>We'd Love Your Thoughts</span>
+            <Heart size={12} color="#B69CFF" fill="#B69CFF" />
+            <span style={{ fontSize: '.68rem', fontWeight: 700, color: 'rgba(255,255,255,.85)', letterSpacing: 2, textTransform: 'uppercase', fontFamily: "'Satoshi',sans-serif" }}>We'd Love Your Thoughts</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .2 }}
-            style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,5vw,3.6rem)', color: 'white', letterSpacing: '-2px', lineHeight: 1.1, marginBottom: 12 }}>
+            style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,5vw,3.6rem)', color: 'white', letterSpacing: '-2px', lineHeight: 1.1, marginBottom: 12 }}>
             How Did We Do?
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .35 }}
-            style={{ color: 'rgba(255,255,255,.5)', maxWidth: 480, margin: '0 auto', fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1.8, fontSize: 'clamp(.84rem,1.8vw,.94rem)' }}>
+            style={{ color: 'rgba(255,255,255,.5)', maxWidth: 480, margin: '0 auto', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.8, fontSize: 'clamp(.84rem,1.8vw,.94rem)' }}>
             Now that we've wrapped up your project, we'd genuinely appreciate two minutes of your time. Your honest feedback helps us keep improving.
           </motion.p>
         </div>
@@ -166,7 +166,7 @@ export function FeedbackPage({ dark }) {
       {/* Form */}
       <div style={{ maxWidth: 720, margin: '0 auto', padding: 'clamp(32px,6vw,48px) clamp(16px,5%,60px) 0' }}>
         <FadeUp>
-          <div style={{ padding: 'clamp(20px,4vw,36px)', borderRadius: 22, border: `1px solid ${dark ? 'rgba(139,82,247,.17)' : 'rgba(91,29,232,.1)'}`, background: dark ? 'rgba(12,4,26,.85)' : '#fff', backdropFilter: 'blur(10px)' }}>
+          <div style={{ padding: 'clamp(20px,4vw,36px)', borderRadius: 22, border: `1px solid ${dark ? 'rgba(124,58,237,.17)' : 'rgba(124,58,237,.1)'}`, background: dark ? 'rgba(34,31,44,.85)' : '#fff', backdropFilter: 'blur(10px)' }}>
 
             {/* Identity */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }} className="g1">
@@ -198,13 +198,13 @@ export function FeedbackPage({ dark }) {
 
             {/* Ratings */}
             <div style={{ marginBottom: 8 }}>
-              <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Rate Your Experience</h3>
-              <p style={{ color: dark ? '#9B8BC0' : '#7B6A9A', fontSize: '.8rem', marginBottom: 16, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Quality of Work is required — the rest help us understand more.</p>
+              <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Rate Your Experience</h3>
+              <p style={{ color: dark ? '#A9A4B8' : '#6B6778', fontSize: '.8rem', marginBottom: 16, fontFamily: "'Satoshi',sans-serif" }}>Quality of Work is required — the rest help us understand more.</p>
             </div>
 
             {RATING_FIELDS.map(({ n, l }) => (
               <div key={n} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
-                <span style={{ fontSize: '.86rem', fontWeight: 600, color: dark ? '#F0E8FF' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{l}{n === 'quality' ? ' *' : ''}</span>
+                <span style={{ fontSize: '.86rem', fontWeight: 600, color: dark ? '#F7F6FA' : '#191720', fontFamily: "'Satoshi',sans-serif" }}>{l}{n === 'quality' ? ' *' : ''}</span>
                 <StarRow value={form[n]} onChange={v => setRating(n, v)} dark={dark} />
               </div>
             ))}
@@ -227,20 +227,20 @@ export function FeedbackPage({ dark }) {
               <textarea name="comments" value={form.comments} onChange={h} placeholder="Anything else you'd like to share..." rows={3} style={{ ...iS, resize: 'vertical' }} />
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 10, padding: '14px 16px', borderRadius: 14, background: dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.05)' }}>
-              <span style={{ fontSize: '.86rem', fontWeight: 700, color: dark ? '#F0E8FF' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>How likely are you to recommend us? *</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 10, padding: '14px 16px', borderRadius: 14, background: dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.05)' }}>
+              <span style={{ fontSize: '.86rem', fontWeight: 700, color: dark ? '#F7F6FA' : '#191720', fontFamily: "'Satoshi',sans-serif" }}>How likely are you to recommend us? *</span>
               <StarRow value={form.recommend} onChange={v => setRating('recommend', v)} dark={dark} />
             </div>
 
-            <motion.button whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(91,29,232,.4)' }} whileTap={{ scale: .97 }} onClick={sub} disabled={loading}
-              style={{ width: '100%', padding: '13px', borderRadius: 50, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', background: T.grad, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.93rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, boxShadow: '0 6px 20px rgba(91,29,232,.3)', opacity: loading ? 0.7 : 1 }}>
+            <motion.button whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(124,58,237,.4)' }} whileTap={{ scale: .97 }} onClick={sub} disabled={loading}
+              style={{ width: '100%', padding: '13px', borderRadius: 50, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', background: T.grad, color: '#fff', fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.93rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, boxShadow: '0 6px 20px rgba(124,58,237,.3)', opacity: loading ? 0.7 : 1 }}>
               <Send size={15} /> {loading ? 'Sending...' : 'Submit Feedback'}
             </motion.button>
 
             <AnimatePresence>
               {sent && (
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  style={{ marginTop: 12, padding: '11px', borderRadius: 10, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
+                  style={{ marginTop: 12, padding: '11px', borderRadius: 10, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Satoshi',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
                   <CheckCircle2 size={15} /> Thank you for your feedback!
                 </motion.div>
               )}

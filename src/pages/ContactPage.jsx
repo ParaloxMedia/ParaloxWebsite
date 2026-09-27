@@ -16,24 +16,24 @@ export function ContactPage({ dark }) {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const bd = dark ? 'rgba(139,82,247,.22)' : 'rgba(91,29,232,.16)';
+  const bd = dark ? 'rgba(124,58,237,.22)' : 'rgba(124,58,237,.16)';
   const pillS = {
     display: 'flex', alignItems: 'center', gap: 9,
     height: 46, padding: '0 5px 0 15px',
     border: `1.5px solid ${bd}`, borderRadius: 999,
-    background: dark ? 'rgba(12,4,26,.8)' : '#F8F5FF',
+    background: dark ? 'rgba(34,31,44,.8)' : '#F7F6FA',
     transition: 'border-color .25s, box-shadow .25s',
   };
   const inputS = {
     flex: 1, height: '100%', border: 'none', outline: 'none', background: 'transparent',
-    color: dark ? '#F0E8FF' : '#1A0A2E',
-    fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.88rem',
+    color: dark ? '#F7F6FA' : '#191720',
+    fontFamily: "'Satoshi',sans-serif", fontSize: '.88rem',
   };
-  const labelS = { display: 'block', fontSize: '.71rem', fontWeight: 600, color: dark ? '#B8A0D8' : '#5B4080', marginBottom: 7, fontFamily: "'Plus Jakarta Sans',sans-serif" };
-  const iconWrap = { display: 'flex', alignItems: 'center', justifyContent: 'center', color: dark ? '#8B7BB0' : '#8B7BAC', flexShrink: 0 };
+  const labelS = { display: 'block', fontSize: '.71rem', fontWeight: 600, color: dark ? '#C9C4D6' : '#4A4658', marginBottom: 7, fontFamily: "'Satoshi',sans-serif" };
+  const iconWrap = { display: 'flex', alignItems: 'center', justifyContent: 'center', color: dark ? '#A9A4B8' : '#A9A4B8', flexShrink: 0 };
 
   const h   = e => setForm({ ...form, [e.target.name]: e.target.value });
-  const focus   = e => { e.target.parentElement.style.borderColor = T.p2; e.target.parentElement.style.boxShadow = `0 0 0 3px ${dark ? 'rgba(139,82,247,.18)' : 'rgba(91,29,232,.12)'}`; };
+  const focus   = e => { e.target.parentElement.style.borderColor = T.p2; e.target.parentElement.style.boxShadow = `0 0 0 3px ${dark ? 'rgba(124,58,237,.18)' : 'rgba(124,58,237,.12)'}`; };
   const blur    = e => { e.target.parentElement.style.borderColor = bd; e.target.parentElement.style.boxShadow = 'none'; };
   const sub = async () => {
     if (!form.fname || !form.email || !form.message) {
@@ -75,13 +75,13 @@ export function ContactPage({ dark }) {
 
         <FadeUp>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <span style={{ fontSize: '.7rem', fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: T.p1, background: dark ? 'rgba(139,82,247,.16)' : 'rgba(91,29,232,.1)', padding: '6px 16px', borderRadius: 999, marginBottom: 18, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+            <span style={{ fontSize: '.7rem', fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase', color: T.p1, background: dark ? 'rgba(124,58,237,.16)' : 'rgba(124,58,237,.1)', padding: '6px 16px', borderRadius: 999, marginBottom: 18, fontFamily: "'Satoshi',sans-serif" }}>
               Contact Us
             </span>
-            <h1 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,5.5vw,2.9rem)', color: dark ? '#F0E8FF' : '#1A0A2E', letterSpacing: '-1.5px', lineHeight: 1.12, marginBottom: 14 }}>
+            <h1 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,5.5vw,2.9rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.12, marginBottom: 14 }}>
               Let's Get In Touch.
             </h1>
-            <p style={{ maxWidth: 420, color: dark ? '#9B8BC0' : '#7B6A9A', fontSize: '.92rem', lineHeight: 1.75, fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: 40 }}>
+            <p style={{ maxWidth: 420, color: dark ? '#A9A4B8' : '#6B6778', fontSize: '.92rem', lineHeight: 1.75, fontFamily: "'Satoshi',sans-serif", marginBottom: 40 }}>
               Or just reach out manually to us at{' '}
               <a href="mailto:info@paraloxmedia.com" style={{ color: T.p1, fontWeight: 600, textDecoration: 'none' }}>info@paraloxmedia.com</a>
             </p>
@@ -138,26 +138,26 @@ export function ContactPage({ dark }) {
             <label style={labelS}>Message</label>
             <textarea
               name="message" value={form.message} onChange={h}
-              onFocus={e => { e.target.style.borderColor = T.p2; e.target.style.boxShadow = `0 0 0 3px ${dark ? 'rgba(139,82,247,.18)' : 'rgba(91,29,232,.12)'}`; }}
+              onFocus={e => { e.target.style.borderColor = T.p2; e.target.style.boxShadow = `0 0 0 3px ${dark ? 'rgba(124,58,237,.18)' : 'rgba(124,58,237,.12)'}`; }}
               onBlur={e => { e.target.style.borderColor = bd; e.target.style.boxShadow = 'none'; }}
               rows={4} placeholder="Tell us about your project..." required
               style={{
                 width: '100%', marginTop: 0, marginBottom: 22, padding: '13px 15px', boxSizing: 'border-box',
                 border: `1.5px solid ${bd}`, borderRadius: 18, resize: 'vertical', outline: 'none',
-                background: dark ? 'rgba(12,4,26,.8)' : '#F8F5FF', color: dark ? '#F0E8FF' : '#1A0A2E',
-                fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.88rem', transition: 'border-color .25s, box-shadow .25s',
+                background: dark ? 'rgba(34,31,44,.8)' : '#F7F6FA', color: dark ? '#F7F6FA' : '#191720',
+                fontFamily: "'Satoshi',sans-serif", fontSize: '.88rem', transition: 'border-color .25s, box-shadow .25s',
               }}
             />
 
-            <motion.button whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(91,29,232,.4)' }} whileTap={{ scale: .97 }} onClick={sub} disabled={loading}
-              style={{ width: '100%', padding: '14px', borderRadius: 999, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', background: T.grad, color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.94rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 6px 20px rgba(91,29,232,.3)', opacity: loading ? 0.7 : 1 }}>
+            <motion.button whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(124,58,237,.4)' }} whileTap={{ scale: .97 }} onClick={sub} disabled={loading}
+              style={{ width: '100%', padding: '14px', borderRadius: 999, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', background: T.grad, color: '#fff', fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.94rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, boxShadow: '0 6px 20px rgba(124,58,237,.3)', opacity: loading ? 0.7 : 1 }}>
               {loading ? 'Sending...' : 'Submit Form'} <Send size={16} />
             </motion.button>
 
             <AnimatePresence>
               {sent && (
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  style={{ marginTop: 14, padding: '11px', borderRadius: 14, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
+                  style={{ marginTop: 14, padding: '11px', borderRadius: 14, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Satoshi',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
                   <CheckCircle2 size={15} /> Message sent! We'll get back to you within 24 hours.
                 </motion.div>
               )}
@@ -172,7 +172,7 @@ export function ContactPage({ dark }) {
                 { icon: <Globe size={14}/>, link: null },
               ].map(({ icon, link }, i) => (
                 <motion.a key={i} href={link || '#'} target={link ? '_blank' : undefined} rel="noreferrer" whileHover={{ y: -3 }}
-                  style={{ width: 36, height: 36, borderRadius: '50%', background: dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.08)', border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.p1, textDecoration: 'none' }}>
+                  style={{ width: 36, height: 36, borderRadius: '50%', background: dark ? 'rgba(124,58,237,.12)' : 'rgba(124,58,237,.08)', border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.p1, textDecoration: 'none' }}>
                   {icon}
                 </motion.a>
               ))}

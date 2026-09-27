@@ -31,8 +31,8 @@ const VACANCIES = [
       'Experience with AI video tools (Runway, Sora, ElevenLabs, etc.) integrated into workflow',
       'Strong storytelling instinct with a sharp eye for pacing, composition, and audience engagement',
     ],
-    color: '#8B52F7',
-    gradient: 'linear-gradient(135deg,#5B1DE8,#8B52F7)',
+    color: '#7C3AED',
+    gradient: 'linear-gradient(120deg,#3E2087,#7C3AED)',
   },
   {
     id: 'sales-executive',
@@ -49,8 +49,8 @@ const VACANCIES = [
       'Self-driven and target-oriented mindset',
       'Basic understanding of digital marketing / AI solutions is a plus',
     ],
-    color: '#FF6BFF',
-    gradient: 'linear-gradient(135deg,#A855F7,#FF6BFF)',
+    color: '#7C3AED',
+    gradient: 'linear-gradient(120deg,#3E2087,#7C3AED)',
   },
   {
     id: 'graphic-designer',
@@ -69,8 +69,8 @@ const VACANCIES = [
       'Working knowledge of basic HTML/CSS for web handoff and design implementation',
       'Hands-on experience with AI design tools (Midjourney, Adobe Firefly, Stable Diffusion) in a production workflow',
     ],
-    color: '#60EFFF',
-    gradient: 'linear-gradient(135deg,#0891B2,#60EFFF)',
+    color: '#7C3AED',
+    gradient: 'linear-gradient(120deg,#3E2087,#7C3AED)',
   },
   {
     id: 'motion-graphics-video-editing-intern',
@@ -89,8 +89,8 @@ const VACANCIES = [
       'A portfolio or reel showcasing past edits/motion graphics work (student, personal, or freelance projects welcome)',
       'Reliable, detail-oriented, and able to meet deadlines in a fast-paced team environment',
     ],
-    color: '#A855F7',
-    gradient: 'linear-gradient(135deg,#7C3AED,#A855F7)',
+    color: '#7C3AED',
+    gradient: 'linear-gradient(120deg,#3E2087,#7C3AED)',
   },
   {
     id: 'junior-videographer-photographer',
@@ -110,8 +110,8 @@ const VACANCIES = [
       'A portfolio or showreel of photo/video work (student, personal, or freelance projects welcome)',
       'Willing to travel to client locations, handle gear responsibly, and work flexible shoot schedules',
     ],
-    color: '#F59E0B',
-    gradient: 'linear-gradient(135deg,#D97706,#F59E0B)',
+    color: '#7C3AED',
+    gradient: 'linear-gradient(120deg,#3E2087,#7C3AED)',
   },
 ];
 
@@ -120,29 +120,29 @@ const WHY_JOIN = [
     icon: <Brain size={22} />,
     title: 'AI-Driven Projects',
     desc: 'Work on cutting-edge AI-powered creative and digital campaigns that push industry boundaries.',
-    color: '#5B1DE8',
-    glow: 'rgba(91,29,232,.35)',
+    color: '#7C3AED',
+    glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <Rocket size={22} />,
     title: 'Fast-Growing Team',
     desc: 'Be part of a high-velocity startup with the energy, culture, and ambition to go global.',
-    color: '#8B52F7',
-    glow: 'rgba(139,82,247,.35)',
+    color: '#7C3AED',
+    glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <TrendingUp size={22} />,
     title: 'Learn & Grow',
     desc: 'Continuous learning environment with real client exposure, mentorship, and skill development.',
-    color: '#A855F7',
-    glow: 'rgba(168,85,247,.35)',
+    color: '#7C3AED',
+    glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <Heart size={22} />,
     title: 'Collaborative Culture',
     desc: 'Work alongside talented people across tech, media, and marketing in a creative, supportive space.',
-    color: '#FF6BFF',
-    glow: 'rgba(255,107,255,.3)',
+    color: '#7C3AED',
+    glow: 'rgba(182,156,255,.3)',
   },
 ];
 
@@ -185,7 +185,7 @@ function BadgePill({ text, color }) {
       border: `1px solid ${isUrgent ? 'rgba(239,68,68,.28)' : 'rgba(34,197,94,.28)'}`,
       fontSize: '.66rem', fontWeight: 700, letterSpacing: 0.5,
       color: isUrgent ? '#EF4444' : '#16A34A',
-      fontFamily: "'Plus Jakarta Sans',sans-serif",
+      fontFamily: "'Satoshi',sans-serif",
       textTransform: 'uppercase',
     }}>
       <div style={{
@@ -212,8 +212,8 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
       id={vacancy.id}
       style={{
         borderRadius: 20,
-        border: `1px solid ${dark ? 'rgba(139,82,247,.16)' : 'rgba(91,29,232,.1)'}`,
-        background: dark ? 'rgba(12,4,26,.9)' : '#fff',
+        border: `1px solid ${dark ? 'rgba(124,58,237,.16)' : 'rgba(124,58,237,.1)'}`,
+        background: dark ? 'rgba(34,31,44,.9)' : '#fff',
         overflow: 'hidden',
         position: 'relative',
         transition: 'box-shadow .3s, border-color .3s, transform .3s',
@@ -222,7 +222,7 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
       whileHover={{
         boxShadow: dark
           ? `0 20px 60px rgba(0,0,0,.5), 0 0 0 1px ${vacancy.color}33`
-          : `0 20px 50px rgba(91,29,232,.12), 0 0 0 1px ${vacancy.color}22`,
+          : `0 20px 50px rgba(124,58,237,.12), 0 0 0 1px ${vacancy.color}22`,
       }}
     >
       {/* Gradient top accent */}
@@ -247,25 +247,25 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
               <BadgePill text={vacancy.badge} />
               <span style={{
                 fontSize: '.66rem', fontWeight: 700, letterSpacing: 0.5,
-                color: dark ? '#8870B8' : '#9B8BC0', textTransform: 'uppercase',
-                fontFamily: "'Plus Jakarta Sans',sans-serif",
+                color: dark ? '#A9A4B8' : '#A9A4B8', textTransform: 'uppercase',
+                fontFamily: "'Satoshi',sans-serif",
               }}>
                 {vacancy.category}
               </span>
             </div>
             <h3 style={{
-              fontFamily: "'Outfit',sans-serif", fontWeight: 800,
+              fontFamily: "'Satoshi',sans-serif", fontWeight: 800,
               fontSize: 'clamp(1.1rem,2.5vw,1.3rem)',
-              color: dark ? '#F0E8FF' : '#1A0A2E',
+              color: dark ? '#F7F6FA' : '#191720',
               marginBottom: 6, lineHeight: 1.25,
             }}>
               {vacancy.title}
             </h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '.78rem', color: dark ? '#9B8BC0' : '#7B6A9A', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '.78rem', color: dark ? '#A9A4B8' : '#6B6778', fontFamily: "'Satoshi',sans-serif" }}>
                 <Clock size={13} style={{ color: vacancy.color }} /> {vacancy.type}
               </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '.78rem', color: dark ? '#9B8BC0' : '#7B6A9A', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: '.78rem', color: dark ? '#A9A4B8' : '#6B6778', fontFamily: "'Satoshi',sans-serif" }}>
                 <MapPin size={13} style={{ color: vacancy.color }} /> {vacancy.location}
               </span>
             </div>
@@ -284,8 +284,8 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
         {/* Summary */}
         <p style={{
           fontSize: '.85rem', lineHeight: 1.75,
-          color: dark ? '#B8A0D8' : '#5B4080',
-          fontFamily: "'Plus Jakarta Sans',sans-serif",
+          color: dark ? '#C9C4D6' : '#4A4658',
+          fontFamily: "'Satoshi',sans-serif",
           marginBottom: 16,
         }}>
           {vacancy.summary}
@@ -294,8 +294,8 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
         {/* Requirements accordion */}
         <div style={{
           borderRadius: 12,
-          border: `1px solid ${dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.08)'}`,
-          background: dark ? 'rgba(139,82,247,.04)' : 'rgba(91,29,232,.025)',
+          border: `1px solid ${dark ? 'rgba(124,58,237,.12)' : 'rgba(124,58,237,.08)'}`,
+          background: dark ? 'rgba(124,58,237,.04)' : 'rgba(124,58,237,.025)',
           overflow: 'hidden',
           marginBottom: 20,
         }}>
@@ -304,8 +304,8 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
             style={{
               width: '100%', padding: '11px 15px', background: 'none', border: 'none',
               cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.8rem',
-              color: dark ? '#C8A8F8' : T.p1,
+              fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.8rem',
+              color: dark ? '#B69CFF' : T.p1,
             }}
           >
             Key Requirements
@@ -326,7 +326,7 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
                   {vacancy.requirements.map((r, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 9, marginBottom: 7 }}>
                       <CheckCircle2 size={14} style={{ color: vacancy.color, flexShrink: 0, marginTop: 2 }} />
-                      <span style={{ fontSize: '.81rem', lineHeight: 1.65, color: dark ? '#C8B8E8' : '#4B3275', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{r}</span>
+                      <span style={{ fontSize: '.81rem', lineHeight: 1.65, color: dark ? '#C9C4D6' : '#4A4658', fontFamily: "'Satoshi',sans-serif" }}>{r}</span>
                     </div>
                   ))}
                 </div>
@@ -344,7 +344,7 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
             style={{
               flex: 1, minWidth: 140, padding: '12px 20px', borderRadius: 50, border: 'none',
               cursor: 'pointer', background: vacancy.gradient, color: '#fff',
-              fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.88rem',
+              fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.88rem',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
               boxShadow: `0 5px 16px ${vacancy.color}44`,
             }}
@@ -357,14 +357,14 @@ function VacancyCard({ vacancy, dark, onApply, onShare }) {
             onClick={() => onShare(vacancy)}
             style={{
               padding: '12px 18px', borderRadius: 50,
-              border: `1.5px solid ${dark ? 'rgba(139,82,247,.25)' : 'rgba(91,29,232,.18)'}`,
+              border: `1.5px solid ${dark ? 'rgba(124,58,237,.25)' : 'rgba(124,58,237,.18)'}`,
               background: 'transparent', cursor: 'pointer',
-              fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.88rem',
-              color: dark ? '#B8A0D8' : T.p1,
+              fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.88rem',
+              color: dark ? '#C9C4D6' : T.p1,
               display: 'flex', alignItems: 'center', gap: 6,
               transition: 'background .2s',
             }}
-            onMouseOver={e => e.currentTarget.style.background = dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.05)'}
+            onMouseOver={e => e.currentTarget.style.background = dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.05)'}
             onMouseOut={e => e.currentTarget.style.background = 'transparent'}
           >
             <Share2 size={14} /> Share
@@ -388,8 +388,8 @@ function FaqItem({ q, a, dark, index }) {
       transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
       style={{
         borderRadius: 14,
-        border: `1px solid ${open ? (dark ? 'rgba(139,82,247,.28)' : 'rgba(91,29,232,.18)') : (dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)')}`,
-        background: open ? (dark ? 'rgba(139,82,247,.06)' : 'rgba(91,29,232,.03)') : (dark ? 'rgba(12,4,26,.7)' : '#fff'),
+        border: `1px solid ${open ? (dark ? 'rgba(124,58,237,.28)' : 'rgba(124,58,237,.18)') : (dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)')}`,
+        background: open ? (dark ? 'rgba(124,58,237,.06)' : 'rgba(124,58,237,.03)') : (dark ? 'rgba(34,31,44,.7)' : '#fff'),
         overflow: 'hidden',
         transition: 'border-color .25s, background .25s',
         marginBottom: 10,
@@ -403,7 +403,7 @@ function FaqItem({ q, a, dark, index }) {
           textAlign: 'left',
         }}
       >
-        <span style={{ fontWeight: 700, fontSize: '.9rem', color: dark ? '#E8D8FF' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif", lineHeight: 1.4 }}>
+        <span style={{ fontWeight: 700, fontSize: '.9rem', color: dark ? '#E9E3FA' : '#191720', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.4 }}>
           {q}
         </span>
         <motion.div
@@ -426,8 +426,8 @@ function FaqItem({ q, a, dark, index }) {
             <p style={{
               padding: '0 20px 18px',
               fontSize: '.86rem', lineHeight: 1.8,
-              color: dark ? '#B8A0D8' : '#5B4080',
-              fontFamily: "'Plus Jakarta Sans',sans-serif",
+              color: dark ? '#C9C4D6' : '#4A4658',
+              fontFamily: "'Satoshi',sans-serif",
             }}>
               {a}
             </p>
@@ -463,27 +463,27 @@ export function CareersPage({ dark }) {
     vacanciesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const bd = dark ? 'rgba(139,82,247,.13)' : 'rgba(91,29,232,.09)';
+  const bd = dark ? 'rgba(124,58,237,.13)' : 'rgba(124,58,237,.09)';
 
   return (
-    <div style={{ paddingTop: 64, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+    <div style={{ paddingTop: 64, fontFamily: "'Satoshi',sans-serif" }}>
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div style={{
-        background: 'linear-gradient(135deg,#0C0524,#2A0868,#1A0A48)',
+        background: 'linear-gradient(135deg,#0D0B12,#191720 45%,#1E0F45)',
         padding: 'clamp(60px,9vw,100px) clamp(16px,5%,60px) clamp(50px,7vw,80px)',
         position: 'relative', overflow: 'hidden',
       }}>
         {/* Grid overlay */}
         <div style={{
           position: 'absolute', inset: 0, opacity: .09,
-          backgroundImage: 'linear-gradient(rgba(139,82,247,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(139,82,247,.4) 1px,transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(124,58,237,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.4) 1px,transparent 1px)',
           backgroundSize: '56px 56px',
           pointerEvents: 'none',
         }} />
         {/* Orbs */}
-        <div className="og" style={{ position: 'absolute', top: '-30%', right: '8%', width: 'min(420px,50vw)', height: 'min(420px,50vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(91,29,232,.45),transparent 68%)', pointerEvents: 'none' }} />
-        <div className="og" style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: 'min(300px,40vw)', height: 'min(300px,40vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(168,85,247,.28),transparent 68%)', pointerEvents: 'none', animationDelay: '1.8s' }} />
+        <div className="og" style={{ position: 'absolute', top: '-30%', right: '8%', width: 'min(420px,50vw)', height: 'min(420px,50vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(124,58,237,.45),transparent 68%)', pointerEvents: 'none' }} />
+        <div className="og" style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: 'min(300px,40vw)', height: 'min(300px,40vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(124,58,237,.28),transparent 68%)', pointerEvents: 'none', animationDelay: '1.8s' }} />
 
         <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
           {/* Pill badge */}
@@ -491,7 +491,7 @@ export function CareersPage({ dark }) {
             initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 24, background: 'rgba(255,255,255,.09)', border: '1px solid rgba(255,255,255,.15)', borderRadius: 30, padding: '7px 18px' }}
           >
-            <div className="bk" style={{ width: 6, height: 6, borderRadius: '50%', background: '#60EFFF' }} />
+            <div className="bk" style={{ width: 6, height: 6, borderRadius: '50%', background: '#B69CFF' }} />
             <span style={{ fontSize: '.7rem', fontWeight: 700, color: 'rgba(255,255,255,.85)', letterSpacing: 2.5, textTransform: 'uppercase' }}>
               We're Hiring
             </span>
@@ -501,7 +501,7 @@ export function CareersPage({ dark }) {
           <motion.h1
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .18 }}
             className="hh"
-            style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(2.4rem,6vw,4.8rem)', color: 'white', letterSpacing: '-3px', lineHeight: 1.08, marginBottom: 18 }}
+            style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(2.4rem,6vw,4.8rem)', color: 'white', letterSpacing: '-3px', lineHeight: 1.08, marginBottom: 18 }}
           >
             Join Paralox Media
           </motion.h1>
@@ -519,15 +519,15 @@ export function CareersPage({ dark }) {
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 13 }}
           >
             <motion.button
-              whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(91,29,232,.55)' }}
+              whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(124,58,237,.55)' }}
               whileTap={{ scale: 0.96 }}
               onClick={scrollToVacancies}
               style={{
                 padding: '14px 30px', borderRadius: 50, border: 'none',
                 cursor: 'pointer', background: T.grad, color: '#fff',
-                fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.95rem',
+                fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.95rem',
                 display: 'flex', alignItems: 'center', gap: 8,
-                boxShadow: '0 7px 22px rgba(91,29,232,.4)',
+                boxShadow: '0 7px 22px rgba(124,58,237,.4)',
               }}
             >
               <Briefcase size={16} /> View Open Roles
@@ -541,7 +541,7 @@ export function CareersPage({ dark }) {
                 border: '1.5px solid rgba(255,255,255,.25)',
                 background: 'rgba(255,255,255,.08)', backdropFilter: 'blur(10px)',
                 cursor: 'pointer', color: '#fff',
-                fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.95rem',
+                fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.95rem',
                 display: 'flex', alignItems: 'center', gap: 8,
               }}
             >
@@ -561,8 +561,8 @@ export function CareersPage({ dark }) {
               { icon: <Star size={16}/>, val: 'Global', label: 'Client Base' },
             ].map(({ icon, val, label }) => (
               <div key={label} style={{ textAlign: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, color: '#60EFFF', marginBottom: 4 }}>{icon}</div>
-                <div style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: '#fff', lineHeight: 1 }}>{val}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, color: '#B69CFF', marginBottom: 4 }}>{icon}</div>
+                <div style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: '#fff', lineHeight: 1 }}>{val}</div>
                 <div style={{ fontSize: '.7rem', color: 'rgba(255,255,255,.4)', letterSpacing: 0.8, textTransform: 'uppercase', marginTop: 3 }}>{label}</div>
               </div>
             ))}
@@ -571,24 +571,24 @@ export function CareersPage({ dark }) {
       </div>
 
       {/* ── COMPANY INTRO ─────────────────────────────────────────────────── */}
-      <div style={{ background: dark ? '#080510' : '#F8F5FF', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)' }}>
+      <div style={{ background: dark ? '#191720' : '#F7F6FA', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
           <FadeUp>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 16, background: dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)', border: `1px solid ${dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.14)'}`, borderRadius: 30, padding: '6px 16px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 16, background: dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)', border: `1px solid ${dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.14)'}`, borderRadius: 30, padding: '6px 16px' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: T.p2 }} />
               <span style={{ fontSize: '.68rem', fontWeight: 700, color: T.p2, letterSpacing: 2, textTransform: 'uppercase' }}>About Paralox</span>
             </div>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.6rem)', color: dark ? '#F0E8FF' : '#1A0A2E', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 18 }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.6rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 18 }}>
               Where AI Meets{' '}
-              <span style={{ background: T.grad, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <span style={{ color: T.violet }}>
                 Creative Excellence
               </span>
             </h2>
           </FadeUp>
           <FadeUp delay={0.18}>
-            <p style={{ fontSize: 'clamp(.88rem,1.8vw,1rem)', lineHeight: 1.9, color: dark ? '#B8A0D8' : '#5B4080', maxWidth: 680, margin: '0 auto' }}>
+            <p style={{ fontSize: 'clamp(.88rem,1.8vw,1rem)', lineHeight: 1.9, color: dark ? '#C9C4D6' : '#4A4658', maxWidth: 680, margin: '0 auto' }}>
               Paralox Media is an AI-driven digital agency helping brands across the globe grow through strategic social media, performance marketing, web development, and AI-powered solutions. Our team is small but mighty and we're growing fast. If you're ambitious, creative, and excited by the future of digital, this is your place.
             </p>
           </FadeUp>
@@ -596,14 +596,14 @@ export function CareersPage({ dark }) {
       </div>
 
       {/* ── WHY JOIN ──────────────────────────────────────────────────────── */}
-      <div style={{ background: dark ? 'rgba(12,4,26,.9)' : '#fff', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)', borderTop: `1px solid ${dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.06)'}`, borderBottom: `1px solid ${dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.06)'}` }}>
+      <div style={{ background: dark ? 'rgba(34,31,44,.9)' : '#fff', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)', borderTop: `1px solid ${dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.06)'}`, borderBottom: `1px solid ${dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.06)'}` }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(96,239,255,.08)' : 'rgba(96,239,255,.12)', border: `1px solid ${dark ? 'rgba(96,239,255,.15)' : 'rgba(96,239,255,.25)'}`, borderRadius: 30, padding: '6px 16px' }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#60EFFF' }} />
-              <span style={{ fontSize: '.68rem', fontWeight: 700, color: dark ? '#60EFFF' : '#0891B2', letterSpacing: 2, textTransform: 'uppercase' }}>Why Join Us</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(182,156,255,.08)' : 'rgba(182,156,255,.12)', border: `1px solid ${dark ? 'rgba(182,156,255,.15)' : 'rgba(182,156,255,.25)'}`, borderRadius: 30, padding: '6px 16px' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#B69CFF' }} />
+              <span style={{ fontSize: '.68rem', fontWeight: 700, color: dark ? '#B69CFF' : '#3E2087', letterSpacing: 2, textTransform: 'uppercase' }}>Why Join Us</span>
             </div>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F0E8FF' : '#1A0A2E', letterSpacing: '-1.5px', lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.2 }}>
               Build Something That Matters
             </h2>
           </FadeUp>
@@ -615,8 +615,8 @@ export function CareersPage({ dark }) {
                   whileHover={{ y: -6, boxShadow: `0 20px 50px ${glow}` }}
                   style={{
                     padding: 'clamp(20px,3vw,28px)', borderRadius: 18,
-                    border: `1px solid ${dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.08)'}`,
-                    background: dark ? 'rgba(12,4,26,.85)' : '#F8F5FF',
+                    border: `1px solid ${dark ? 'rgba(124,58,237,.12)' : 'rgba(124,58,237,.08)'}`,
+                    background: dark ? 'rgba(34,31,44,.85)' : '#F7F6FA',
                     height: '100%',
                     transition: 'box-shadow .3s',
                   }}
@@ -631,10 +631,10 @@ export function CareersPage({ dark }) {
                   }}>
                     {icon}
                   </div>
-                  <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.05rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 10 }}>
+                  <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.05rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 10 }}>
                     {title}
                   </h3>
-                  <p style={{ fontSize: '.83rem', lineHeight: 1.75, color: dark ? '#9B8BC0' : '#7B6A9A' }}>
+                  <p style={{ fontSize: '.83rem', lineHeight: 1.75, color: dark ? '#A9A4B8' : '#6B6778' }}>
                     {desc}
                   </p>
                 </motion.div>
@@ -647,18 +647,18 @@ export function CareersPage({ dark }) {
       {/* ── VACANCIES ─────────────────────────────────────────────────────── */}
       <div
         ref={vacanciesRef}
-        style={{ background: dark ? '#080510' : '#F8F5FF', padding: 'clamp(52px,7vw,88px) clamp(16px,5%,60px)' }}
+        style={{ background: dark ? '#191720' : '#F7F6FA', padding: 'clamp(52px,7vw,88px) clamp(16px,5%,60px)' }}
       >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 44 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)', border: `1px solid ${dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.14)'}`, borderRadius: 30, padding: '6px 16px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)', border: `1px solid ${dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.14)'}`, borderRadius: 30, padding: '6px 16px' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: T.p2 }} />
               <span style={{ fontSize: '.68rem', fontWeight: 700, color: T.p2, letterSpacing: 2, textTransform: 'uppercase' }}>Open Positions</span>
             </div>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F0E8FF' : '#1A0A2E', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
               Current Vacancies
             </h2>
-            <p style={{ fontSize: '.9rem', color: dark ? '#9B8BC0' : '#7B6A9A', maxWidth: 480, margin: '0 auto' }}>
+            <p style={{ fontSize: '.9rem', color: dark ? '#A9A4B8' : '#6B6778', maxWidth: 480, margin: '0 auto' }}>
               {VACANCIES.length} open roles across creative and sales teams.
             </p>
           </FadeUp>
@@ -667,7 +667,7 @@ export function CareersPage({ dark }) {
           <FadeUp delay={0.08}>
             <div style={{ display: 'flex', gap: 12, marginBottom: 32, flexWrap: 'wrap', alignItems: 'center' }}>
               <div style={{ flex: 1, minWidth: 220, position: 'relative' }}>
-                <Search size={15} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: dark ? '#8870B8' : '#9B8BC0' }} />
+                <Search size={15} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: dark ? '#A9A4B8' : '#A9A4B8' }} />
                 <input
                   value={search}
                   onChange={e => setSearch(e.target.value)}
@@ -675,9 +675,9 @@ export function CareersPage({ dark }) {
                   style={{
                     width: '100%', padding: '11px 13px 11px 38px', borderRadius: 50,
                     border: `1.5px solid ${bd}`,
-                    background: dark ? 'rgba(12,4,26,.9)' : '#fff',
-                    color: dark ? '#F0E8FF' : '#1A0A2E',
-                    fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.87rem',
+                    background: dark ? 'rgba(34,31,44,.9)' : '#fff',
+                    color: dark ? '#F7F6FA' : '#191720',
+                    fontFamily: "'Satoshi',sans-serif", fontSize: '.87rem',
                     outline: 'none', boxSizing: 'border-box',
                   }}
                 />
@@ -691,10 +691,10 @@ export function CareersPage({ dark }) {
                     style={{
                       padding: '9px 18px', borderRadius: 50, border: 'none',
                       cursor: 'pointer',
-                      background: filter === cat ? T.grad : (dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)'),
-                      color: filter === cat ? '#fff' : (dark ? '#B8A0D8' : T.p1),
-                      fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.82rem',
-                      boxShadow: filter === cat ? '0 4px 14px rgba(91,29,232,.3)' : 'none',
+                      background: filter === cat ? T.grad : (dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)'),
+                      color: filter === cat ? '#fff' : (dark ? '#C9C4D6' : T.p1),
+                      fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.82rem',
+                      boxShadow: filter === cat ? '0 4px 14px rgba(124,58,237,.3)' : 'none',
                       transition: 'all .22s',
                     }}
                   >
@@ -722,11 +722,11 @@ export function CareersPage({ dark }) {
             ) : (
               <motion.div
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                style={{ textAlign: 'center', padding: '52px 0', color: dark ? '#6B5A88' : '#B8A0C8', fontFamily: "'Plus Jakarta Sans',sans-serif" }}
+                style={{ textAlign: 'center', padding: '52px 0', color: dark ? '#6B6778' : '#C9C4D6', fontFamily: "'Satoshi',sans-serif" }}
               >
                 <Search size={36} style={{ marginBottom: 12, opacity: 0.4 }} />
                 <p style={{ fontWeight: 600, fontSize: '.95rem' }}>No roles match your search.</p>
-                <button onClick={() => { setSearch(''); setFilter('All'); }} style={{ marginTop: 12, background: 'none', border: 'none', cursor: 'pointer', color: T.p2, fontWeight: 700, fontSize: '.85rem', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+                <button onClick={() => { setSearch(''); setFilter('All'); }} style={{ marginTop: 12, background: 'none', border: 'none', cursor: 'pointer', color: T.p2, fontWeight: 700, fontSize: '.85rem', fontFamily: "'Satoshi',sans-serif" }}>
                   Clear filters
                 </button>
               </motion.div>
@@ -736,27 +736,27 @@ export function CareersPage({ dark }) {
       </div>
 
       {/* ── APPLICATION CTA BANNER ────────────────────────────────────────── */}
-      <div style={{ background: 'linear-gradient(135deg,#0C0524,#1A0868,#2A0658)', padding: 'clamp(48px,7vw,72px) clamp(16px,5%,60px)', borderTop: '1px solid rgba(139,82,247,.12)', borderBottom: '1px solid rgba(139,82,247,.12)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: .07, backgroundImage: 'linear-gradient(rgba(139,82,247,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(139,82,247,.5) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '50%', right: '5%', transform: 'translateY(-50%)', width: 'min(280px,35vw)', height: 'min(280px,35vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(168,85,247,.3),transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ background: 'linear-gradient(135deg,#0D0B12,#191720 45%,#1E0F45)', padding: 'clamp(48px,7vw,72px) clamp(16px,5%,60px)', borderTop: '1px solid rgba(124,58,237,.12)', borderBottom: '1px solid rgba(124,58,237,.12)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: .07, backgroundImage: 'linear-gradient(rgba(124,58,237,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.5) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '50%', right: '5%', transform: 'translateY(-50%)', width: 'min(280px,35vw)', height: 'min(280px,35vw)', borderRadius: '50%', background: 'radial-gradient(circle,rgba(124,58,237,.3),transparent 65%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           <FadeUp>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
               Don't See Your Role?
             </h2>
             <p style={{ fontSize: 'clamp(.88rem,1.8vw,.98rem)', lineHeight: 1.8, color: 'rgba(255,255,255,.55)', maxWidth: 480, margin: '0 auto 30px' }}>
               We're always open to talented people. Send us an open application and tell us how you can contribute to Paralox Media.
             </p>
             <motion.button
-              whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(91,29,232,.55)' }}
+              whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(124,58,237,.55)' }}
               whileTap={{ scale: 0.96 }}
               onClick={() => setActiveVacancy({ id: 'open-application', title: 'Open Application', location: 'Remote / Colombo', type: 'Open' })}
               style={{
                 padding: '14px 32px', borderRadius: 50, border: 'none',
                 cursor: 'pointer', background: T.grad, color: '#fff',
-                fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.95rem',
+                fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.95rem',
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                boxShadow: '0 7px 22px rgba(91,29,232,.4)',
+                boxShadow: '0 7px 22px rgba(124,58,237,.4)',
               }}
             >
               Send Open Application <ArrowRight size={15} />
@@ -766,14 +766,14 @@ export function CareersPage({ dark }) {
       </div>
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <div style={{ background: dark ? '#080510' : '#F8F5FF', padding: 'clamp(52px,7vw,88px) clamp(16px,5%,60px)' }}>
+      <div style={{ background: dark ? '#191720' : '#F7F6FA', padding: 'clamp(52px,7vw,88px) clamp(16px,5%,60px)' }}>
         <div style={{ maxWidth: 820, margin: '0 auto' }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 44 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(96,239,255,.08)' : 'rgba(96,239,255,.12)', border: `1px solid ${dark ? 'rgba(96,239,255,.15)' : 'rgba(96,239,255,.25)'}`, borderRadius: 30, padding: '6px 16px' }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#60EFFF' }} />
-              <span style={{ fontSize: '.68rem', fontWeight: 700, color: dark ? '#60EFFF' : '#0891B2', letterSpacing: 2, textTransform: 'uppercase' }}>FAQs</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, marginBottom: 14, background: dark ? 'rgba(182,156,255,.08)' : 'rgba(182,156,255,.12)', border: `1px solid ${dark ? 'rgba(182,156,255,.15)' : 'rgba(182,156,255,.25)'}`, borderRadius: 30, padding: '6px 16px' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#B69CFF' }} />
+              <span style={{ fontSize: '.68rem', fontWeight: 700, color: dark ? '#B69CFF' : '#3E2087', letterSpacing: 2, textTransform: 'uppercase' }}>FAQs</span>
             </div>
-            <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F0E8FF' : '#1A0A2E', letterSpacing: '-1.5px', lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.5rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.2 }}>
               Candidate Questions
             </h2>
           </FadeUp>
@@ -787,19 +787,19 @@ export function CareersPage({ dark }) {
       </div>
 
       {/* ── FOOTER CTA ────────────────────────────────────────────────────── */}
-      <div style={{ background: dark ? 'rgba(12,4,26,.95)' : '#fff', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)', borderTop: `1px solid ${dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.08)'}` }}>
+      <div style={{ background: dark ? 'rgba(34,31,44,.95)' : '#fff', padding: 'clamp(52px,7vw,80px) clamp(16px,5%,60px)', borderTop: `1px solid ${dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.08)'}` }}>
         <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <FadeUp>
             <div style={{
-              background: 'linear-gradient(135deg,#0C0524,#2A0868,#1A0A48)',
+              background: 'linear-gradient(135deg,#0D0B12,#191720 45%,#1E0F45)',
               borderRadius: 24, padding: 'clamp(36px,5vw,56px) clamp(24px,5vw,52px)',
               textAlign: 'center', position: 'relative', overflow: 'hidden',
-              border: '1px solid rgba(139,82,247,.18)',
+              border: '1px solid rgba(124,58,237,.18)',
             }}>
-              <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'linear-gradient(rgba(139,82,247,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(139,82,247,.4) 1px,transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
-              <div className="og" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '70%', height: '200%', borderRadius: '50%', background: 'radial-gradient(ellipse,rgba(91,29,232,.3),transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: 0, opacity: .08, backgroundImage: 'linear-gradient(rgba(124,58,237,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.4) 1px,transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
+              <div className="og" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '70%', height: '200%', borderRadius: '50%', background: 'radial-gradient(ellipse,rgba(124,58,237,.3),transparent 65%)', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem,3.5vw,2.4rem)', color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
+                <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem,3.5vw,2.4rem)', color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
                   Ready to Build the Future?
                 </h2>
                 <p style={{ fontSize: 'clamp(.88rem,1.8vw,.98rem)', lineHeight: 1.8, color: 'rgba(255,255,255,.55)', maxWidth: 460, margin: '0 auto 30px' }}>
@@ -807,15 +807,15 @@ export function CareersPage({ dark }) {
                 </p>
                 <div className="hb" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 13 }}>
                   <motion.button
-                    whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(91,29,232,.6)' }}
+                    whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(124,58,237,.6)' }}
                     whileTap={{ scale: 0.96 }}
                     onClick={scrollToVacancies}
                     style={{
                       padding: '13px 28px', borderRadius: 50, border: 'none',
                       cursor: 'pointer', background: T.grad, color: '#fff',
-                      fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.92rem',
+                      fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.92rem',
                       display: 'flex', alignItems: 'center', gap: 7,
-                      boxShadow: '0 6px 20px rgba(91,29,232,.4)',
+                      boxShadow: '0 6px 20px rgba(124,58,237,.4)',
                     }}
                   >
                     <Briefcase size={15} /> Explore Roles
@@ -828,7 +828,7 @@ export function CareersPage({ dark }) {
                       border: '1.5px solid rgba(255,255,255,.22)',
                       background: 'rgba(255,255,255,.07)',
                       cursor: 'pointer', color: '#fff',
-                      fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.92rem',
+                      fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.92rem',
                       display: 'flex', alignItems: 'center', gap: 7,
                       textDecoration: 'none',
                     }}

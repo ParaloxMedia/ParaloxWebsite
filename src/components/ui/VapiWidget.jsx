@@ -51,10 +51,10 @@ export function VapiWidget({ dark }) {
   const pulse         = isActive && volume > 0.05;
 
   const bg = isActive
-    ? 'linear-gradient(135deg, #7B2FFF 0%, #4F0FCC 100%)'
+    ? 'linear-gradient(120deg,#3E2087,#7C3AED)'
     : dark
-      ? 'linear-gradient(135deg, #7B2FFF 0%, #4F0FCC 100%)'
-      : 'linear-gradient(135deg, #7B2FFF 0%, #4F0FCC 100%)';
+      ? 'linear-gradient(120deg,#3E2087,#7C3AED)'
+      : 'linear-gradient(120deg,#3E2087,#7C3AED)';
 
   return (
     <div style={{ position: 'fixed', bottom: 28, right: 28, zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
@@ -73,7 +73,7 @@ export function VapiWidget({ dark }) {
               borderRadius: 12,
               padding: '8px 14px',
               fontSize: 13,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Satoshi',sans-serif",
               fontWeight: 600,
               boxShadow: '0 4px 20px #ff000033',
               whiteSpace: 'nowrap',
@@ -90,15 +90,15 @@ export function VapiWidget({ dark }) {
             exit={{ opacity: 0, x: 10 }}
             transition={{ duration: 0.2 }}
             style={{
-              background: dark ? '#1E0A3C' : '#fff',
-              color: dark ? '#F0E8FF' : '#1A0A2E',
-              border: '1px solid #7B2FFF44',
+              background: dark ? '#1E0F45' : '#fff',
+              color: dark ? '#F7F6FA' : '#191720',
+              border: '1px solid #7C3AED44',
               borderRadius: 12,
               padding: '8px 14px',
               fontSize: 13,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Satoshi',sans-serif",
               fontWeight: 600,
-              boxShadow: '0 4px 20px #7B2FFF33',
+              boxShadow: '0 4px 20px #7C3AED33',
               whiteSpace: 'nowrap',
               pointerEvents: 'none',
             }}
@@ -113,15 +113,15 @@ export function VapiWidget({ dark }) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
             style={{
-              background: dark ? '#1E0A3C' : '#fff',
-              color: '#7B2FFF',
-              border: '1px solid #7B2FFF44',
+              background: dark ? '#1E0F45' : '#fff',
+              color: '#7C3AED',
+              border: '1px solid #7C3AED44',
               borderRadius: 12,
               padding: '8px 14px',
               fontSize: 13,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontFamily: "'Satoshi',sans-serif",
               fontWeight: 600,
-              boxShadow: '0 4px 20px #7B2FFF33',
+              boxShadow: '0 4px 20px #7C3AED33',
               display: 'flex',
               alignItems: 'center',
               gap: 8,
@@ -140,7 +140,7 @@ export function VapiWidget({ dark }) {
                     display: 'inline-block',
                     width: 3,
                     height: 14,
-                    background: '#7B2FFF',
+                    background: '#7C3AED',
                     borderRadius: 2,
                     transformOrigin: 'bottom',
                   }}
@@ -167,8 +167,8 @@ export function VapiWidget({ dark }) {
           border: 'none',
           cursor: isConnecting ? 'wait' : 'pointer',
           boxShadow: isActive
-            ? '0 0 0 0 #7B2FFF66, 0 8px 32px #7B2FFF66'
-            : '0 8px 32px #7B2FFF55',
+            ? '0 0 0 0 #7C3AED66, 0 8px 32px #7C3AED66'
+            : '0 8px 32px #7C3AED55',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -186,7 +186,7 @@ export function VapiWidget({ dark }) {
               position: 'absolute',
               inset: 0,
               borderRadius: '50%',
-              border: '2px solid #7B2FFF99',
+              border: '2px solid #7C3AED99',
             }}
           />
         )}

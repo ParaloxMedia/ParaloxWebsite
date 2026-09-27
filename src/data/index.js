@@ -1,11 +1,21 @@
 // ─── BRAND COLORS ────────────────────────────────────────────────────────────
+// Paralox Brand Standards 0.1. Purple gains strength through restraint:
+// ink and white carry the page, violet is the one controlled accent.
 export const T = {
-  p1: '#5B1DE8',
-  p2: '#8B52F7',
-  p3: '#A855F7',
-  cy: '#60EFFF',
-  pk: '#FF6BFF',
-  grad: 'linear-gradient(135deg,#5B1DE8,#8B52F7)',
+  ink:      '#191720', // hero backgrounds, type
+  deep:     '#3E2087', // premium backgrounds, brand blocks
+  violet:   '#7C3AED', // CTAs, highlights, AI accents
+  lavender: '#E9E3FA', // editorial backgrounds, UI states
+  silver:   '#A9A4B8', // metadata, captions, grid lines
+  grey:     '#6B6778', // secondary text on light
+  mono:     "'JetBrains Mono',monospace", // labels, numbers, metadata — never paragraphs
+  // Legacy keys kept so existing components resolve to on-brand values.
+  p1: '#7C3AED',
+  p2: '#7C3AED',
+  p3: '#B69CFF',
+  cy: '#B69CFF',
+  pk: '#B69CFF',
+  grad: 'linear-gradient(120deg,#3E2087,#7C3AED)', // the one official gradient
 };
 
 // ─── CURRENCY MAP ─────────────────────────────────────────────────────────────
@@ -49,8 +59,8 @@ export const TEAM_DATA = [
     tags: ['AI Strategy', 'Full-Stack Dev', 'Brand Strategy', 'Digital Marketing', 'Prompt Engineering',],
     link: 'https://abubakker98.github.io/Connect/',
     image: '/images/Abubakker.svg',
-    grad: 'linear-gradient(150deg,#5B1DE8 0%,#8B52F7 60%,#0D0522 100%)',
-    accentColor: '#8B52F7',
+    grad: 'linear-gradient(150deg,#7C3AED 0%,#3E2087 55%,#191720 100%)',
+    accentColor: '#7C3AED',
   },
   {
     initials: 'SW',
@@ -61,8 +71,8 @@ export const TEAM_DATA = [
     stats: null,
     link: null,
    image: '/images/Sanjeewa.svg',
-    grad: 'linear-gradient(150deg,#7C3AED 0%,#A855F7 60%,#0D0522 100%)',
-    accentColor: '#A855F7',
+    grad: 'linear-gradient(150deg,#7C3AED 0%,#3E2087 55%,#191720 100%)',
+    accentColor: '#B69CFF',
   },
 {
   initials: 'HR',
@@ -73,8 +83,8 @@ export const TEAM_DATA = [
   stats: null,
   link: null,
   image: '/images/Hafsa.svg',
-  grad: 'linear-gradient(150deg,#7C3AED 0%,#A855F7 60%,#0D0522 100%)',
-  accentColor: '#A855F7',
+  grad: 'linear-gradient(150deg,#7C3AED 0%,#3E2087 55%,#191720 100%)',
+  accentColor: '#B69CFF',
 },
 {
   initials: 'SH',
@@ -85,32 +95,27 @@ export const TEAM_DATA = [
   stats: null,
   link: null,
   image: '/images/Suhail.svg',
-  grad: 'linear-gradient(150deg,#7C3AED 0%,#A855F7 60%,#0D0522 100%)',
-  accentColor: '#A855F7',
+  grad: 'linear-gradient(150deg,#7C3AED 0%,#3E2087 55%,#191720 100%)',
+  accentColor: '#B69CFF',
 },
 ];
 
-// ─── BRANDS ───────────────────────────────────────────────────────────────────
-export const BRANDS = [
-  { n: 'WebXPay',        c: '#1A56DB' },
-  { n: 'RNB Tours',      c: '#16A34A' },
-  { n: 'ZEN',            c: '#7C3AED' },
-  { n: 'ALFA Global',    c: '#DC2626' },
-  { n: 'Sri Lanka Rugby',c: '#1D4ED8' },
-  { n: 'IDM',            c: '#0891B2' },
-  { n: 'La Maison',      c: '#B45309' },
-  { n: 'PNG Embroidery', c: '#DC2626' },
-  { n: 'Big Plate',      c: '#EA580C' },
-  { n: "Abid's",         c: '#DC2626' },
-  { n: 'Third Space',    c: '#1E40AF' },
-  { n: 'Ceylon Shisha',  c: '#7C3AED' },
-  { n: 'Keells',          c: '#E11D48' },
-  { n: 'Edinborough',      c: '#1E3A5F' },
-  { n: 'Maliban',        c: '#D97706' },
-  { n: 'Yevan Devid',          c: '#059669' },
-  { n: 'Ritsbury',       c: '#7C3AED' },
-  { n: 'Kreset',         c: '#0284C7' },
-   { n: 'Masterchef Sri Lanka',         c: '#0284C7' },
+// ─── CLIENTS ──────────────────────────────────────────────────────────────────
+// Logos live in /public/images/clients. Add a client by dropping in a PNG and
+// adding a row here.
+export const CLIENTS = [
+  { n: 'Elite Indian Restaurant', logo: '/images/clients/elite-indian.png' },
+  { n: 'Nissan',                  logo: '/images/clients/nissan.png' },
+  { n: 'Dr. Fixit',               logo: '/images/clients/dr-fixit.png' },
+  { n: 'Keells',                  logo: '/images/clients/keells.png' },
+  { n: 'Keells Krest',            logo: '/images/clients/keells-krest.png' },
+  { n: 'Commercial Bank',         logo: '/images/clients/commercial-bank.png' },
+  { n: 'MasterChef',              logo: '/images/clients/masterchef.png' },
+  { n: 'Edinborough',             logo: '/images/clients/edinborough.png' },
+  { n: 'Atlas',                   logo: '/images/clients/atlas.png' },
+  { n: 'Big Plate',               logo: '/images/clients/big-plate.png' },
+  { n: "Abid's Restaurant",       logo: '/images/clients/abids.png' },
+  { n: 'PNG Embroidery',          logo: '/images/clients/png-embroidery.png' },
 ];
 
 // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────
@@ -146,7 +151,7 @@ export const STARTUP_PACKAGES = [
 ];
 
 export const PREVIEW_PACKAGES = [
-  { n: 'Digital Core',   price: 104500, tag: 'SMM Only',     feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','FB & IG Management'],  c: '#0891B2', feat: false },
-  { n: 'Digital Core +', price: 126500, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],                   c: '#5B1DE8', feat: true  },
+  { n: 'Digital Core',   price: 104500, tag: 'SMM Only',     feats: ['10 HQ Static Posts','2 Promo Videos','Basic Captions & Hashtags','FB & IG Management'],  c: '#3E2087', feat: false },
+  { n: 'Digital Core +', price: 126500, tag: 'Most Popular', feats: ['10 HQ Posts','2 Promo Videos','Paid Ad Campaigns','SMM + Performance'],                   c: '#7C3AED', feat: true  },
   { n: 'Digital Apex +', price: 196900, tag: 'AI Powered',   feats: ['20 Platform Posts','6 Promo/UGC Videos','SEO Blog Content','Growth Planning'],            c: '#7C3AED', feat: false },
 ];

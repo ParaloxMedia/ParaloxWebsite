@@ -105,8 +105,8 @@ function FieldWrap({ label, error, required, children, dark }) {
     <div style={{ marginBottom: 14 }}>
       <label style={{
         display: 'block', fontSize: '.71rem', fontWeight: 700,
-        color: dark ? '#B8A0D8' : '#5B4080',
-        marginBottom: 5, fontFamily: "'Plus Jakarta Sans',sans-serif",
+        color: dark ? '#C9C4D6' : '#4A4658',
+        marginBottom: 5, fontFamily: "'Satoshi',sans-serif",
         letterSpacing: 0.3,
       }}>
         {label} {required && <span style={{ color: '#EF4444' }}>*</span>}
@@ -118,7 +118,7 @@ function FieldWrap({ label, error, required, children, dark }) {
             initial={{ opacity: 0, y: -4, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -4, height: 0 }}
-            style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 5, color: '#EF4444', fontSize: '.71rem', fontFamily: "'Plus Jakarta Sans',sans-serif" }}
+            style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 5, color: '#EF4444', fontSize: '.71rem', fontFamily: "'Satoshi',sans-serif" }}
           >
             <AlertCircle size={11} /> {error}
           </motion.div>
@@ -135,10 +135,10 @@ function Input({ name, value, onChange, placeholder, type = 'text', dark, error,
       placeholder={placeholder} type={type}
       style={{
         width: '100%', padding: '11px 13px', borderRadius: 11,
-        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
-        background: dark ? 'rgba(12,4,26,.85)' : '#F8F5FF',
-        color: dark ? '#F0E8FF' : '#1A0A2E',
-        fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.87rem',
+        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
+        background: dark ? 'rgba(34,31,44,.85)' : '#F7F6FA',
+        color: dark ? '#F7F6FA' : '#191720',
+        fontFamily: "'Satoshi',sans-serif", fontSize: '.87rem',
         outline: 'none', boxSizing: 'border-box',
         transition: 'border-color .2s, box-shadow .2s',
       }}
@@ -153,10 +153,10 @@ function Select({ name, value, onChange, children, dark, error }) {
       name={name} value={value} onChange={onChange}
       style={{
         width: '100%', padding: '11px 13px', borderRadius: 11,
-        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
-        background: dark ? 'rgba(12,4,26,.85)' : '#F8F5FF',
-        color: dark ? '#F0E8FF' : '#1A0A2E',
-        fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.87rem',
+        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
+        background: dark ? 'rgba(34,31,44,.85)' : '#F7F6FA',
+        color: dark ? '#F7F6FA' : '#191720',
+        fontFamily: "'Satoshi',sans-serif", fontSize: '.87rem',
         outline: 'none', cursor: 'pointer', boxSizing: 'border-box',
         transition: 'border-color .2s',
       }}
@@ -173,10 +173,10 @@ function Textarea({ name, value, onChange, placeholder, rows = 4, dark, error })
       placeholder={placeholder} rows={rows}
       style={{
         width: '100%', padding: '11px 13px', borderRadius: 11,
-        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
-        background: dark ? 'rgba(12,4,26,.85)' : '#F8F5FF',
-        color: dark ? '#F0E8FF' : '#1A0A2E',
-        fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '.87rem',
+        border: `1.5px solid ${error ? '#EF4444' : dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
+        background: dark ? 'rgba(34,31,44,.85)' : '#F7F6FA',
+        color: dark ? '#F7F6FA' : '#191720',
+        fontFamily: "'Satoshi',sans-serif", fontSize: '.87rem',
         outline: 'none', boxSizing: 'border-box', resize: 'vertical',
         transition: 'border-color .2s',
       }}
@@ -192,28 +192,28 @@ function FileUpload({ label, name, accept, dark, error, value, onChange, hint })
       style={{
         display: 'flex', alignItems: 'center', gap: 12,
         padding: '14px 16px', borderRadius: 12, cursor: 'pointer',
-        border: `2px dashed ${error ? '#EF4444' : value ? T.p2 : dark ? 'rgba(139,82,247,.25)' : 'rgba(91,29,232,.18)'}`,
+        border: `2px dashed ${error ? '#EF4444' : value ? T.p2 : dark ? 'rgba(124,58,237,.25)' : 'rgba(124,58,237,.18)'}`,
         background: value
-          ? (dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.04)')
-          : (dark ? 'rgba(139,82,247,.04)' : 'rgba(91,29,232,.02)'),
+          ? (dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.04)')
+          : (dark ? 'rgba(124,58,237,.04)' : 'rgba(124,58,237,.02)'),
         transition: 'border-color .2s, background .2s',
       }}
       onMouseOver={e => { if (!value) e.currentTarget.style.borderColor = T.p2; }}
-      onMouseOut={e  => { if (!value) e.currentTarget.style.borderColor = error ? '#EF4444' : dark ? 'rgba(139,82,247,.25)' : 'rgba(91,29,232,.18)'; }}
+      onMouseOut={e  => { if (!value) e.currentTarget.style.borderColor = error ? '#EF4444' : dark ? 'rgba(124,58,237,.25)' : 'rgba(124,58,237,.18)'; }}
     >
       <div style={{
         width: 38, height: 38, borderRadius: 10, flexShrink: 0,
-        background: value ? T.grad : (dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.08)'),
+        background: value ? T.grad : (dark ? 'rgba(124,58,237,.12)' : 'rgba(124,58,237,.08)'),
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: value ? '#fff' : T.p2,
       }}>
         {value ? <FileText size={17} /> : <Upload size={17} />}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontWeight: 600, fontSize: '.84rem', color: dark ? '#E8D8FF' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: 2 }}>
+        <div style={{ fontWeight: 600, fontSize: '.84rem', color: dark ? '#E9E3FA' : '#191720', fontFamily: "'Satoshi',sans-serif", marginBottom: 2 }}>
           {value ? value.name : label}
         </div>
-        <div style={{ fontSize: '.7rem', color: dark ? '#8870B8' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+        <div style={{ fontSize: '.7rem', color: dark ? '#A9A4B8' : '#A9A4B8', fontFamily: "'Satoshi',sans-serif" }}>
           {value ? `${fileSizeMB(value)} MB` : hint}
         </div>
       </div>
@@ -244,21 +244,21 @@ function RadioGroup({ name, value, onChange, options, dark }) {
           style={{
             display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
             padding: '10px 16px', borderRadius: 10, flex: 1, justifyContent: 'center',
-            border: `1.5px solid ${value === opt.value ? T.p2 : dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
-            background: value === opt.value ? (dark ? 'rgba(139,82,247,.12)' : 'rgba(91,29,232,.06)') : 'transparent',
+            border: `1.5px solid ${value === opt.value ? T.p2 : dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
+            background: value === opt.value ? (dark ? 'rgba(124,58,237,.12)' : 'rgba(124,58,237,.06)') : 'transparent',
             transition: 'all .2s',
           }}
         >
           <input type="radio" name={name} value={opt.value} checked={value === opt.value} onChange={() => onChange(opt.value)} style={{ display: 'none' }} />
           <div style={{
-            width: 16, height: 16, borderRadius: '50%', border: `2px solid ${value === opt.value ? T.p1 : dark ? 'rgba(139,82,247,.35)' : 'rgba(91,29,232,.25)'}`,
+            width: 16, height: 16, borderRadius: '50%', border: `2px solid ${value === opt.value ? T.p1 : dark ? 'rgba(124,58,237,.35)' : 'rgba(124,58,237,.25)'}`,
             background: value === opt.value ? T.p1 : 'transparent',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'all .2s', flexShrink: 0,
           }}>
             {value === opt.value && <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#fff' }} />}
           </div>
-          <span style={{ fontWeight: 600, fontSize: '.84rem', color: value === opt.value ? (dark ? '#E8D8FF' : T.p1) : (dark ? '#B8A0D8' : '#5B4080'), fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+          <span style={{ fontWeight: 600, fontSize: '.84rem', color: value === opt.value ? (dark ? '#E9E3FA' : T.p1) : (dark ? '#C9C4D6' : '#4A4658'), fontFamily: "'Satoshi',sans-serif" }}>
             {opt.label}
           </span>
         </label>
@@ -272,8 +272,8 @@ function RadioGroup({ name, value, onChange, options, dark }) {
 function Step1({ form, setField, errors, dark }) {
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Basic Information</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Tell us a bit about yourself.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Basic Information</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 22, fontFamily: "'Satoshi',sans-serif" }}>Tell us a bit about yourself.</p>
 
       <FieldWrap label="Full Name" required error={errors.fullName} dark={dark}>
         <Input name="fullName" value={form.fullName} onChange={e => setField('fullName', e.target.value)} placeholder="Your full name" dark={dark} error={errors.fullName} />
@@ -300,8 +300,8 @@ function Step1({ form, setField, errors, dark }) {
 function Step2({ form, setField, errors, dark }) {
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Job Details</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Share your professional background.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Job Details</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 22, fontFamily: "'Satoshi',sans-serif" }}>Share your professional background.</p>
 
       <FieldWrap label="Position Applying For" required dark={dark}>
         <Input name="position" value={form.position} onChange={e => setField('position', e.target.value)} dark={dark} />
@@ -334,8 +334,8 @@ function Step2({ form, setField, errors, dark }) {
 function Step3({ form, setField, errors, dark, isSalesRole }) {
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Portfolio & Documents</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Share your work and upload your CV.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Portfolio & Documents</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 22, fontFamily: "'Satoshi',sans-serif" }}>Share your work and upload your CV.</p>
 
       <FieldWrap label="Portfolio Link" required={!isSalesRole} error={errors.portfolioLink} dark={dark}>
         <Input name="portfolioLink" type="url" value={form.portfolioLink} onChange={e => setField('portfolioLink', e.target.value)} placeholder="https://yourportfolio.com" dark={dark} error={errors.portfolioLink} />
@@ -374,8 +374,8 @@ function Step3({ form, setField, errors, dark, isSalesRole }) {
 function Step4({ form, setField, errors, dark }) {
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>How Did You Find Us?</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Help us understand where applicants come from.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>How Did You Find Us?</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 22, fontFamily: "'Satoshi',sans-serif" }}>Help us understand where applicants come from.</p>
 
       <FieldWrap label="Where did you find this vacancy?" required error={errors.source} dark={dark}>
         <Select name="source" value={form.source} onChange={e => setField('source', e.target.value)} dark={dark} error={errors.source}>
@@ -398,11 +398,11 @@ function Step4({ form, setField, errors, dark }) {
         )}
       </AnimatePresence>
 
-      <div style={{ marginTop: 24, padding: '18px 20px', borderRadius: 14, background: dark ? 'rgba(96,239,255,.05)' : 'rgba(96,239,255,.08)', border: `1px solid ${dark ? 'rgba(96,239,255,.12)' : 'rgba(96,239,255,.2)'}` }}>
-        <div style={{ fontWeight: 700, fontSize: '.83rem', color: dark ? '#60EFFF' : '#0891B2', marginBottom: 6, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+      <div style={{ marginTop: 24, padding: '18px 20px', borderRadius: 14, background: dark ? 'rgba(182,156,255,.05)' : 'rgba(182,156,255,.08)', border: `1px solid ${dark ? 'rgba(182,156,255,.12)' : 'rgba(182,156,255,.2)'}` }}>
+        <div style={{ fontWeight: 700, fontSize: '.83rem', color: dark ? '#B69CFF' : '#3E2087', marginBottom: 6, fontFamily: "'Satoshi',sans-serif" }}>
           Almost there!
         </div>
-        <p style={{ fontSize: '.79rem', lineHeight: 1.7, color: dark ? '#B8A0D8' : '#5B4080', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+        <p style={{ fontSize: '.79rem', lineHeight: 1.7, color: dark ? '#C9C4D6' : '#4A4658', fontFamily: "'Satoshi',sans-serif" }}>
           Just one more step — a few short screening questions to help us understand you better. Take your time and be yourself.
         </p>
       </div>
@@ -414,8 +414,8 @@ function Step5({ form, setField, errors, dark }) {
   const sectionStyle = { marginBottom: 20 };
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Screening Questions</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 22, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Answer honestly — we value authenticity over perfection.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Screening Questions</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 22, fontFamily: "'Satoshi',sans-serif" }}>Answer honestly — we value authenticity over perfection.</p>
 
       <div style={sectionStyle}>
         <FieldWrap label="Why do you want to join Paralox Media?" required error={errors.whyJoin} dark={dark}>
@@ -458,19 +458,19 @@ function Step5({ form, setField, errors, dark }) {
 
 function Step6({ form, setField, errors, dark }) {
   const row = (label, value) => (
-    <div style={{ display: 'flex', gap: 12, padding: '8px 0', borderBottom: `1px solid ${dark ? 'rgba(139,82,247,.08)' : 'rgba(91,29,232,.07)'}` }}>
-      <span style={{ fontSize: '.74rem', color: dark ? '#8870B8' : '#9B8BC0', fontFamily: "'Plus Jakarta Sans',sans-serif", minWidth: 120, flexShrink: 0 }}>{label}</span>
-      <span style={{ fontSize: '.78rem', fontWeight: 600, color: dark ? '#E0D0F8' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif", wordBreak: 'break-word' }}>{value || '—'}</span>
+    <div style={{ display: 'flex', gap: 12, padding: '8px 0', borderBottom: `1px solid ${dark ? 'rgba(124,58,237,.08)' : 'rgba(124,58,237,.07)'}` }}>
+      <span style={{ fontSize: '.74rem', color: dark ? '#A9A4B8' : '#A9A4B8', fontFamily: "'Satoshi',sans-serif", minWidth: 120, flexShrink: 0 }}>{label}</span>
+      <span style={{ fontSize: '.78rem', fontWeight: 600, color: dark ? '#E0D0F8' : '#191720', fontFamily: "'Satoshi',sans-serif", wordBreak: 'break-word' }}>{value || '—'}</span>
     </div>
   );
 
   return (
     <div>
-      <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 4 }}>Review & Submit</h3>
-      <p style={{ fontSize: '.82rem', color: dark ? '#9B8BC0' : '#7B6A9A', marginBottom: 18, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Double-check your details before submitting.</p>
+      <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.2rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 4 }}>Review & Submit</h3>
+      <p style={{ fontSize: '.82rem', color: dark ? '#A9A4B8' : '#6B6778', marginBottom: 18, fontFamily: "'Satoshi',sans-serif" }}>Double-check your details before submitting.</p>
 
-      <div style={{ borderRadius: 14, border: `1px solid ${dark ? 'rgba(139,82,247,.15)' : 'rgba(91,29,232,.1)'}`, overflow: 'hidden', marginBottom: 22 }}>
-        <div style={{ padding: '10px 16px', background: T.grad, fontWeight: 700, fontSize: '.8rem', color: '#fff', fontFamily: "'Plus Jakarta Sans',sans-serif", letterSpacing: 0.5 }}>
+      <div style={{ borderRadius: 14, border: `1px solid ${dark ? 'rgba(124,58,237,.15)' : 'rgba(124,58,237,.1)'}`, overflow: 'hidden', marginBottom: 22 }}>
+        <div style={{ padding: '10px 16px', background: T.grad, fontWeight: 700, fontSize: '.8rem', color: '#fff', fontFamily: "'Satoshi',sans-serif", letterSpacing: 0.5 }}>
           Application Summary
         </div>
         <div style={{ padding: '6px 16px 10px' }}>
@@ -501,7 +501,7 @@ function Step6({ form, setField, errors, dark }) {
                 onClick={() => setField(field, !form[field])}
                 style={{
                   width: 20, height: 20, borderRadius: 6, flexShrink: 0, marginTop: 1,
-                  border: `2px solid ${err ? '#EF4444' : form[field] ? T.p1 : dark ? 'rgba(139,82,247,.35)' : 'rgba(91,29,232,.25)'}`,
+                  border: `2px solid ${err ? '#EF4444' : form[field] ? T.p1 : dark ? 'rgba(124,58,237,.35)' : 'rgba(124,58,237,.25)'}`,
                   background: form[field] ? T.p1 : 'transparent',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   transition: 'all .2s', cursor: 'pointer',
@@ -509,12 +509,12 @@ function Step6({ form, setField, errors, dark }) {
               >
                 {form[field] && <CheckCircle2 size={11} color="#fff" />}
               </div>
-              <span style={{ fontSize: '.82rem', lineHeight: 1.6, color: dark ? '#C8B8E8' : '#4B3275', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              <span style={{ fontSize: '.82rem', lineHeight: 1.6, color: dark ? '#C9C4D6' : '#4A4658', fontFamily: "'Satoshi',sans-serif" }}>
                 {text}
               </span>
             </label>
             {err && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 5, color: '#EF4444', fontSize: '.71rem', fontFamily: "'Plus Jakarta Sans',sans-serif", paddingLeft: 31 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 5, color: '#EF4444', fontSize: '.71rem', fontFamily: "'Satoshi',sans-serif", paddingLeft: 31 }}>
                 <AlertCircle size={11} /> {err}
               </div>
             )}
@@ -666,29 +666,29 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
           onClick={e => e.stopPropagation()}
           style={{
             background: dark ? '#0D0520' : '#fff',
-            border: `1px solid ${dark ? 'rgba(139,82,247,.22)' : 'rgba(91,29,232,.13)'}`,
+            border: `1px solid ${dark ? 'rgba(124,58,237,.22)' : 'rgba(124,58,237,.13)'}`,
             borderRadius: 24,
             width: '100%', maxWidth: 660,
             maxHeight: '92vh',
             display: 'flex', flexDirection: 'column',
             boxShadow: '0 40px 100px rgba(0,0,0,.55)',
-            fontFamily: "'Plus Jakarta Sans',sans-serif",
+            fontFamily: "'Satoshi',sans-serif",
             overflow: 'hidden',
           }}
         >
           {/* ── Header ── */}
           <div style={{
             padding: '20px 24px 0',
-            borderBottom: `1px solid ${dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.08)'}`,
-            background: dark ? 'rgba(139,82,247,.04)' : 'rgba(91,29,232,.02)',
+            borderBottom: `1px solid ${dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.08)'}`,
+            background: dark ? 'rgba(124,58,237,.04)' : 'rgba(124,58,237,.02)',
             flexShrink: 0,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <div>
-                <h2 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.15rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 2 }}>
+                <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.15rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 2 }}>
                   Apply — {vacancy?.title}
                 </h2>
-                <p style={{ fontSize: '.73rem', color: dark ? '#8870B8' : '#9B8BC0' }}>
+                <p style={{ fontSize: '.73rem', color: dark ? '#A9A4B8' : '#A9A4B8' }}>
                   Paralox Media · {vacancy?.location}
                 </p>
               </div>
@@ -698,10 +698,10 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                 onClick={onClose}
                 style={{
                   width: 34, height: 34, borderRadius: 10,
-                  background: dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.07)',
-                  border: `1px solid ${dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.12)'}`,
+                  background: dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.07)',
+                  border: `1px solid ${dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.12)'}`,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: dark ? '#B8A0D8' : T.p1,
+                  color: dark ? '#C9C4D6' : T.p1,
                 }}
               >
                 <X size={15} />
@@ -712,7 +712,7 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
             {!submitted && (
               <div style={{ marginBottom: 20 }}>
                 {/* Progress bar */}
-                <div style={{ height: 3, borderRadius: 4, background: dark ? 'rgba(139,82,247,.15)' : 'rgba(91,29,232,.1)', marginBottom: 12, overflow: 'hidden' }}>
+                <div style={{ height: 3, borderRadius: 4, background: dark ? 'rgba(124,58,237,.15)' : 'rgba(124,58,237,.1)', marginBottom: 12, overflow: 'hidden' }}>
                   <motion.div
                     animate={{ width: `${((step - 1) / (STEPS.length - 1)) * 100}%` }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -732,8 +732,8 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                         style={{
                           display: 'flex', alignItems: 'center', gap: 5,
                           padding: '5px 10px', borderRadius: 20, flexShrink: 0,
-                          background: active ? T.grad : done ? (dark ? 'rgba(139,82,247,.2)' : 'rgba(91,29,232,.1)') : 'transparent',
-                          border: `1px solid ${active ? 'transparent' : done ? (dark ? 'rgba(139,82,247,.3)' : 'rgba(91,29,232,.2)') : (dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.08)')}`,
+                          background: active ? T.grad : done ? (dark ? 'rgba(124,58,237,.2)' : 'rgba(124,58,237,.1)') : 'transparent',
+                          border: `1px solid ${active ? 'transparent' : done ? (dark ? 'rgba(124,58,237,.3)' : 'rgba(124,58,237,.2)') : (dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.08)')}`,
                           cursor: done ? 'pointer' : 'default',
                           transition: 'all .25s',
                         }}
@@ -741,7 +741,7 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                         <span style={{ color: active ? '#fff' : done ? T.p2 : dark ? 'rgba(255,255,255,.3)' : 'rgba(0,0,0,.25)', display: 'flex', alignItems: 'center' }}>
                           {done ? <CheckCircle2 size={12} /> : s.icon}
                         </span>
-                        <span style={{ fontSize: '.68rem', fontWeight: 700, color: active ? '#fff' : done ? (dark ? '#C8A8F8' : T.p1) : (dark ? 'rgba(255,255,255,.28)' : 'rgba(0,0,0,.28)'), whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '.68rem', fontWeight: 700, color: active ? '#fff' : done ? (dark ? '#B69CFF' : T.p1) : (dark ? 'rgba(255,255,255,.28)' : 'rgba(0,0,0,.28)'), whiteSpace: 'nowrap' }}>
                           {s.label}
                         </span>
                       </motion.div>
@@ -780,10 +780,10 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                   >
                     <CheckCircle2 size={38} color="#fff" />
                   </motion.div>
-                  <h3 style={{ fontFamily: "'Outfit',sans-serif", fontWeight: 800, fontSize: '1.5rem', color: dark ? '#F0E8FF' : '#1A0A2E', marginBottom: 10 }}>
+                  <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.5rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 10 }}>
                     Application Submitted!
                   </h3>
-                  <p style={{ fontSize: '.9rem', lineHeight: 1.8, color: dark ? '#B8A0D8' : '#5B4080', maxWidth: 400, margin: '0 auto 24px' }}>
+                  <p style={{ fontSize: '.9rem', lineHeight: 1.8, color: dark ? '#C9C4D6' : '#4A4658', maxWidth: 400, margin: '0 auto 24px' }}>
                     Thank you, <strong>{form.fullName}</strong>! Your application for <strong>{form.position}</strong> has been received. Our team will review it and get back to you within 3–5 business days.
                   </p>
                   <motion.button
@@ -793,8 +793,8 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                     style={{
                       padding: '12px 32px', borderRadius: 50, border: 'none',
                       background: T.grad, color: '#fff', cursor: 'pointer',
-                      fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.9rem',
-                      boxShadow: '0 6px 20px rgba(91,29,232,.35)',
+                      fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.9rem',
+                      boxShadow: '0 6px 20px rgba(124,58,237,.35)',
                     }}
                   >
                     Close
@@ -818,19 +818,19 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
           {!submitted && (
             <div style={{
               padding: '16px 24px',
-              borderTop: `1px solid ${dark ? 'rgba(139,82,247,.1)' : 'rgba(91,29,232,.08)'}`,
-              background: dark ? 'rgba(139,82,247,.03)' : 'rgba(91,29,232,.02)',
+              borderTop: `1px solid ${dark ? 'rgba(124,58,237,.1)' : 'rgba(124,58,237,.08)'}`,
+              background: dark ? 'rgba(124,58,237,.03)' : 'rgba(124,58,237,.02)',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               gap: 12, flexShrink: 0,
             }}>
-              <div style={{ fontSize: '.72rem', color: dark ? '#6B5A88' : '#B8A0C8', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
+              <div style={{ fontSize: '.72rem', color: dark ? '#6B6778' : '#C9C4D6', fontFamily: "'Satoshi',sans-serif" }}>
                 Step {step} of {STEPS.length}
               </div>
 
               <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                 {submitError && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    style={{ fontSize: '.75rem', color: '#EF4444', fontFamily: "'Plus Jakarta Sans',sans-serif", display: 'flex', alignItems: 'center', gap: 5, maxWidth: 240 }}>
+                    style={{ fontSize: '.75rem', color: '#EF4444', fontFamily: "'Satoshi',sans-serif", display: 'flex', alignItems: 'center', gap: 5, maxWidth: 240 }}>
                     <AlertCircle size={12} /> {submitError}
                   </motion.div>
                 )}
@@ -842,10 +842,10 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                     onClick={back}
                     style={{
                       padding: '10px 18px', borderRadius: 50,
-                      border: `1.5px solid ${dark ? 'rgba(139,82,247,.25)' : 'rgba(91,29,232,.18)'}`,
+                      border: `1.5px solid ${dark ? 'rgba(124,58,237,.25)' : 'rgba(124,58,237,.18)'}`,
                       background: 'transparent', cursor: 'pointer',
-                      fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.85rem',
-                      color: dark ? '#B8A0D8' : T.p1,
+                      fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.85rem',
+                      color: dark ? '#C9C4D6' : T.p1,
                       display: 'flex', alignItems: 'center', gap: 5,
                     }}
                   >
@@ -854,18 +854,18 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                 )}
 
                 <motion.button
-                  whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(91,29,232,.42)' }}
+                  whileHover={{ y: -2, boxShadow: '0 10px 28px rgba(124,58,237,.42)' }}
                   whileTap={{ scale: 0.97 }}
                   onClick={step === STEPS.length ? submit : next}
                   disabled={loading}
                   style={{
                     padding: '10px 22px', borderRadius: 50, border: 'none',
-                    background: loading ? 'rgba(91,29,232,.5)' : T.grad,
+                    background: loading ? 'rgba(124,58,237,.5)' : T.grad,
                     cursor: loading ? 'not-allowed' : 'pointer',
-                    fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: '.85rem',
+                    fontFamily: "'Satoshi',sans-serif", fontWeight: 700, fontSize: '.85rem',
                     color: '#fff',
                     display: 'flex', alignItems: 'center', gap: 6,
-                    boxShadow: '0 5px 18px rgba(91,29,232,.32)',
+                    boxShadow: '0 5px 18px rgba(124,58,237,.32)',
                     opacity: loading ? 0.75 : 1,
                   }}
                 >

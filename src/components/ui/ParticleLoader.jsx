@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react';
 
+// Brand palette only: Electric Violet, light violet, white.
 const COLORS = [
-  { r: 139, g: 82,  b: 247 },
-  { r: 96,  g: 239, b: 255 },
-  { r: 255, g: 107, b: 255 },
-  { r: 168, g: 85,  b: 247 },
+  { r: 124, g: 58,  b: 237 },
+  { r: 182, g: 156, b: 255 },
   { r: 255, g: 255, b: 255 },
 ];
 const WORDS = ['PARALOX', 'MEDIA', 'AI'];
@@ -49,7 +48,7 @@ export function ParticleLoader({ onDone }) {
 
       // Font size: fit word across 70% of width, cap at 180px
       const fs = Math.min(Math.floor((W * 0.70) / (word.length * 0.55)), 180);
-      oc.font         = `900 ${fs}px Arial`;
+      oc.font         = `900 ${fs}px Satoshi, Arial, sans-serif`;
       oc.textAlign    = 'center';
       oc.textBaseline = 'middle';
       oc.fillStyle    = '#ffffff';
@@ -154,7 +153,7 @@ export function ParticleLoader({ onDone }) {
     let raf;
     function loop() {
       // dark trail
-      ctx.fillStyle = 'rgba(6,3,18,0.15)';
+      ctx.fillStyle = 'rgba(13,11,18,0.15)';
       ctx.fillRect(0, 0, W, H);
 
       for (let i = particles.length - 1; i >= 0; i--) {
@@ -190,7 +189,7 @@ export function ParticleLoader({ onDone }) {
         zIndex: 9999,
         // deep purple animated gradient background
         background:
-          'linear-gradient(-45deg,#060318,#140830,#2A0864,#060318,#180040,#3808A8,#060118)',
+          'linear-gradient(-45deg,#0D0B12,#191720,#1E0F45,#0D0B12,#191720,#3E2087,#0D0B12)',
         backgroundSize: '400% 400%',
         animation: 'pl-grad 8s ease infinite',
         overflow: 'hidden',
@@ -204,7 +203,7 @@ export function ParticleLoader({ onDone }) {
           width: 'clamp(180px,36vw,440px)',
           height: 'clamp(180px,36vw,440px)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle,rgba(91,29,232,.45),transparent 68%)',
+          background: 'radial-gradient(circle,rgba(124,58,237,.45),transparent 68%)',
           pointerEvents: 'none',
         }}
       />
@@ -216,7 +215,7 @@ export function ParticleLoader({ onDone }) {
           width: 'clamp(140px,28vw,340px)',
           height: 'clamp(140px,28vw,340px)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle,rgba(168,85,247,.32),transparent 68%)',
+          background: 'radial-gradient(circle,rgba(124,58,237,.32),transparent 68%)',
           pointerEvents: 'none',
         }}
       />

@@ -1,27 +1,28 @@
 import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
-import { BRANDS } from '../../data';
+import { CLIENTS } from '../../data';
 
+// Two opposing marquees of client logos. Tiles are square because most
+// supplied logos are square artwork; `contain` keeps the rest uncropped.
 export function BrandSlider({ dark }) {
-  const bg = dark ? 'rgba(22,8,52,.8)' : '#fff';
-  const bd = dark ? 'rgba(139,82,247,.17)' : 'rgba(91,29,232,.09)';
-  const d  = [...BRANDS, ...BRANDS];
+  const bd = dark ? 'rgba(255,255,255,.08)' : '#E6E4EC';
+  const d  = [...CLIENTS, ...CLIENTS];
 
-  const Item = ({ b, i }) => (
-    <motion.div key={i} whileHover={{ scale: 1.05 }}
-      style={{ padding: '10px 18px', borderRadius: 50, background: bg, border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap' }}>
-      <Briefcase size={12} color={b.c} />
-      <span style={{ fontSize: '.79rem', fontWeight: 700, color: dark ? '#C4B0E8' : '#1A0A2E', fontFamily: "'Plus Jakarta Sans',sans-serif" }}>{b.n}</span>
+  const Item = ({ c }) => (
+    <motion.div whileHover={{ y: -3 }}
+      title={c.n}
+      style={{ width: 104, height: 104, flexShrink: 0, borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <img src={c.logo} alt={c.n} loading="lazy" draggable={false}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
     </motion.div>
   );
 
   return (
     <div style={{ overflow: 'hidden', padding: '6px 0' }}>
-      <div className="sl" style={{ display: 'flex', gap: 11, width: 'max-content', marginBottom: 11 }}>
-        {d.map((b, i) => <Item key={`a${i}`} b={b} i={i} />)}
+      <div className="sl" style={{ display: 'flex', gap: 14, width: 'max-content', marginBottom: 14 }}>
+        {d.map((c, i) => <Item key={`a${i}`} c={c} />)}
       </div>
-      <div className="sr" style={{ display: 'flex', gap: 11, width: 'max-content' }}>
-        {[...d].reverse().map((b, i) => <Item key={`b${i}`} b={b} i={i} />)}
+      <div className="sr" style={{ display: 'flex', gap: 14, width: 'max-content' }}>
+        {[...d].reverse().map((c, i) => <Item key={`b${i}`} c={c} />)}
       </div>
     </div>
   );
