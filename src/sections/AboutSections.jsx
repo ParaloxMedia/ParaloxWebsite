@@ -11,8 +11,8 @@ export function HumanMachine() {
           <h2 className="d-xl">Human creativity <span className="x">×</span> machine intelligence<span className="dot">.</span></h2>
           <p className="lede">Paralox Media brings together intelligent technology, creative production and growth expertise to help ambitious businesses build their future.</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contact">Work with us <span className="arr">→</span></a>
-            <a className="link" href="#services-home">Our services <span className="arr">→</span></a>
+            <a className="btn btn-primary" href="/contact">Work with us <span className="arr">→</span></a>
+            <a className="link" href="/services">Our services <span className="arr">→</span></a>
           </div>
         </div>
         <div className="ab-panel" aria-hidden="true">

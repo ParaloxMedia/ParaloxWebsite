@@ -108,7 +108,7 @@ export default function Article({ post }) {
           : <div className="cs-hero-bg brand"><div className="gridlines" /></div>}
         {!hero && post.logo && <div className="cs-hero-logo"><img src={post.logo.src} alt={post.logo.alt} /></div>}
         <div className="cs-hero-shade" />
-        <a className="cs-back mono" href="#pulse">
+        <a className="cs-back mono" href="/pulse">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 16l-4-4m0 0l4-4m-4 4h18" /></svg>
           All of Pulse
         </a>
@@ -180,7 +180,7 @@ export default function Article({ post }) {
 
       {/* 6. Next story */}
       {next && (
-        <a className="cs-next" href={`#${next.id}`}>
+        <a className="cs-next" href={`/pulse/${next.id}`}>
           <div className={`cs-next-bg${nextBg ? '' : ' brand'}`} style={nextBg ? { backgroundImage: `url(${nextBg})` } : undefined} />
           <div className="cs-next-copy">
             <p>Next story</p>

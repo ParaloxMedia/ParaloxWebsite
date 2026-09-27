@@ -3,7 +3,7 @@ import { Glass } from './Glass';
 export default function PostCard({ p }) {
   const cover = p.photos?.[0];
   return (
-    <a className="post" href={`#${p.id}`}>
+    <a className="post" href={`/pulse/${p.id}`}>
       <div className={`thumb${cover ? ' has-photo' : ''}${cover?.whole ? ' whole' : ''}${p.logo ? ' has-logo' : ''}`}>
         {cover ? <img src={cover.src} alt="" loading="lazy" decoding="async" />
           : p.logo ? <img className="thumb-logo" src={p.logo.src} alt={p.logo.alt} loading="lazy" decoding="async" />

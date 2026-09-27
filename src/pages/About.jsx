@@ -45,8 +45,8 @@ function MissionHero() {
         </h1>
         <p className="mission-sub am-in" style={{ '--d': '1.27s' }}>AI, engineering, media and growth working together to move ambitious businesses forward.</p>
         <div className="hero-actions am-in" style={{ '--d': '1.42s', justifyContent: 'center' }}>
-          <a className="btn btn-white" href="#contact">Start a project <span className="arr">→</span></a>
-          <a className="link" href="#services-home" style={{ color: '#fff' }}>Our services <span className="arr">→</span></a>
+          <a className="btn btn-white" href="/contact">Start a project <span className="arr">→</span></a>
+          <a className="link" href="/services" style={{ color: '#fff' }}>Our services <span className="arr">→</span></a>
         </div>
       </div>
       <div className="am-cue am-in" style={{ '--d': '1.67s' }} aria-hidden="true"><span className="mono">Scroll</span><i /></div>

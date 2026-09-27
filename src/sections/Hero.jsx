@@ -150,8 +150,8 @@ export default function Hero() {
             </h1>
             <p className="xbody fu" style={{ '--d': '.66s' }}><strong>AI, engineering, media and growth</strong> working together to move ambitious businesses forward.</p>
             <div className="xcta fu" style={{ '--d': '.78s' }}>
-              <a className="btn btn-primary btn-sm" href="#contact">Start a project <span className="arr">→</span></a>
-              <a className="link" href="#services-home">Our pillars <span className="arr">↓</span></a>
+              <a className="btn btn-primary btn-sm" href="/contact">Start a project <span className="arr">→</span></a>
+              <a className="link" href="/services">Our pillars <span className="arr">↓</span></a>
             </div>
           </div>
           <div className="xgap" />
@@ -180,7 +180,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="xgap" />
-          <a className="xpartner" href="#services-home" style={{ '--d': '1.08s' }}>
+          <a className="xpartner" href="/services" style={{ '--d': '1.08s' }}>
             <div className="xp-head">
               <h3>Your partner in<br />business growth</h3>
               <span className="xp-badge"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 9 9 3M4 3h5v5" /></svg></span>

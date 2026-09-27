@@ -46,7 +46,7 @@ export const PULSE_POSTS = [
     photos: [
       { src: zahira2015a, caption: "Receiving the token of appreciation from the Zahira College Batch of 2015 at the ZOAL 6.0 event launch. Photo © Hashtag" },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
   {
     id: "news-sunday-morning-happinez-2026", kind: "news", pillar: "Company News", glyph: "doc", iso: "2026-07-26", date: "Jul 26, 2026", mins: 2, featured: true,
@@ -103,7 +103,7 @@ export const PULSE_POSTS = [
       { src: rotaract3, caption: "Speaker Session 01 — Evaluation of AI & Its Impact" },
       { src: rotaract4, caption: "AI & Automation: Career Impact Workshop on Zoom" },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
   {
     id: "news-paralox-1year-anniversary-2026", kind: "news", pillar: "Company News", glyph: "spark", iso: "2026-05-06", date: "May 6, 2026", mins: 2, featured: true,
@@ -139,7 +139,7 @@ export const PULSE_POSTS = [
       { src: anniversary6, caption: "One year of growth, partnerships, and building something real" },
       { src: anniversary7, caption: "Year 1 done. Now it's time to build bigger." },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
   {
     id: "news-zahira-silver-sponsor-2025", kind: "news", pillar: "Company News", glyph: "check", iso: "2025-09-20", date: "Sep 2025", mins: 1, featured: true,
@@ -167,7 +167,7 @@ export const PULSE_POSTS = [
       { src: zahira2, caption: "Paralox Media — Silver Sponsor, G10 Premier League 2025" },
       { src: zahira3, caption: "Proud moment — representing Paralox Media at the sponsorship handover" },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
   {
     id: "news-wpp-media-partnership-2025", kind: "news", pillar: "Company News", glyph: "play", iso: "2025-09-01", date: "Sep 2025", mins: 1, featured: true,
@@ -190,7 +190,7 @@ export const PULSE_POSTS = [
       { glyph: "flow", title: "Speed Without Compromise", text: "AI lets us explore multiple creative directions in hours, iterate instantly, and deliver polished outputs that meet WPP's global quality standards." },
       { glyph: "check", title: "Validation", text: "Being trusted by a group of WPP's global stature — within months of founding — is a testament to the quality and craft Paralox brings to every project." },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
   {
     id: "news-mullenlowe-partnership-2026", kind: "news", pillar: "Company News", glyph: "camera", iso: "2026-02-01", date: "Feb 2026", mins: 1, featured: true,
@@ -213,6 +213,6 @@ export const PULSE_POSTS = [
       { glyph: "flow", title: "Fast Turnarounds", text: "Clean execution and speed are what LoweDigital needs. Paralox delivers production-ready output that meets their clients' standards every time." },
       { glyph: "check", title: "Why It Matters", text: "Being embedded in the production workflow of one of Sri Lanka's most respected agency networks is a real-world proving ground for the Paralox team." },
     ],
-    cta: { label: "Work with us", href: "#contact" },
+    cta: { label: "Work with us", href: "/contact" },
   },
 ];

@@ -73,17 +73,17 @@ export const TICKER = [
 
 // Capabilities showcase on the home page (key matches a scene)
 export const CAPABILITIES = [
-  { key: 'ai', title: 'AI', href: '#ai', desc: 'Agents, automation and integrations that take routine work off your team and plug into the tools you already use.', chips: ['AI agents', 'Business automation', 'AI integrations'] },
-  { key: 'eng', title: 'Engineering', href: '#engineering', desc: 'Websites, web applications and custom software, engineered for speed, security and the next five years of your business.', chips: ['Website development', 'Web applications', 'Custom software'] },
-  { key: 'media', title: 'Media', href: '#media', desc: 'Brand films, AI creatives, campaign assets and identities, produced by one team from script to final grade.', chips: ['AI creatives', 'Video production', 'Campaign creatives', 'Branding'] },
-  { key: 'growth', title: 'Growth', href: '#growth', desc: 'Performance marketing, campaign strategy and optimisation, reported against the numbers your business runs on.', chips: ['Growth marketing', 'Performance marketing', 'Campaign strategy', 'Optimisation'] },
+  { key: 'ai', title: 'AI', href: '/ai', desc: 'Agents, automation and integrations that take routine work off your team and plug into the tools you already use.', chips: ['AI agents', 'Business automation', 'AI integrations'] },
+  { key: 'eng', title: 'Engineering', href: '/engineering', desc: 'Websites, web applications and custom software, engineered for speed, security and the next five years of your business.', chips: ['Website development', 'Web applications', 'Custom software'] },
+  { key: 'media', title: 'Media', href: '/media', desc: 'Brand films, AI creatives, campaign assets and identities, produced by one team from script to final grade.', chips: ['AI creatives', 'Video production', 'Campaign creatives', 'Branding'] },
+  { key: 'growth', title: 'Growth', href: '/growth', desc: 'Performance marketing, campaign strategy and optimisation, reported against the numbers your business runs on.', chips: ['Growth marketing', 'Performance marketing', 'Campaign strategy', 'Optimisation'] },
 ];
 
 export const DROPDOWN = [
-  { href: '#ai', glyph: 'ai', title: 'AI', text: 'Agents, automation and integrations.' },
-  { href: '#engineering', glyph: 'code', title: 'Engineering', text: 'Websites, web apps and custom software.' },
-  { href: '#media', glyph: 'play', title: 'Media', text: 'Brand films, AI creatives and branding.' },
-  { href: '#growth', glyph: 'growth', title: 'Growth', text: 'Performance marketing and strategy.' },
+  { href: '/ai', glyph: 'ai', title: 'AI', text: 'Agents, automation and integrations.' },
+  { href: '/engineering', glyph: 'code', title: 'Engineering', text: 'Websites, web apps and custom software.' },
+  { href: '/media', glyph: 'play', title: 'Media', text: 'Brand films, AI creatives and branding.' },
+  { href: '/growth', glyph: 'growth', title: 'Growth', text: 'Performance marketing and strategy.' },
 ];
 
 // Pillar pages
@@ -107,7 +107,7 @@ export const PILLARS = {
       { name: 'Business automation', text: 'Workflows that move data between forms, CRMs, sheets and inboxes, and produce quotations, invoices and reports without manual copy and paste.', tags: ['Quotations', 'Invoicing', 'CRM sync', 'Reporting'] },
       { name: 'AI integrations', text: 'Language models connected to your documents, product data and systems, with the access controls you set and a clear record of what the AI can and cannot see.', tags: ['Knowledge assistants', 'Product data', 'Access control'] },
     ],
-    next: { href: '#engineering', label: 'Next pillar', title: 'Engineering' },
+    next: { href: '/engineering', label: 'Next pillar', title: 'Engineering' },
   },
   engineering: {
     title: ['Build', 'it right'],
@@ -127,7 +127,7 @@ export const PILLARS = {
       { name: 'Web applications', text: 'Portals, dashboards and internal tools: order tracking, booking, rental and staff systems that replace spreadsheets with one reliable source of truth.', tags: ['React', 'Node', 'Supabase', 'Postgres'] },
       { name: 'Custom software', text: 'Systems built around how your business actually runs, with APIs to connect them to payments, messaging and the AI tools you add next.', tags: ['APIs', 'Payments', 'Integrations', 'Cloud'] },
     ],
-    next: { href: '#media', label: 'Next pillar', title: 'Media' },
+    next: { href: '/media', label: 'Next pillar', title: 'Media' },
   },
   media: {
     title: ['Make', 'people', 'notice'],
@@ -147,7 +147,7 @@ export const PILLARS = {
       { name: 'Campaign creatives', text: 'Static, motion and social assets built as one system, so every format in a campaign looks and sounds like the same brand.', tags: ['Social', 'Motion', 'OOH', 'Digital ads'] },
       { name: 'Branding', text: 'Identities, guidelines and brand systems for businesses that are launching, repositioning or growing into new markets.', tags: ['Identity', 'Guidelines', 'Packaging'] },
     ],
-    next: { href: '#growth', label: 'Next pillar', title: 'Growth' },
+    next: { href: '/growth', label: 'Next pillar', title: 'Growth' },
   },
   growth: {
     title: ['Make', 'growth', 'measurable'],
@@ -168,7 +168,7 @@ export const PILLARS = {
       { name: 'Optimisation', text: 'SEO, landing page and conversion improvements, tested one change at a time so you know which ones moved the number.', tags: ['SEO', 'Landing pages', 'A/B testing'] },
     ],
     band: true,
-    next: { href: '#ai', label: 'Back to the start', title: 'AI' },
+    next: { href: '/ai', label: 'Back to the start', title: 'AI' },
   },
 };
 
@@ -246,7 +246,7 @@ const withLabels = (p) => {
     ...p,
     pillar: past ? 'Past event' : 'Upcoming event',
     upcoming: !past,
-    cta: past && p.event?.status !== 'past' ? { label: 'Work with us', href: '#contact' } : p.cta,
+    cta: past && p.event?.status !== 'past' ? { label: 'Work with us', href: '/contact' } : p.cta,
   };
 };
 

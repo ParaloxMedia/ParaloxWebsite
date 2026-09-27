@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { POSTS } from './data/content';
-import { useHashRoute, prefersReducedMotion, finePointer } from './hooks/useHashRoute';
+import { useRoute, navigate, pathFor, keyFromLocation, prefersReducedMotion, finePointer } from './hooks/useHashRoute';
 import { GlassDefs } from './components/Glass';
 import Loader from './components/Loader';
 import Nav from './components/Nav';
@@ -16,7 +16,7 @@ import Contact from './pages/Contact';
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
 const PAGES = ['home', 'about', 'pulse', 'contact', ...PILLAR_KEYS];
 
-/** Resolve a hash into { view, nav, post, anchor }. */
+/** Resolve a route key into { view, nav, post, anchor }. */
 function resolve(hash) {
   const post = POSTS.find((p) => p.id === hash);
   if (post) return { view: 'article', nav: 'pulse', post };
@@ -126,22 +126,43 @@ function useGlobalEffects() {
 }
 
 export default function App() {
-  const [hash] = useHashRoute();
+  const [hash] = useRoute();
   const [tick, setTick] = useState(0);
   const r = resolve(hash);
+  const canonicalPath = pathFor(r.view === 'article' ? r.post.id : (r.anchor || r.view), r.view === 'article');
 
-  // Re-clicking the current link (hash unchanged) should still act like navigation.
+  // Legacy /#about links and unknown paths: show the canonical URL without adding history.
+  useEffect(() => {
+    if (window.location.pathname !== canonicalPath || window.location.hash) {
+      window.history.replaceState(null, '', canonicalPath);
+    }
+  }, [canonicalPath]);
+
+  // Internal links navigate client-side; re-clicking the current page still acts like navigation.
   useEffect(() => {
     const onClick = (e) => {
-      const a = e.target instanceof Element && e.target.closest('a[href^="#"]');
-      if (!a) return;
-      const target = a.getAttribute('href');
-      const current = window.location.hash || '#home';
-      if (target === current) { e.preventDefault(); setTick((n) => n + 1); }
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target instanceof Element && e.target.closest('a[href^="/"]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      const url = new URL(a.href);
+      if (url.origin !== window.location.origin) return;
+      const key = keyFromLocation(url);
+      // Only routes the app renders; files and standalone pages (e.g. /ai-creator-camp/) load normally.
+      if (resolve(key).view === 'home' && key !== 'home' && key !== 'services-home') return;
+      e.preventDefault();
+      if (url.pathname === window.location.pathname) setTick((n) => n + 1);
+      else navigate(url.pathname);
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
   }, []);
+
+  // Canonical URL per page, so search engines index /about rather than /.
+  useEffect(() => {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+    link.href = `https://www.paraloxmedia.com${canonicalPath}`;
+  }, [canonicalPath]);
 
   useLayoutEffect(() => {
     if (r.anchor) {

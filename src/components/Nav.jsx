@@ -6,11 +6,11 @@ import { Glass } from './Glass';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
 
 const LINKS = [
-  { href: '#home', label: 'Home', key: 'home' },
-  { href: '#about', label: 'About', key: 'about' },
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/about', label: 'About', key: 'about' },
   { dropdown: true },
-  { href: '#pulse', label: 'Pulse', key: 'pulse' },
-  { href: '#contact', label: 'Contact', key: 'contact' },
+  { href: '/pulse', label: 'Pulse', key: 'pulse' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
 ];
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
 
@@ -49,7 +49,7 @@ export default function Nav({ active, lightTop, tick = 0 }) {
 
   return (
     <header className={`nav${intro ? ' intro' : ''}${scrolled ? ' scrolled' : ''}${solid ? ' solid' : ''}`} id="nav" style={{ '--p': progress.toFixed(4) }}>
-      <a className="logo" href="#home" aria-label="Paralox Media home">
+      <a className="logo" href="/" aria-label="Paralox Media home">
         <img className="lw" src={logoWhite} alt="Paralox Media" width="120" height="30" />
         <img className="lp" src={logoPurple} alt="" width="120" height="30" />
       </a>
@@ -67,7 +67,7 @@ export default function Nav({ active, lightTop, tick = 0 }) {
                       <a key={d.href} className="dd-item" href={d.href}><Glass glyph={d.glyph} /><b>{d.title}</b><small>{d.text}</small></a>
                     ))}
                   </div>
-                  <a className="dd-foot" href="#services-home"><span>Four pillars, one connected team.</span><span className="link">See how they work together <span className="arr">→</span></span></a>
+                  <a className="dd-foot" href="/services"><span>Four pillars, one connected team.</span><span className="link">See how they work together <span className="arr">→</span></span></a>
                 </div>
               )}
             </li>
@@ -77,17 +77,17 @@ export default function Nav({ active, lightTop, tick = 0 }) {
         </ul>
         <span className="prog" aria-hidden="true" />
       </nav>
-      <a className="btn btn-primary nav-cta" href="#contact">Start a project <span className="arr">→</span></a>
+      <a className="btn btn-primary nav-cta" href="/contact">Start a project <span className="arr">→</span></a>
       <button className="menu-btn" aria-expanded={menu} aria-controls="mobileMenu" aria-label="Open menu" onClick={() => setMenu((v) => !v)}><span /></button>
       {menu && (
         <div className="mobile-menu" id="mobileMenu">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
           <span className="mm-label mono">Services</span>
-          <div className="mm-sub"><a href="#ai">AI</a><a href="#engineering">Engineering</a><a href="#media">Media</a><a href="#growth">Growth</a></div>
-          <a href="#pulse">Pulse</a>
-          <a href="#contact">Contact</a>
-          <a className="btn btn-primary" href="#contact">Start a project <span className="arr">→</span></a>
+          <div className="mm-sub"><a href="/ai">AI</a><a href="/engineering">Engineering</a><a href="/media">Media</a><a href="/growth">Growth</a></div>
+          <a href="/pulse">Pulse</a>
+          <a href="/contact">Contact</a>
+          <a className="btn btn-primary" href="/contact">Start a project <span className="arr">→</span></a>
         </div>
       )}
     </header>

@@ -57,7 +57,7 @@ export default function Pillar({ id }) {
           <div className="p-copy">
             <h1 className="d-xl"><Lines lines={p.title} /></h1>
             <p className="lede">{p.lede}</p>
-            <div className="hero-actions"><a className="btn btn-primary" href="#contact">{p.cta} <span className="arr">→</span></a></div>
+            <div className="hero-actions"><a className="btn btn-primary" href="/contact">{p.cta} <span className="arr">→</span></a></div>
           </div>
           <div className="scene" aria-hidden="true">
             {p.scene === 'robots' ? <RobotScene /> : (

@@ -239,7 +239,7 @@ export function Faq() {
         <div className="faq-intro">
           <h2 className="d-l">Questions,<br />answered<span className="dot">.</span></h2>
           <p>Anything else, write to <span className="copyable" style={{ color: 'var(--ink-text)', fontWeight: 700 }}>{CONTACT.email}</span>.</p>
-          <div><a className="btn btn-primary btn-sm" href="#contact">Start a project <span className="arr">→</span></a></div>
+          <div><a className="btn btn-primary btn-sm" href="/contact">Start a project <span className="arr">→</span></a></div>
         </div>
         <div className="faq-list">
           {FAQ.map((f, i) => (
