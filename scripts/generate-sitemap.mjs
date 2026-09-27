@@ -2,7 +2,7 @@
 // every Pulse article, so new articles are listed without editing XML by hand.
 import { readFile, writeFile } from 'node:fs/promises';
 
-const SITE = 'https://www.paraloxmedia.com';
+const SITE = 'https://paraloxmedia.com';
 const OUT = new URL('../public/sitemap.xml', import.meta.url);
 const today = new Date().toISOString().slice(0, 10);
 

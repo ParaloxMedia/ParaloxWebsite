@@ -38,7 +38,7 @@ try { ROUTE_META = JSON.parse(fs.readFileSync(path.join(DIST, 'route-meta.json')
 catch { console.warn('route-meta.json not found; pages will share the default preview.'); }
 
 // Always the public domain, so previews and canonicals never point at an internal host.
-const ORIGIN = process.env.SITE_ORIGIN || 'https://www.paraloxmedia.com';
+const ORIGIN = process.env.SITE_ORIGIN || 'https://paraloxmedia.com';
 
 // URLs from the previous site, moved permanently so their search ranking carries over.
 const LEGACY = {

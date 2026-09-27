@@ -4,7 +4,7 @@ const esc = (s) => String(s)
 // JSON inside <script>: escape "<" so "</script>" in text can't close the tag.
 const jsonForScript = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 
-function renderIndex(html, { key, meta, status }, origin = 'https://www.paraloxmedia.com') {
+function renderIndex(html, { key, meta, status }, origin = 'https://paraloxmedia.com') {
   if (!meta) return html;
   const url = `${origin}${meta.canonical || key}`;
   const image = /^https?:/.test(meta.image) ? meta.image : `${origin}${encodeURI(decodeURI(meta.image))}`;

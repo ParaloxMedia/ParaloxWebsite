@@ -77,7 +77,7 @@ export default function Nav({ active, lightTop, tick = 0 }) {
         </ul>
         <span className="prog" aria-hidden="true" />
       </nav>
-      <a className="btn btn-primary nav-cta" href="/contact">Start a project <span className="arr">→</span></a>
+      <a className="btn btn-primary nav-cta" href="/contact">Let’s talk <span className="arr">→</span></a>
       <button className="menu-btn" aria-expanded={menu} aria-controls="mobileMenu" aria-label="Open menu" onClick={() => setMenu((v) => !v)}><span /></button>
       {menu && (
         <div className="mobile-menu" id="mobileMenu">
@@ -87,7 +87,7 @@ export default function Nav({ active, lightTop, tick = 0 }) {
           <div className="mm-sub"><a href="/ai">AI</a><a href="/engineering">Engineering</a><a href="/media">Media</a><a href="/growth">Growth</a></div>
           <a href="/pulse">Pulse</a>
           <a href="/contact">Contact</a>
-          <a className="btn btn-primary" href="/contact">Start a project <span className="arr">→</span></a>
+          <a className="btn btn-primary" href="/contact">Let’s talk <span className="arr">→</span></a>
         </div>
       )}
     </header>

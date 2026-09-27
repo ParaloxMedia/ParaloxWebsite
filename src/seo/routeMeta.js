@@ -9,7 +9,7 @@
 //    Google sees after rendering JavaScript match the server's.
 import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS } from '../data/content';
 
-export const SITE = 'https://www.paraloxmedia.com';
+export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
 const WEBSITE_ID = `${SITE}/#website`;
 const DEFAULT_IMAGE = '/apple-touch-icon.png';
