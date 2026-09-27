@@ -13,8 +13,8 @@ export default function Home() {
     <>
       {isPhone ? <MissionHero kicker="Paralox Media" /> : <Hero />}
       <Ticker />
-      <Clients />
       <Capabilities />
+      <Clients />
       <Reviews />
       <HumanMachine />
       <Work />
