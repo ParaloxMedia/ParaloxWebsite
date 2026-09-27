@@ -1,6 +1,6 @@
 # Paralox Media website (React + Vite)
 
-Static React site for paraloxmedia.com. No server, no router dependency. Pages use hash routes (`#about`, `#ai`, `#contact`, …), so the build works on any static host.
+React site for paraloxmedia.com with clean URLs (`/about`, `/ai`, `/pulse/<article>`, …). The production build writes a separate HTML file for every route, including its title, description, Open Graph image and Twitter card, so link previews work on static hosting without JavaScript or a Node server.
 
 ## Run
 
@@ -40,4 +40,7 @@ While `reviews.json` is empty, the home page shows a "Read our reviews on Google
 ### Hosting notes
 
 - Netlify, Vercel, Cloudflare Pages, GitHub Pages or plain cPanel hosting all work. Set the build command to `npm run build` and the output directory to `dist`.
-- `base: './'` in `vite.config.js` means the build also works from a sub-folder.
+- Serve real files and directory indexes before the SPA fallback. For example, `/pulse/<article>` must resolve to `dist/pulse/<article>/index.html`. Deploy the entire `dist` folder, not just its root index.
+- The normal build uses absolute `/assets/` URLs and is intended for the domain root.
+- The optional Node service runs `node server.cjs` and shares the same metadata renderer as the static build.
+- After building, run `npm run check:previews` to verify all generated page previews and their image files. Previously shared URLs may retain an older preview in a messaging platform's cache until that platform fetches them again.

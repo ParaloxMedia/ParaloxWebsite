@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Paralox Media website — React + Vite static site",
+  "description": "Paralox Media website \u2014 React + Vite static site",
   "scripts": {
     "dev": "vite",
     "reviews": "node --env-file-if-exists=.env scripts/fetch-reviews.mjs",
@@ -12,7 +12,8 @@
     "prebuild:single": "npm run reviews && npm run sitemap",
     "build:single": "vite build --mode single",
     "preview": "vite preview",
-    "sitemap": "node scripts/generate-sitemap.mjs"
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "check:previews": "node scripts/check-previews.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

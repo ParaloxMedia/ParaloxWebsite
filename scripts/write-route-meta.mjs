@@ -1,7 +1,9 @@
 // Runs after the site build. Loads the SSR-built src/seo/routeMeta.js (so image
 // imports are real /assets/... URLs) and writes dist/route-meta.json for server.cjs.
 import { existsSync } from 'node:fs';
-import { rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+
+import renderer from './render-page.cjs';
 
 const SSR_DIR = new URL('../dist-ssr/', import.meta.url);
 const DIST = new URL('../dist/', import.meta.url);
@@ -17,3 +19,13 @@ if (missing.length) throw new Error(`route-meta: preview images missing from dis
 await writeFile(new URL('route-meta.json', DIST), `${JSON.stringify(ROUTE_META, null, 2)}\n`);
 await rm(SSR_DIR, { recursive: true, force: true });
 console.log(`route-meta: ${Object.keys(ROUTE_META).length} pages → dist/route-meta.json`);
+
+// Static hosts do not execute server.cjs. Give every shareable URL its own
+// HTML head, so crawlers receive metadata before any JavaScript runs.
+const template = await readFile(new URL('index.html', DIST), 'utf8');
+for (const [key, meta] of Object.entries(ROUTE_META)) {
+  const directory = new URL(`.${key === '/' ? '/' : `${key}/`}`, DIST);
+  await mkdir(directory, { recursive: true });
+  await writeFile(new URL('index.html', directory), renderer.renderIndex(template, { key, meta, status: 200 }));
+}
+console.log(`share previews: ${Object.keys(ROUTE_META).length} static pages generated`);

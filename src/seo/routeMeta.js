@@ -1,8 +1,9 @@
 // SEO and link-preview metadata for every page, keyed by URL path.
 //
 // Used in two places:
-//  - server.cjs injects it into the HTML (via dist/route-meta.json, built with
-//    `vite build --ssr` so image imports resolve to the site's hashed /assets URLs).
+//  - The build writes it into each route’s HTML; server.cjs also uses it.
+//    dist/route-meta.json is built with
+//    `vite build --ssr` so image imports resolve to the site’s hashed /assets URLs.
 //    Link previews (WhatsApp, LinkedIn, Facebook) and non-JS crawlers need this.
 //  - App.jsx sets document.title and the description from it, so the titles
 //    Google sees after rendering JavaScript match the server's.
