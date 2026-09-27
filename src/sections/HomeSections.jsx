@@ -226,7 +226,7 @@ export function PulsePreview() {
           <h2 className="d-l">Pulse<span className="dot">.</span></h2>
           <p>Notes from the work: what we are building, testing and learning across AI, engineering, media and growth.</p>
         </div>
-        <div className="posts">{POSTS.slice(0, 3).map((p) => <PostCard key={p.id} p={p} />)}</div>
+        <div className="posts posts-row">{POSTS.slice(0, 3).map((p) => <PostCard key={p.id} p={p} />)}</div>
       </div>
     </section>
   );
