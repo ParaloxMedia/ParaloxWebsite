@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { POSTS } from './data/content';
+import { ROUTE_META, SITE } from './seo/routeMeta';
 import { useRoute, navigate, pathFor, keyFromLocation, prefersReducedMotion, finePointer } from './hooks/useHashRoute';
 import { GlassDefs } from './components/Glass';
 import Loader from './components/Loader';
@@ -157,11 +158,16 @@ export default function App() {
     return () => document.removeEventListener('click', onClick);
   }, []);
 
-  // Canonical URL per page, so search engines index /about rather than /.
+  // Title, description and canonical from the same data the server injects, so
+  // what Google sees after rendering matches the HTML it was served.
   useEffect(() => {
-    let link = document.querySelector('link[rel="canonical"]');
-    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
-    link.href = `https://www.paraloxmedia.com${canonicalPath}`;
+    const meta = ROUTE_META[canonicalPath] || ROUTE_META['/'];
+    document.title = meta.title;
+    const tag = (sel, make) => document.head.querySelector(sel) || document.head.appendChild(make());
+    tag('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' }))
+      .setAttribute('content', meta.description);
+    tag('link[rel="canonical"]', () => Object.assign(document.createElement('link'), { rel: 'canonical' }))
+      .setAttribute('href', `${SITE}${meta.canonical || canonicalPath}`);
   }, [canonicalPath]);
 
   useLayoutEffect(() => {
@@ -174,11 +180,6 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash, tick]);
 
-  useEffect(() => {
-    const titles = { home: '', about: 'About', pulse: 'Pulse', contact: 'Contact', ai: 'AI', engineering: 'Engineering', media: 'Media', growth: 'Growth' };
-    const t = r.post ? r.post.title : titles[r.view];
-    document.title = t ? `${t} · Paralox Media` : 'Paralox Media · AI, Engineering, Media & Growth';
-  }, [r.view, r.post]);
 
   useGlobalEffects();
 

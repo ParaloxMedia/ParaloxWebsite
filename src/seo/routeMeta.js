@@ -1,46 +1,173 @@
-// Link-preview metadata for every page, keyed by URL path.
-// Built at build time (vite build --ssr) so image imports resolve to the same
-// hashed /assets/... URLs as the site, then written to dist/route-meta.json for
-// server.cjs to inject. WhatsApp, LinkedIn and Facebook don't run JavaScript,
-// so this is the only way shared links show the right title, text and photo.
-import { POSTS, PILLARS } from '../data/content';
+// SEO and link-preview metadata for every page, keyed by URL path.
+//
+// Used in two places:
+//  - server.cjs injects it into the HTML (via dist/route-meta.json, built with
+//    `vite build --ssr` so image imports resolve to the site's hashed /assets URLs).
+//    Link previews (WhatsApp, LinkedIn, Facebook) and non-JS crawlers need this.
+//  - App.jsx sets document.title and the description from it, so the titles
+//    Google sees after rendering JavaScript match the server's.
+import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS } from '../data/content';
 
+export const SITE = 'https://www.paraloxmedia.com';
+const ORG_ID = `${SITE}/#organization`;
+const WEBSITE_ID = `${SITE}/#website`;
 const DEFAULT_IMAGE = '/apple-touch-icon.png';
+
 // 1200×630 branded cards from scripts/make-og-cards.mjs (committed in public/og).
 const card = (key) => ({ image: `/og/${key}.jpg`, width: 1200, height: 630 });
-const SITE_TITLE = 'Paralox Media — Building the future of AI-powered business solutions';
-const SITE_DESC = 'AI, engineering, media and growth working together to move ambitious businesses forward.';
+const abs = (p) => (/^https?:/.test(p) ? p : `${SITE}${encodeURI(decodeURI(p))}`);
 
 // Same order the article page uses for its header: explicit hero, then the
-// first croppable photo; for link previews also any photo, then the partner logo.
+// first croppable photo; for previews also any photo, then the partner logo.
 const imageOf = (p) =>
   p.hero || p.photos?.find((ph) => !ph.whole)?.src || p.photos?.[0]?.src || p.logo?.src || DEFAULT_IMAGE;
 
-const pillarTitle = (key) => ({ ai: 'AI', engineering: 'Engineering', media: 'Media', growth: 'Growth' }[key]);
+/* ---------- Structured data (schema.org JSON-LD) ---------- */
+
+// The business, referenced by @id from every page.
+const ORGANIZATION = {
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': ORG_ID,
+  name: 'Paralox Media',
+  legalName: CONTACT.company,
+  url: `${SITE}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
+  image: `${SITE}/og/home.jpg`,
+  description: 'Creative technology company in Colombo, Sri Lanka, working across AI, engineering, media and growth.',
+  slogan: 'Let’s create the future together.',
+  email: CONTACT.email,
+  telephone: CONTACT.phoneRaw,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '14 Sir Baron Jayathilake Mawatha',
+    addressLocality: 'Colombo',
+    postalCode: '00100',
+    addressCountry: 'LK',
+  },
+  hasMap: 'https://www.google.com/maps?cid=7204718456650954838',
+  foundingDate: '2025-05',
+  founder: { '@type': 'Person', name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO' },
+  areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
+  knowsAbout: CAPABILITIES.flatMap((c) => c.chips),
+  sameAs: SOCIALS.map((s) => s.url),
+  contactPoint: {
+    '@type': 'ContactPoint', contactType: 'sales', telephone: CONTACT.phoneRaw, email: CONTACT.email,
+    areaServed: 'Worldwide', availableLanguage: ['English'],
+  },
+};
+
+const WEBSITE = {
+  '@type': 'WebSite', '@id': WEBSITE_ID, url: `${SITE}/`, name: 'Paralox Media',
+  inLanguage: 'en', publisher: { '@id': ORG_ID },
+};
+
+const breadcrumb = (url, trail) => ({
+  '@type': 'BreadcrumbList',
+  '@id': `${url}#breadcrumb`,
+  itemListElement: [{ name: 'Home', path: '/' }, ...trail].map((t, i) => ({
+    '@type': 'ListItem', position: i + 1, name: t.name, item: `${SITE}${t.path}`,
+  })),
+});
+
+/** A page's JSON-LD graph: the business, the site, the page, plus any extras. */
+function graph(path, meta, { type = 'WebPage', trail = [], extra = [] } = {}) {
+  const url = `${SITE}${path}`;
+  const webPage = {
+    '@type': type, '@id': `${url}#webpage`, url, name: meta.title, description: meta.description,
+    isPartOf: { '@id': WEBSITE_ID }, about: { '@id': ORG_ID }, inLanguage: 'en',
+    primaryImageOfPage: { '@type': 'ImageObject', url: abs(meta.image) },
+    ...(trail.length && { breadcrumb: { '@id': `${url}#breadcrumb` } }),
+  };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [ORGANIZATION, WEBSITE, webPage, ...(trail.length ? [breadcrumb(url, trail)] : []), ...extra],
+  };
+}
+
+const page = (path, meta, opts) => ({ ...meta, jsonld: graph(path, meta, opts) });
+
+/* ---------- Pages ---------- */
+
+const PILLAR_SEO = {
+  ai: { name: 'AI', title: 'AI Agents & Business Automation in Sri Lanka | Paralox Media' },
+  engineering: { name: 'Engineering', title: 'Website & Web App Development in Sri Lanka | Paralox Media' },
+  media: { name: 'Media', title: 'Video Production, AI Creatives & Branding | Paralox Media' },
+  growth: { name: 'Growth', title: 'Performance & Digital Marketing in Sri Lanka | Paralox Media' },
+};
+const capabilityFor = (key) => CAPABILITIES.find((c) => c.href === `/${key}`);
 
 export const ROUTE_META = {
-  '/': { title: SITE_TITLE, description: SITE_DESC, ...card('home'), type: 'website' },
-  '/about': {
-    title: 'About · Paralox Media',
-    description: 'A creative technology company building intelligent systems, experiences and media. AI, engineering, media and growth in one team.',
+  '/': page('/', {
+    title: 'Paralox Media | AI, Web Development & Digital Marketing in Sri Lanka',
+    ogTitle: 'Paralox Media — Building the future of AI-powered business solutions',
+    description: 'Paralox Media is a creative technology company in Colombo. We build AI agents, websites and apps, produce video and AI creatives, and run performance marketing.',
+    ...card('home'), type: 'website',
+  }),
+  '/about': page('/about', {
+    title: 'About Paralox Media | Creative Technology Company in Colombo',
+    ogTitle: 'About · Paralox Media',
+    description: 'A creative technology company founded in Colombo in 2025, bringing AI, engineering, media and growth together in one team.',
     ...card('about'), type: 'website',
-  },
-  '/pulse': {
-    title: 'Pulse · Paralox Media',
+  }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }] }),
+  '/pulse': page('/pulse', {
+    title: 'Pulse: News, Events & Insights | Paralox Media',
+    ogTitle: 'Pulse · Paralox Media',
     description: 'Notes from the work: what we are building, testing and learning across AI, engineering, media and growth.',
     ...card('pulse'), type: 'website',
-  },
-  '/contact': {
-    title: 'Contact · Paralox Media',
-    description: 'Tell us what your business needs next, and we will show you how AI, engineering, media and growth can get it there.',
+  }, {
+    type: 'CollectionPage', trail: [{ name: 'Pulse', path: '/pulse' }],
+    extra: [{
+      '@type': 'ItemList', '@id': `${SITE}/pulse#articles`,
+      itemListElement: POSTS.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/pulse/${p.id}`, name: p.title })),
+    }],
+  }),
+  '/contact': page('/contact', {
+    title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
+    ogTitle: 'Contact · Paralox Media',
+    description: `Tell us what your business needs next. Call ${CONTACT.phone}, email ${CONTACT.email} or visit us in Colombo.`,
     ...card('contact'), type: 'website',
-  },
-  ...Object.fromEntries(Object.entries(PILLARS).map(([key, p]) => [
-    `/${key}`,
-    { title: `${pillarTitle(key) || key} · Paralox Media`, description: p.lede, ...card(key), type: 'website' },
-  ])),
-  ...Object.fromEntries(POSTS.map((p) => [
-    `/pulse/${p.id}`,
-    { title: p.title, description: p.excerpt, image: imageOf(p), type: 'article', published: p.iso },
-  ])),
+  }, { type: 'ContactPage', trail: [{ name: 'Contact', path: '/contact' }] }),
+
+  ...Object.fromEntries(Object.entries(PILLARS).map(([key, p]) => {
+    const seo = PILLAR_SEO[key] || { name: key, title: `${key} | Paralox Media` };
+    const path = `/${key}`;
+    const chips = capabilityFor(key)?.chips || [];
+    return [path, page(path, {
+      title: seo.title, ogTitle: `${seo.name} · Paralox Media`, description: p.lede, ...card(key), type: 'website',
+    }, {
+      trail: [{ name: seo.name, path }],
+      extra: [{
+        '@type': 'Service', '@id': `${SITE}${path}#service`, name: seo.name,
+        serviceType: chips.join(', ') || seo.name, description: p.lede, url: `${SITE}${path}`,
+        provider: { '@id': ORG_ID }, areaServed: ORGANIZATION.areaServed,
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog', name: `${seo.name} services`,
+          itemListElement: chips.map((c) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: c } })),
+        },
+      }],
+    })];
+  })),
+
+  ...Object.fromEntries(POSTS.map((p) => {
+    const path = `/pulse/${p.id}`;
+    const image = imageOf(p);
+    const meta = {
+      title: p.title.length > 50 ? p.title : `${p.title} | Paralox Media`,
+      ogTitle: p.title, description: p.excerpt, image, type: 'article', published: p.iso,
+    };
+    return [path, page(path, meta, {
+      trail: [{ name: 'Pulse', path: '/pulse' }, { name: p.title, path }],
+      extra: [{
+        '@type': p.kind === 'insight' ? 'BlogPosting' : 'NewsArticle',
+        '@id': `${SITE}${path}#article`,
+        headline: p.title.slice(0, 110), description: p.excerpt, image: [abs(image)],
+        datePublished: p.iso, dateModified: p.iso,
+        author: { '@id': ORG_ID }, publisher: { '@id': ORG_ID },
+        mainEntityOfPage: { '@id': `${SITE}${path}#webpage` }, inLanguage: 'en',
+      }],
+    })];
+  })),
 };
+
+// /services is the home page scrolled to the pillars; Google should index it as /.
+ROUTE_META['/services'] = { ...ROUTE_META['/'], canonical: '/' };
