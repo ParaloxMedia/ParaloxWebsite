@@ -1,90 +1,43 @@
-# Paralox Media Website
+# Paralox Media website (React + Vite)
 
-AI-powered digital agency website built with React + Framer Motion.
+Static React site for paraloxmedia.com. No server, no router dependency. Pages use hash routes (`#about`, `#ai`, `#contact`, …), so the build works on any static host.
 
----
-
-## Quick Start
+## Run
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Start development server
-npm start
-# Opens → http://localhost:3000
-
-# 3. Build for production
-npm run build
+npm run dev          # local dev server
+npm run build        # production build → dist/  (upload this folder to any static host)
+npm run preview      # preview the production build
+npm run build:single # everything inlined into one file → dist-single/index.html
+npm run reviews      # refresh Google reviews only (also runs before every build)
 ```
 
----
+## Where things live
 
-## Project Structure
+| What | File |
+| --- | --- |
+| All copy: contact details, socials, services, FAQ, posts, team | `src/data/content.js` |
+| **Google reviews** (fetched at build time) | `src/data/reviews.json`, `scripts/fetch-reviews.mjs` |
+| Pages | `src/pages/` (Home, Pillar, About, Pulse, Article, Contact) |
+| Home page sections | `src/sections/` |
+| Shared components (nav, footer, loader, glass icons, map) | `src/components/` |
+| Styles | `src/styles/global.css`, `src/styles/loader.css` |
+| Fonts and images | `src/assets/` |
 
-```
-src/
-├── App.jsx                   ← Root app, routing, loader gate
-├── index.js                  ← Entry point
-│
-├── styles/
-│   └── global.css            ← Keyframes, resets, responsive utilities
-│
-├── data/
-│   └── index.js              ← All static data (team, brands, packages, tokens)
-│
-├── hooks/
-│   └── useCurrency.js        ← IP-based currency detection
-│
-├── components/
-│   └── ui/
-│       ├── Atoms.jsx         ← Chip, GradText, Heading
-│       ├── FadeUp.jsx        ← Scroll-triggered fade-up wrapper
-│       ├── Nav.jsx           ← Navbar + mobile drawer
-│       ├── Footer.jsx        ← Minimal dark footer
-│       ├── ParticleLoader.jsx← Full-screen canvas particle animation
-│       ├── TeamCarousel.jsx  ← 3D perspective carousel for team
-│       ├── BrandSlider.jsx   ← Dual-row brand marquee
-│       └── Testimonials.jsx  ← Auto-rotating testimonials
-│
-└── pages/
-    ├── HomePage.jsx          ← Hero + Services grid + Packages + Partners
-    ├── AboutPage.jsx         ← Team carousel + Vision/Mission + Countries
-    ├── ServicesPage.jsx      ← Full services list + Process steps
-    ├── PackagesPage.jsx      ← Tabbed pricing (SMM / DM / Startup / Custom)
-    ├── GalleryPage.jsx       ← Filtered portfolio grid
-    └── ContactPage.jsx       ← Contact cards + Form
-```
+### Google reviews
 
----
+Reviews come from the Google Places API when you build. `npm run build` first runs `scripts/fetch-reviews.mjs`, which saves them to `src/data/reviews.json`.
 
-## Editing Content
+1. In Google Cloud, enable **Places API (New)**, turn on billing, and create an API key. Restrict it to that API.
+2. Copy `.env.example` to `.env` and set `GOOGLE_MAPS_API_KEY`. On Netlify, Vercel or Cloudflare, add it as an environment variable instead.
+3. Run `npm run reviews`. The first run prints the place ID it found; put that in `GOOGLE_PLACE_ID` to skip the name lookup.
 
-| What to change           | File to edit                        |
-|--------------------------|-------------------------------------|
-| Team members             | `src/data/index.js` → `TEAM_DATA`   |
-| Brand colors / tokens    | `src/data/index.js` → `T`           |
-| Package pricing          | `src/data/index.js` → `SMM_PACKAGES` etc. |
-| Testimonials             | `src/data/index.js` → `TESTIMONIALS`|
-| Particle loader words    | `src/data/index.js` → `PARTICLE_WORDS` |
-| Hero tagwords            | `src/data/index.js` → `TAGWORDS`    |
-| Contact info             | `src/pages/ContactPage.jsx` + `src/components/ui/Footer.jsx` |
-| Currency rates           | `src/data/index.js` → `CURRENCY_MAP`|
+Google returns at most 5 reviews (its "most relevant" ones). Reviews only update when the site is rebuilt. Without a key, or if the request fails, the build keeps the last saved `reviews.json`. The key is used only at build time and never goes into the site.
 
----
+While `reviews.json` is empty, the home page shows a "Read our reviews on Google" card instead of the scrolling review columns.
 
-## Tech Stack
+### Hosting notes
 
-- **React 18** — UI framework
-- **Framer Motion** — Animations, page transitions, parallax
-- **Lucide React** — All icons
-- **CSS (global.css)** — Keyframes, responsive grid utilities
-
----
-
-## Deploy
-
-```bash
-npm run build
-# Drag the build/ folder to https://netlify.com/drop
-```
+- Netlify, Vercel, Cloudflare Pages, GitHub Pages or plain cPanel hosting all work. Set the build command to `npm run build` and the output directory to `dist`.
+- `base: './'` in `vite.config.js` means the build also works from a sub-folder.
