@@ -4,3 +4,4 @@ dist-single
 build
 .DS_Store
 .env
+dist-ssr

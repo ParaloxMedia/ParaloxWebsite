@@ -31,6 +31,58 @@ const MIME = {
   '.pdf':  'application/pdf',
 };
 
+// Per-page link previews (title, description, photo) from the build. Crawlers
+// such as WhatsApp and LinkedIn don't run JavaScript, so tags must be in the HTML.
+let ROUTE_META = {};
+try { ROUTE_META = JSON.parse(fs.readFileSync(path.join(DIST, 'route-meta.json'), 'utf8')); }
+catch { console.warn('route-meta.json not found; pages will share the default preview.'); }
+
+const esc = (s) => String(s)
+  .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function metaFor(urlPath) {
+  const key = urlPath.replace(/\/+$/, '') || '/';
+  return { key: ROUTE_META[key] ? key : '/', meta: ROUTE_META[key] || ROUTE_META['/'] };
+}
+
+function renderIndex(html, urlPath, origin) {
+  const { key, meta } = metaFor(urlPath);
+  if (!meta) return html;
+  const url = `${origin}${key === '/' ? '/' : key}`;
+  const image = /^https?:/.test(meta.image) ? meta.image : `${origin}${encodeURI(decodeURI(meta.image))}`;
+  const tags = [
+    `<meta name="description" content="${esc(meta.description)}" />`,
+    `<link rel="canonical" href="${esc(url)}" />`,
+    `<meta property="og:type" content="${esc(meta.type || 'website')}" />`,
+    `<meta property="og:site_name" content="Paralox Media" />`,
+    `<meta property="og:title" content="${esc(meta.title)}" />`,
+    `<meta property="og:description" content="${esc(meta.description)}" />`,
+    `<meta property="og:url" content="${esc(url)}" />`,
+    `<meta property="og:image" content="${esc(image)}" />`,
+    `<meta property="og:image:secure_url" content="${esc(image)}" />`,
+    `<meta property="og:image:alt" content="${esc(meta.title)}" />`,
+    meta.published && `<meta property="article:published_time" content="${esc(meta.published)}" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${esc(meta.title)}" />`,
+    `<meta name="twitter:description" content="${esc(meta.description)}" />`,
+    `<meta name="twitter:image" content="${esc(image)}" />`,
+  ].filter(Boolean).join('\n    ');
+  return html
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(meta.title)}</title>`)
+    .replace(/\s*<meta\s+(?:name="(?:description|twitter:[^"]*)"|property="(?:og|article):[^"]*")[^>]*>/gi, '')
+    .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, '')
+    .replace('</head>', `    ${tags}\n  </head>`);
+}
+
+// Always the public domain, so previews and canonicals never point at an internal host.
+const ORIGIN = process.env.SITE_ORIGIN || 'https://www.paraloxmedia.com';
+
+function sendIndex(res, file, urlPath) {
+  const html = renderIndex(fs.readFileSync(file, 'utf8'), urlPath, ORIGIN);
+  res.writeHead(200, { 'Content-Type': MIME['.html'], 'Cache-Control': 'no-cache' });
+  res.end(html);
+}
+
 function send(res, file) {
   const ext = path.extname(file).toLowerCase();
   // Hashed assets can be cached forever; HTML must always be revalidated.
@@ -48,17 +100,20 @@ const server = http.createServer((req, res) => {
   const target = path.normalize(path.join(DIST, urlPath));
   if (!target.startsWith(DIST)) { res.writeHead(403); res.end(); return; }
 
+  const index = path.join(DIST, 'index.html');
+
   if (fs.existsSync(target)) {
     const stat = fs.statSync(target);
-    if (stat.isFile()) return send(res, target);
+    if (stat.isFile()) return target === index ? sendIndex(res, index, '/') : send(res, target);
     // Folders with their own page, e.g. /ai-creator-camp/
     const dirIndex = path.join(target, 'index.html');
-    if (stat.isDirectory() && fs.existsSync(dirIndex)) return send(res, dirIndex);
+    if (stat.isDirectory() && fs.existsSync(dirIndex)) {
+      return dirIndex === index ? sendIndex(res, index, urlPath) : send(res, dirIndex);
+    }
   }
 
-  const index = path.join(DIST, 'index.html');
   if (!fs.existsSync(index)) { res.writeHead(500); res.end('Build not found. Run npm run build first.'); return; }
-  send(res, index);
+  sendIndex(res, index, urlPath);
 });
 
 server.listen(PORT, () => console.log(`Paralox Media server running on port ${PORT}`));
