@@ -61,6 +61,8 @@ function renderIndex(html, urlPath, origin) {
     `<meta property="og:image" content="${esc(image)}" />`,
     `<meta property="og:image:secure_url" content="${esc(image)}" />`,
     `<meta property="og:image:alt" content="${esc(meta.title)}" />`,
+    meta.width && `<meta property="og:image:width" content="${meta.width}" />`,
+    meta.height && `<meta property="og:image:height" content="${meta.height}" />`,
     meta.published && `<meta property="article:published_time" content="${esc(meta.published)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(meta.title)}" />`,

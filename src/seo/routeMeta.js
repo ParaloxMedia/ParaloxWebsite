@@ -6,6 +6,8 @@
 import { POSTS, PILLARS } from '../data/content';
 
 const DEFAULT_IMAGE = '/apple-touch-icon.png';
+// 1200×630 branded cards from scripts/make-og-cards.mjs (committed in public/og).
+const card = (key) => ({ image: `/og/${key}.jpg`, width: 1200, height: 630 });
 const SITE_TITLE = 'Paralox Media — Building the future of AI-powered business solutions';
 const SITE_DESC = 'AI, engineering, media and growth working together to move ambitious businesses forward.';
 
@@ -17,25 +19,25 @@ const imageOf = (p) =>
 const pillarTitle = (key) => ({ ai: 'AI', engineering: 'Engineering', media: 'Media', growth: 'Growth' }[key]);
 
 export const ROUTE_META = {
-  '/': { title: SITE_TITLE, description: SITE_DESC, image: DEFAULT_IMAGE, type: 'website' },
+  '/': { title: SITE_TITLE, description: SITE_DESC, ...card('home'), type: 'website' },
   '/about': {
     title: 'About · Paralox Media',
     description: 'A creative technology company building intelligent systems, experiences and media. AI, engineering, media and growth in one team.',
-    image: DEFAULT_IMAGE, type: 'website',
+    ...card('about'), type: 'website',
   },
   '/pulse': {
     title: 'Pulse · Paralox Media',
     description: 'Notes from the work: what we are building, testing and learning across AI, engineering, media and growth.',
-    image: DEFAULT_IMAGE, type: 'website',
+    ...card('pulse'), type: 'website',
   },
   '/contact': {
     title: 'Contact · Paralox Media',
     description: 'Tell us what your business needs next, and we will show you how AI, engineering, media and growth can get it there.',
-    image: DEFAULT_IMAGE, type: 'website',
+    ...card('contact'), type: 'website',
   },
   ...Object.fromEntries(Object.entries(PILLARS).map(([key, p]) => [
     `/${key}`,
-    { title: `${pillarTitle(key) || key} · Paralox Media`, description: p.lede, image: DEFAULT_IMAGE, type: 'website' },
+    { title: `${pillarTitle(key) || key} · Paralox Media`, description: p.lede, ...card(key), type: 'website' },
   ])),
   ...Object.fromEntries(POSTS.map((p) => [
     `/pulse/${p.id}`,
