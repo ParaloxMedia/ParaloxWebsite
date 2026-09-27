@@ -37,7 +37,7 @@ const MAP_DOTS = [
 export function AboutPage({ dark }) {
   useSEO({
     title: 'About Us | AI Agency Team & Mission | Paralox Media',
-    description: 'Learn about Paralox Media — a global AI agency founded in 2025. Meet our team of AI strategists, developers, designers, and marketers building AI-powered business solutions worldwide.',
+    description: 'Paralox Media is a creative technology company founded in Colombo, Sri Lanka in 2025. Meet the team working across AI, engineering, media and growth.',
   });
   const navigate = useNavigate();
   const bd  = dark ? 'rgba(124,58,237,.13)' : 'rgba(124,58,237,.09)';
@@ -55,11 +55,11 @@ export function AboutPage({ dark }) {
             <div>
               <Chip text="Who We Are" light />
               <h1 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.9rem,5vw,3.8rem)', color: 'white', letterSpacing: '-2px', lineHeight: 1.1, marginBottom: 14 }}>
-                A Forward-Thinking<br />
-                <span style={{ color: '#B69CFF' }}>Digital Agency</span>
+                A creative technology<br />
+                <span style={{ color: '#B69CFF' }}>company.</span>
               </h1>
               <p style={{ color: 'rgba(255,255,255,.62)', fontSize: 'clamp(.86rem,1.8vw,.97rem)', lineHeight: 1.85, marginBottom: 24, fontFamily: "'Satoshi',sans-serif", maxWidth: 460 }}>
-                Paralox Media powers modern businesses through cutting-edge AI technology and creative strategy. Established May 2025. Sri Lanka to the world.
+                Paralox Media brings together intelligent technology, creative production and growth expertise to help ambitious businesses build their future. Founded in Colombo in May 2025.
               </p>
               <div style={{ display: 'flex', gap: 11, flexWrap: 'wrap' }}>
                 <motion.button whileHover={{ y: -2 }} onClick={() => navigate('/contact')} style={{ padding: '11px 24px', borderRadius: 50, border: 'none', cursor: 'pointer', background: 'white', color: T.p1, fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(.85rem,1.8vw,.9rem)' }}>Work With Us</motion.button>
@@ -70,10 +70,10 @@ export function AboutPage({ dark }) {
             {/* Stats grid */}
             <div className="asg" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               {[
-                { icon: <Award size={20}/>,      n: '35+',  l: 'Global Brands' },
+                { icon: <Award size={20}/>,      n: '35+',  l: 'Brands served' },
                 { icon: <Globe size={20}/>,      n: '5+',   l: 'Countries' },
-                { icon: <TrendingUp size={20}/>, n: '412%', l: 'Avg. ROI' },
-                { icon: <Zap size={20}/>,        n: '360°', l: 'Digital Services' },
+                { icon: <TrendingUp size={20}/>, n: '2025', l: 'Founded' },
+                { icon: <Zap size={20}/>,        n: '4',    l: 'Service pillars' },
               ].map(({ icon, n, l }) => (
                 <div key={l} style={{ background: 'rgba(255,255,255,.1)', borderRadius: 14, padding: '16px 13px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,.14)' }}>
                   <div style={{ color: 'rgba(255,255,255,.7)', marginBottom: 6 }}>{icon}</div>
@@ -90,8 +90,8 @@ export function AboutPage({ dark }) {
       <div style={{ background: dark ? '#0D0B12' : '#F7F6FA', padding: '32px clamp(16px,5%,60px)' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="g1">
           {[
-            { icon: <Target size={18}/>, t: 'Vision',  d: 'To lead the global digital space by merging creativity with AI, empowering every brand with intelligent solutions that unlock their full potential.' },
-            { icon: <Shield size={18}/>, t: 'Mission', d: 'To empower businesses through AI-driven tools that boost efficiency, creativity, and growth — redefining digital marketing and development for the future.' },
+            { icon: <Target size={18}/>, t: 'Vision',  d: 'A creative technology company building intelligent systems, experiences and media for the next generation of businesses.' },
+            { icon: <Shield size={18}/>, t: 'Mission', d: 'Human thinking amplified by technology. We use AI to give teams more time for the work that needs people, never to replace them.' },
           ].map(({ icon, t, d }) => (
             <div key={t} style={{ display: 'flex', gap: 13, alignItems: 'flex-start', background: cBg, border: `1px solid ${bd}`, borderRadius: 14, padding: '18px 16px' }}>
               <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(124,58,237,.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.p1, flexShrink: 0 }}>{icon}</div>
@@ -114,7 +114,7 @@ export function AboutPage({ dark }) {
               Meet the <GradText>People Behind Paralox</GradText>
             </Heading>
             <p style={{ color: dark ? '#A9A4B8' : '#6B6778', marginTop: 9, maxWidth: 440, margin: '9px auto 0', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.75, fontSize: 'clamp(.84rem,1.8vw,.92rem)' }}>
-              A small, powerful team united by AI, creativity, and results that matter.
+              A small team of strategists, engineers, designers and marketers who work on every project together.
             </p>
           </div>
         </FadeUp>
@@ -137,7 +137,7 @@ export function AboutPage({ dark }) {
               Serving <GradText>5+ Countries</GradText>
             </Heading>
             <p style={{ color: dark ? '#A9A4B8' : '#6B6778', marginTop: 10, maxWidth: 480, margin: '10px auto 0', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.75, fontSize: 'clamp(.84rem,1.8vw,.9rem)' }}>
-              From Sri Lanka to the Gulf, South-East Asia and the Pacific — our reach spans continents.
+              Clients in Sri Lanka, the Gulf, South-East Asia and the Pacific, served from our Colombo studio.
             </p>
           </div>
 

@@ -70,7 +70,7 @@ export function GalleryPage({ dark }) {
               {CLIENTS.map(c => (
                 <motion.div key={c.n} whileHover={{ y: -3 }} title={c.n}
                   style={{ aspectRatio: '1 / 1', borderRadius: 18, overflow: 'hidden', background: '#FFFFFF', border: dark ? '1px solid rgba(255,255,255,.08)' : '1px solid #E6E4EC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src={c.logo} alt={c.n} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+                  <img src={c.logo} alt={c.n} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', padding: c.pad ? 14 : 0, boxSizing: 'border-box' }} />
                 </motion.div>
               ))}
             </div>

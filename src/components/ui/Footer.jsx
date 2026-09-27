@@ -40,9 +40,9 @@ export function Footer({ dark }) {
             <div style={{ fontWeight: 600, fontSize: '.73rem', color: 'rgba(255,255,255,.4)', letterSpacing: 0.8, marginBottom: 11, textTransform: 'uppercase' }}>Pages</div>
             {PAGES.map(p => (
               <div key={p} onClick={() => go(p)}
-                style={{ fontSize: '.77rem', color: 'rgba(255,255,255,.27)', marginBottom: 7, cursor: 'pointer', textTransform: 'capitalize', transition: 'color .2s' }}
+                style={{ fontSize: '.77rem', color: '#A9A4B8', marginBottom: 7, cursor: 'pointer', textTransform: 'capitalize', transition: 'color .2s' }}
                 onMouseOver={e => e.target.style.color = 'rgba(124,58,237,.8)'}
-                onMouseOut={e  => e.target.style.color = 'rgba(255,255,255,.27)'}>
+                onMouseOut={e  => e.target.style.color = '#A9A4B8'}>
                 {p}
               </div>
             ))}
@@ -52,7 +52,7 @@ export function Footer({ dark }) {
           <div className="hide-mobile">
             <div style={{ fontWeight: 600, fontSize: '.73rem', color: 'rgba(255,255,255,.4)', letterSpacing: 0.8, marginBottom: 11, textTransform: 'uppercase' }}>Services</div>
             {SERVICES.map(s => (
-              <div key={s} style={{ fontSize: '.77rem', color: 'rgba(255,255,255,.27)', marginBottom: 7 }}>{s}</div>
+              <div key={s} style={{ fontSize: '.77rem', color: '#A9A4B8', marginBottom: 7 }}>{s}</div>
             ))}
           </div>
 
@@ -66,9 +66,9 @@ export function Footer({ dark }) {
               { icon: <MapPin size={10}/>,         v: 'Nawala Rd, Sri Lanka',   href: null },
             ].map(({ icon, v, href }) => (
               <a key={v} href={href || undefined} target={href ? '_blank' : undefined} rel="noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,.27)', fontSize: '.76rem', textDecoration: 'none', marginBottom: 7, transition: 'color .2s' }}
-                onMouseOver={e => e.currentTarget.style.color = 'rgba(124,58,237,.7)'}
-                onMouseOut={e  => e.currentTarget.style.color = 'rgba(255,255,255,.27)'}>
+                style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#A9A4B8', fontSize: '.76rem', textDecoration: 'none', marginBottom: 7, transition: 'color .2s' }}
+                onMouseOver={e => e.currentTarget.style.color = '#FFFFFF'}
+                onMouseOut={e  => e.currentTarget.style.color = '#A9A4B8'}>
                 <span style={{ color: 'rgba(124,58,237,.52)' }}>{icon}</span>
                 {v}
               </a>
@@ -76,7 +76,10 @@ export function Footer({ dark }) {
           </div>
         </div>
 
-    
+        <div style={{ borderTop: '1px solid rgba(255,255,255,.08)', paddingTop: 16, display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '.74rem', color: '#A9A4B8' }}>© {new Date().getFullYear()} Paralox Media (Pvt) Ltd. All rights reserved.</span>
+          <span style={{ fontSize: '.66rem', letterSpacing: 1.4, color: '#6B6778', fontFamily: "'JetBrains Mono',monospace", textTransform: 'uppercase' }}>Colombo, Sri Lanka</span>
+        </div>
       </div>
     </footer>
   );

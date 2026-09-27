@@ -102,7 +102,8 @@ export const TEAM_DATA = [
 
 // ─── CLIENTS ──────────────────────────────────────────────────────────────────
 // Logos live in /public/images/clients. Add a client by dropping in a PNG and
-// adding a row here.
+// adding a row here. `pad: true` is for transparent wordmarks that need breathing
+// room inside the square tile; full-bleed square artwork omits it.
 export const CLIENTS = [
   { n: 'Elite Indian Restaurant', logo: '/images/clients/elite-indian.png' },
   { n: 'Nissan',                  logo: '/images/clients/nissan.png' },
@@ -116,6 +117,11 @@ export const CLIENTS = [
   { n: 'Big Plate',               logo: '/images/clients/big-plate.png' },
   { n: "Abid's Restaurant",       logo: '/images/clients/abids.png' },
   { n: 'PNG Embroidery',          logo: '/images/clients/png-embroidery.png' },
+  { n: 'WebXPay',                 logo: '/images/clients/webxpay.png',           pad: true },
+  { n: 'Maliban',                 logo: '/images/clients/maliban.png',           pad: true },
+  { n: 'Sri Lanka Rugby',         logo: '/images/clients/sri-lanka-rugby.png',   pad: true },
+  { n: 'IDM Nations Campus',      logo: '/images/clients/idm.png',               pad: true },
+  { n: 'RNB Special Tours',       logo: '/images/clients/rnb-special-tours.png', pad: true },
 ];
 
 // ─── TESTIMONIALS ─────────────────────────────────────────────────────────────

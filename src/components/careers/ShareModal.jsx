@@ -25,7 +25,7 @@ export function ShareModal({ dark, vacancy, onClose }) {
   const [copied, setCopied] = useState(false);
 
   const shareUrl = `${window.location.origin}/careers#${vacancy.id}`;
-  const shareText = `Check out this ${vacancy.title} opening at Paralox Media! 🚀`;
+  const shareText = `Paralox Media is hiring: ${vacancy.title}.`;
 
   const copyLink = async () => {
     try {
@@ -205,7 +205,7 @@ export function ShareModal({ dark, vacancy, onClose }) {
               }}
             >
               {copied ? <Check size={13} /> : <Link2 size={13} />}
-              {copied ? 'Copied!' : 'Copy'}
+              {copied ? 'Copied' : 'Copy'}
             </motion.button>
           </div>
 

@@ -91,7 +91,7 @@ function HeroSection({ dark }) {
         {/* Stats */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.1 }}
           className="sr2" style={{ display: 'flex', gap: 'clamp(18px,4.5vw,60px)', paddingTop: 24, borderTop: '1px solid rgba(255,255,255,.1)', justifyContent: 'center' }}>
-          {[['35+', 'Global Brands'], ['412%', 'Avg. ROI'], ['5+', 'Countries'], ['360°', 'Services']].map(([n, l], i) => (
+          {[['35+', 'Brands served'], ['5+', 'Countries'], ['4', 'Service pillars']].map(([n, l], i) => (
             <motion.div key={l} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 3.15 + i * .1 }} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem,3.2vw,2.4rem)', color: 'white', lineHeight: 1.05 }}>{n}</div>
               <div style={{ fontSize: '.64rem', color: '#A9A4B8', marginTop: 4, letterSpacing: 1.2, textTransform: 'uppercase', fontFamily: "'JetBrains Mono',monospace" }}>{l}</div>
@@ -119,13 +119,14 @@ function ServicesGrid({ dark }) {
   const cBg = dark ? 'rgba(34,31,44,.6)' : '#fff';
   const bd  = dark ? 'rgba(124,58,237,.15)' : 'rgba(124,58,237,.1)';
 
+  // Ordered by brand pillar: AI, Engineering, Media, Growth.
   const services = [
-    { icon: <Bot size={24}/>,      title: 'AI-Driven Marketing',      desc: 'Intelligent automation that drives campaigns, targets audiences, and maximises every rupee of your ad spend.',      color: '#7C3AED', tag: 'AI Powered' },
-    { icon: <Code2 size={24}/>,    title: 'Web & App Development',    desc: 'Custom platforms built for scale — eCommerce, corporate sites, and mobile apps that perform.',                    color: '#7C3AED', tag: 'Tech' },
-    { icon: <Video size={24}/>,    title: 'Video Production',         desc: 'Cinematic reels, promo videos, and UGC content that stops the scroll and drives real action.',                      color: '#7C3AED', tag: 'Creative' },
-    { icon: <Megaphone size={24}/>,title: 'Social Media Management',  desc: 'End-to-end social management — daily content, strategy, and community across every platform.',                    color: '#7C3AED', tag: 'Social' },
-    { icon: <Search size={24}/>,   title: 'SEO & GEO Targeting',      desc: 'Strategic, location-based SEO that puts your brand in front of the right audience, globally.',                    color: '#3E2087', tag: 'Growth' },
-    { icon: <BarChart2 size={24}/>,title: 'Performance Marketing',    desc: 'Data-driven ad campaigns on Google and Meta that convert browsers into buyers.',                                  color: '#7C3AED', tag: 'Paid Ads' },
+    { icon: <Bot size={24}/>,       title: 'AI Agents & Automation',   desc: 'AI agents that answer routine enquiries and automate repetitive work, connected to the tools your team already uses.', color: '#7C3AED', tag: 'AI' },
+    { icon: <Code2 size={24}/>,     title: 'Websites & Web Apps',      desc: 'Corporate sites, eCommerce stores and custom web applications, designed and built in-house.',                          color: '#7C3AED', tag: 'Engineering' },
+    { icon: <Video size={24}/>,     title: 'Video & AI Creatives',     desc: 'Reels, promotional videos, UGC and AI-assisted campaign visuals, produced for each platform’s format.',                color: '#7C3AED', tag: 'Media' },
+    { icon: <Megaphone size={24}/>, title: 'Social Media Management',  desc: 'Monthly content planning, posting and community management across Instagram, Facebook, TikTok and LinkedIn.',       color: '#7C3AED', tag: 'Media' },
+    { icon: <BarChart2 size={24}/>, title: 'Performance Marketing',    desc: 'Google and Meta ad campaigns with clear targets, weekly optimisation and reporting you can read.',                     color: '#7C3AED', tag: 'Growth' },
+    { icon: <Search size={24}/>,    title: 'SEO & Content',            desc: 'Technical SEO, local search and content that help the right customers find you.',                                     color: '#7C3AED', tag: 'Growth' },
   ];
 
   return (
@@ -135,10 +136,10 @@ function ServicesGrid({ dark }) {
           <div style={{ marginBottom: 44 }}>
             <Chip text="What We Do" />
             <Heading dark={dark} size="clamp(1.9rem,3.8vw,3rem)">
-              AI-Powered Digital Services<br /><GradText>Built for Modern Businesses</GradText>
+              Four pillars.<br /><GradText>One partner.</GradText>
             </Heading>
             <p style={{ color: dark ? '#A9A4B8' : '#6B6778', marginTop: 12, maxWidth: 520, fontFamily: "'Satoshi',sans-serif", lineHeight: 1.8, fontSize: 'clamp(.86rem,1.8vw,.97rem)' }}>
-              We combine artificial intelligence with creative strategy to deliver results that actually move the needle for your brand.
+              AI, engineering, media and growth in one team, so strategy, build and delivery stay connected.
             </p>
           </div>
         </FadeUp>
@@ -161,7 +162,7 @@ function ServicesGrid({ dark }) {
         {/* Stats */}
         <FadeUp delay={0.18}>
           <div className="g2" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14 }}>
-            {[{ icon: <Users size={20}/>, n: '35+', l: 'Global Brands', c: '#7C3AED' }, { icon: <TrendingUp size={20}/>, n: '412%', l: 'Avg. ROI', c: '#7C3AED' }, { icon: <Globe size={20}/>, n: '5+', l: 'Countries', c: '#7C3AED' }, { icon: <Zap size={20}/>, n: '360°', l: 'Digital Services', c: '#7C3AED' }].map(({ icon, n, l, c }) => (
+            {[{ icon: <Users size={20}/>, n: '35+', l: 'Brands served', c: '#7C3AED' }, { icon: <TrendingUp size={20}/>, n: '2025', l: 'Founded', c: '#7C3AED' }, { icon: <Globe size={20}/>, n: '5+', l: 'Countries', c: '#7C3AED' }, { icon: <Zap size={20}/>, n: '4', l: 'Service pillars', c: '#7C3AED' }].map(({ icon, n, l, c }) => (
               <div key={l} style={{ padding: '18px 16px', borderRadius: 16, background: cBg, border: `1px solid ${bd}`, textAlign: 'center' }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: `${c}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px', color: c }}>{icon}</div>
                 <div style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,2.8vw,1.9rem)', color: c, lineHeight: 1 }}>{n}</div>
@@ -224,7 +225,7 @@ export function HomePage({ dark }) {
   const navigate = useNavigate();
   useSEO({
     title: 'Paralox Media | AI Agency & Digital Marketing | AI Agent Development',
-    description: 'Paralox Media is a leading AI agency offering AI agent development, AI-powered digital marketing, social media management, web development, and performance marketing worldwide.',
+    description: 'Paralox Media is a creative technology company in Colombo, Sri Lanka. We build AI agents, websites and web apps, produce media, and run growth marketing for businesses worldwide.',
   });
   return (
     <div>
@@ -263,12 +264,12 @@ export function HomePage({ dark }) {
             <div style={{ background: 'linear-gradient(120deg,#3E2087,#7C3AED)', borderRadius: 24, padding: 'clamp(28px,5vw,56px) clamp(18px,5vw,44px)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', inset: 0, opacity: .05, backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(255,255,255,1) 28px,rgba(255,255,255,1) 29px),repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(255,255,255,1) 28px,rgba(255,255,255,1) 29px)' }} />
               <div style={{ position: 'relative' }}>
-                <p style={{ color: 'rgba(255,255,255,.58)', fontSize: '.72rem', fontWeight: 700, letterSpacing: 2.5, textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Satoshi',sans-serif" }}>Ready to grow?</p>
-                <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.7rem,3.8vw,3rem)', color: '#fff', letterSpacing: '-1.5px', marginBottom: 10, lineHeight: 1.15 }}>You have Goals.<br />We have the Road Map.</h2>
-                <p style={{ color: 'rgba(255,255,255,.62)', marginBottom: 24, maxWidth: 380, margin: '0 auto 24px', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.75, fontSize: '.9rem' }}>Turning your goals into milestones with digital strategy.</p>
-                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }} onClick={() => navigate('/contact')}
+                <p style={{ color: 'rgba(255,255,255,.58)', fontSize: '.72rem', fontWeight: 700, letterSpacing: 2.5, textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Satoshi',sans-serif" }}>Start a project</p>
+                <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.7rem,3.8vw,3rem)', color: '#fff', letterSpacing: '-1.5px', marginBottom: 10, lineHeight: 1.15 }}>You bring the goal.<br />We plan the route.</h2>
+                <p style={{ color: 'rgba(255,255,255,.62)', marginBottom: 24, maxWidth: 380, margin: '0 auto 24px', fontFamily: "'Satoshi',sans-serif", lineHeight: 1.75, fontSize: '.9rem' }}>Share your requirements and we’ll reply with a scoped proposal within two working days.</p>
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: .97 }} onClick={() => navigate('/get-started')}
                   style={{ padding: '13px 36px', borderRadius: 50, border: 'none', cursor: 'pointer', background: '#fff', color: T.p1, fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '.93rem' }}>
-                  Get In Touch
+                  Start a project
                 </motion.button>
               </div>
             </div>

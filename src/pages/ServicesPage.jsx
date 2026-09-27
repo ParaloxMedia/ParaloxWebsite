@@ -1,32 +1,33 @@
 import { motion } from 'framer-motion';
-import { Bot, Code2, Brain, Sparkles, Search, BarChart2, Video, Smartphone } from 'lucide-react';
+import { Code2, Brain, Sparkles, Search, BarChart2, Video, Smartphone, Megaphone } from 'lucide-react';
 import { T } from '../data';
 import { useSEO } from '../hooks/useSEO';
 import { FadeUp } from '../components/ui/FadeUp';
 import { Chip, GradText, Heading } from '../components/ui/Atoms';
 
+// Every service sits under one brand pillar, in this order: AI, Engineering, Media, Growth.
 const SERVICES = [
-  { icon: <Bot size={20}/>,       t: 'AI-Driven Digital Marketing', d: 'Intelligent automation to optimise campaign strategies, content creation, audience targeting, and analytics for maximum ROI.', tag: 'AI',        c: '#7C3AED' },
-  { icon: <Code2 size={20}/>,     t: 'Website & Mobile App Dev',    d: 'Customised platforms for performance, scalability, and UX — corporate sites, eCommerce platforms, or mobile apps.',          tag: 'Tech',       c: '#7C3AED' },
-  { icon: <Brain size={20}/>,     t: 'AI Agent Development',        d: 'Conversational AI agents for customer support, lead generation, and task automation across various industries.',             tag: 'AI',        c: '#7C3AED' },
-  { icon: <Sparkles size={20}/>,  t: 'Prompt Engineering',          d: 'Crafting precise AI prompts to create stunning videos, music, and diverse creative content.',                                tag: 'Creative AI', c: '#7C3AED' },
-  { icon: <Search size={20}/>,    t: 'Content, SEO & GEO',          d: 'Strategic, SEO-optimised content with geographic targeting to boost local visibility and engagement.',                       tag: 'Growth',     c: '#3E2087' },
-  { icon: <BarChart2 size={20}/>, t: 'Performance Marketing',       d: 'Targeted ad campaigns, Google & Meta Ads management, and data-backed strategy for maximum growth.',                         tag: 'Ads',        c: '#7C3AED' },
-  { icon: <Video size={20}/>,     t: 'Video Editing & Production',  d: 'Cinematic reels, promo videos, and ad creatives to capture attention and drive action across all platforms.',               tag: 'Creative',   c: '#7C3AED' },
-  { icon: <Smartphone size={20}/>,t: 'Social Media Management',     d: 'From daily posts to creative storytelling and viral content — Instagram, Facebook, TikTok, and LinkedIn.',                 tag: 'Social',     c: '#7C3AED' },
+  { icon: <Brain size={20}/>,      t: 'AI Agents & Automation',       d: 'Conversational agents for customer support and lead qualification, plus automations that remove repetitive admin work.', tag: 'AI',          c: '#7C3AED' },
+  { icon: <Code2 size={20}/>,      t: 'Websites & eCommerce',         d: 'Corporate websites and online stores, designed and built in-house, with the content management you need to update them.', tag: 'Engineering', c: '#7C3AED' },
+  { icon: <Smartphone size={20}/>, t: 'Web & Mobile Apps',            d: 'Custom web applications and mobile apps, scoped with you before we write a line of code.',                               tag: 'Engineering', c: '#7C3AED' },
+  { icon: <Sparkles size={20}/>,   t: 'AI Creatives',                 d: 'AI-assisted images, video and audio for campaigns, directed by our designers and checked against your brand.',          tag: 'Media',       c: '#7C3AED' },
+  { icon: <Video size={20}/>,      t: 'Video Production',             d: 'Reels, promotional videos and ad creatives, shot and edited for each platform’s format.',                               tag: 'Media',       c: '#7C3AED' },
+  { icon: <Megaphone size={20}/>,  t: 'Social Media Management',      d: 'Monthly content calendars, posting and community management across Instagram, Facebook, TikTok and LinkedIn.',          tag: 'Media',       c: '#7C3AED' },
+  { icon: <BarChart2 size={20}/>,  t: 'Performance Marketing',        d: 'Google and Meta ad campaigns with agreed targets, weekly optimisation and a monthly report in plain language.',        tag: 'Growth',      c: '#7C3AED' },
+  { icon: <Search size={20}/>,     t: 'SEO & Content',                d: 'Technical SEO, local search and written content that help the right customers find you.',                              tag: 'Growth',      c: '#7C3AED' },
 ];
 
 const PROCESS = [
-  { n: '01', t: 'Discovery', d: 'Deep-dive into your brand, goals and audience.',   c: '#7C3AED' },
-  { n: '02', t: 'Strategy',  d: 'AI-powered planning and content roadmaps.',         c: '#7C3AED' },
-  { n: '03', t: 'Execution', d: 'Creative production and campaign deployment.',      c: '#7C3AED' },
-  { n: '04', t: 'Optimise',  d: 'Continuous analysis to maximise ROI.',             c: '#7C3AED' },
+  { n: '01', t: 'Discovery', d: 'We learn your business, goals, audience and budget.',        c: '#7C3AED' },
+  { n: '02', t: 'Strategy',  d: 'A written plan with scope, timeline and success measures.',   c: '#7C3AED' },
+  { n: '03', t: 'Execution', d: 'Production, build and launch, with a review at each stage.',  c: '#7C3AED' },
+  { n: '04', t: 'Optimise',  d: 'We measure results against the plan and adjust.',            c: '#7C3AED' },
 ];
 
 export function ServicesPage({ dark }) {
   useSEO({
     title: 'Our Services | AI Agent Development & Digital Marketing | Paralox Media',
-    description: 'Explore Paralox Media\'s full range of services: AI agent development, AI-driven digital marketing, social media management, web & app development, SEO, video production, and performance marketing.',
+    description: 'Paralox Media services across four pillars: AI agents and automation, websites and apps, video and AI creatives, social media, performance marketing and SEO.',
   });
   const bd = dark ? 'rgba(124,58,237,.13)' : 'rgba(124,58,237,.08)';
 
@@ -37,10 +38,10 @@ export function ServicesPage({ dark }) {
         <FadeUp>
           <Chip text="What We Offer" />
           <Heading dark={dark} size="clamp(1.9rem,3.8vw,3.2rem)">
-            360° Digital Services, <GradText>Tailored for Growth</GradText>
+            Four pillars. <GradText>One partner.</GradText>
           </Heading>
           <p style={{ color: dark ? '#C9C4D6' : '#4A4658', maxWidth: 520, marginTop: 11, marginBottom: 40, fontSize: 'clamp(.86rem,1.8vw,.97rem)', lineHeight: 1.8, fontFamily: "'Satoshi',sans-serif" }}>
-            Comprehensive digital services to elevate brand presence, improve performance, and boost engagement.
+            Every Paralox service sits under AI, Engineering, Media or Growth. Use one, or combine them in a single engagement.
           </p>
         </FadeUp>
 

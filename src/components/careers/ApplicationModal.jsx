@@ -400,7 +400,7 @@ function Step4({ form, setField, errors, dark }) {
 
       <div style={{ marginTop: 24, padding: '18px 20px', borderRadius: 14, background: dark ? 'rgba(182,156,255,.05)' : 'rgba(182,156,255,.08)', border: `1px solid ${dark ? 'rgba(182,156,255,.12)' : 'rgba(182,156,255,.2)'}` }}>
         <div style={{ fontWeight: 700, fontSize: '.83rem', color: dark ? '#B69CFF' : '#3E2087', marginBottom: 6, fontFamily: "'Satoshi',sans-serif" }}>
-          Almost there!
+          Almost there.
         </div>
         <p style={{ fontSize: '.79rem', lineHeight: 1.7, color: dark ? '#C9C4D6' : '#4A4658', fontFamily: "'Satoshi',sans-serif" }}>
           Just one more step — a few short screening questions to help us understand you better. Take your time and be yourself.
@@ -781,10 +781,10 @@ export function ApplicationModal({ dark, vacancy, onClose }) {
                     <CheckCircle2 size={38} color="#fff" />
                   </motion.div>
                   <h3 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: '1.5rem', color: dark ? '#F7F6FA' : '#191720', marginBottom: 10 }}>
-                    Application Submitted!
+                    Application received
                   </h3>
                   <p style={{ fontSize: '.9rem', lineHeight: 1.8, color: dark ? '#C9C4D6' : '#4A4658', maxWidth: 400, margin: '0 auto 24px' }}>
-                    Thank you, <strong>{form.fullName}</strong>! Your application for <strong>{form.position}</strong> has been received. Our team will review it and get back to you within 3–5 business days.
+                    Thank you, <strong>{form.fullName}</strong>. Your application for <strong>{form.position}</strong> has been received. Our team will review it and get back to you within 3–5 business days.
                   </p>
                   <motion.button
                     whileHover={{ y: -2 }}

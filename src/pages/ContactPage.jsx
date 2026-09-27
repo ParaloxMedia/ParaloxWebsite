@@ -158,7 +158,7 @@ export function ContactPage({ dark }) {
               {sent && (
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                   style={{ marginTop: 14, padding: '11px', borderRadius: 14, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Satoshi',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-                  <CheckCircle2 size={15} /> Message sent! We'll get back to you within 24 hours.
+                  <CheckCircle2 size={15} /> Message sent. We’ll reply within 24 hours.
                 </motion.div>
               )}
             </AnimatePresence>

@@ -118,29 +118,29 @@ const VACANCIES = [
 const WHY_JOIN = [
   {
     icon: <Brain size={22} />,
-    title: 'AI-Driven Projects',
-    desc: 'Work on cutting-edge AI-powered creative and digital campaigns that push industry boundaries.',
+    title: 'Real AI Projects',
+    desc: 'Build AI agents, automations and AI-assisted campaigns for paying clients, not internal demos.',
     color: '#7C3AED',
     glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <Rocket size={22} />,
-    title: 'Fast-Growing Team',
-    desc: 'Be part of a high-velocity startup with the energy, culture, and ambition to go global.',
+    title: 'Early-Stage Team',
+    desc: 'We were founded in 2025, so your work shapes how the company operates, not just what it ships.',
     color: '#7C3AED',
     glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <TrendingUp size={22} />,
     title: 'Learn & Grow',
-    desc: 'Continuous learning environment with real client exposure, mentorship, and skill development.',
+    desc: 'Client-facing work from your first month, with mentoring from senior team members and time set aside to learn new tools.',
     color: '#7C3AED',
     glow: 'rgba(124,58,237,.35)',
   },
   {
     icon: <Heart size={22} />,
     title: 'Collaborative Culture',
-    desc: 'Work alongside talented people across tech, media, and marketing in a creative, supportive space.',
+    desc: 'Engineers, designers, editors and marketers work on the same projects, so you see how every part fits together.',
     color: '#7C3AED',
     glow: 'rgba(182,156,255,.3)',
   },
@@ -149,19 +149,19 @@ const WHY_JOIN = [
 const FAQS = [
   {
     q: 'What is the hiring process like at Paralox Media?',
-    a: 'Our process is fast and transparent: submit your application → shortlisting (3–5 days) → interview/task round → offer. We keep every candidate informed throughout.',
+    a: 'You apply, we shortlist within 3–5 working days, then run an interview or a short task before making an offer. We tell every candidate the outcome.',
   },
   {
     q: 'Are remote and hybrid roles available?',
-    a: 'Yes! Most of our roles support remote and hybrid arrangements. Specific flexibility is mentioned on each vacancy card.',
+    a: 'Most roles support remote or hybrid work. Roles that need you on site, such as camera work, say so on the vacancy card.',
   },
   {
     q: 'Do I need to have AI tool experience?',
-    a: 'It\'s a strong plus but not mandatory. We value willingness to learn and adopt AI-assisted workflows. We\'ll train the right candidate.',
+    a: 'It helps, but it is not required. We train new team members on the AI tools we use.',
   },
   {
     q: 'Can I apply for multiple roles?',
-    a: 'Absolutely. If you feel qualified for more than one position, submit a separate application for each. Tailor your answers to each role.',
+    a: 'Yes. Submit a separate application for each role, with answers written for that role.',
   },
   {
     q: 'How should I prepare my portfolio?',
@@ -443,7 +443,7 @@ function FaqItem({ q, a, dark, index }) {
 export function CareersPage({ dark }) {
   useSEO({
     title: 'Careers | Join Our AI & Digital Marketing Team | Paralox Media',
-    description: 'Join Paralox Media — a fast-growing AI agency. We\'re hiring AI developers, digital marketers, designers, and more. Apply now and help shape the future of AI-powered business.',
+    description: 'Open roles at Paralox Media, a creative technology company in Colombo, Sri Lanka. We hire across AI, engineering, media and growth.',
   });
   const [activeVacancy, setActiveVacancy] = useState(null);
   const [shareVacancy,  setShareVacancy]  = useState(null);
@@ -509,7 +509,7 @@ export function CareersPage({ dark }) {
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .26 }}
             style={{ fontSize: 'clamp(.9rem,2vw,1.1rem)', lineHeight: 1.75, color: 'rgba(255,255,255,.6)', maxWidth: 520, margin: '0 auto 36px' }}
           >
-            Build the future with creativity, strategy, and AI-driven innovation.
+            Work across AI, engineering, media and growth with a small team in Colombo.
           </motion.p>
 
           {/* CTA buttons */}
@@ -581,15 +581,15 @@ export function CareersPage({ dark }) {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.6rem,3.5vw,2.6rem)', color: dark ? '#F7F6FA' : '#191720', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 18 }}>
-              Where AI Meets{' '}
+              Human ideas.{' '}
               <span style={{ color: T.violet }}>
-                Creative Excellence
+                Machine speed.
               </span>
             </h2>
           </FadeUp>
           <FadeUp delay={0.18}>
             <p style={{ fontSize: 'clamp(.88rem,1.8vw,1rem)', lineHeight: 1.9, color: dark ? '#C9C4D6' : '#4A4658', maxWidth: 680, margin: '0 auto' }}>
-              Paralox Media is an AI-driven digital agency helping brands across the globe grow through strategic social media, performance marketing, web development, and AI-powered solutions. Our team is small but mighty and we're growing fast. If you're ambitious, creative, and excited by the future of digital, this is your place.
+              Paralox Media is a creative technology company. We build AI agents and websites, produce media and run growth marketing for clients in five countries. We use AI to take routine work off people, so the team can spend its time on ideas, craft and clients.
             </p>
           </FadeUp>
         </div>
@@ -745,7 +745,7 @@ export function CareersPage({ dark }) {
               Don't See Your Role?
             </h2>
             <p style={{ fontSize: 'clamp(.88rem,1.8vw,.98rem)', lineHeight: 1.8, color: 'rgba(255,255,255,.55)', maxWidth: 480, margin: '0 auto 30px' }}>
-              We're always open to talented people. Send us an open application and tell us how you can contribute to Paralox Media.
+              Send an open application. Tell us what you do well and where it would fit in our work.
             </p>
             <motion.button
               whileHover={{ y: -3, boxShadow: '0 14px 36px rgba(124,58,237,.55)' }}
@@ -800,10 +800,10 @@ export function CareersPage({ dark }) {
               <div className="og" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '70%', height: '200%', borderRadius: '50%', background: 'radial-gradient(ellipse,rgba(124,58,237,.3),transparent 65%)', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem,3.5vw,2.4rem)', color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.2, marginBottom: 14 }}>
-                  Ready to Build the Future?
+                  Let’s create the future together.
                 </h2>
                 <p style={{ fontSize: 'clamp(.88rem,1.8vw,.98rem)', lineHeight: 1.8, color: 'rgba(255,255,255,.55)', maxWidth: 460, margin: '0 auto 30px' }}>
-                  Join a team that's redefining what's possible with AI, creativity, and ambition. Your next chapter starts here.
+                  Browse the open roles, or send an open application if none fits yet.
                 </p>
                 <div className="hb" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 13 }}>
                   <motion.button

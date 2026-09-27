@@ -128,7 +128,7 @@ export function FeedbackPage({ dark }) {
               <CheckCircle2 size={32} color="#16A34A" />
             </motion.div>
             <h2 style={{ fontFamily: "'Satoshi',sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: dark ? '#F7F6FA' : '#191720', marginBottom: 10, letterSpacing: '-.5px' }}>
-              Thank You!
+              Thank you
             </h2>
             <p style={{ color: dark ? '#A9A4B8' : '#6B6778', fontSize: '.92rem', lineHeight: 1.75, fontFamily: "'Satoshi',sans-serif" }}>
               Your feedback means a lot to us. We use every response to sharpen how we work and serve clients like you.
@@ -241,7 +241,7 @@ export function FeedbackPage({ dark }) {
               {sent && (
                 <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                   style={{ marginTop: 12, padding: '11px', borderRadius: 10, textAlign: 'center', background: 'rgba(34,197,94,.09)', border: '1px solid rgba(34,197,94,.24)', color: '#16A34A', fontWeight: 600, fontSize: '.83rem', fontFamily: "'Satoshi',sans-serif", display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-                  <CheckCircle2 size={15} /> Thank you for your feedback!
+                  <CheckCircle2 size={15} /> Thank you for your feedback.
                 </motion.div>
               )}
             </AnimatePresence>

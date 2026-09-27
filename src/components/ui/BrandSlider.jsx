@@ -12,7 +12,7 @@ export function BrandSlider({ dark }) {
       title={c.n}
       style={{ width: 104, height: 104, flexShrink: 0, borderRadius: 20, overflow: 'hidden', background: '#FFFFFF', border: `1px solid ${bd}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <img src={c.logo} alt={c.n} loading="lazy" draggable={false}
-        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', padding: c.pad ? 14 : 0, boxSizing: 'border-box' }} />
     </motion.div>
   );
 
