@@ -9,9 +9,10 @@ import ceoPhoto from '../assets/team/abubakker.jpg';
 const PRE = ['Building', 'the', 'future', 'of'];
 const MAIN = ['AI-powered', 'business', 'solutions'];
 
-function MissionHero() {
+/** Full-screen mission hero. Also used as the home page hero on phones. */
+export function MissionHero({ kicker = 'About Paralox Media' }) {
   return (
-    <section className="ab-mission am-hero" aria-label="About Paralox Media">
+    <section className="ab-mission am-hero" aria-label={kicker}>
       <div className="am-bg" aria-hidden="true">
         <div className="am-orb o1" /><div className="am-orb o2" /><div className="am-orb o3" />
         <div className="gridlines" />
@@ -27,7 +28,7 @@ function MissionHero() {
             <path className="am-starp" transform="translate(36 37) scale(1)" d="M24 4c2 10.5 6.5 15 17 17-10.5 2-15 6.5-17 17-2-10.5-6.5-15-17-17C17.5 19 22 14.5 24 4z" fill="url(#amStarG)" />
           </svg>
         </div>
-        <p className="mission-kicker am-in" style={{ '--d': '.2s' }}>About Paralox Media</p>
+        <p className="mission-kicker am-in" style={{ '--d': '.2s' }}>{kicker}</p>
         <h1 className="mission-line">
           <span className="m-pre">
             {PRE.map((w, i) => (
