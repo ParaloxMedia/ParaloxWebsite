@@ -2,8 +2,47 @@ import { useEffect, useRef, useState } from 'react';
 import logoWhite from '../assets/img/logo-white.png';
 import robotHand from '../assets/loader/robot-hand.png';
 import humanHand from '../assets/loader/human-hand.png';
+import welcomeSound from '../assets/loader/welcome.mp3';
 
 const WORDS = ['AI', 'Engineering', 'Media', 'Growth'];
+
+/**
+ * "Welcome to Paralox" voice, played when the hands touch. Browsers block sound until the
+ * visitor interacts with the page, so if autoplay is refused it plays on the first tap,
+ * click or key press instead, but only while the intro is on screen, so it never starts
+ * mid-browse. Once per browser session.
+ */
+function useWelcomeSound(active) {
+  const api = useRef({ touch() {}, end() {} });
+  useEffect(() => {
+    if (!active) return undefined;
+    let played = false;
+    try { played = sessionStorage.getItem('plx-welcome') === '1'; } catch { /* storage blocked */ }
+    if (played) return undefined;
+
+    const audio = new Audio(welcomeSound);
+    audio.preload = 'auto';
+    audio.volume = 0.85;
+    let open = true;   // intro still on screen
+    let waiting = false; // autoplay was refused; play on the first gesture
+    const markPlayed = () => { played = true; try { sessionStorage.setItem('plx-welcome', '1'); } catch { /* ignore */ } };
+    const tryPlay = () => {
+      if (played || !open) return;
+      audio.play().then(markPlayed).catch(() => { waiting = true; });
+    };
+    const onGesture = () => { if (waiting || !played) { waiting = false; tryPlay(); } };
+    const events = ['pointerdown', 'keydown', 'touchstart'];
+    events.forEach((e) => document.addEventListener(e, onGesture, { capture: true, passive: true }));
+    const stopListening = () => events.forEach((e) => document.removeEventListener(e, onGesture, { capture: true }));
+
+    api.current = {
+      touch: tryPlay,
+      end() { open = false; stopListening(); }, // let a playing voice finish; just stop waiting for gestures
+    };
+    return () => { open = false; stopListening(); };
+  }, [active]);
+  return api;
+}
 
 function release() {
   document.documentElement.classList.remove('is-loading');
@@ -19,11 +58,12 @@ export default function Loader() {
   const [word, setWord] = useState(0);
   const refs = { num: useRef(null), bar: useRef(null), hands: useRef(null), cv: useRef(null) };
   const endedRef = useRef(false);
+  const sound = useWelcomeSound(active);
 
   const openDoors = () => {
     if (endedRef.current) return; endedRef.current = true;
     setPhase('done seam');
-    setTimeout(() => { setPhase('done seam open'); release(); }, 420);
+    setTimeout(() => { setPhase('done seam open'); release(); sound.current.end(); }, 420);
     setTimeout(() => setActive(false), 1750);
   };
 
@@ -67,7 +107,7 @@ export default function Loader() {
         if (al <= 0) continue;
         cx.beginPath(); cx.arc(x, y, 0.6 * q.z, 0, 6.283); cx.fillStyle = `rgba(201,181,255,${al.toFixed(3)})`; cx.fill();
       }
-      if (p === 1) { setPhase('done'); doneTimer = setTimeout(openDoors, 1150); return; }
+      if (p === 1) { setPhase('done'); sound.current.touch(); doneTimer = setTimeout(openDoors, 1150); return; }
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
