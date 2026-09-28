@@ -27,6 +27,9 @@ import pngLogo from '../assets/clients/png-embroidery.jpeg';
 
 export const CONTACT = {
   email: 'info@paraloxmedia.com',
+  // Contact form delivery: Formspree forwards each message by email to the account's inbox
+  // (info@paraloxmedia.com), with the sender as reply-to. Change this to use another form.
+  formEndpoint: 'https://formspree.io/f/xlgojvpr',
   phone: '+94 75 032 8833',
   phoneRaw: '+94750328833',
   whatsapp: 'https://wa.me/94750328833',

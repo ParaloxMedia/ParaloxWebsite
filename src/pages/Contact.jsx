@@ -40,20 +40,42 @@ function ContactForm() {
   const [err, setErr] = useState('');
   const [txt, setTxt] = useState('');
   const [copyLabel, setCopyLabel] = useState('Copy message');
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | failed
   const doneRef = useRef(null);
 
   const set = (k) => (e) => setF((v) => ({ ...v, [k]: e.target.value }));
   const toggle = (v) => setNeeds((n) => (n.includes(v) ? n.filter((x) => x !== v) : [...n, v]));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+    if (status === 'sending') return;
     const name = f.name.trim(), email = f.email.trim(), phone = f.phone.trim(), msg = f.message.trim();
     if (!name || !/^\S+@\S+\.\S+$/.test(email) || !msg) { setErr('Add your name, a valid email and a short message.'); return; }
     if (phone && !/^\+?[\d\s()-]{7,}$/.test(phone)) { setErr('Check the mobile number: digits, spaces and an optional + only.'); return; }
     setErr('');
     const ordered = PILLS.map((p) => p.value).filter((v) => needs.includes(v));
-    setTxt(`Hello Paralox Media,\n\n${msg}\n\n${ordered.length ? `Interested in: ${ordered.join(', ')}\n` : ''}From: ${name} (${email}${phone ? `, ${phone}` : ''})`);
-    requestAnimationFrame(() => doneRef.current?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' }));
+    const text = `Hello Paralox Media,\n\n${msg}\n\n${ordered.length ? `Interested in: ${ordered.join(', ')}\n` : ''}From: ${name} (${email}${phone ? `, ${phone}` : ''})`;
+    setTxt(text);
+    setStatus('sending');
+    const reveal = () => requestAnimationFrame(() => doneRef.current?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'nearest' }));
+    try {
+      // Delivered by email to info@paraloxmedia.com; `email` becomes the reply-to address.
+      const res = await fetch(CONTACT.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New enquiry from ${name} via paraloxmedia.com`,
+          name, email, phone: phone || '—', interested_in: ordered.join(', ') || '—', message: msg,
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus('sent');
+      setF({ name: '', email: '', phone: '', message: '' });
+      setNeeds([]);
+    } catch {
+      setStatus('failed'); // keep the prepared message so it can still be sent another way
+    }
+    reveal();
   };
 
   return (
@@ -75,16 +97,26 @@ function ContactForm() {
       <label className="sr" htmlFor="c2-msg">Message</label>
       <textarea className="c2-input c2-area" id="c2-msg" name="message" placeholder="Message" value={f.message} onChange={set('message')} />
       {err && <p className="c2-err" role="alert">{err}</p>}
-      <button className="c2-submit" type="submit">Send message</button>
-      {txt && (
+      <button className="c2-submit" type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Send message'}
+      </button>
+      {status === 'sent' && (
+        <div className="c2-done c2-sent" ref={doneRef} role="status">
+          <span className="mono">Message sent</span>
+          <p>Thank you. Your message is with our team at {CONTACT.email}, and we will reply to the email you gave us.</p>
+          <small>Need us sooner? <a href={CONTACT.whatsapp} target="_blank" rel="noopener">Message us on WhatsApp ↗</a></small>
+        </div>
+      )}
+      {status === 'failed' && txt && (
         <div className="c2-done" ref={doneRef}>
-          <span className="mono">Your message is ready</span>
+          <span className="mono">We could not send it just now</span>
+          <p className="c2-fail">Your message is below. Send it on WhatsApp, or copy it and email us.</p>
           <pre>{txt}</pre>
           <div className="c2-done-row">
             <a className="c2-submit c2-wa" href={`${CONTACT.whatsapp}?text=${encodeURIComponent(txt)}`} target="_blank" rel="noopener">Send on WhatsApp <span className="arr">↗</span></a>
             <button type="button" className="c2-ghost" onClick={() => copyText(txt).then((ok) => { setCopyLabel(ok ? 'Copied' : 'Select and copy'); setTimeout(() => setCopyLabel('Copy message'), 1600); })}>{copyLabel}</button>
           </div>
-          <small>Or email it to <span className="copyable">{CONTACT.email}</span></small>
+          <small>Or email it to <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Enquiry via paraloxmedia.com')}&body=${encodeURIComponent(txt)}`}>{CONTACT.email}</a></small>
         </div>
       )}
     </form>

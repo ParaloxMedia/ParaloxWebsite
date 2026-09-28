@@ -1526,3 +1526,10 @@ html.is-loading .pp *{animation-play-state:paused!important}
 @media (min-width:1081px){.cs-high ul.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .pj-ig-group + .pj-ig-group{margin-top:clamp(48px,6vw,80px)}
 .pj-ig-text{margin:0;color:rgba(233,227,250,.68);max-width:34rem}
+
+/* Contact form: sending state and result messages. */
+.c2-submit:disabled{opacity:.7;cursor:progress}
+.c2-sent{border-color:rgba(74,222,128,.35);background:rgba(22,101,52,.22)}
+.c2-sent .mono{color:#86EFAC}
+.c2-done > p{margin:0;color:var(--lav);line-height:1.6}
+.c2-done a{color:#fff;text-decoration:underline;text-underline-offset:3px}
