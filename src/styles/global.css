@@ -1521,3 +1521,5 @@ html.is-loading .pp *{animation-play-state:paused!important}
 .pj-split-bts .pj-ig{margin-top:6px}
 .pj-split-bts .pj-ig blockquote.instagram-media{border-color:#ECE8F7}
 @media (max-width:980px){.pj-split-in{grid-template-columns:1fr}.pj-split-bts{max-width:420px;width:100%;justify-self:center}}
+/* Eight (or four) tiles: even rows of four instead of a ragged last row. */
+@media (min-width:1081px){.cs-high ul.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}

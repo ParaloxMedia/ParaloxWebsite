@@ -144,7 +144,7 @@ export default function Project({ project: p }) {
       <section className="cs-dark cs-high">
         <div className="wrap">
           <div className="cs-reveal"><Label>What we delivered</Label></div>
-          <ul>
+          <ul className={p.deliverables.length % 4 === 0 ? 'cols-4' : undefined}>
             {p.deliverables.map((d, i) => (
               <li key={d.title} className="cs-reveal" style={{ transitionDelay: `${i * 70}ms` }}>
                 <Glass glyph={d.glyph} className="ic" />
