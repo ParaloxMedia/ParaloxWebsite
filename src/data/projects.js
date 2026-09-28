@@ -5,9 +5,7 @@ import ritzRangeStage from '../assets/projects/ritzbury/range-stage.jpg';
 import ritzRangeSet from '../assets/projects/ritzbury/range-set.jpg';
 import ritzContestants from '../assets/projects/ritzbury/contestants.jpg';
 import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
-import pngCover from '../assets/projects/png-embroidery/cover.jpg';
-import pngDashboard from '../assets/projects/png-embroidery/dashboard.jpg';
-import pngLogin from '../assets/projects/png-embroidery/login.jpg';
+import pngHero from '../assets/projects/png-embroidery/hero.jpg';
 
 export const PROJECTS = [
   {
@@ -125,7 +123,7 @@ export const PROJECTS = [
     kicker: 'Mobile-responsive web portal · Design and development',
     headline: 'One portal for ExxonMobil’s uniform and embroidery orders.',
     summary: 'A mobile-responsive vendor portal where ExxonMobil staff order uniforms and embroidered workwear from PNG Embroidery, and the PNG Embroidery team runs quotations, invoices and customer records from one admin area. Designed and built by Paralox Media.',
-    hero: pngCover,
+    hero: pngHero,
     pillar: 'Engineering',
     year: '2026',
     iso: '2026-09-28',
@@ -142,11 +140,6 @@ export const PROJECTS = [
       'ExxonMobil staff create an account, browse the uniform catalogue, add items to a cart and place orders. Their dashboard shows active, completed and pending orders alongside total spend, notifications follow each order as it moves, and a reports view keeps their order history in one place.',
       'Behind it, the PNG Embroidery team works from a separate admin area. Requests become quotations, approved orders are processed and tracked, invoices are issued from the same record, and a built-in CRM keeps each customer’s details and order history together.',
       'Prices and totals are shown in Papua New Guinean kina, and the portal is live at pngemportal.com.',
-    ],
-    photos: [
-      { src: pngCover, caption: 'The same portal on a laptop and a phone: the staff dashboard, and the admin sign-in on mobile.' },
-      { src: pngDashboard, caption: 'The staff dashboard: active, completed and pending orders, total spend, recent orders and quick actions.' },
-      { src: pngLogin, caption: 'Sign-in for ExxonMobil staff, with self sign-up and a separate admin login.' },
     ],
     deliverables: [
       { glyph: 'browser', title: 'Online ordering', text: 'A uniform catalogue with cart and checkout, built for ExxonMobil staff.' },
