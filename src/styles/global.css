@@ -119,37 +119,55 @@ button,input,select,textarea{font:inherit;color:inherit}
   .nav .logo .lw{display:none}.nav .logo .lp{display:block}
   .nav .logo img{height:26px}
 }
-/* Phone navigation: one floating glass surface, tinted in the brand purple. */
+/* Phone navigation: one floating glass bar, the same on every page and at every
+   scroll position. Menu on the left, logo, and a "Let's talk" pill on the right. */
 @media (max-width:767px){
-  .nav{top:calc(10px + env(safe-area-inset-top,0px));left:12px;right:12px;height:64px;padding:0 10px 0 16px;gap:12px;border-radius:18px}
+  .nav{top:calc(10px + env(safe-area-inset-top,0px));left:12px;right:12px;height:64px;padding:0 10px 0 8px;gap:6px;border-radius:18px;justify-content:flex-start}
   /* An opacity/transform animation on the parent isolates the glass backdrop. */
-  .nav.intro{animation:none}
-  .nav::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.15),rgba(173,151,238,.06) 55%,rgba(216,204,255,.18)),rgba(30,15,69,.72);border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(255,255,255,.06),0 10px 30px rgba(30,15,69,.18);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%)}
-  .nav .logo,.nav.solid .logo{position:relative;margin:0;padding:0 4px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
-  .nav .logo .lw,.nav.solid .logo .lw{display:block}
-  .nav .logo .lp,.nav.solid .logo .lp{display:none}
-  .nav .menu-btn{position:relative;width:44px;height:44px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:none;-webkit-backdrop-filter:none}
-  .nav .menu-btn span{background:#fff;box-shadow:0 6px 0 #fff,0 -6px 0 #fff}
-  .nav .menu-btn:hover,.nav .menu-btn[aria-expanded="true"]{background:rgba(255,255,255,.18)}
-  .nav .logo:focus-visible,.nav .menu-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
-  .nav.scrolled::before{background:rgba(255,255,255,.94);border-color:rgba(233,227,250,.9);box-shadow:inset 0 1px 0 #fff,0 10px 30px rgba(30,15,69,.12)}
-  .nav.scrolled .logo .lw{display:none}
-  .nav.scrolled .logo .lp{display:block}
-  .nav.scrolled .menu-btn{background:rgba(30,15,69,.04);border-color:rgba(30,15,69,.1);box-shadow:none}
-  .nav.scrolled .menu-btn span{background:var(--ink-text);box-shadow:0 6px 0 var(--ink-text),0 -6px 0 var(--ink-text)}
-  .nav.scrolled .menu-btn:hover,.nav.scrolled .menu-btn[aria-expanded="true"]{background:rgba(30,15,69,.09)}
-  .nav.scrolled .logo:focus-visible,.nav.scrolled .menu-btn:focus-visible{outline-color:var(--violet)}
-  .nav .mobile-menu{top:calc(84px + env(safe-area-inset-top,0px));max-height:calc(100svh - 100px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));border-radius:18px;background:linear-gradient(125deg,rgba(255,255,255,.1),rgba(173,151,238,.04)),rgba(30,15,69,.9);color:#fff;border-color:rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 20px 50px rgba(30,15,69,.25);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%)}
-  .nav .mobile-menu > a:not(.btn),.nav .mm-sub{border-color:rgba(255,255,255,.16)}
-  .nav .mm-sub a{color:#fff}
-  .nav .mm-label{color:#d6c9f5}
-  .nav.scrolled .mobile-menu{background:rgba(255,255,255,.96);color:var(--ink-text);border-color:rgba(233,227,250,.9);box-shadow:inset 0 1px 0 #fff,0 20px 50px rgba(30,15,69,.16)}
-  .nav.scrolled .mobile-menu > a:not(.btn),.nav.scrolled .mm-sub{border-color:rgba(30,15,69,.1)}
-  .nav.scrolled .mm-sub a{color:var(--deep)}
-  .nav.scrolled .mm-label{color:var(--mute)}
+  header.nav.intro{animation:none}
+  /* z-index:-1 keeps the glass behind every item; the menu button's order:-1 would
+     otherwise paint it underneath the glass. */
+  .nav::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,.16),rgba(173,151,238,.05) 55%,rgba(216,204,255,.16)),rgba(30,15,69,.72);
+    border:1px solid rgba(255,255,255,.28);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(255,255,255,.05),0 12px 32px rgba(30,15,69,.22);
+    backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%)}
+
+  /* Menu first, as a plain icon on the glass. */
+  .nav .menu-btn,.nav.scrolled .menu-btn,.nav.solid .menu-btn{order:-1;position:relative;display:inline-flex;width:44px;height:44px;flex:none;
+    background:transparent;border:0;border-radius:12px;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav .menu-btn span,.nav.scrolled .menu-btn span{width:20px;height:2px;background:#fff;box-shadow:0 6px 0 #fff,0 -6px 0 #fff}
+  .nav .menu-btn:hover,.nav .menu-btn[aria-expanded="true"]{background:rgba(255,255,255,.12)}
+
+  /* White logo on the glass in every state. */
+  .nav .logo,.nav.solid .logo,.nav.scrolled .logo{position:relative;margin:0 auto 0 0;padding:0 4px;height:44px;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav .logo .lw,.nav.solid .logo .lw,.nav.scrolled .logo .lw{display:block}
+  .nav .logo .lp,.nav.solid .logo .lp,.nav.scrolled .logo .lp{display:none}
+  .nav .logo img{height:26px;width:auto}
+
+  /* Primary action as a pill, like the reference's "Post" button. */
+  header.nav a.nav-cta{position:relative;display:inline-flex;flex:none;height:40px;padding:0 16px;gap:6px;border-radius:999px;font-size:.8rem;letter-spacing:.02em;white-space:nowrap;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px rgba(124,58,237,.35)}
+
+  .nav .logo:focus-visible,.nav .menu-btn:focus-visible,.nav .nav-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  /* Menu panel: the same glass, directly under the bar. */
+  .nav .mobile-menu,.nav.scrolled .mobile-menu{top:calc(84px + env(safe-area-inset-top,0px));left:12px;right:12px;
+    max-height:calc(100svh - 100px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow-y:auto;border-radius:18px;
+    background:linear-gradient(125deg,rgba(255,255,255,.1),rgba(173,151,238,.04)),rgba(30,15,69,.9);color:#fff;border:1px solid rgba(255,255,255,.25);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 20px 50px rgba(30,15,69,.3);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%)}
+  .nav .mobile-menu > a:not(.btn),.nav .mm-sub,.nav.scrolled .mobile-menu > a:not(.btn),.nav.scrolled .mm-sub{border-color:rgba(255,255,255,.16);color:#fff}
+  .nav .mm-sub a,.nav.scrolled .mm-sub a{color:#fff}
+  .nav .mm-label,.nav.scrolled .mm-label{color:#d6c9f5}
+
   @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
     .nav::before,.nav .mobile-menu{background:rgba(30,15,69,.97)}
   }
+
+  /* The bar floats over the page, so pages that start with plain content must clear it
+     (bar bottom = 74px + safe area). Full-bleed heroes already centre their content. */
+  main > .pulse-sec:first-child{padding-top:calc(104px + env(safe-area-inset-top,0px))}
+  .c2 .c2-body{padding-top:calc(104px + env(safe-area-inset-top,0px))}
 }
 
 /* ---------- GLASS ---------- */
