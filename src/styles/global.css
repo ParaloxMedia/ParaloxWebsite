@@ -1407,56 +1407,46 @@ html.is-loading .pp *{animation-play-state:paused!important}
 }
 
 /* ---------- Pulse: clear frosted-glass cards over soft light ----------
-   Glass only reads when there is something bright behind it, so the section is dark ink
-   with blurred violet, lavender and white glows repeating down the page. Each card is
-   almost clear: a faint white tint, strong blur, a thin light edge and a top highlight. */
-.pulse-sec{position:relative;isolation:isolate;overflow:hidden;background:#0B0914;color:#fff;color-scheme:dark}
+   The page keeps its light background. Soft violet and lavender glows repeat down the
+   section so each card has colour behind it; the cards are nearly clear frosted glass
+   (faint white tint, strong blur, thin bright edge, top highlight) with dark text. */
+.pulse-sec{position:relative;isolation:isolate;overflow:hidden}
 .pulse-sec::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(400px 400px at 18% 42%,rgba(182,156,255,.62),transparent 70%) 0 0/100% 1000px repeat-y,
-    radial-gradient(440px 440px at 82% 22%,rgba(124,58,237,.72),transparent 70%) 0 0/100% 1000px repeat-y,
-    radial-gradient(320px 320px at 55% 74%,rgba(255,255,255,.3),transparent 70%) 0 0/100% 1000px repeat-y,
-    radial-gradient(380px 380px at 94% 90%,rgba(182,156,255,.5),transparent 70%) 0 0/100% 1000px repeat-y,
-    radial-gradient(1200px 700px at 50% 0%,#1C1433,transparent 70%)}
-.pulse-sec .d-l,.pulse-sec .d-xl,.pulse-sec h1,.pulse-sec h2{color:#fff}
-.pulse-sec .sec-head p{color:rgba(233,227,250,.72)}
-.pulse-sec .pid{color:rgba(233,227,250,.6)}.pulse-sec .pid b{color:#fff}
-.pulse-filters button{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16);color:#fff;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.pulse-filters button .mono{color:rgba(233,227,250,.6)}
-.pulse-filters button:hover{border-color:rgba(216,204,255,.55)}
-.pulse-filters button.on{background:#fff;border-color:#fff;color:var(--ink-text)}
-.pulse-filters button.on .mono{color:var(--violet)}
+    radial-gradient(420px 420px at 16% 40%,rgba(124,58,237,.30),transparent 70%) 0 0/100% 1000px repeat-y,
+    radial-gradient(460px 460px at 84% 20%,rgba(182,156,255,.50),transparent 70%) 0 0/100% 1000px repeat-y,
+    radial-gradient(380px 380px at 56% 78%,rgba(124,58,237,.22),transparent 70%) 0 0/100% 1000px repeat-y,
+    radial-gradient(400px 400px at 95% 92%,rgba(182,156,255,.38),transparent 70%) 0 0/100% 1000px repeat-y}
 
-.pulse-sec .post{position:relative;padding:12px 12px 22px;border-radius:28px;color:#fff;
-  background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.04) 45%,rgba(255,255,255,.07));
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -1px 0 rgba(255,255,255,.04),0 24px 60px rgba(0,0,0,.35);
+.pulse-sec .post{position:relative;padding:12px 12px 22px;border-radius:28px;color:var(--ink-text);
+  background:linear-gradient(140deg,rgba(255,255,255,.58),rgba(255,255,255,.22) 45%,rgba(255,255,255,.38));
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.35),0 20px 50px rgba(62,32,135,.12);
   backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%);
   transition:translate .55s var(--ease-expo),box-shadow .55s var(--ease-expo),border-color .4s,background-color .4s,scale .2s}
 .pulse-sec .post > :not(.thumb){padding-inline:10px}
 .pulse-sec .post .thumb{border-radius:18px}
-.pulse-sec .post .meta{color:rgba(233,227,250,.6)}
-.pulse-sec .post h3{color:#fff}
-.pulse-sec .post p{color:rgba(255,255,255,.72)}
-.pulse-sec .post .link{color:#fff}
+.pulse-sec .post .meta{color:var(--mute)}
+.pulse-sec .post h3{color:var(--ink-text)}
+.pulse-sec .post p{color:var(--ink-soft)}
+.pulse-sec .post .link{color:var(--ink-text)}
 .pulse-sec .post .link .arr{display:inline-block;transition:translate .4s var(--ease-expo)}
 /* Sheen that sweeps across the glass on hover. */
 .pulse-sec .post::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.12) 48%,transparent 62%);
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.7) 48%,transparent 62%);
   background-size:260% 100%;background-position:130% 0;opacity:0;
   transition:background-position 1s var(--ease-expo),opacity .3s}
 @media (hover:hover){
-  .pulse-sec .post:hover{translate:0 -8px;background-color:rgba(255,255,255,.05);border-color:rgba(255,255,255,.32);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(255,255,255,.06),0 34px 80px rgba(0,0,0,.45),0 0 0 4px rgba(182,156,255,.08)}
+  .pulse-sec .post:hover{translate:0 -8px;background-color:rgba(255,255,255,.18);border-color:#fff;
+    box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(255,255,255,.45),0 32px 70px rgba(62,32,135,.2),0 0 0 4px rgba(124,58,237,.07)}
   .pulse-sec .post:hover::after{opacity:1;background-position:-30% 0}
   .pulse-sec .post:hover .link .arr{translate:5px 0}
 }
 /* Touch: a small press instead of hover. */
 .pulse-sec .post:active{scale:.985}
-.pulse-sec .post:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.pulse-sec .post:focus-visible{outline:2px solid var(--violet);outline-offset:4px}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .pulse-sec .post{background:rgba(40,34,58,.92)}
+  .pulse-sec .post{background:rgba(255,255,255,.94)}
 }
 @media (prefers-reduced-motion:reduce){
   .pulse-sec .post,.pulse-sec .post::after,.pulse-sec .post .link .arr{transition:none}

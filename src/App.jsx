@@ -195,7 +195,7 @@ export default function App() {
     <>
       <GlassDefs />
       <Loader />
-      <Nav active={r.nav} tick={tick} />
+      <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
       <main id="main" key={r.view === 'article' ? hash : r.view}>
         {page}
         {r.view !== 'contact' && <FinalCta />}
