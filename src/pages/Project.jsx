@@ -1,6 +1,32 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Glass } from '../components/Glass';
-import { Dot, Label, useCaseStudyMotion } from './Article';
+import { Dot, Gallery, Label, useCaseStudyMotion } from './Article';
+
+/**
+ * Instagram posts via Instagram's official embed: the video plays on the page but stays
+ * hosted on Instagram, so views count there. embed.js swaps each placeholder for Instagram's
+ * player; the placeholders are injected as raw HTML so React never reconciles that swap.
+ */
+function InstagramPosts({ posts, className = '' }) {
+  const box = useRef(null);
+  useEffect(() => {
+    const run = () => window.instgrm?.Embeds.process();
+    if (window.instgrm) { run(); return; }
+    let s = document.querySelector('script[data-ig-embed]');
+    if (!s) {
+      s = Object.assign(document.createElement('script'), { src: 'https://www.instagram.com/embed.js', async: true });
+      s.dataset.igEmbed = '';
+      document.body.appendChild(s);
+    }
+    s.addEventListener('load', run);
+    return () => s.removeEventListener('load', run);
+  }, []);
+  const html = posts.map((code) => {
+    const url = `https://www.instagram.com/p/${code}/`;
+    return `<div class="pj-ig-item"><blockquote class="instagram-media" data-instgrm-permalink="${url}?utm_source=ig_embed" data-instgrm-version="14"><a href="${url}" target="_blank" rel="noopener">View this post on Instagram</a></blockquote></div>`;
+  }).join('');
+  return <div ref={box} className={`pj-ig ${className}`} dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 /** Project case study at /work/<id>. Same visual language as Pulse articles, plus video. */
 export default function Project({ project: p }) {
@@ -49,6 +75,7 @@ export default function Project({ project: p }) {
       </section>
 
       {/* 3. The work: films. preload="none" so nothing downloads until someone presses play. */}
+      {p.videos?.length > 0 && (
       <section className="cs-dark pj-films">
         <div className="wrap">
           <div className="cs-reveal"><Label>The films</Label></div>
@@ -66,6 +93,36 @@ export default function Project({ project: p }) {
           </div>
         </div>
       </section>
+      )}
+
+      {/* Reels: Instagram embeds */}
+      {p.reels?.length > 0 && (
+        <section className="cs-dark pj-films pj-reels">
+          <div className="wrap">
+            <div className="pj-reels-head cs-reveal">
+              <Label>The reels</Label>
+              {p.instagram && <a className="link" href={p.instagram.href} target="_blank" rel="noopener" style={{ color: '#fff' }}>{p.instagram.label} <span className="arr">↗</span></a>}
+            </div>
+            <InstagramPosts posts={p.reels} className="pj-ig-row" />
+          </div>
+        </section>
+      )}
+
+      {/* Behind the scenes */}
+      {p.bts && (
+        <section className="cs-main pj-bts">
+          <div className="wrap pj-bts-in">
+            <div className="pj-bts-copy cs-reveal">
+              <Label>Behind the scenes</Label>
+              <p className="lead">{p.bts.text}</p>
+            </div>
+            <InstagramPosts posts={[p.bts.post]} />
+          </div>
+        </section>
+      )}
+
+      {/* Photos */}
+      {p.photos?.length > 0 && <Gallery photos={p.photos} />}
 
       {/* 4. What we delivered */}
       <section className="cs-dark cs-high">

@@ -6,5 +6,6 @@ build
 .env
 dist-ssr
 
-# Original, uncompressed project videos. The site uses the web copies in public/work/.
-public/Images/Projects/**/*.mp4
+# Original project media (videos, screenshots) as supplied. The site uses the
+# web-optimised copies in public/work/ and src/assets/projects/.
+public/Images/Projects/

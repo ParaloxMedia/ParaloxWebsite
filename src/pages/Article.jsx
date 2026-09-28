@@ -39,7 +39,7 @@ export function useCaseStudyMotion(root) {
   }, [root]);
 }
 
-function Gallery({ photos }) {
+export function Gallery({ photos }) {
   const [i, setI] = useState(0);
   const ph = photos[i];
   const go = (d) => setI((n) => (n + d + photos.length) % photos.length);

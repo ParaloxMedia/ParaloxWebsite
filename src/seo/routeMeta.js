@@ -197,7 +197,7 @@ for (const p of PROJECTS) {
       contributor: { '@type': 'Organization', name: 'WPP Media' },
       sourceOrganization: { '@type': 'Organization', name: p.client },
       genre: p.pillar,
-      video: p.videos.map((v) => ({
+      ...(p.videos?.length > 0 && { video: p.videos.map((v) => ({
         '@type': 'VideoObject',
         name: `${p.title}: ${v.title}`,
         description: v.text,
@@ -205,7 +205,12 @@ for (const p of PROJECTS) {
         contentUrl: abs(v.src),
         uploadDate: p.iso,
         duration: v.duration,
-      })),
+      })) }),
+      // Instagram-hosted reels are referenced by URL.
+      ...((p.reels?.length || p.bts) && {
+        associatedMedia: [...(p.reels || []), ...(p.bts ? [p.bts.post] : [])]
+          .map((code) => ({ '@type': 'MediaObject', url: `https://www.instagram.com/p/${code}/` })),
+      }),
       mainEntityOfPage: { '@id': `${url}#webpage` },
     }],
   });

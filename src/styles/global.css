@@ -1475,3 +1475,24 @@ html.is-loading .pp *{animation-play-state:paused!important}
 .wk-link:hover .wk-vis.has-img img{transform:scale(1.04)}
 .wk-more{margin-top:6px;color:var(--ink-text);font-weight:600}
 .wk-link:hover .wk-more .arr{transform:translateX(4px)}
+
+/* Project page: Instagram reels and behind the scenes. Instagram's embed needs ≥326px. */
+.pj-reels-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pj-ig{display:grid;gap:clamp(16px,2vw,24px);align-items:start;margin-top:28px}
+.pj-ig-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;
+  scrollbar-width:thin;scrollbar-color:rgba(233,227,250,.35) transparent}
+.pj-ig-row .pj-ig-item{flex:0 0 360px;scroll-snap-align:start}
+.pj-ig-item{min-width:0;display:flex;justify-content:center}
+.pj-ig .instagram-media,.pj-ig iframe{margin:0!important;min-width:326px!important;max-width:540px!important;width:100%!important;border-radius:18px!important;background:#fff}
+.pj-ig blockquote.instagram-media{min-height:560px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(233,227,250,.14)}
+.pj-ig blockquote.instagram-media a{color:var(--violet);font-weight:600}
+.pj-bts-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(326px,420px);gap:clamp(24px,5vw,72px);align-items:center}
+.pj-bts .pj-ig{margin-top:0}
+@media (max-width:860px){.pj-bts-in{grid-template-columns:1fr}}
+/* Phones: reels become a swipe row, like the other card rows. */
+@media (max-width:767px){
+  .pj-ig-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(var(--gut) * -1);padding:4px var(--gut) 12px;scroll-padding-inline:var(--gut)}
+  .pj-ig-row::-webkit-scrollbar{display:none}
+  .pj-ig-row .pj-ig-item{flex:0 0 max(326px,84%);scroll-snap-align:start}
+}
