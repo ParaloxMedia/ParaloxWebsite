@@ -1496,3 +1496,5 @@ html.is-loading .pp *{animation-play-state:paused!important}
   .pj-ig-row::-webkit-scrollbar{display:none}
   .pj-ig-row .pj-ig-item{flex:0 0 max(326px,84%);scroll-snap-align:start}
 }
+.cs-side dd a{color:var(--violet);text-decoration:none;border-bottom:1px solid rgba(124,58,237,.35)}
+.cs-side dd a:hover{border-bottom-color:var(--violet)}

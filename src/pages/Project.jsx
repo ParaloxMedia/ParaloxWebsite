@@ -63,7 +63,9 @@ export default function Project({ project: p }) {
         <div className="wrap cs-grid">
           <aside className="cs-side">
             <dl>
-              {p.facts.map(([k, v]) => <div key={k}><dt className="mono">{k}</dt><dd>{v}</dd></div>)}
+              {p.facts.map(([k, v, href]) => (
+              <div key={k}><dt className="mono">{k}</dt><dd>{href ? <a href={href} target="_blank" rel="noopener">{v} ↗</a> : v}</dd></div>
+            ))}
             </dl>
             <span className="cs-rule" aria-hidden="true" />
           </aside>

@@ -5,6 +5,9 @@ import ritzRangeStage from '../assets/projects/ritzbury/range-stage.jpg';
 import ritzRangeSet from '../assets/projects/ritzbury/range-set.jpg';
 import ritzContestants from '../assets/projects/ritzbury/contestants.jpg';
 import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
+import pngCover from '../assets/projects/png-embroidery/cover.jpg';
+import pngDashboard from '../assets/projects/png-embroidery/dashboard.jpg';
+import pngLogin from '../assets/projects/png-embroidery/login.jpg';
 
 export const PROJECTS = [
   {
@@ -95,6 +98,44 @@ export const PROJECTS = [
       { glyph: 'spark', title: 'Photoshoot', text: 'Product and people photography of the Ritzbury Professional range.' },
       { glyph: 'user', title: 'Behind the scenes', text: 'A cut of the shoot itself, from set-up to final takes.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'exxonmobil-png-embroidery-vendor-portal',
+    client: 'PNG Embroidery',
+    title: 'ExxonMobil × PNG Embroidery vendor portal',
+    kicker: 'Vendor portal · Design and development',
+    headline: 'One portal for ExxonMobil’s uniform and embroidery orders.',
+    summary: 'A vendor portal where ExxonMobil staff order uniforms and embroidered workwear from PNG Embroidery, and the PNG Embroidery team runs quotations, invoices and customer records from one admin area. Designed and built by Paralox Media.',
+    hero: pngCover,
+    pillar: 'Engineering',
+    year: '2026',
+    iso: '2026-09-28',
+    facts: [
+      ['Client', 'PNG Embroidery'],
+      ['Built for', 'ExxonMobil, Papua New Guinea'],
+      ['Our role', 'Design and development'],
+      ['Pillar', 'Engineering'],
+      ['Live at', 'pngemportal.com', 'https://pngemportal.com/login'],
+    ],
+    story: [
+      'PNG Embroidery supplies industrial uniforms and embroidered workwear to ExxonMobil in Papua New Guinea. We designed and built a vendor portal that brings the whole order process into one place, for ExxonMobil staff and for the PNG Embroidery team.',
+      'ExxonMobil staff create an account, browse the uniform catalogue, add items to a cart and place orders. Their dashboard shows active, completed and pending orders alongside total spend, notifications follow each order as it moves, and a reports view keeps their order history in one place.',
+      'Behind it, the PNG Embroidery team works from a separate admin area. Requests become quotations, approved orders are processed and tracked, invoices are issued from the same record, and a built-in CRM keeps each customer’s details and order history together.',
+      'Prices and totals are shown in Papua New Guinean kina, and the portal is live at pngemportal.com.',
+    ],
+    photos: [
+      { src: pngDashboard, caption: 'The staff dashboard: active, completed and pending orders, total spend, recent orders and quick actions.' },
+      { src: pngLogin, caption: 'Sign-in for ExxonMobil staff, with self sign-up and a separate admin login.' },
+    ],
+    deliverables: [
+      { glyph: 'browser', title: 'Online ordering', text: 'A uniform catalogue with cart and checkout, built for ExxonMobil staff.' },
+      { glyph: 'flow', title: 'Order tracking', text: 'Each order’s status from placed to completed, with notifications along the way.' },
+      { glyph: 'doc', title: 'Quotations', text: 'Requests turned into quotations inside the portal, ready for approval.' },
+      { glyph: 'check', title: 'Invoicing', text: 'Invoices issued from the same order record, with totals in kina.' },
+      { glyph: 'data', title: 'CRM', text: 'Customer details and order history kept together for the PNG Embroidery team.' },
+      { glyph: 'growth', title: 'Reports', text: 'Order history and spend in one view for staff and admins.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
