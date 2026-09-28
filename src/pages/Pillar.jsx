@@ -6,7 +6,7 @@ import Process from '../components/Process';
 import { Automations } from '../sections/HomeSections';
 import PillarDemo from '../components/PillarDemo';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
-import duo from '../assets/img/duo.webp';
+import aiHero from '../assets/img/ai-hero.webp';
 import present from '../assets/img/present-report.jpg';
 
 function Lines({ lines }) {
@@ -27,7 +27,7 @@ function RobotScene() {
         </g>
       </svg>
       <div className="floor" />
-      <img className="robot-img px" style={{ '--d': '-5px', height: '88%' }} src={duo} alt="" />
+      <img className="robot-img px" style={{ '--d': '-5px', height: '88%' }} src={aiHero} alt="" />
     </>
   );
 }
