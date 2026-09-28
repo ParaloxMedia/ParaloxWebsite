@@ -81,9 +81,9 @@ export default function Project({ project: p }) {
       <section className="cs-dark pj-films">
         <div className="wrap">
           <div className="cs-reveal"><Label>The films</Label></div>
-          <div className="pj-video-grid">
+          <div className={`pj-video-grid${p.videos.some((v) => v.portrait) ? ' has-portrait' : ''}`}>
             {p.videos.map((v, i) => (
-              <figure key={v.src} className={`pj-video cs-reveal${i === 0 ? ' feature' : ''}`} style={{ transitionDelay: `${i * 90}ms` }}>
+              <figure key={v.src} className={`pj-video cs-reveal${i === 0 ? ' feature' : ''}${v.portrait ? ' portrait' : ''}`} style={{ transitionDelay: `${i * 90}ms` }}>
                 <div className="pj-frame">
                   <video controls playsInline preload="none" poster={v.poster} aria-label={`${p.title}: ${v.title}`}>
                     <source src={v.src} type="video/mp4" />
@@ -110,8 +110,22 @@ export default function Project({ project: p }) {
         </section>
       )}
 
-      {/* Behind the scenes */}
-      {p.bts && (
+      {/* Photos and behind the scenes, side by side when a project has both */}
+      {p.photos?.length > 0 && p.bts && (
+        <section className="pj-split">
+          <div className="wrap pj-split-in">
+            <div className="pj-split-gal"><Gallery photos={p.photos} bare /></div>
+            <aside className="pj-split-bts cs-reveal">
+              <Label>Behind the scenes</Label>
+              <p>{p.bts.text}</p>
+              <InstagramPosts posts={[p.bts.post]} />
+            </aside>
+          </div>
+        </section>
+      )}
+
+      {/* Behind the scenes on its own */}
+      {p.bts && !p.photos?.length && (
         <section className="cs-main pj-bts">
           <div className="wrap pj-bts-in">
             <div className="pj-bts-copy cs-reveal">
@@ -123,8 +137,8 @@ export default function Project({ project: p }) {
         </section>
       )}
 
-      {/* Photos */}
-      {p.photos?.length > 0 && <Gallery photos={p.photos} />}
+      {/* Photos on their own */}
+      {p.photos?.length > 0 && !p.bts && <Gallery photos={p.photos} />}
 
       {/* 4. What we delivered */}
       <section className="cs-dark cs-high">

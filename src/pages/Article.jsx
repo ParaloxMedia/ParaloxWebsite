@@ -39,12 +39,14 @@ export function useCaseStudyMotion(root) {
   }, [root]);
 }
 
-export function Gallery({ photos }) {
+/** Photo viewer. `bare` drops the section wrapper so it can sit inside another layout. */
+export function Gallery({ photos, bare = false }) {
   const [i, setI] = useState(0);
   const ph = photos[i];
+  const Wrapper = bare ? 'div' : 'section';
   const go = (d) => setI((n) => (n + d + photos.length) % photos.length);
   return (
-    <section className="cs-gallery wrap" aria-label="Photos">
+    <Wrapper className={`cs-gallery${bare ? '' : ' wrap'}`} aria-label="Photos">
       <div className="cs-gal-head cs-reveal">
         <Label>Gallery</Label>
         {photos.length > 1 && <span className="mono cs-count"><b>{String(i + 1).padStart(2, '0')}</b> / {String(photos.length).padStart(2, '0')}</span>}
@@ -74,7 +76,7 @@ export function Gallery({ photos }) {
           ))}
         </div>
       )}
-    </section>
+    </Wrapper>
   );
 }
 

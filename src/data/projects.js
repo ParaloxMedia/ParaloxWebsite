@@ -31,8 +31,10 @@ export const PROJECTS = [
     story: [
       'For the Sri Lankan launch of the Nissan Gravite, WPP Media led the campaign and brought in Paralox Media as its production house.',
       'We produced three launch films using AI video tools. Each one places the Gravite somewhere Sri Lankans know: the Colombo skyline and Lotus Tower, Port City, the coast and the hills. We worked from the agency’s script, generated and directed every shot, then finished the edit, colour and sound to Nissan’s brand standards.',
-      'The films premiered on the stage screens at the launch event. Afterwards we edited the event footage into an after-movie and a set of short reels for Nissan’s social channels.',
+      'The films premiered on the stage screens at the launch at Hilton Colombo. Afterwards we edited the event footage into an after-movie, and cut vertical reels from the showroom activations at AMW, Nissan’s distributor in Sri Lanka.',
     ],
+    // Order sets the layout: the feature film, then the vertical reel beside it,
+    // then the remaining films in a row underneath.
     videos: [
       {
         src: '/work/nissan-gravite/launch-film.mp4',
@@ -42,10 +44,25 @@ export const PROJECTS = [
         duration: 'PT1M42S',
       },
       {
+        src: '/work/nissan-gravite/showroom-reel.mp4',
+        poster: '/work/nissan-gravite/showroom-reel.jpg',
+        title: 'Showroom reel',
+        text: 'A vertical reel from the showroom activations, cut for social.',
+        duration: 'PT38S',
+        portrait: true,
+      },
+      {
+        src: '/work/nissan-gravite/after-movie.mp4',
+        poster: '/work/nissan-gravite/after-movie.jpg',
+        title: 'After-movie',
+        text: 'Launch night at Hilton Colombo, edited into one film.',
+        duration: 'PT1M7S',
+      },
+      {
         src: '/work/nissan-gravite/launch-event.mp4',
         poster: '/work/nissan-gravite/launch-event.jpg',
-        title: 'Launch night',
-        text: 'The films on the stage screens, edited from the event footage.',
+        title: 'On the big screen',
+        text: 'The launch films playing on the stage screens.',
         duration: 'PT57S',
       },
     ],
@@ -53,7 +70,7 @@ export const PROJECTS = [
       { glyph: 'play', title: 'Three launch films', text: 'AI-generated films that place the Gravite in familiar Sri Lankan settings.' },
       { glyph: 'spark', title: 'AI production', text: 'Every shot generated and directed with AI video tools, then refined frame by frame.' },
       { glyph: 'camera', title: 'Event after-movie', text: 'Launch night edited into a single film for Nissan’s channels.' },
-      { glyph: 'growth', title: 'Social reels', text: 'Short cuts from the event, sized for social feeds.' },
+      { glyph: 'growth', title: 'Social reels', text: 'Vertical reels from the showroom activations, made for social feeds.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound finished to Nissan’s brand standards.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },

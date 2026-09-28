@@ -1498,3 +1498,26 @@ html.is-loading .pp *{animation-play-state:paused!important}
 }
 .cs-side dd a{color:var(--violet);text-decoration:none;border-bottom:1px solid rgba(124,58,237,.35)}
 .cs-side dd a:hover{border-bottom-color:var(--violet)}
+
+/* Films with a vertical reel: feature film (2 cols), reel tall on the right (2 rows),
+   remaining films in a row underneath. Heights line up because 2/3 at 16:9 plus 1/3 at
+   16:9 roughly equals 1/3 at 9:16. */
+.pj-video-grid.has-portrait{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:row dense}
+.has-portrait .pj-video.feature{grid-column:1 / span 2}
+.has-portrait .pj-video.portrait{grid-column:3;grid-row:1 / span 2}
+.pj-video.portrait .pj-frame{aspect-ratio:9/16}
+@media (max-width:860px){
+  .pj-video-grid.has-portrait{grid-template-columns:1fr}
+  .has-portrait .pj-video.feature,.has-portrait .pj-video.portrait{grid-column:auto;grid-row:auto}
+  .pj-video.portrait{width:100%;max-width:360px;justify-self:center}
+}
+
+/* Photos and behind the scenes side by side. */
+.pj-split{background:var(--pearl,#F7F6FA);padding-block:clamp(64px,8vw,104px)}
+.pj-split-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(326px,380px);gap:clamp(24px,4vw,56px);align-items:start}
+.pj-split .cs-gallery{padding-block:0}
+.pj-split-bts{display:flex;flex-direction:column;gap:14px;color:var(--ink-text)}
+.pj-split-bts > p{margin:0;color:var(--ink-soft);line-height:1.6}
+.pj-split-bts .pj-ig{margin-top:6px}
+.pj-split-bts .pj-ig blockquote.instagram-media{border-color:#ECE8F7}
+@media (max-width:980px){.pj-split-in{grid-template-columns:1fr}.pj-split-bts{max-width:420px;width:100%;justify-self:center}}
