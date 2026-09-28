@@ -35,7 +35,7 @@ const ORGANIZATION = {
   logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
   image: `${SITE}/og/home.jpg`,
   description: 'Creative technology company in Colombo, Sri Lanka, working across AI, engineering, media and growth.',
-  slogan: 'Let’s create the future together.',
+  slogan: 'Let’s build the future together.',
   email: CONTACT.email,
   telephone: CONTACT.phoneRaw,
   address: {

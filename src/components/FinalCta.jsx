@@ -15,7 +15,7 @@ export default function FinalCta() {
     <section className="cta" id="finalCta">
       <Curves glowOpacity={0.55} />
       <div className="wrap">
-        <h2 className="d-xl">Let's create the future together<span className="dot" style={{ color: 'var(--lilac)' }}>.</span></h2>
+        <h2 className="d-xl">Let's build the future together<span className="dot" style={{ color: 'var(--lilac)' }}>.</span></h2>
         <div className="cta-row">
           <a className="btn btn-white" href="/contact">Start a project <span className="arr">→</span></a>
           <div className="contact-line">

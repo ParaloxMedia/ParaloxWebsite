@@ -89,7 +89,7 @@ export default function About() {
               <p>The future of business is evolving rapidly, with artificial intelligence transforming how organisations operate, communicate, and grow. Integrating AI is no longer simply an advantage—it is becoming essential for businesses that want to remain competitive and future-ready.</p>
               <p>At Paralox Media, we help businesses adopt AI in practical and meaningful ways. By combining AI, engineering, media, and growth strategies, we create solutions that improve efficiency, enhance customer experiences, and unlock new opportunities.</p>
               <p>We believe AI should not replace human creativity—it should strengthen it. Our mission is to help businesses confidently embrace this transformation and achieve sustainable growth in an AI-powered world.</p>
-              <p className="ceo-close">Let&rsquo;s create the future together.</p>
+              <p className="ceo-close">Let&rsquo;s build the future together.</p>
             </div>
             <div className="ceo-sign">
               <b>Abubakker</b>
