@@ -74,7 +74,7 @@ function sendIndex(res, file, urlPath, search = '') {
   res.end(html);
 }
 
-function send(res, file, urlPath) {
+function send(res, file, urlPath, req) {
   const ext = path.extname(file).toLowerCase();
   // Only Vite's content-hashed /assets/ files can be cached forever. Fixed names
   // (sitemap.xml, robots.txt, og/ cards, images) must be able to change.
@@ -82,7 +82,28 @@ function send(res, file, urlPath) {
     : urlPath.startsWith('/assets/') ? 'public, max-age=31536000, immutable'
     : ext === '.xml' || ext === '.txt' ? 'public, max-age=3600'
     : 'public, max-age=86400';
-  res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': cache });
+  const size = fs.statSync(file).size;
+  const headers = { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': cache, 'Accept-Ranges': 'bytes' };
+
+  // Byte ranges: Safari will not play <video> without them, and they let players seek.
+  const range = req && req.headers.range;
+  if (range) {
+    const m = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+    let start = -1; let end = size - 1;
+    if (m && m[1] !== '') { start = Number(m[1]); if (m[2] !== '') end = Math.min(Number(m[2]), size - 1); }
+    else if (m && m[2] !== '') { start = Math.max(0, size - Number(m[2])); } // suffix range: last N bytes
+    if (start < 0 || start >= size || end < start) {
+      res.writeHead(416, { 'Content-Range': `bytes */${size}` });
+      res.end();
+      return;
+    }
+    res.writeHead(206, { ...headers, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': end - start + 1 });
+    if (req.method === 'HEAD') { res.end(); return; }
+    fs.createReadStream(file, { start, end }).pipe(res);
+    return;
+  }
+  res.writeHead(200, { ...headers, 'Content-Length': size });
+  if (req && req.method === 'HEAD') { res.end(); return; }
   fs.createReadStream(file).pipe(res);
 }
 
@@ -104,10 +125,10 @@ const server = http.createServer((req, res) => {
 
   if (fs.existsSync(target)) {
     const stat = fs.statSync(target);
-    if (stat.isFile()) return target === index ? sendIndex(res, index, '/', search) : send(res, target, urlPath);
+    if (stat.isFile()) return target === index ? sendIndex(res, index, '/', search) : send(res, target, urlPath, req);
     // Folders with their own page, e.g. /ai-creator-camp/
     const dirIndex = path.join(target, 'index.html');
-    if (stat.isDirectory() && fs.existsSync(dirIndex) && dirIndex !== index) return send(res, dirIndex, urlPath);
+    if (stat.isDirectory() && fs.existsSync(dirIndex) && dirIndex !== index) return send(res, dirIndex, urlPath, req);
   }
 
   // Missing files with an extension (old images, typos) are plain 404s, not the app.

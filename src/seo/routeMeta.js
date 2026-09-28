@@ -8,6 +8,7 @@
 //  - App.jsx sets document.title and the description from it, so the titles
 //    Google sees after rendering JavaScript match the server's.
 import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS } from '../data/content';
+import { PROJECTS } from '../data/projects';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -169,6 +170,46 @@ export const ROUTE_META = {
     })];
   })),
 };
+
+// Project case studies: a CreativeWork with its videos, so they can appear in video results.
+for (const p of PROJECTS) {
+  const path = `/work/${p.id}`;
+  const url = `${SITE}${path}`;
+  const meta = {
+    title: `${p.title} | ${p.pillar} project | Paralox Media`,
+    ogTitle: `${p.title} · Paralox Media`,
+    description: p.summary,
+    image: p.hero,
+    type: 'article',
+    published: p.iso,
+  };
+  ROUTE_META[path] = page(path, meta, {
+    trail: [{ name: p.title, path }],
+    extra: [{
+      '@type': 'CreativeWork',
+      '@id': `${url}#project`,
+      name: p.title,
+      headline: p.headline,
+      description: p.summary,
+      image: [abs(p.hero)],
+      dateCreated: p.iso,
+      creator: { '@id': ORG_ID },
+      contributor: { '@type': 'Organization', name: 'WPP Media' },
+      sourceOrganization: { '@type': 'Organization', name: p.client },
+      genre: p.pillar,
+      video: p.videos.map((v) => ({
+        '@type': 'VideoObject',
+        name: `${p.title}: ${v.title}`,
+        description: v.text,
+        thumbnailUrl: abs(v.poster),
+        contentUrl: abs(v.src),
+        uploadDate: p.iso,
+        duration: v.duration,
+      })),
+      mainEntityOfPage: { '@id': `${url}#webpage` },
+    }],
+  });
+}
 
 // /services is the home page scrolled to the pillars; Google should index it as /.
 ROUTE_META['/services'] = { ...ROUTE_META['/'], canonical: '/' };

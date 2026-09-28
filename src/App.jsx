@@ -13,6 +13,8 @@ import About from './pages/About';
 import Pulse from './pages/Pulse';
 import Article from './pages/Article';
 import Contact from './pages/Contact';
+import Project from './pages/Project';
+import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
 const PAGES = ['home', 'about', 'pulse', 'contact', ...PILLAR_KEYS];
@@ -22,6 +24,10 @@ function resolve(hash) {
   const post = POSTS.find((p) => p.id === hash);
   if (post) return { view: 'article', nav: 'pulse', post };
   if (hash === 'services-home') return { view: 'home', nav: 'home', anchor: 'services-home' };
+  // Home scrolled to Selected work (the address stays /).
+  if (hash === 'work') return { view: 'home', nav: 'home', anchor: 'work' };
+  const project = hash.startsWith('work/') && PROJECTS.find((x) => `work/${x.id}` === hash);
+  if (project) return { view: 'project', nav: 'home', project };
   if (PAGES.includes(hash)) return { view: hash, nav: hash };
   return { view: 'home', nav: 'home' };
 }
@@ -130,7 +136,10 @@ export default function App() {
   const [hash] = useRoute();
   const [tick, setTick] = useState(0);
   const r = resolve(hash);
-  const canonicalPath = pathFor(r.view === 'article' ? r.post.id : (r.anchor || r.view), r.view === 'article');
+  const canonicalPath = r.view === 'article' ? pathFor(r.post.id, true)
+    : r.view === 'project' ? `/work/${r.project.id}`
+    : r.anchor === 'work' ? '/'
+    : pathFor(r.anchor || r.view);
 
   // Legacy /#about links and unknown paths: show the canonical URL without adding history.
   useEffect(() => {
@@ -149,10 +158,11 @@ export default function App() {
       if (url.origin !== window.location.origin) return;
       const key = keyFromLocation(url);
       // Only routes the app renders; files and standalone pages (e.g. /ai-creator-camp/) load normally.
-      if (resolve(key).view === 'home' && key !== 'home' && key !== 'services-home') return;
+      if (resolve(key).view === 'home' && !['home', 'services-home', 'work'].includes(key)) return;
       e.preventDefault();
-      if (url.pathname === window.location.pathname) setTick((n) => n + 1);
-      else navigate(url.pathname);
+      // Keep the #anchor (e.g. /#work) so the home page can scroll to that section.
+      if (url.pathname === window.location.pathname && !url.hash) setTick((n) => n + 1);
+      else navigate(url.pathname + url.hash);
     };
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
@@ -185,6 +195,7 @@ export default function App() {
 
   let page;
   if (r.view === 'article') page = <Article post={r.post} />;
+  else if (r.view === 'project') page = <Project project={r.project} />;
   else if (PILLAR_KEYS.includes(r.view)) page = <Pillar key={r.view} id={r.view} />;
   else if (r.view === 'about') page = <About />;
   else if (r.view === 'pulse') page = <Pulse />;
@@ -196,7 +207,7 @@ export default function App() {
       <GlassDefs />
       <Loader />
       <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
-      <main id="main" key={r.view === 'article' ? hash : r.view}>
+      <main id="main" key={r.view === 'article' || r.view === 'project' ? hash : r.view}>
         {page}
         {r.view !== 'contact' && <FinalCta />}
       </main>

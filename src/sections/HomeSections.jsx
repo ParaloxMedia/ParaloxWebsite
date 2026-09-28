@@ -178,9 +178,26 @@ export function Automations() {
   );
 }
 
+function WorkCard({ w }) {
+  const Tag = w.href ? 'a' : 'article';
+  return (
+    <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}`} {...(w.href && { href: w.href })}>
+      <div className={`wk-vis${w.image ? ' has-img' : ''}`}>
+        {w.image ? <img src={w.image} alt="" loading="lazy" decoding="async" /> : <><div className="gridlines" /><Glass glyph={w.glyph} tilt /></>}
+        <span className="code mono">{w.code}</span><span className="yr mono">2026</span>
+      </div>
+      <div className="wk-body">
+        <span className="mono">{w.meta}</span><h3>{w.title}</h3><p>{w.text}</p>
+        {w.chips && <div className="chips-s">{w.chips.map((c) => <span key={c}>{c}</span>)}</div>}
+        {w.href && <span className="link wk-more">View project <span className="arr">→</span></span>}
+      </div>
+    </Tag>
+  );
+}
+
 export function Work() {
   return (
-    <section className="work sec lt">
+    <section className="work sec lt" id="work">
       <div className="wrap">
         <div className="sec-head">
           <h2 className="d-l">Selected<br />work<span className="dot">.</span></h2>
@@ -188,13 +205,8 @@ export function Work() {
         </div>
         <div className="bento">
           {WORK.map((w) => (
-            <article key={w.title} className={`wk${w.size ? ` wk-${w.size}` : ''}`}>
-              <div className="wk-vis"><div className="gridlines" /><span className="code mono">{w.code}</span><span className="yr mono">2026</span><Glass glyph={w.glyph} tilt /></div>
-              <div className="wk-body">
-                <span className="mono">{w.meta}</span><h3>{w.title}</h3><p>{w.text}</p>
-                {w.chips && <div className="chips-s">{w.chips.map((c) => <span key={c}>{c}</span>)}</div>}
-              </div>
-            </article>
+            // Projects with a case study (href) are links and show a still from the work.
+            <WorkCard key={w.title} w={w} />
           ))}
         </div>
       </div>

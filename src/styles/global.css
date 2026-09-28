@@ -1453,3 +1453,25 @@ html.is-loading .pp *{animation-play-state:paused!important}
   .pulse-sec .post:hover{translate:none}
   .pulse-sec .post:active{scale:none}
 }
+
+/* ---------- Project case study (/work/<id>) ---------- */
+.pj-films{padding-block:clamp(64px,8vw,120px)}
+.pj-video-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(18px,2.5vw,32px);align-items:start;margin-top:28px}
+.pj-video{margin:0;display:flex;flex-direction:column;gap:14px}
+.pj-frame{position:relative;border-radius:22px;overflow:hidden;background:#07040F;aspect-ratio:16/9;
+  border:1px solid rgba(233,227,250,.14);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.pj-frame video{display:block;width:100%;height:100%;object-fit:cover;background:#07040F}
+.pj-video figcaption{display:flex;flex-direction:column;gap:4px;padding-inline:4px}
+.pj-video figcaption b{font-size:1.1rem;letter-spacing:-.01em}
+.pj-video figcaption span{color:rgba(233,227,250,.68);font-size:.95rem}
+@media (max-width:860px){.pj-video-grid{grid-template-columns:1fr}}
+
+/* Selected work: cards that open a case study, and a still in place of the icon. */
+.wk-link{color:inherit;text-decoration:none;cursor:pointer}
+.wk-link:focus-visible{outline:2px solid var(--violet);outline-offset:4px}
+.wk-vis.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-expo)}
+.wk-vis.has-img::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,4,15,.55),transparent 38%)}
+.wk-vis.has-img .code,.wk-vis.has-img .yr{z-index:1;color:#fff}
+.wk-link:hover .wk-vis.has-img img{transform:scale(1.04)}
+.wk-more{margin-top:6px;color:var(--ink-text);font-weight:600}
+.wk-link:hover .wk-more .arr{transform:translateX(4px)}

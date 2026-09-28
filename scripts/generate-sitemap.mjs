@@ -39,11 +39,16 @@ const posts = [...PULSE_POSTS]
     changefreq: 'yearly',
   }));
 
+// Project case studies (projects.js also imports images), read the same way.
+const projSrc = await readFile(new URL('../src/data/projects.js', import.meta.url), 'utf8');
+const projects = [...projSrc.matchAll(/\bid:\s*["']([^"']+)["'][\s\S]*?\biso:\s*["'](\d{4}-\d{2}-\d{2})["']/g)]
+  .map(([, id, iso]) => ({ path: `/work/${encodeURIComponent(id)}`, lastmod: iso <= today ? iso : today, priority: '0.7', changefreq: 'yearly' }));
+
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...PAGES.map((p) => ({ ...p, lastmod: today })), ...posts].map(entry).join('\n')}
+${[...PAGES.map((p) => ({ ...p, lastmod: today })), ...projects, ...posts].map(entry).join('\n')}
 </urlset>
 `;
 
 await writeFile(OUT, xml);
-console.log(`sitemap: ${PAGES.length} pages + ${posts.length} articles → public/sitemap.xml`);
+console.log(`sitemap: ${PAGES.length} pages + ${projects.length} projects + ${posts.length} articles → public/sitemap.xml`);

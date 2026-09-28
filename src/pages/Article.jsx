@@ -6,11 +6,11 @@ import { Glass } from '../components/Glass';
 /** Header image: an explicit hero, else the first photo that can be cropped. */
 const heroOf = (p) => p.hero || p.photos?.find((ph) => !ph.whole)?.src || null;
 
-const Dot = () => <span className="cs-dot" aria-hidden="true" />;
-const Label = ({ children }) => <p className="cs-label mono"><Dot />{children}</p>;
+export const Dot = () => <span className="cs-dot" aria-hidden="true" />;
+export const Label = ({ children }) => <p className="cs-label mono"><Dot />{children}</p>;
 
 /** Fade sections up as they scroll into view, and drift the hero image (parallax). */
-function useCaseStudyMotion(root) {
+export function useCaseStudyMotion(root) {
   useEffect(() => {
     const el = root.current;
     const items = [...el.querySelectorAll('.cs-reveal')];
