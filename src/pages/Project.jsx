@@ -110,6 +110,23 @@ export default function Project({ project: p }) {
         </section>
       )}
 
+      {/* Instagram groups (e.g. reels, then posters), each a titled swipe row */}
+      {p.instagram?.length > 0 && (
+        <section className="cs-dark pj-films pj-reels pj-ig-groups">
+          <div className="wrap">
+            {p.instagram.map((g) => (
+              <div key={g.title} className="pj-ig-group">
+                <div className="pj-reels-head cs-reveal">
+                  <Label>{g.title}</Label>
+                  {g.text && <p className="pj-ig-text">{g.text}</p>}
+                </div>
+                <InstagramPosts posts={g.posts} className="pj-ig-row" />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Photos and behind the scenes, side by side when a project has both */}
       {p.photos?.length > 0 && p.bts && (
         <section className="pj-split">
@@ -144,7 +161,7 @@ export default function Project({ project: p }) {
       <section className="cs-dark cs-high">
         <div className="wrap">
           <div className="cs-reveal"><Label>What we delivered</Label></div>
-          <ul className={p.deliverables.length % 4 === 0 ? 'cols-4' : undefined}>
+          <ul className={p.deliverables.length % 4 === 0 ? 'cols-4' : p.deliverables.length % 3 === 0 ? 'cols-3' : undefined}>
             {p.deliverables.map((d, i) => (
               <li key={d.title} className="cs-reveal" style={{ transitionDelay: `${i * 70}ms` }}>
                 <Glass glyph={d.glyph} className="ic" />

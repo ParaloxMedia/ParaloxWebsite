@@ -207,8 +207,8 @@ for (const p of PROJECTS) {
         duration: v.duration,
       })) }),
       // Instagram-hosted reels are referenced by URL.
-      ...((p.reels?.length || p.bts) && {
-        associatedMedia: [...(p.reels || []), ...(p.bts ? [p.bts.post] : [])]
+      ...((p.reels?.length || p.bts || p.instagram?.length) && {
+        associatedMedia: [...(p.reels || []), ...(p.bts ? [p.bts.post] : []), ...(p.instagram || []).flatMap((g) => g.posts)]
           .map((code) => ({ '@type': 'MediaObject', url: `https://www.instagram.com/p/${code}/` })),
       }),
       mainEntityOfPage: { '@id': `${url}#webpage` },

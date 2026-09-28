@@ -5,6 +5,8 @@ import wppLogo from '../assets/clients/wpp-media.jpeg';
 import mullenloweLogo from '../assets/clients/mullenlowe.png';
 import ritzburyCard from '../assets/projects/ritzbury/range-set.jpg';
 import pngCard from '../assets/projects/png-embroidery/cover.jpg';
+import aceCard from '../assets/projects/ace-plus/cover.jpg';
+import eliteCard from '../assets/projects/elite/cover.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -207,8 +209,8 @@ export const WORK = [
   { size: 'lg', code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { size: 'sm', code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },
   { size: 'sm', code: 'Event shoot', glyph: 'play', meta: 'Media · With WPP Media', title: 'Ritzbury MasterChef Masterclass', text: 'Full video coverage, fast-cut reels with playful voice-over edits, and a product and people photoshoot on the MasterChef set.', chips: ['Event coverage', 'Reels', 'Photoshoot', 'Post-production'], href: '/work/ritzbury-masterchef-masterclass', image: ritzburyCard },
-  { code: 'E-commerce', glyph: 'browser', meta: 'Engineering', title: 'Ace+ online electronics store', text: 'A WooCommerce store for a Sri Lankan electronics retailer, with a full catalogue of phones, laptops and accessories, product comparison, wishlists, order tracking and a store locator.' },
-  { code: 'Campaign', glyph: 'growth', meta: 'Growth · Elite Indian Restaurant', title: 'Koththu Rush campaign', text: 'A campaign for Elite Indian Restaurant built around its koththu, with creatives and Meta ads designed to bring hungry customers through the door.' },
+  { code: 'E-commerce', glyph: 'browser', meta: 'Engineering · Revamp and development', title: 'Ace+ online electronics store', text: 'A revamped, mobile-responsive WooCommerce store for a Sri Lankan electronics retailer, with search and filters, product comparison, wishlists, order tracking and a store locator.', chips: ['WooCommerce', 'Mobile responsive', 'Revamp'], href: '/work/ace-plus-online-store', image: aceCard },
+  { code: 'Campaign', glyph: 'growth', meta: 'Growth · Elite Indian Restaurant', title: 'Elite Koththu Rush', text: 'A brand awareness campaign and koththu-eating challenge that put a slow-moving dish in the spotlight. After the event, koththu sales reached their peak.', chips: ['Campaign', 'Event', 'Reels', 'Posters'], href: '/work/elite-koththu-rush', image: eliteCard },
 ];
 
 export const STATS = [

@@ -6,6 +6,8 @@ import ritzRangeSet from '../assets/projects/ritzbury/range-set.jpg';
 import ritzContestants from '../assets/projects/ritzbury/contestants.jpg';
 import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
 import pngHero from '../assets/projects/png-embroidery/hero.jpg';
+import aceCover from '../assets/projects/ace-plus/cover.jpg';
+import eliteCover from '../assets/projects/elite/cover.jpg';
 
 export const PROJECTS = [
   {
@@ -150,6 +152,79 @@ export const PROJECTS = [
       { glyph: 'data', title: 'CRM', text: 'Customer details and order history kept together for the PNG Embroidery team.' },
       { glyph: 'growth', title: 'Reports', text: 'Order history and spend in one view for staff and admins.' },
       { glyph: 'api', title: 'Admin portal', text: 'A separate, secured sign-in for the PNG Embroidery team, usable on any device.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'ace-plus-online-store',
+    client: 'Ace+',
+    title: 'Ace+ online electronics store',
+    kicker: 'WooCommerce store · Revamp and development',
+    headline: 'The Ace+ online store, rebuilt for shopping on a phone.',
+    summary: 'A revamp of the Ace+ WooCommerce store, which sells smartphones, MacBooks and accessories across Sri Lanka. Redesigned and developed by Paralox Media to be fully mobile responsive.',
+    hero: aceCover,
+    pillar: 'Engineering',
+    year: '2026',
+    iso: '2026-09-28',
+    facts: [
+      ['Client', 'Ace+ (Aceplus Globe)'],
+      ['Our role', 'Revamp and development'],
+      ['Platform', 'WooCommerce'],
+      ['Pillar', 'Engineering'],
+      ['Live at', 'aceplusglobe.lk', 'https://aceplusglobe.lk/'],
+    ],
+    story: [
+      'Ace+ sells smartphones, MacBooks, laptops, tablets, audio devices, smartwatches and accessories across Sri Lanka through its online store. We revamped the store on WooCommerce, redesigning the experience and developing it to be fully mobile responsive.',
+      'Shoppers can search the whole catalogue by category, filter and sort results, compare products side by side, save items to a wishlist and check out. Accounts, order tracking and a store locator with Google Maps are one tap away.',
+      'Every page adapts to the screen it is on, so browsing, comparing and buying work as well on a phone as on a laptop.',
+    ],
+    deliverables: [
+      { glyph: 'browser', title: 'Store revamp', text: 'A redesigned storefront, from the home page to product and category pages.' },
+      { glyph: 'code', title: 'WooCommerce build', text: 'Developed on WooCommerce, so the Ace+ team manages products and orders themselves.' },
+      { glyph: 'user', title: 'Mobile responsive', text: 'Every page adapts to phones and tablets as well as desktops.' },
+      { glyph: 'search', title: 'Search and filters', text: 'Search by category, with filters and sorting on every listing.' },
+      { glyph: 'check', title: 'Compare and wishlist', text: 'Products compared side by side, and saved for later.' },
+      { glyph: 'funnel', title: 'Cart and checkout', text: 'A straightforward path from product page to order, with customer accounts.' },
+      { glyph: 'flow', title: 'Order tracking', text: 'Customers follow their order after checkout.' },
+      { glyph: 'api', title: 'Store locator', text: 'Store locations on Google Maps, for customers who want to visit.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'elite-koththu-rush',
+    client: 'Elite Indian Restaurant',
+    title: 'Elite Koththu Rush',
+    kicker: 'Brand awareness campaign · Event',
+    headline: 'Elite Koththu Rush: putting koththu in the spotlight.',
+    summary: 'A brand awareness campaign and a koththu-eating challenge, Elite Koththu Rush, for Elite Indian Restaurant. After the event, koththu sales reached their peak. We have since run the restaurant’s Eid and Avurudu campaigns, taking a traditional business digital.',
+    hero: eliteCover,
+    pillar: 'Growth',
+    year: '2026',
+    iso: '2026-09-28',
+    facts: [
+      ['Client', 'Elite Indian Restaurant'],
+      ['Event', 'Elite Koththu Rush, 16 September 2026'],
+      ['Registrations', '250'],
+      ['Our role', 'Campaign, event and content'],
+      ['Pillar', 'Growth'],
+    ],
+    story: [
+      'Elite Indian Restaurant is well known for its biryani and has a loyal following among middle-income diners. Koththu was on the menu, but it was not a fast mover.',
+      'To change that, we built a brand awareness campaign around the dish and an event to go with it: Elite Koththu Rush, a koththu-eating challenge on 16 September 2026, with LKR 5,000 and the champion’s title for first place and prizes for the runners-up.',
+      'Explainer reels introduced the challenge, posters built up to the day, and 250 people registered. After the event, koththu sales reached their peak.',
+      'The work continued beyond the event. We ran large campaigns for Eid and the Avurudu season, bringing a traditional restaurant online and growing it digitally.',
+    ],
+    instagram: [
+      { title: 'Explainer and event reels', text: 'The reel that explained the challenge, and the reel from the day itself.', posts: ['DdHJ7z5CQIA', 'DdeAExMDg5k'] },
+      { title: 'Posters', text: 'Campaign posters, from the announcement to the winners.', posts: ['DdD8Vx8DfUm', 'DdbO4zbjUFJ', 'DdKQ8w7Fe-h', 'DdRi4v8jTyL'] },
+    ],
+    deliverables: [
+      { glyph: 'growth', title: 'Brand awareness campaign', text: 'A campaign built around koththu, a dish that was not moving.' },
+      { glyph: 'calendar', title: 'Elite Koththu Rush', text: 'A koththu-eating challenge with prizes, planned and run on 16 September 2026.' },
+      { glyph: 'play', title: 'Explainer reels', text: 'Short reels that explained the challenge and drove registrations.' },
+      { glyph: 'camera', title: 'Event reels', text: 'Reels from the day, cut for Instagram and Facebook.' },
+      { glyph: 'spark', title: 'Posters and creatives', text: 'Announcement, prize, registration and winners posters.' },
+      { glyph: 'chat', title: 'Eid and Avurudu campaigns', text: 'Seasonal campaigns that took a traditional business digital.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
