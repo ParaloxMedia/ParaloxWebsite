@@ -32,6 +32,8 @@ function resolve(hash) {
   if (project) return { view: 'project', nav: 'home', project };
   // Private pages: only reachable by a shared link; the token decrypts the content.
   if (/^rate-card\/[A-Za-z0-9_-]+$/.test(hash)) return { view: 'ratecard', nav: '', token: hash.slice('rate-card/'.length) };
+  const workPillar = hash.match(/^works\/(ai|engineering|media|growth)$/);
+  if (workPillar) return { view: 'works', nav: '', pillar: workPillar[1] };
   if (PAGES.includes(hash)) return { view: hash, nav: hash };
   return { view: 'home', nav: 'home' };
 }
@@ -143,6 +145,7 @@ export default function App() {
   const canonicalPath = r.view === 'ratecard' ? `/rate-card/${r.token}`
     : r.view === 'article' ? pathFor(r.post.id, true)
     : r.view === 'project' ? `/work/${r.project.id}`
+    : r.pillar ? `/works/${r.pillar}`
     : r.anchor === 'work' ? '/'
     : pathFor(r.anchor || r.view);
 
@@ -212,7 +215,7 @@ export default function App() {
   if (r.view === 'article') page = <Article post={r.post} />;
   else if (r.view === 'project') page = <Project project={r.project} />;
   else if (r.view === 'ratecard') page = <RateCard token={r.token} />;
-  else if (r.view === 'works') page = <Works />;
+  else if (r.view === 'works') page = <Works pillar={r.pillar} />;
   else if (PILLAR_KEYS.includes(r.view)) page = <Pillar key={r.view} id={r.view} />;
   else if (r.view === 'about') page = <About />;
   else if (r.view === 'pulse') page = <Pulse />;
@@ -224,7 +227,7 @@ export default function App() {
       <GlassDefs />
       <Loader />
       <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
-      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' ? hash : r.view}>
+      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' || r.view === 'works' ? hash : r.view}>
         {page}
         {r.view !== 'contact' && <FinalCta />}
       </main>

@@ -7,7 +7,7 @@
 //    Link previews (WhatsApp, LinkedIn, Facebook) and non-JS crawlers need this.
 //  - App.jsx sets document.title and the description from it, so the titles
 //    Google sees after rendering JavaScript match the server's.
-import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK } from '../data/content';
+import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK, WORK_PILLARS, FAQ } from '../data/content';
 import { PROJECTS } from '../data/projects';
 
 export const SITE = 'https://paraloxmedia.com';
@@ -97,6 +97,9 @@ const PILLAR_SEO = {
   growth: { name: 'Growth', title: 'Performance & Digital Marketing in Sri Lanka | Paralox Media' },
 };
 const capabilityFor = (key) => CAPABILITIES.find((c) => c.href === `/${key}`);
+export const workIn = (key) => WORK.filter((w) => w.href && w.pillars?.includes(key));
+const projectFor = (w) => w && PROJECTS.find((p) => `/work/${p.id}` === w.href);
+export const mainPillarOf = (p) => WORK.find((w) => w.href === `/work/${p.id}`)?.pillars?.[0] || p.pillar.toLowerCase();
 
 export const ROUTE_META = {
   '/': page('/', {
@@ -104,6 +107,12 @@ export const ROUTE_META = {
     ogTitle: 'Paralox Media — Building the future of AI-powered business solutions',
     description: 'Paralox Media is a creative technology company in Colombo. We build AI agents, websites and apps, produce video and AI creatives, and run performance marketing.',
     ...card('home'), type: 'website',
+  }, {
+    // The home page FAQ, so search and AI answers can quote it directly.
+    extra: [{
+      '@type': 'FAQPage', '@id': `${SITE}/#faq`,
+      mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    }],
   }),
   '/about': page('/about', {
     title: 'About Paralox Media | Creative Technology Company in Colombo',
@@ -137,6 +146,21 @@ export const ROUTE_META = {
       })),
     }],
   }),
+  ...Object.fromEntries(Object.entries(WORK_PILLARS).map(([key, c]) => {
+    const path = `/works/${key}`;
+    const items = workIn(key);
+    return [path, page(path, {
+      title: c.seoTitle, ogTitle: `${c.heading} · Paralox Media`, description: c.intro,
+      // Preview image: the first project's still, else the pillar's branded card.
+      ...(projectFor(items[0]) ? { image: projectFor(items[0]).hero } : card(key)), type: 'website',
+    }, {
+      type: 'CollectionPage', trail: [{ name: 'Work', path: '/works' }, { name: c.name, path }],
+      extra: [{
+        '@type': 'ItemList', '@id': `${SITE}${path}#projects`,
+        itemListElement: items.map((w, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${w.href}`, name: w.title, description: w.text })),
+      }],
+    })];
+  })),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',
@@ -198,7 +222,7 @@ for (const p of PROJECTS) {
     published: p.iso,
   };
   ROUTE_META[path] = page(path, meta, {
-    trail: [{ name: 'Work', path: '/works' }, { name: p.title, path }],
+    trail: [{ name: 'Work', path: '/works' }, { name: WORK_PILLARS[mainPillarOf(p)]?.name || p.pillar, path: `/works/${mainPillarOf(p)}` }, { name: p.title, path }],
     extra: [{
       '@type': 'CreativeWork',
       '@id': `${url}#project`,
@@ -232,3 +256,4 @@ for (const p of PROJECTS) {
 
 // /services is the home page scrolled to the pillars; Google should index it as /.
 ROUTE_META['/services'] = { ...ROUTE_META['/'], canonical: '/' };
+

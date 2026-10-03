@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useRef } from 'react';
-import { PILLARS } from '../data/content';
+import { PILLARS, WORK, WORK_PILLARS } from '../data/content';
 import { FloatTile } from '../components/Glass';
 import { Scene } from '../components/Scenes';
 import Process from '../components/Process';
-import { Automations } from '../sections/HomeSections';
+import { Automations, WorkCard } from '../sections/HomeSections';
 import PillarDemo from '../components/PillarDemo';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
 import aiHero from '../assets/img/ai-hero.webp';
@@ -43,6 +43,27 @@ function useRowReveal(ref) {
     rows.forEach((r) => io.observe(r));
     return () => io.disconnect();
   }, [ref]);
+}
+
+/** This pillar's projects, linking on to /works/<pillar>. */
+function PillarWork({ id }) {
+  const cat = WORK_PILLARS[id];
+  const items = WORK.filter((w) => w.pillars?.includes(id)).slice(0, 2).map((w) => ({ ...w, size: undefined }));
+  if (!cat || !items.length) return null;
+  return (
+    <section className="work sec lt">
+      <div className="wrap">
+        <div className="sec-head">
+          <h2 className="d-m">{cat.heading}<span className="dot">.</span></h2>
+          <div>
+            <p>{cat.intro}</p>
+            <a className="link" href={`/works/${id}`}>See all {cat.heading} <span className="arr">→</span></a>
+          </div>
+        </div>
+        <div className="bento">{items.map((w) => <WorkCard key={w.title} w={w} />)}</div>
+      </div>
+    </section>
+  );
 }
 
 export default function Pillar({ id }) {
@@ -99,6 +120,8 @@ export default function Pillar({ id }) {
           </div>
         </section>
       )}
+
+      <PillarWork id={id} />
 
       <Process />
 

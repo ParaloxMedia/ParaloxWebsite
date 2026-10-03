@@ -164,3 +164,17 @@
   .rc-matrix td.hl{background:none}
   .rc-matrix td.hl::before{color:var(--violet)}
 }
+
+/* Works: pillar tabs and empty state */
+.wk-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.wk-tabs a{padding:10px 18px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--lav);background:rgba(255,255,255,.05);border:1px solid rgba(233,227,250,.16);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
+.wk-tabs a:hover{border-color:var(--lilac);color:#fff}
+.wk-tabs a[aria-current="page"]{background:#fff;color:var(--ink-text);border-color:#fff}
+.wk-empty{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:0;font-size:1.1rem;color:var(--ink-soft)}
+.wk-empty .link{color:var(--violet)}
+@media (max-width:600px){
+  .wk-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut);scrollbar-width:none}
+  .wk-tabs::-webkit-scrollbar{display:none}
+  .wk-tabs a{flex:none}
+}
