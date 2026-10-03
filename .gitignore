@@ -11,5 +11,5 @@ dist-ssr
 public/Images/Projects/
 
 # Readable rate card (prices, PDF, share links). Only the encrypted
-# private/rate-card.sealed is committed: the repository is public.
+# copy in public/sealed/ is committed: the repository is public.
 private/rate-card/

@@ -4,9 +4,58 @@ import '../styles/ratecard.css';
 
 /**
  * Private 2026 rate card at /rate-card/<token>. Nothing about pricing is in the
- * public bundle: the content comes from the server, which only answers for valid
- * share links (see server.cjs and scripts/rate-card.mjs).
+ * public bundle: the content is published encrypted (/sealed/) and decrypted
+ * here with a key derived from the link's token (see scripts/rate-card.mjs).
  */
+
+const SEALED = '/sealed/rate-card.json';
+const enc = new TextEncoder();
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+const sha256 = async (s) => new Uint8Array(await crypto.subtle.digest('SHA-256', enc.encode(s)));
+const hex = (u8) => Array.from(u8, (b) => b.toString(16).padStart(2, '0')).join('');
+const aesKey = (raw) => crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+const decrypt = async (key, iv, data) => new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, data));
+
+/** The card plus a PDF loader, or null when the link is not (or no longer) valid. */
+async function unseal(token) {
+  // Query string so a CDN never serves a copy from before a link was added or revoked.
+  const res = await fetch(`${SEALED}?t=${Date.now()}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
+  if (!res.ok) return null;
+  const sealed = await res.json();
+  const entry = sealed.links?.[hex(await sha256(`plx-rc-id:${token}`)).slice(0, 32)];
+  if (!entry) return null;
+  const key = await aesKey(await decrypt(await aesKey(await sha256(`plx-rc-key:${token}`)), b64(entry.iv), b64(entry.key)));
+  const card = JSON.parse(new TextDecoder().decode(await decrypt(key, b64(sealed.card.iv), b64(sealed.card.data))));
+  const pdf = sealed.pdf && (async () => {
+    const r = await fetch(`/sealed/${sealed.pdf.file}?t=${Date.now()}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return new Blob([await decrypt(key, b64(sealed.pdf.iv), await r.arrayBuffer())], { type: 'application/pdf' });
+  });
+  return { card, pdf };
+}
+
+function PdfButton({ load }) {
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const download = async () => {
+    if (busy) return;
+    setBusy(true); setFailed(false);
+    try {
+      const href = URL.createObjectURL(await load());
+      const a = Object.assign(document.createElement('a'), { href, download: 'Paralox_Media_2026_Service_Rate_Card.pdf' });
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(href), 10000);
+    } catch {
+      setFailed(true);
+    }
+    setBusy(false);
+  };
+  return (
+    <button type="button" className="btn btn-white" onClick={download} disabled={busy} aria-busy={busy}>
+      {busy ? 'Preparing PDF…' : failed ? 'Try the PDF again' : 'Download PDF'} <span className="arr">↓</span>
+    </button>
+  );
+}
 
 const fmtLkr = (n) => n.toLocaleString('en-US');
 
@@ -142,9 +191,8 @@ export default function RateCard({ token }) {
 
   useEffect(() => {
     let live = true;
-    fetch(`/api/rate-card/${encodeURIComponent(token)}`, { cache: 'no-store', referrerPolicy: 'no-referrer' })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((card) => live && setState({ status: 'ok', card }))
+    unseal(token)
+      .then((r) => live && setState(r ? { status: 'ok', ...r } : { status: 'invalid' }))
       .catch(() => live && setState({ status: 'invalid' }));
     return () => { live = false; };
   }, [token]);
@@ -171,7 +219,7 @@ export default function RateCard({ token }) {
     );
   }
 
-  const { card } = state;
+  const { card, pdf } = state;
   return (
     <article className="rc">
       <header className="rc-hero">
@@ -182,7 +230,7 @@ export default function RateCard({ token }) {
           <p className="rc-tagline">{card.tagline}</p>
           <p className="rc-pillars mono">AI · Engineering · Media · Growth</p>
           <div className="rc-hero-actions">
-            <a className="btn btn-white" href={`/api/rate-card/${encodeURIComponent(token)}/pdf`} rel="noreferrer">Download PDF <span className="arr">↓</span></a>
+            {pdf && <PdfButton load={pdf} />}
             <a className="link" href="/contact" style={{ color: '#fff' }}>Request a quote <span className="arr">→</span></a>
           </div>
         </div>
