@@ -1,38 +1,13 @@
 import { Fragment, useEffect, useState } from 'react';
 import { CONTACT } from '../data/content';
+import { unseal } from '../lib/sealed';
 import '../styles/ratecard.css';
 
 /**
  * Private 2026 rate card at /rate-card/<token>. Nothing about pricing is in the
  * public bundle: the content is published encrypted (/sealed/) and decrypted
- * here with a key derived from the link's token (see scripts/rate-card.mjs).
+ * here with a key derived from the link's token (see scripts/private-page.mjs).
  */
-
-const SEALED = '/sealed/rate-card.json';
-const enc = new TextEncoder();
-const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-const sha256 = async (s) => new Uint8Array(await crypto.subtle.digest('SHA-256', enc.encode(s)));
-const hex = (u8) => Array.from(u8, (b) => b.toString(16).padStart(2, '0')).join('');
-const aesKey = (raw) => crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
-const decrypt = async (key, iv, data) => new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, data));
-
-/** The card plus a PDF loader, or null when the link is not (or no longer) valid. */
-async function unseal(token) {
-  // Query string so a CDN never serves a copy from before a link was added or revoked.
-  const res = await fetch(`${SEALED}?t=${Date.now()}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
-  if (!res.ok) return null;
-  const sealed = await res.json();
-  const entry = sealed.links?.[hex(await sha256(`plx-rc-id:${token}`)).slice(0, 32)];
-  if (!entry) return null;
-  const key = await aesKey(await decrypt(await aesKey(await sha256(`plx-rc-key:${token}`)), b64(entry.iv), b64(entry.key)));
-  const card = JSON.parse(new TextDecoder().decode(await decrypt(key, b64(sealed.card.iv), b64(sealed.card.data))));
-  const pdf = sealed.pdf && (async () => {
-    const r = await fetch(`/sealed/${sealed.pdf.file}?t=${Date.now()}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return new Blob([await decrypt(key, b64(sealed.pdf.iv), await r.arrayBuffer())], { type: 'application/pdf' });
-  });
-  return { card, pdf };
-}
 
 function PdfButton({ load }) {
   const [busy, setBusy] = useState(false);
@@ -191,8 +166,8 @@ export default function RateCard({ token }) {
 
   useEffect(() => {
     let live = true;
-    unseal(token)
-      .then((r) => live && setState(r ? { status: 'ok', ...r } : { status: 'invalid' }))
+    unseal('rate-card', 'rc', token)
+      .then((r) => live && setState(r ? { status: 'ok', card: r.data, pdf: r.pdf } : { status: 'invalid' }))
       .catch(() => live && setState({ status: 'invalid' }));
     return () => { live = false; };
   }, [token]);

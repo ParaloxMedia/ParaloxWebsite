@@ -178,7 +178,7 @@ export function Automations() {
   );
 }
 
-function WorkCard({ w }) {
+export function WorkCard({ w }) {
   const Tag = w.href ? 'a' : 'article';
   return (
     <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}`} {...(w.href && { href: w.href })}>

@@ -10,6 +10,7 @@ dist-ssr
 # web-optimised copies in public/work/ and src/assets/projects/.
 public/Images/Projects/
 
-# Readable rate card (prices, PDF, share links). Only the encrypted
+# Readable private pages (rate card prices, works, share links). Only the encrypted
 # copy in public/sealed/ is committed: the repository is public.
 private/rate-card/
+private/works/

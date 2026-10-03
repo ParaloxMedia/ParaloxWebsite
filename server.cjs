@@ -38,32 +38,30 @@ let ROUTE_META = {};
 try { ROUTE_META = JSON.parse(fs.readFileSync(path.join(DIST, 'route-meta.json'), 'utf8')); }
 catch { console.warn('route-meta.json not found; pages will share the default preview.'); }
 
-/* ---------- Private rate card ----------
+/* ---------- Private pages (rate card, works) ----------
    Published encrypted in /sealed/ and decrypted in the browser with the link's
-   token (scripts/rate-card.mjs). Static hosting is enough; when this server runs
-   it also turns unknown links into 404s and keeps the page out of search. */
+   token (scripts/private-page.mjs). Static hosting is enough; when this server
+   runs it also turns unknown links into 404s and keeps the pages out of search. */
 const PRIVATE_HEADERS = {
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
   'Cache-Control': 'private, no-store',
   'Referrer-Policy': 'no-referrer',
 };
-// Same id as scripts/rate-card.mjs; the sealed file lists the ids of active links only.
-const rateCardLinkId = (t) => crypto.createHash('sha256').update(`plx-rc-id:${t}`).digest('hex').slice(0, 32);
-function validRateCardToken(t) {
+const PRIVATE_PAGES = {
+  'rate-card': { prefix: 'rc', title: '2026 Service Rate Card | Paralox Media', ogTitle: 'Paralox Media · 2026 Service Rate Card', description: 'A private rate card shared by Paralox Media.' },
+  works: { prefix: 'works', title: 'Selected Work | Paralox Media', ogTitle: 'Paralox Media · Selected Work', description: 'Selected work shared privately by Paralox Media.' },
+};
+// Same id as scripts/private-page.mjs; each sealed file lists the ids of its active links only.
+function validPrivateToken(page, t) {
   try {
-    const { links } = JSON.parse(fs.readFileSync(path.join(DIST, 'sealed', 'rate-card.json'), 'utf8'));
-    return typeof t === 'string' && t.length < 64 && Object.prototype.hasOwnProperty.call(links, rateCardLinkId(t));
+    const { links } = JSON.parse(fs.readFileSync(path.join(DIST, 'sealed', `${page}.json`), 'utf8'));
+    const id = crypto.createHash('sha256').update(`plx-${PRIVATE_PAGES[page].prefix}-id:${t}`).digest('hex').slice(0, 32);
+    return typeof t === 'string' && t.length < 64 && Object.prototype.hasOwnProperty.call(links, id);
   } catch { return false; }
 }
-const RATE_CARD_META = {
-  title: '2026 Service Rate Card | Paralox Media',
-  ogTitle: 'Paralox Media · 2026 Service Rate Card',
-  description: 'A private rate card shared by Paralox Media.',
-  image: '/og/home.jpg', width: 1200, height: 630, type: 'website', private: true,
-};
 
-/** Handles /rate-card/<token> and the sealed files. Returns true when handled. */
-function handleRateCard(req, res, urlPath, index) {
+/** Handles /rate-card/<token>, /works/<token> and the sealed files. Returns true when handled. */
+function handlePrivatePage(req, res, urlPath, index) {
   if (urlPath.startsWith('/sealed/')) {
     const file = path.join(DIST, 'sealed', path.basename(urlPath));
     if (!fs.existsSync(file)) { res.writeHead(404, PRIVATE_HEADERS); res.end(); return true; }
@@ -71,11 +69,14 @@ function handleRateCard(req, res, urlPath, index) {
     fs.createReadStream(file).pipe(res);
     return true;
   }
-  const page = urlPath.match(/^\/rate-card\/([^/]+)\/?$/);
-  if (!page && !urlPath.startsWith('/rate-card')) return false;
-  const ok = !!page && validRateCardToken(page[1]);
+  const m = urlPath.match(/^\/(rate-card|works)(?:\/([^/]+))?\/?$/);
+  if (!m) return false;
+  const [, page, token] = m;
+  const ok = !!token && validPrivateToken(page, token);
+  const { title, ogTitle, description } = PRIVATE_PAGES[page];
+  const meta = { title, ogTitle, description, image: '/og/home.jpg', width: 1200, height: 630, type: 'website', private: true };
   // An invalid link still renders the app, which shows "link not available".
-  const html = renderIndex(fs.readFileSync(index, 'utf8'), { key: urlPath, meta: RATE_CARD_META, status: ok ? 200 : 404 }, ORIGIN);
+  const html = renderIndex(fs.readFileSync(index, 'utf8'), { key: urlPath, meta, status: ok ? 200 : 404 }, ORIGIN);
   res.writeHead(ok ? 200 : 404, { ...PRIVATE_HEADERS, 'Content-Type': MIME['.html'] });
   res.end(html);
   return true;
@@ -164,7 +165,7 @@ const server = http.createServer((req, res) => {
 
   const index = path.join(DIST, 'index.html');
 
-  if (handleRateCard(req, res, urlPath, index)) return;
+  if (handlePrivatePage(req, res, urlPath, index)) return;
 
   // Keep redirects and origin overrides consistent even with generated indexes.
   if (ROUTE_META[urlPath.replace(/\/+$/, '') || '/']) return sendIndex(res, index, urlPath, search);
