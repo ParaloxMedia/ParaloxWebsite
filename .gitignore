@@ -9,3 +9,7 @@ dist-ssr
 # Original project media (videos, screenshots) as supplied. The site uses the
 # web-optimised copies in public/work/ and src/assets/projects/.
 public/Images/Projects/
+
+# Readable rate card (prices, PDF, share links). Only the encrypted
+# private/rate-card.sealed is committed: the repository is public.
+private/rate-card/

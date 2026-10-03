@@ -1,6 +1,7 @@
 // Optional Node server for the Vite build in dist/.
 // Static hosts use the per-route HTML generated during npm run build.
 const { renderIndex } = require('./scripts/render-page.cjs');
+const crypto = require('crypto');
 const http = require('http');
 const fs   = require('fs');
 const path = require('path');
@@ -36,6 +37,69 @@ const MIME = {
 let ROUTE_META = {};
 try { ROUTE_META = JSON.parse(fs.readFileSync(path.join(DIST, 'route-meta.json'), 'utf8')); }
 catch { console.warn('route-meta.json not found; pages will share the default preview.'); }
+
+/* ---------- Private rate card ----------
+   Committed only encrypted (private/rate-card.sealed); RATE_CARD_KEY decrypts it
+   in memory. Without the key the rate card is off and every link is a 404.
+   Manage links with scripts/rate-card.mjs. */
+const RATE_CARD = (() => {
+  try {
+    const key = process.env.RATE_CARD_KEY && Buffer.from(process.env.RATE_CARD_KEY, 'base64');
+    const file = path.join(__dirname, 'private', 'rate-card.sealed');
+    if (!key || key.length !== 32 || !fs.existsSync(file)) return null;
+    const sealed = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const decipher = crypto.createDecipheriv('aes-256-gcm', key, Buffer.from(sealed.iv, 'base64'));
+    decipher.setAuthTag(Buffer.from(sealed.tag, 'base64'));
+    const plain = Buffer.concat([decipher.update(Buffer.from(sealed.data, 'base64')), decipher.final()]);
+    const { card, links, pdf } = JSON.parse(plain.toString('utf8'));
+    console.log(`Rate card: ${links.length} active link(s).`);
+    return { card: JSON.stringify(card), pdf: pdf && Buffer.from(pdf, 'base64'), tokens: new Set(links.map((l) => l.token)) };
+  } catch (e) {
+    console.warn(`Rate card disabled: ${e.message}`);
+    return null;
+  }
+})();
+const PRIVATE_HEADERS = {
+  'X-Robots-Tag': 'noindex, nofollow, noarchive',
+  'Cache-Control': 'private, no-store',
+  'Referrer-Policy': 'no-referrer',
+};
+// Constant-time comparison so response timing never hints at a valid link.
+const validRateCardToken = (t) => !!RATE_CARD && typeof t === 'string' && t.length < 64 &&
+  [...RATE_CARD.tokens].some((v) => v.length === t.length && crypto.timingSafeEqual(Buffer.from(v), Buffer.from(t)));
+const RATE_CARD_META = {
+  title: '2026 Service Rate Card | Paralox Media',
+  ogTitle: 'Paralox Media · 2026 Service Rate Card',
+  description: 'A private rate card shared by Paralox Media.',
+  image: '/og/home.jpg', width: 1200, height: 630, type: 'website', private: true,
+};
+
+/** Handles /rate-card/<token> and /api/rate-card/<token>[/pdf]. Returns true when handled. */
+function handleRateCard(req, res, urlPath, index) {
+  const page = urlPath.match(/^\/rate-card\/([^/]+)\/?$/);
+  const api = urlPath.match(/^\/api\/rate-card\/([^/]+)(\/pdf)?$/);
+  if (!page && !api && !urlPath.startsWith('/rate-card') && !urlPath.startsWith('/api/rate-card')) return false;
+  const token = (page || api || [])[1];
+  const ok = validRateCardToken(token);
+  if (api) {
+    if (!ok) { res.writeHead(404, { ...PRIVATE_HEADERS, 'Content-Type': 'application/json' }); res.end('{"error":"not found"}'); return true; }
+    if (api[2]) {
+      if (!RATE_CARD.pdf) { res.writeHead(404, PRIVATE_HEADERS); res.end(); return true; }
+      res.writeHead(200, { ...PRIVATE_HEADERS, 'Content-Type': 'application/pdf', 'Content-Length': RATE_CARD.pdf.length,
+        'Content-Disposition': 'attachment; filename="Paralox_Media_2026_Service_Rate_Card.pdf"' });
+      res.end(RATE_CARD.pdf);
+      return true;
+    }
+    res.writeHead(200, { ...PRIVATE_HEADERS, 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(RATE_CARD.card);
+    return true;
+  }
+  // The page shell. An invalid link still renders the app, which shows "link not valid".
+  const html = renderIndex(fs.readFileSync(index, 'utf8'), { key: urlPath, meta: RATE_CARD_META, status: ok ? 200 : 404 }, ORIGIN);
+  res.writeHead(ok ? 200 : 404, { ...PRIVATE_HEADERS, 'Content-Type': MIME['.html'] });
+  res.end(html);
+  return true;
+}
 
 // Always the public domain, so previews and canonicals never point at an internal host.
 const ORIGIN = process.env.SITE_ORIGIN || 'https://paraloxmedia.com';
@@ -119,6 +183,8 @@ const server = http.createServer((req, res) => {
   if (!target.startsWith(DIST)) { res.writeHead(403); res.end(); return; }
 
   const index = path.join(DIST, 'index.html');
+
+  if (handleRateCard(req, res, urlPath, index)) return;
 
   // Keep redirects and origin overrides consistent even with generated indexes.
   if (ROUTE_META[urlPath.replace(/\/+$/, '') || '/']) return sendIndex(res, index, urlPath, search);

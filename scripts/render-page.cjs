@@ -11,16 +11,18 @@ function renderIndex(html, { key, meta, status }, origin = 'https://paraloxmedia
   const ogTitle = meta.ogTitle || meta.title;
   const tags = [
     `<meta name="description" content="${esc(meta.description)}" />`,
-    status === 404
-      ? '<meta name="robots" content="noindex" />'
+    meta.private ? '<meta name="robots" content="noindex, nofollow, noarchive" />'
+      : status === 404 ? '<meta name="robots" content="noindex" />'
       : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />',
-    status !== 404 && `<link rel="canonical" href="${esc(url)}" />`,
+    // Private pages (the shared rate card) never expose their link in the HTML.
+    meta.private && '<meta name="referrer" content="no-referrer" />',
+    status !== 404 && !meta.private && `<link rel="canonical" href="${esc(url)}" />`,
     `<meta property="og:type" content="${esc(meta.type || 'website')}" />`,
     `<meta property="og:site_name" content="Paralox Media" />`,
     `<meta property="og:locale" content="en_US" />`,
     `<meta property="og:title" content="${esc(ogTitle)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
-    `<meta property="og:url" content="${esc(url)}" />`,
+    !meta.private && `<meta property="og:url" content="${esc(url)}" />`,
     `<meta property="og:image" content="${esc(image)}" />`,
     `<meta property="og:image:secure_url" content="${esc(image)}" />`,
     `<meta property="og:image:alt" content="${esc(ogTitle)}" />`,
@@ -31,7 +33,7 @@ function renderIndex(html, { key, meta, status }, origin = 'https://paraloxmedia
     `<meta name="twitter:title" content="${esc(ogTitle)}" />`,
     `<meta name="twitter:description" content="${esc(meta.description)}" />`,
     `<meta name="twitter:image" content="${esc(image)}" />`,
-    status !== 404 && meta.jsonld && `<script type="application/ld+json">${jsonForScript(meta.jsonld)}</script>`,
+    status !== 404 && !meta.private && meta.jsonld && `<script type="application/ld+json">${jsonForScript(meta.jsonld)}</script>`,
   ].filter(Boolean).join('\n    ');
   return html
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(status === 404 ? 'Page not found | Paralox Media' : meta.title)}</title>`)
