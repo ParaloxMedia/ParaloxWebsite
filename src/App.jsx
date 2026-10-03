@@ -19,7 +19,7 @@ import Works from './pages/Works';
 import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
-const PAGES = ['home', 'about', 'pulse', 'contact', ...PILLAR_KEYS];
+const PAGES = ['home', 'about', 'pulse', 'contact', 'works', ...PILLAR_KEYS];
 
 /** Resolve a route key into { view, nav, post, anchor }. */
 function resolve(hash) {
@@ -32,7 +32,6 @@ function resolve(hash) {
   if (project) return { view: 'project', nav: 'home', project };
   // Private pages: only reachable by a shared link; the token decrypts the content.
   if (/^rate-card\/[A-Za-z0-9_-]+$/.test(hash)) return { view: 'ratecard', nav: '', token: hash.slice('rate-card/'.length) };
-  if (/^works\/[A-Za-z0-9_-]+$/.test(hash)) return { view: 'works', nav: '', token: hash.slice('works/'.length) };
   if (PAGES.includes(hash)) return { view: hash, nav: hash };
   return { view: 'home', nav: 'home' };
 }
@@ -142,7 +141,6 @@ export default function App() {
   const [tick, setTick] = useState(0);
   const r = resolve(hash);
   const canonicalPath = r.view === 'ratecard' ? `/rate-card/${r.token}`
-    : r.view === 'works' ? `/works/${r.token}`
     : r.view === 'article' ? pathFor(r.post.id, true)
     : r.view === 'project' ? `/work/${r.project.id}`
     : r.anchor === 'work' ? '/'
@@ -178,9 +176,9 @@ export default function App() {
   // Title, description and canonical from the same data the server injects, so
   // what Google sees after rendering matches the HTML it was served.
   useEffect(() => {
-    if (r.view === 'ratecard' || r.view === 'works') {
+    if (r.view === 'ratecard') {
       // Private page: no canonical link, kept out of search, link never sent as a referrer.
-      document.title = r.view === 'works' ? 'Selected Work | Paralox Media' : '2026 Service Rate Card | Paralox Media';
+      document.title = '2026 Service Rate Card | Paralox Media';
       document.head.querySelector('link[rel="canonical"]')?.remove();
       const robots = document.head.querySelector('meta[name="robots"]') || document.head.appendChild(Object.assign(document.createElement('meta'), { name: 'robots' }));
       robots.setAttribute('content', 'noindex, nofollow, noarchive');
@@ -214,7 +212,7 @@ export default function App() {
   if (r.view === 'article') page = <Article post={r.post} />;
   else if (r.view === 'project') page = <Project project={r.project} />;
   else if (r.view === 'ratecard') page = <RateCard token={r.token} />;
-  else if (r.view === 'works') page = <Works token={r.token} />;
+  else if (r.view === 'works') page = <Works />;
   else if (PILLAR_KEYS.includes(r.view)) page = <Pillar key={r.view} id={r.view} />;
   else if (r.view === 'about') page = <About />;
   else if (r.view === 'pulse') page = <Pulse />;
@@ -226,7 +224,7 @@ export default function App() {
       <GlassDefs />
       <Loader />
       <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
-      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' || r.view === 'works' ? hash : r.view}>
+      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' ? hash : r.view}>
         {page}
         {r.view !== 'contact' && <FinalCta />}
       </main>

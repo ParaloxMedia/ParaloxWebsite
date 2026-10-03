@@ -26,7 +26,7 @@ export default function Footer() {
             <Socials />
           </div>
           <div><h4>Services</h4><ul><li><a href="/ai">AI</a></li><li><a href="/engineering">Engineering</a></li><li><a href="/media">Media</a></li><li><a href="/growth">Growth</a></li></ul></div>
-          <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/pulse">Pulse</a></li><li><a href="/contact">Contact</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/works">Work</a></li><li><a href="/pulse">Pulse</a></li><li><a href="/contact">Contact</a></li></ul></div>
           <div><h4>Contact</h4><ul className="foot-contact">
             <li><MailIcon /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
             <li><PhoneIcon /><a href={`tel:${CONTACT.phoneRaw}`}>{CONTACT.phone}</a></li>

@@ -38,7 +38,7 @@ let ROUTE_META = {};
 try { ROUTE_META = JSON.parse(fs.readFileSync(path.join(DIST, 'route-meta.json'), 'utf8')); }
 catch { console.warn('route-meta.json not found; pages will share the default preview.'); }
 
-/* ---------- Private pages (rate card, works) ----------
+/* ---------- Private pages (rate card) ----------
    Published encrypted in /sealed/ and decrypted in the browser with the link's
    token (scripts/private-page.mjs). Static hosting is enough; when this server
    runs it also turns unknown links into 404s and keeps the pages out of search. */
@@ -49,7 +49,6 @@ const PRIVATE_HEADERS = {
 };
 const PRIVATE_PAGES = {
   'rate-card': { prefix: 'rc', title: '2026 Service Rate Card | Paralox Media', ogTitle: 'Paralox Media · 2026 Service Rate Card', description: 'A private rate card shared by Paralox Media.' },
-  works: { prefix: 'works', title: 'Selected Work | Paralox Media', ogTitle: 'Paralox Media · Selected Work', description: 'Selected work shared privately by Paralox Media.' },
 };
 // Same id as scripts/private-page.mjs; each sealed file lists the ids of its active links only.
 function validPrivateToken(page, t) {
@@ -60,7 +59,7 @@ function validPrivateToken(page, t) {
   } catch { return false; }
 }
 
-/** Handles /rate-card/<token>, /works/<token> and the sealed files. Returns true when handled. */
+/** Handles /rate-card/<token> and the sealed files. Returns true when handled. */
 function handlePrivatePage(req, res, urlPath, index) {
   if (urlPath.startsWith('/sealed/')) {
     const file = path.join(DIST, 'sealed', path.basename(urlPath));
@@ -69,7 +68,7 @@ function handlePrivatePage(req, res, urlPath, index) {
     fs.createReadStream(file).pipe(res);
     return true;
   }
-  const m = urlPath.match(/^\/(rate-card|works)(?:\/([^/]+))?\/?$/);
+  const m = urlPath.match(/^\/(rate-card)(?:\/([^/]+))?\/?$/);
   if (!m) return false;
   const [, page, token] = m;
   const ok = !!token && validPrivateToken(page, token);

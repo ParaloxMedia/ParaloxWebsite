@@ -201,7 +201,10 @@ export function Work() {
       <div className="wrap">
         <div className="sec-head">
           <h2 className="d-l">Selected<br />work<span className="dot">.</span></h2>
-          <p>Recent projects across media, engineering and growth. Open any project for the full case study.</p>
+          <div>
+            <p>Recent projects across media, engineering and growth. Open any project for the full case study.</p>
+            <a className="link" href="/works">See all work <span className="arr">→</span></a>
+          </div>
         </div>
         <div className="bento">
           {WORK.map((w) => (

@@ -7,7 +7,7 @@
 //    Link previews (WhatsApp, LinkedIn, Facebook) and non-JS crawlers need this.
 //  - App.jsx sets document.title and the description from it, so the titles
 //    Google sees after rendering JavaScript match the server's.
-import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS } from '../data/content';
+import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK } from '../data/content';
 import { PROJECTS } from '../data/projects';
 
 export const SITE = 'https://paraloxmedia.com';
@@ -123,6 +123,20 @@ export const ROUTE_META = {
       itemListElement: POSTS.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/pulse/${p.id}`, name: p.title })),
     }],
   }),
+  '/works': page('/works', {
+    title: 'Our Work: Films, Websites & Campaigns | Paralox Media',
+    ogTitle: 'Our work · Paralox Media',
+    description: 'Projects by Paralox Media: AI launch films for Nissan, a vendor portal for ExxonMobil, event coverage for Ritzbury, e-commerce and campaigns in Sri Lanka.',
+    image: PROJECTS[0].hero, type: 'website',
+  }, {
+    type: 'CollectionPage', trail: [{ name: 'Work', path: '/works' }],
+    extra: [{
+      '@type': 'ItemList', '@id': `${SITE}/works#projects`,
+      itemListElement: WORK.filter((w) => w.href).map((w, i) => ({
+        '@type': 'ListItem', position: i + 1, url: `${SITE}${w.href}`, name: w.title, description: w.text,
+      })),
+    }],
+  }),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',
@@ -184,7 +198,7 @@ for (const p of PROJECTS) {
     published: p.iso,
   };
   ROUTE_META[path] = page(path, meta, {
-    trail: [{ name: p.title, path }],
+    trail: [{ name: 'Work', path: '/works' }, { name: p.title, path }],
     extra: [{
       '@type': 'CreativeWork',
       '@id': `${url}#project`,

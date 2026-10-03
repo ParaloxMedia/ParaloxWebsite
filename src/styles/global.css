@@ -582,6 +582,9 @@ fieldset.field{border:0;padding:0;margin:0}
 .work{background:var(--pearl);color:var(--ink-text);color-scheme:light}
 .work .pid{color:var(--mute)}.work .pid b{color:var(--ink-text)}
 .work .sec-head p{color:var(--ink-soft)}
+.work .sec-head > div{justify-self:end;display:grid;justify-items:start;gap:18px;max-width:30rem}
+.work .sec-head > div p{justify-self:start}
+.work .sec-head .link{color:var(--violet)}
 .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
 .wk{grid-column:span 6;display:flex;flex-direction:column;border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line-light);transition:translate .6s var(--ease-expo),box-shadow .6s var(--ease-expo)}
 .wk:hover{translate:0 -6px;box-shadow:0 30px 60px rgba(25,23,32,.14)}

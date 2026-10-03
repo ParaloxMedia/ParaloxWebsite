@@ -1,4 +1,4 @@
-// Private pages (rate card, works): share links and encryption.
+// Private pages (the rate card): share links and encryption.
 //
 // The repository is public and the site can be served as static files, so each
 // private page is published only encrypted (public/sealed/). The browser decrypts
@@ -15,7 +15,7 @@
 //   node scripts/private-page.mjs <page> revoke <link|name>  switch a link off
 //   node scripts/private-page.mjs <page> seal                re-encrypt after editing content.json or the PDF
 //
-// <page> is rate-card or works. Commit public/sealed/ and deploy after every change.
+// <page> is rate-card. Commit public/sealed/ and deploy after every change.
 import { createCipheriv, createHash, randomBytes } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -27,7 +27,6 @@ const SITE = 'https://paraloxmedia.com';
 // Must match src/lib/sealed.js and server.cjs.
 export const PAGES = {
   'rate-card': { prefix: 'rc', content: 'card.json', pdf: 'rate-card.pdf' },
-  works: { prefix: 'works', content: 'content.json' },
 };
 
 const sha256 = (s) => createHash('sha256').update(s).digest();

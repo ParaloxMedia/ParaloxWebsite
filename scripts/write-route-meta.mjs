@@ -29,3 +29,30 @@ for (const [key, meta] of Object.entries(ROUTE_META)) {
   await writeFile(new URL('index.html', directory), renderer.renderIndex(template, { key, meta, status: 200 }));
 }
 console.log(`share previews: ${Object.keys(ROUTE_META).length} static pages generated`);
+
+// llms.txt: a plain-text map of the site for AI assistants and answer engines
+// (GEO), built from the same titles and descriptions as the pages themselves.
+const SITE = 'https://paraloxmedia.com';
+const line = (path) => `- [${ROUTE_META[path].ogTitle?.replace(/ · Paralox Media$/, '') || ROUTE_META[path].title}](${SITE}${path}): ${ROUTE_META[path].description}`;
+const paths = Object.keys(ROUTE_META).filter((p) => !ROUTE_META[p].canonical);
+const llms = `# Paralox Media
+
+> ${ROUTE_META['/'].description}
+
+Based at 14 Sir Baron Jayathilake Mawatha, Colombo, Sri Lanka. Contact: info@paraloxmedia.com.
+
+## Services
+${['/ai', '/engineering', '/media', '/growth'].filter((p) => ROUTE_META[p]).map(line).join('\n')}
+
+## Work
+${line('/works')}
+${paths.filter((p) => p.startsWith('/work/')).map(line).join('\n')}
+
+## Company
+${['/about', '/contact', '/pulse'].map(line).join('\n')}
+
+## Pulse articles
+${paths.filter((p) => p.startsWith('/pulse/')).map(line).join('\n')}
+`;
+await writeFile(new URL('llms.txt', DIST), llms);
+console.log('llms.txt written');
