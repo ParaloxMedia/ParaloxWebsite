@@ -19,6 +19,8 @@ import combankTapSinhala from '../assets/projects/combank/tap-pay-sinhala.jpg';
 import hnbCover from '../assets/projects/hnb/cover.jpg';
 import hnbFilm from '../assets/projects/hnb/film.jpg';
 import webxpayCover from '../assets/projects/webxpay/cover.jpg';
+import malibanCover from '../assets/projects/maliban/cover.jpg';
+import malibanFilm from '../assets/projects/maliban/film.jpg';
 
 export const PROJECTS = [
   {
@@ -451,6 +453,39 @@ export const PROJECTS = [
       { glyph: 'ai', title: 'AI video', text: 'The campaign video, made with AI video tools in the early days of AI video.' },
       { glyph: 'growth', title: 'Content for growth', text: 'A reel built to reach people and change a habit, not just to be seen.' },
       { glyph: 'check', title: '280K+ views', text: 'Over 280,000 views on Instagram for the GovPay reel.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'maliban-yevan-david',
+    client: 'Maliban',
+    title: 'Yevan David with Maliban',
+    kicker: 'Production partner to MullenLowe Sri Lanka',
+    headline: 'Yevan David puts Maliban combos to the test.',
+    summary: 'Long-form vertical content for Maliban with racing driver Yevan David, who tries unexpected Maliban biscuit combos and decides which takes pole position and which gets a DNF. Produced by Paralox Media, with MullenLowe Sri Lanka as lead agency.',
+    hero: malibanCover,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-07-04',
+    facts: [
+      ['Client', 'Maliban'],
+      ['Talent', 'Yevan David'],
+      ['Lead agency', 'MullenLowe Sri Lanka'],
+      ['Our role', 'Production house'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Maliban brought in racing driver Yevan David for a run of social content, and MullenLowe Sri Lanka brought in Paralox Media as its production house.',
+      'The idea plays on his day job. Yevan tries unexpected combinations of Maliban biscuits, Maliban Tempo among them, and rates each one: pole position, or a DNF.',
+      'We filmed it as long-form vertical content, made for phones, with room for the reactions and conversation that short reels leave out. The full cut runs to 24 minutes on Maliban’s YouTube channel.',
+    ],
+    videos: [
+      { youtube: 'Z0uBSZ24l84', poster: malibanFilm, portrait: true, duration: 'PT24M1S', title: 'Yevan David with Maliban', text: 'Which Maliban combo takes pole position, and which one gets a DNF?' },
+    ],
+    deliverables: [
+      { glyph: 'user', title: 'Talent shoot', text: 'Racing driver Yevan David, on set for Maliban.' },
+      { glyph: 'play', title: 'Long-form vertical video', text: 'A 24-minute cut, filmed and edited vertical for phones.' },
+      { glyph: 'check', title: 'Post-production', text: 'Edit, colour, captions and sound handled in-house.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },

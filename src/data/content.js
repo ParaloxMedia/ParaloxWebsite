@@ -13,6 +13,7 @@ import krestCard from '../assets/projects/keells-krest/cover.jpg';
 import combankCard from '../assets/projects/combank/morning-rush.jpg';
 import hnbCard from '../assets/projects/hnb/cover.jpg';
 import webxpayCard from '../assets/projects/webxpay/card.jpg';
+import malibanCard from '../assets/projects/maliban/cover.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -229,6 +230,7 @@ export const WORK = [
   { code: 'Campaign content', glyph: 'play', meta: 'Media · With WPP Media', title: 'ComBank Google Pay and self-onboarding campaigns', pillars: ['media'], home: false, text: 'Short films and social posts for Commercial Bank’s Google Pay Tap & Pay and self-onboarding campaigns, in English and Sinhala.', chips: ['Campaign films', 'Social posts', 'English and Sinhala'], href: '/work/combank-google-pay-self-onboarding', image: combankCard },
   { code: 'Motion animation', glyph: 'play', meta: 'Media · With WPP Media', title: 'HNB self onboarding explainer', pillars: ['media'], home: false, text: 'A motion-animated explainer for Hatton National Bank: opening a savings account with self onboarding, step by step.', chips: ['Motion animation', 'Explainer', 'Vertical video'], href: '/work/hnb-self-onboarding', image: hnbCard },
   { code: 'AI video', glyph: 'growth', meta: 'Growth · WebXPay', title: 'WebXPay GovPay campaign', year: '2025', pillars: ['growth', 'media'], home: false, text: 'An AI video campaign for WebXPay GovPay, made in the early days of AI video: pay a traffic fine online in minutes. The reel passed 280K views on Instagram.', chips: ['AI video', '280K+ views', 'Direct client'], href: '/work/webxpay-govpay', image: webxpayCard },
+  { code: 'Long-form reels', glyph: 'play', meta: 'Media · With MullenLowe Sri Lanka', title: 'Yevan David with Maliban', pillars: ['media'], home: false, text: 'Long-form vertical content with racing driver Yevan David, rating unexpected Maliban biscuit combos: pole position or DNF. Produced as MullenLowe Sri Lanka’s production house.', chips: ['Talent shoot', 'Long-form reels', 'Post-production'], href: '/work/maliban-yevan-david', image: malibanCard },
 ];
 
 // Category pages under /works, one per pillar.
