@@ -13,7 +13,7 @@ import krestCard from '../assets/projects/keells-krest/cover.jpg';
 import combankCard from '../assets/projects/combank/morning-rush.jpg';
 import hnbCard from '../assets/projects/hnb/banner.jpg';
 import webxpayCard from '../assets/projects/webxpay/card.jpg';
-import malibanCard from '../assets/projects/maliban/cover.jpg';
+import malibanCard from '../assets/projects/maliban/poster-card.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';

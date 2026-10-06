@@ -19,7 +19,7 @@ import combankTapSinhala from '../assets/projects/combank/tap-pay-sinhala.jpg';
 import hnbCover from '../assets/projects/hnb/banner.jpg';
 import hnbFilm from '../assets/projects/hnb/film.jpg';
 import webxpayCover from '../assets/projects/webxpay/cover.jpg';
-import malibanCover from '../assets/projects/maliban/cover.jpg';
+import malibanCover from '../assets/projects/maliban/poster-wide.jpg';
 import malibanFilm from '../assets/projects/maliban/film.jpg';
 
 export const PROJECTS = [
@@ -466,6 +466,8 @@ export const PROJECTS = [
     headline: 'Yevan David puts Maliban combos to the test.',
     summary: 'Long-form vertical content for Maliban with racing driver Yevan David, who tries unexpected Maliban biscuit combos and decides which takes pole position and which gets a DNF. Produced by Paralox Media, with MullenLowe Sri Lanka as lead agency.',
     hero: malibanCover,
+    // The campaign poster sits on the right: shade the title side.
+    heroShade: 'side',
     pillar: 'Media',
     year: '2026',
     iso: '2026-07-04',
