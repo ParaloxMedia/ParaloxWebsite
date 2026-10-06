@@ -11,7 +11,7 @@ import fixitCard from '../assets/projects/drfixit/homeowner.jpg';
 import keellsCard from '../assets/projects/keells/cover.jpg';
 import krestCard from '../assets/projects/keells-krest/cover.jpg';
 import combankCard from '../assets/projects/combank/morning-rush.jpg';
-import hnbCard from '../assets/projects/hnb/cover.jpg';
+import hnbCard from '../assets/projects/hnb/banner.jpg';
 import webxpayCard from '../assets/projects/webxpay/card.jpg';
 import malibanCard from '../assets/projects/maliban/cover.jpg';
 import nissanLogo from '../assets/clients/nissan.png';

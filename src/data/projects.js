@@ -16,7 +16,7 @@ import combankRush from '../assets/projects/combank/morning-rush.jpg';
 import combankOnboarding from '../assets/projects/combank/self-onboarding.jpg';
 import combankTapGo from '../assets/projects/combank/tap-pay-go.jpg';
 import combankTapSinhala from '../assets/projects/combank/tap-pay-sinhala.jpg';
-import hnbCover from '../assets/projects/hnb/cover.jpg';
+import hnbCover from '../assets/projects/hnb/banner.jpg';
 import hnbFilm from '../assets/projects/hnb/film.jpg';
 import webxpayCover from '../assets/projects/webxpay/cover.jpg';
 import malibanCover from '../assets/projects/maliban/cover.jpg';
@@ -399,6 +399,8 @@ export const PROJECTS = [
     headline: 'Opening an HNB savings account, now this simple.',
     summary: 'A motion-animated explainer for Hatton National Bank that walks through opening a savings account with self onboarding, step by step. Animated by Paralox Media, with WPP Media as lead agency.',
     hero: hnbCover,
+    // The banner has its own headline on the right: shade the title side.
+    heroShade: 'side',
     pillar: 'Media',
     year: '2026',
     iso: '2026-10-06',
