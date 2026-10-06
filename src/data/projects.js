@@ -10,6 +10,7 @@ import aceCover from '../assets/projects/ace-plus/cover.jpg';
 import eliteCover from '../assets/projects/elite/cover.jpg';
 import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
 import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
+import keellsCover from '../assets/projects/keells/cover.jpg';
 
 export const PROJECTS = [
   {
@@ -263,6 +264,38 @@ export const PROJECTS = [
     deliverables: [
       { glyph: 'user', title: 'Customer interviews', text: 'A dealer and a homeowner, interviewed on camera in Sinhala.' },
       { glyph: 'play', title: 'Testimonial films', text: 'Two films of under three minutes, made for YouTube.' },
+      { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'keells-masterchef-sri-lanka',
+    client: 'Keells',
+    title: 'Keells × MasterChef Sri Lanka content shoot',
+    kicker: 'Production partner to MullenLowe Sri Lanka',
+    headline: 'Keells and MasterChef Sri Lanka, made for social.',
+    summary: 'A content shoot for Keells, the official retail partner of MasterChef Sri Lanka: reels with the contestants, in store and in the MasterChef kitchen. Produced by Paralox Media for Keells, with MullenLowe Sri Lanka as lead agency.',
+    hero: keellsCover,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-06',
+    facts: [
+      ['Client', 'Keells'],
+      ['Lead agency', 'MullenLowe Sri Lanka'],
+      ['Our role', 'Production house'],
+      ['Pillar', 'Media'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Keells is the official retail partner of MasterChef Sri Lanka. MullenLowe Sri Lanka led the campaign and brought in Paralox Media as its production house for the content.',
+      'We shot a series of reels around the show. Sounds of Freshness puts the MasterChef contestants in a Keells store, This or That and Basket Talks put questions to the contestants, and recipe reels such as the Keells Stir-fry Tuna with Prawn and Bok Choy were filmed in the MasterChef kitchen.',
+      'Each reel was edited for Instagram and posted on the Keells page.',
+    ],
+    reels: ['DXl6YUPgG-E', 'DXMLhQ5jwnR', 'DX1aw_HP6v3', 'DW6g9_kDyXz', 'DWtwKeWgS3U'],
+    deliverables: [
+      { glyph: 'camera', title: 'Content shoot', text: 'The MasterChef contestants filmed in store and on the MasterChef set.' },
+      { glyph: 'play', title: 'Social reels', text: 'A series of vertical reels, edited for Instagram.' },
+      { glyph: 'user', title: 'Contestant series', text: 'This or That and Basket Talks, with the MasterChef contestants.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
