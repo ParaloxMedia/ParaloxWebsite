@@ -12,6 +12,7 @@ import keellsCard from '../assets/projects/keells/cover.jpg';
 import krestCard from '../assets/projects/keells-krest/cover.jpg';
 import combankCard from '../assets/projects/combank/morning-rush.jpg';
 import hnbCard from '../assets/projects/hnb/cover.jpg';
+import webxpayCard from '../assets/projects/webxpay/card.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -215,6 +216,7 @@ export const FLOWS = [
 
 // `pillars` files each project under /works/<pillar>; the first is its main pillar.
 // `home: false` keeps a project on the Works pages only, out of the home page's Selected work.
+// `year` defaults to 2026.
 export const WORK = [
   { size: 'lg', code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { size: 'sm', code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', pillars: ['engineering'], text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },
@@ -226,6 +228,7 @@ export const WORK = [
   { code: 'Event coverage', glyph: 'play', meta: 'Media · With WPP Media', title: 'Keells Krest × E FM Mother’s Day Cook Off', pillars: ['media'], home: false, text: 'Event coverage of the E FM Mother’s Day Cook Off for Keells Krest, plus short films with five mothers and their children. Produced as WPP Media’s production house.', chips: ['Event coverage', 'Family stories', 'Social content'], href: '/work/keells-krest-mothers-day-cook-off', image: krestCard },
   { code: 'Campaign content', glyph: 'play', meta: 'Media · With WPP Media', title: 'ComBank Google Pay and self-onboarding campaigns', pillars: ['media'], home: false, text: 'Short films and social posts for Commercial Bank’s Google Pay Tap & Pay and self-onboarding campaigns, in English and Sinhala.', chips: ['Campaign films', 'Social posts', 'English and Sinhala'], href: '/work/combank-google-pay-self-onboarding', image: combankCard },
   { code: 'Motion animation', glyph: 'play', meta: 'Media · With WPP Media', title: 'HNB self onboarding explainer', pillars: ['media'], home: false, text: 'A motion-animated explainer for Hatton National Bank: opening a savings account with self onboarding, step by step.', chips: ['Motion animation', 'Explainer', 'Vertical video'], href: '/work/hnb-self-onboarding', image: hnbCard },
+  { code: 'AI video', glyph: 'growth', meta: 'Growth · WebXPay', title: 'WebXPay GovPay campaign', year: '2025', pillars: ['growth', 'media'], home: false, text: 'An AI video campaign for WebXPay GovPay, made in the early days of AI video: pay a traffic fine online in minutes. The reel passed 280K views on Instagram.', chips: ['AI video', '280K+ views', 'Direct client'], href: '/work/webxpay-govpay', image: webxpayCard },
 ];
 
 // Category pages under /works, one per pillar.

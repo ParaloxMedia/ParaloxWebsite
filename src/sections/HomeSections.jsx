@@ -184,7 +184,7 @@ export function WorkCard({ w }) {
     <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}`} {...(w.href && { href: w.href })}>
       <div className={`wk-vis${w.image ? ' has-img' : ''}`}>
         {w.image ? <img src={w.image} alt="" loading="lazy" decoding="async" /> : <><div className="gridlines" /><Glass glyph={w.glyph} tilt /></>}
-        <span className="code mono">{w.code}</span><span className="yr mono">2026</span>
+        <span className="code mono">{w.code}</span><span className="yr mono">{w.year || '2026'}</span>
       </div>
       <div className="wk-body">
         <span className="mono">{w.meta}</span><h3>{w.title}</h3><p>{w.text}</p>

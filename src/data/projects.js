@@ -18,6 +18,7 @@ import combankTapGo from '../assets/projects/combank/tap-pay-go.jpg';
 import combankTapSinhala from '../assets/projects/combank/tap-pay-sinhala.jpg';
 import hnbCover from '../assets/projects/hnb/cover.jpg';
 import hnbFilm from '../assets/projects/hnb/film.jpg';
+import webxpayCover from '../assets/projects/webxpay/cover.jpg';
 
 export const PROJECTS = [
   {
@@ -417,6 +418,39 @@ export const PROJECTS = [
       { glyph: 'play', title: 'Motion animation', text: 'The self onboarding journey, animated screen by screen.' },
       { glyph: 'browser', title: 'App walkthrough', text: 'Every step of opening a savings account, shown in order.' },
       { glyph: 'check', title: 'Made for phones', text: 'A vertical format, for the device people open the account on.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'webxpay-govpay',
+    client: 'WebXPay',
+    title: 'WebXPay GovPay campaign',
+    kicker: 'Direct client · AI video',
+    headline: 'Paying a traffic fine, in a few clicks.',
+    summary: 'An AI video campaign for WebXPay GovPay, made in the early days of AI video, showing people they can pay a traffic fine online in minutes. The reel passed 280K views on Instagram. Concept, AI video and content by Paralox Media, working directly with WebXPay.',
+    hero: webxpayCover,
+    // The cover is bright: shade the title side.
+    heroShade: 'side',
+    pillar: 'Growth',
+    year: '2025',
+    iso: '2025-08-01',
+    facts: [
+      ['Client', 'WebXPay'],
+      ['Engagement', 'Direct client'],
+      ['Our role', 'Concept, AI video and content'],
+      ['Result', '280K+ views on Instagram'],
+      ['Pillars', 'Growth · Media'],
+    ],
+    story: [
+      'WebXPay GovPay lets people pay government payments online, including traffic fines. Most people still paid in person: queues, forms and time away from work. WebXPay came to us directly for a campaign that would change that habit.',
+      'We made the campaign video with AI video tools, in the early days of AI video, around one simple idea: pay your traffic fine in a few clicks, with no login, no registration and no app to download, anytime and anywhere.',
+      'The content did the job. The reel passed 280,000 views on Instagram, putting GovPay in front of people right when they needed it.',
+    ],
+    reels: ['DNJaZ63tCx3'],
+    deliverables: [
+      { glyph: 'ai', title: 'AI video', text: 'The campaign video, made with AI video tools in the early days of AI video.' },
+      { glyph: 'growth', title: 'Content for growth', text: 'A reel built to reach people and change a habit, not just to be seen.' },
+      { glyph: 'check', title: '280K+ views', text: 'Over 280,000 views on Instagram for the GovPay reel.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
