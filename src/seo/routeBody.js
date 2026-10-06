@@ -21,7 +21,7 @@ export const ROUTE_BODY = {
     intro: ROUTE_META['/'].description,
     sections: [
       SERVICES_SECTION,
-      { h2: 'Selected work', items: workItems(WORK), more: { href: '/works', label: 'See all work' } },
+      { h2: 'Selected work', items: workItems(WORK.filter((w) => w.home !== false)), more: { href: '/works', label: 'See all work' } },
       { h2: 'Clients and partners', paras: [`We have produced work for ${CLIENTS.map((c) => c.name).join(', ')}.`] },
       { h2: 'Questions, answered', items: FAQ.map((f) => ({ name: f.q, text: f.a })) },
       { h2: 'Latest from Pulse', items: POSTS.slice(0, 3).map((p) => ({ name: p.title, href: `/pulse/${p.id}`, text: p.excerpt })) },

@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { WORK } from '../data/content';
 import { Glass } from '../components/Glass';
 import { Dot, Gallery, Label, useCaseStudyMotion } from './Article';
 
@@ -28,20 +29,39 @@ function InstagramPosts({ posts, className = '' }) {
   return <div ref={box} className={`pj-ig ${className}`} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
+/**
+ * A YouTube film: its thumbnail and a play button until pressed, then YouTube's player
+ * (privacy-enhanced domain), so nothing from YouTube loads for visitors who never play it.
+ */
+function YouTubeFilm({ id, poster, title }) {
+  const [on, setOn] = useState(false);
+  return on ? (
+    <iframe src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`} title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+  ) : (
+    <button type="button" className="pj-yt" onClick={() => setOn(true)} aria-label={`Play: ${title}`}>
+      <img src={poster} alt="" loading="lazy" decoding="async" />
+      <span className="pj-yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
+    </button>
+  );
+}
+
 /** Project case study at /work/<id>. Same visual language as Pulse articles, plus video. */
 export default function Project({ project: p }) {
   const root = useRef(null);
   useCaseStudyMotion(root);
+  // Projects kept off the home page link back to the Works page instead of Selected work.
+  const fromWorks = WORK.find((w) => w.href === `/work/${p.id}`)?.home === false;
 
   return (
     <article className="pp pj" ref={root}>
       {/* 1. Full-screen hero */}
-      <header className="cs-hero">
+      <header className={`cs-hero${p.heroShade ? ` hero-${p.heroShade}` : ''}`}>
         <div className="cs-hero-bg" style={{ backgroundImage: `url(${p.hero})` }} />
         <div className="cs-hero-shade" />
-        <a className="cs-back mono" href="/#work">
+        <a className="cs-back mono" href={fromWorks ? '/works' : '/#work'}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 16l-4-4m0 0l4-4m-4 4h18" /></svg>
-          Selected work
+          {fromWorks ? 'All work' : 'Selected work'}
         </a>
         <div className="cs-hero-copy wrap">
           <div className="cs-pills fu" style={{ '--d': '.2s' }}>
@@ -81,13 +101,15 @@ export default function Project({ project: p }) {
       <section className="cs-dark pj-films">
         <div className="wrap">
           <div className="cs-reveal"><Label>The films</Label></div>
-          <div className={`pj-video-grid${p.videos.some((v) => v.portrait) ? ' has-portrait' : ''}`}>
+          <div className={`pj-video-grid${p.videos.some((v) => v.portrait) ? ' has-portrait' : p.videos.length === 2 ? ' pair' : ''}`}>
             {p.videos.map((v, i) => (
-              <figure key={v.src} className={`pj-video cs-reveal${i === 0 ? ' feature' : ''}${v.portrait ? ' portrait' : ''}`} style={{ transitionDelay: `${i * 90}ms` }}>
+              <figure key={v.src || v.youtube} className={`pj-video cs-reveal${i === 0 ? ' feature' : ''}${v.portrait ? ' portrait' : ''}`} style={{ transitionDelay: `${i * 90}ms` }}>
                 <div className="pj-frame">
-                  <video controls playsInline preload="none" poster={v.poster} aria-label={`${p.title}: ${v.title}`}>
-                    <source src={v.src} type="video/mp4" />
-                  </video>
+                  {v.youtube ? <YouTubeFilm id={v.youtube} poster={v.poster} title={`${p.title}: ${v.title}`} /> : (
+                    <video controls playsInline preload="none" poster={v.poster} aria-label={`${p.title}: ${v.title}`}>
+                      <source src={v.src} type="video/mp4" />
+                    </video>
+                  )}
                 </div>
                 <figcaption><b>{v.title}</b><span>{v.text}</span></figcaption>
               </figure>

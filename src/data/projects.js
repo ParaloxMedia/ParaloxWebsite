@@ -8,6 +8,8 @@ import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
 import pngHero from '../assets/projects/png-embroidery/hero.jpg';
 import aceCover from '../assets/projects/ace-plus/cover.jpg';
 import eliteCover from '../assets/projects/elite/cover.jpg';
+import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
+import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
 
 export const PROJECTS = [
   {
@@ -225,6 +227,43 @@ export const PROJECTS = [
       { glyph: 'camera', title: 'Event reels', text: 'Reels from the day, cut for Instagram and Facebook.' },
       { glyph: 'spark', title: 'Posters and creatives', text: 'Announcement, prize, registration and winners posters.' },
       { glyph: 'chat', title: 'Eid and Avurudu campaigns', text: 'Seasonal campaigns that took a traditional business digital.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'dr-fixit-customer-testimonials',
+    client: 'Dr. Fixit',
+    title: 'Dr. Fixit customer testimonials',
+    kicker: 'Testimonial shoot',
+    headline: 'Dr. Fixit customers, in their own words.',
+    summary: 'Two customer testimonial films for Dr. Fixit, the waterproofing brand: a dealer and a homeowner talk about the products on camera. Filmed and edited by the Paralox Media video production team.',
+    hero: fixitDealer,
+    // The cover is a designed thumbnail with text on the left: shade that side, keep the face.
+    heroShade: 'side',
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-06',
+    facts: [
+      ['Client', 'Dr. Fixit Sri Lanka'],
+      ['Our role', 'Video production'],
+      ['Films', 'Two customer testimonials'],
+      ['Pillar', 'Media'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Dr. Fixit asked us to film customer testimonials: real people who sell and use its waterproofing products, speaking for themselves.',
+      'We filmed two interviews in Sinhala. Mr. Pawan Madhushanka, a Dr. Fixit dealer, talks about the products from the selling side, and Mr. Thushara, a homeowner from Hanwella, talks about using them on his home.',
+      'We then edited each interview into a film of under three minutes for Dr. Fixit Sri Lanka’s YouTube channel.',
+    ],
+    // Hosted on Dr. Fixit Sri Lanka's YouTube channel; the page shows each film's thumbnail and loads YouTube's player on play.
+    videos: [
+      { youtube: 'rcSjdWMq8to', poster: fixitDealer, duration: 'PT2M53S', title: 'Mr. Pawan Madhushanka, dealer', text: 'A Dr. Fixit dealer on the products, from the selling side.' },
+      { youtube: 'pZxbo84uDxs', poster: fixitHomeowner, duration: 'PT2M42S', title: 'Mr. Thushara, homeowner', text: 'A homeowner from Hanwella on using Dr. Fixit at home.' },
+    ],
+    deliverables: [
+      { glyph: 'user', title: 'Customer interviews', text: 'A dealer and a homeowner, interviewed on camera in Sinhala.' },
+      { glyph: 'play', title: 'Testimonial films', text: 'Two films of under three minutes, made for YouTube.' },
+      { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },

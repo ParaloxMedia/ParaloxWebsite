@@ -240,7 +240,9 @@ for (const p of PROJECTS) {
         name: `${p.title}: ${v.title}`,
         description: v.text,
         thumbnailUrl: abs(v.poster),
-        contentUrl: abs(v.src),
+        ...(v.youtube
+          ? { embedUrl: `https://www.youtube.com/embed/${v.youtube}`, url: `https://www.youtube.com/watch?v=${v.youtube}` }
+          : { contentUrl: abs(v.src) }),
         uploadDate: p.iso,
         duration: v.duration,
       })) }),

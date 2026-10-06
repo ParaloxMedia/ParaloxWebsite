@@ -7,6 +7,7 @@ import ritzburyCard from '../assets/projects/ritzbury/range-set.jpg';
 import pngCard from '../assets/projects/png-embroidery/cover.jpg';
 import aceCard from '../assets/projects/ace-plus/cover.jpg';
 import eliteCard from '../assets/projects/elite/cover.jpg';
+import fixitCard from '../assets/projects/drfixit/homeowner.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -209,12 +210,14 @@ export const FLOWS = [
 ];
 
 // `pillars` files each project under /works/<pillar>; the first is its main pillar.
+// `home: false` keeps a project on the Works pages only, out of the home page's Selected work.
 export const WORK = [
   { size: 'lg', code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media', 'ai'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { size: 'sm', code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', pillars: ['engineering'], text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },
   { size: 'sm', code: 'Event shoot', glyph: 'play', meta: 'Media · With WPP Media', title: 'Ritzbury MasterChef Masterclass', pillars: ['media'], text: 'Full video coverage, fast-cut reels with playful voice-over edits, and a product and people photoshoot on the MasterChef set.', chips: ['Event coverage', 'Reels', 'Photoshoot', 'Post-production'], href: '/work/ritzbury-masterchef-masterclass', image: ritzburyCard },
   { code: 'E-commerce', glyph: 'browser', meta: 'Engineering · Revamp and development', title: 'Ace+ online electronics store', pillars: ['engineering'], text: 'A revamped, mobile-responsive WooCommerce store for a Sri Lankan electronics retailer, with search and filters, product comparison, wishlists, order tracking and a store locator.', chips: ['WooCommerce', 'Mobile responsive', 'Revamp'], href: '/work/ace-plus-online-store', image: aceCard },
   { code: 'Campaign', glyph: 'growth', meta: 'Growth · Elite Indian Restaurant', title: 'Elite Koththu Rush', pillars: ['growth', 'media'], text: 'A brand awareness campaign and koththu-eating challenge that put a slow-moving dish in the spotlight. After the event, koththu sales reached their peak.', chips: ['Campaign', 'Event', 'Reels', 'Posters'], href: '/work/elite-koththu-rush', image: eliteCard },
+  { code: 'Testimonials', glyph: 'play', meta: 'Media · Video production', title: 'Dr. Fixit customer testimonials', pillars: ['media'], home: false, text: 'Two customer testimonial films for Dr. Fixit, the waterproofing brand: a dealer and a homeowner from Hanwella talk about the products on camera.', chips: ['Testimonials', 'Interviews', 'Post-production'], href: '/work/dr-fixit-customer-testimonials', image: fixitCard },
 ];
 
 // Category pages under /works, one per pillar.

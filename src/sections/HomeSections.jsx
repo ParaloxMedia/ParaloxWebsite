@@ -207,7 +207,7 @@ export function Work() {
           </div>
         </div>
         <div className="bento">
-          {WORK.map((w) => (
+          {WORK.filter((w) => w.home !== false).map((w) => (
             // Projects with a case study (href) are links and show a still from the work.
             <WorkCard key={w.title} w={w} />
           ))}
