@@ -12,6 +12,12 @@ import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
 import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
 import keellsCover from '../assets/projects/keells/cover.jpg';
 import krestCover from '../assets/projects/keells-krest/cover.jpg';
+import combankRush from '../assets/projects/combank/morning-rush.jpg';
+import combankOnboarding from '../assets/projects/combank/self-onboarding.jpg';
+import combankTapGo from '../assets/projects/combank/tap-pay-go.jpg';
+import combankTapSinhala from '../assets/projects/combank/tap-pay-sinhala.jpg';
+import hnbCover from '../assets/projects/hnb/cover.jpg';
+import hnbFilm from '../assets/projects/hnb/film.jpg';
 
 export const PROJECTS = [
   {
@@ -101,8 +107,12 @@ export const PROJECTS = [
       'Ritzbury Professional, the cooking chocolate range from Ceylon Biscuits Limited, is the official chocolatier of MasterChef Sri Lanka. For its MasterChef Masterclass, WPP Media brought in Paralox Media to produce the content.',
       'Our video production team covered the masterclass from start to finish: the contestants at their stations, the chefs, and the Ritzbury Professional range on the MasterChef set. Alongside the video, we photographed the products and the people on set.',
       'We then edited the footage into fast-cut reels for social, with playful voice-over edits, and a behind-the-scenes cut of the shoot itself.',
+      'We also made an AI video for the range, marking Ritzbury Professional as the Official Chocolatier of MasterChef Sri Lanka, Season 1.',
     ],
     reels: ['DcyJqcynHnI', 'Ddin9BGimxv', 'Dc2zBIhFbIF', 'DckoKptm9Cj'],
+    instagram: [
+      { title: 'AI video', text: 'Ritzbury Professional, Official Chocolatier of MasterChef Sri Lanka Season 1, in an AI-generated film.', posts: ['DU-u4-sAt8_'] },
+    ],
     bts: {
       post: 'DcqTZEOs62t',
       text: 'A look at how the masterclass shoot came together, from our video production team on set.',
@@ -118,6 +128,7 @@ export const PROJECTS = [
       { glyph: 'play', title: 'Social reels', text: 'Fast-cut reels with playful voice-over edits, made to be shared.' },
       { glyph: 'spark', title: 'Photoshoot', text: 'Product and people photography of the Ritzbury Professional range.' },
       { glyph: 'user', title: 'Behind the scenes', text: 'A cut of the shoot itself, from set-up to final takes.' },
+      { glyph: 'ai', title: 'AI video', text: 'An AI-generated film of the Ritzbury Professional range for MasterChef Sri Lanka.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
@@ -333,6 +344,79 @@ export const PROJECTS = [
       { glyph: 'user', title: 'Family stories', text: 'Short films with five mothers and their children.' },
       { glyph: 'play', title: 'Social content', text: 'Reels and posts, cut for the Keells Krest Instagram page.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'combank-google-pay-self-onboarding',
+    client: 'Commercial Bank',
+    title: 'ComBank Google Pay and self-onboarding campaigns',
+    kicker: 'Production partner to WPP Media',
+    headline: 'Tap, pay and go with ComBank and Google Pay.',
+    summary: 'Campaign content for Commercial Bank of Ceylon: short films and social posts for Google Pay Tap & Pay, and a film for ComBank self-onboarding, in English and Sinhala. Produced by Paralox Media, with WPP Media as lead agency.',
+    hero: combankRush,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-06',
+    facts: [
+      ['Client', 'Commercial Bank of Ceylon'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Content production'],
+      ['Campaigns', 'Google Pay Tap & Pay · Self onboarding'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Commercial Bank of Ceylon ran two campaigns to move everyday banking onto the phone, and WPP Media brought in Paralox Media to produce the content.',
+      'For Google Pay Tap & Pay, we made short films and social posts that show how simple it is: add a ComBank Visa or Mastercard to Google Wallet, then tap your Android phone to pay. Morning Rush and Forgot Your Wallet at Home? put the idea into everyday moments, with versions in English and Sinhala.',
+      'For self onboarding, we made a short film inviting people to open a ComBank savings account from their phone.',
+    ],
+    // Hosted on Commercial Bank's YouTube channel; thumbnails show until play.
+    videos: [
+      { youtube: 'vTI1-aXPhkA', poster: combankRush, duration: 'PT10S', title: 'Morning Rush', text: 'Google Pay Tap & Pay: pay for breakfast with a tap.' },
+      { youtube: 'e9_U-n-r-Qg', poster: combankTapGo, duration: 'PT10S', title: 'Tap, pay, go with GPay', text: 'Add your ComBank card to Google Wallet and pay with GPay.' },
+      { youtube: 'tydUt8dO62o', poster: combankTapSinhala, duration: 'PT10S', title: 'GPay Tap & Pay (Sinhala)', text: 'The Tap & Pay film in Sinhala.' },
+      { youtube: 'GEmIhKMmJrg', poster: combankOnboarding, duration: 'PT10S', title: 'ComBank self onboarding', text: 'Open a ComBank savings account from your phone.' },
+    ],
+    instagram: [
+      { title: 'Social posts', text: 'Google Pay Tap & Pay posts for ComBank’s Instagram, in English and Sinhala.', posts: ['Dd8l1QkmicS', 'Dd1NdTgDelv', 'DdqkRXkjYgK'] },
+    ],
+    deliverables: [
+      { glyph: 'play', title: 'Campaign films', text: 'Short films for Google Pay Tap & Pay and for self onboarding.' },
+      { glyph: 'spark', title: 'Social posts', text: 'Static posts for Instagram and Facebook.' },
+      { glyph: 'chat', title: 'English and Sinhala', text: 'Versions in both languages for the same campaign.' },
+      { glyph: 'check', title: 'Post-production', text: 'Edit, motion and sound handled in-house.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'hnb-self-onboarding',
+    client: 'HNB',
+    title: 'HNB self onboarding explainer',
+    kicker: 'Motion animation for WPP Media',
+    headline: 'Opening an HNB savings account, now this simple.',
+    summary: 'A motion-animated explainer for Hatton National Bank that walks through opening a savings account with self onboarding, step by step. Animated by Paralox Media, with WPP Media as lead agency.',
+    hero: hnbCover,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-06',
+    facts: [
+      ['Client', 'Hatton National Bank'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Motion animation'],
+      ['Format', 'Vertical explainer, about 3 minutes'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Hatton National Bank wanted to show customers how easy it is to open a savings account on their phone with self onboarding. WPP Media led the work and brought in Paralox Media for the motion animation.',
+      'We animated the journey screen by screen, from the first step to the liveness check, as a vertical explainer made for phones, so people can follow along on the device they will use.',
+    ],
+    videos: [
+      { youtube: 'zIBdM2zKzjA', poster: hnbFilm, portrait: true, duration: 'PT3M11S', title: 'Opening a savings account is now this simple!', text: 'The full self onboarding journey, animated step by step.' },
+    ],
+    deliverables: [
+      { glyph: 'play', title: 'Motion animation', text: 'The self onboarding journey, animated screen by screen.' },
+      { glyph: 'browser', title: 'App walkthrough', text: 'Every step of opening a savings account, shown in order.' },
+      { glyph: 'check', title: 'Made for phones', text: 'A vertical format, for the device people open the account on.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },

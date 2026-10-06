@@ -1553,3 +1553,5 @@ html.is-loading .pp *{animation-play-state:paused!important}
   color:#fff;background:var(--violet);box-shadow:0 12px 40px -8px rgba(124,58,237,.8);transition:scale .35s var(--ease)}
 .pj-yt-play svg{width:30px;height:30px;margin-left:4px}
 .pj-yt:hover .pj-yt-play{scale:1.08}
+/* One vertical film on its own: centred, phone-sized */
+.pj-video-grid.solo{grid-template-columns:minmax(0,400px);justify-content:center}
