@@ -9,6 +9,7 @@ import aceCard from '../assets/projects/ace-plus/cover.jpg';
 import eliteCard from '../assets/projects/elite/cover.jpg';
 import fixitCard from '../assets/projects/drfixit/homeowner.jpg';
 import keellsCard from '../assets/projects/keells/cover.jpg';
+import krestCard from '../assets/projects/keells-krest/cover.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -220,6 +221,7 @@ export const WORK = [
   { code: 'Campaign', glyph: 'growth', meta: 'Growth · Elite Indian Restaurant', title: 'Elite Koththu Rush', pillars: ['growth', 'media'], text: 'A brand awareness campaign and koththu-eating challenge that put a slow-moving dish in the spotlight. After the event, koththu sales reached their peak.', chips: ['Campaign', 'Event', 'Reels', 'Posters'], href: '/work/elite-koththu-rush', image: eliteCard },
   { code: 'Testimonials', glyph: 'play', meta: 'Media · Video production', title: 'Dr. Fixit customer testimonials', pillars: ['media'], home: false, text: 'Two customer testimonial films for Dr. Fixit, the waterproofing brand: a dealer and a homeowner from Hanwella talk about the products on camera.', chips: ['Testimonials', 'Interviews', 'Post-production'], href: '/work/dr-fixit-customer-testimonials', image: fixitCard },
   { code: 'Content shoot', glyph: 'play', meta: 'Media · With MullenLowe Sri Lanka', title: 'Keells × MasterChef Sri Lanka content shoot', pillars: ['media'], home: false, text: 'Reels for Keells, the official retail partner of MasterChef Sri Lanka, with the contestants in store and in the MasterChef kitchen. Produced as MullenLowe Sri Lanka’s production house.', chips: ['Content shoot', 'Social reels', 'Post-production'], href: '/work/keells-masterchef-sri-lanka', image: keellsCard },
+  { code: 'Event coverage', glyph: 'play', meta: 'Media · With WPP Media', title: 'Keells Krest × E FM Mother’s Day Cook Off', pillars: ['media'], home: false, text: 'Event coverage of the E FM Mother’s Day Cook Off for Keells Krest, plus short films with five mothers and their children. Produced as WPP Media’s production house.', chips: ['Event coverage', 'Family stories', 'Social content'], href: '/work/keells-krest-mothers-day-cook-off', image: krestCard },
 ];
 
 // Category pages under /works, one per pillar.

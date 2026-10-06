@@ -11,6 +11,7 @@ import eliteCover from '../assets/projects/elite/cover.jpg';
 import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
 import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
 import keellsCover from '../assets/projects/keells/cover.jpg';
+import krestCover from '../assets/projects/keells-krest/cover.jpg';
 
 export const PROJECTS = [
   {
@@ -296,6 +297,41 @@ export const PROJECTS = [
       { glyph: 'camera', title: 'Content shoot', text: 'The MasterChef contestants filmed in store and on the MasterChef set.' },
       { glyph: 'play', title: 'Social reels', text: 'A series of vertical reels, edited for Instagram.' },
       { glyph: 'user', title: 'Contestant series', text: 'This or That and Basket Talks, with the MasterChef contestants.' },
+      { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'keells-krest-mothers-day-cook-off',
+    client: 'Keells Krest',
+    title: 'Keells Krest × E FM Mother’s Day Cook Off',
+    kicker: 'Production partner to WPP Media',
+    headline: 'The Mother’s Day Cook Off, for Keells Krest.',
+    summary: 'Event coverage of the E FM Mother’s Day Cook Off for Keells Krest, its Official Goodness Food Partner: the event recap, and short films with mothers and their children. Produced by Paralox Media, with WPP Media as lead agency.',
+    hero: krestCover,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-06',
+    facts: [
+      ['Client', 'Keells Krest'],
+      ['Event', 'E FM Mother’s Day Cook Off'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Production house'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Keells Krest was the Official Goodness Food Partner of the E FM Mother’s Day Cook Off, a breakfast cook-off for mothers and their children. WPP Media led the campaign and brought in Paralox Media as its production house.',
+      'We covered the cook-off from start to finish: the hosts on stage, the contestants at their stations, and the breakfast dishes they made with Keells Krest, for the brand’s Food Mornings campaign.',
+      'We also filmed short stories with five mothers and their children, Lakmini and Senithi, Linda and Solara, Charunya and Niveka, Prasadi and Pranatha, and Kumari and Miheli, on why Keells Krest is part of their family breakfast.',
+    ],
+    instagram: [
+      { title: 'Event coverage', text: 'The recap and the highlights from the cook-off.', posts: ['DZEq6_6jGUd', 'DZKKcdQMKXs'] },
+      { title: 'Mother and child stories', text: 'Five families on Keells Krest at their breakfast table.', posts: ['DZZ98b1M_sK', 'DZpK0CEM9V7', 'DZpK_bUs8UD', 'DZpOCVDsdSf', 'DZpOcnqs1fO'] },
+    ],
+    deliverables: [
+      { glyph: 'camera', title: 'Event coverage', text: 'The cook-off filmed and photographed from start to finish.' },
+      { glyph: 'user', title: 'Family stories', text: 'Short films with five mothers and their children.' },
+      { glyph: 'play', title: 'Social content', text: 'Reels and posts, cut for the Keells Krest Instagram page.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
