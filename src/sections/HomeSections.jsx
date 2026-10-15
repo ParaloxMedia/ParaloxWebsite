@@ -178,10 +178,11 @@ export function Automations() {
   );
 }
 
-export function WorkCard({ w }) {
+/** A project card. `className`/`style` let a page add its own motion (e.g. the Works page reveal). */
+export function WorkCard({ w, className = '', style }) {
   const Tag = w.href ? 'a' : 'article';
   return (
-    <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}`} {...(w.href && { href: w.href })}>
+    <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}${className ? ` ${className}` : ''}`} style={style} {...(w.href && { href: w.href })}>
       <div className={`wk-vis${w.image ? ' has-img' : ''}`}>
         {w.image ? <img src={w.image} alt="" loading="lazy" decoding="async" /> : <><div className="gridlines" /><Glass glyph={w.glyph} tilt /></>}
         <span className="code mono">{w.code}</span><span className="yr mono">{w.year || '2026'}</span>
