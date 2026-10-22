@@ -66,7 +66,7 @@ export const ROUTE_BODY = {
     sections: [
       ...(v.duties ? [{ h2: 'What you’ll do', items: v.duties.map((d) => ({ name: d })) }] : []),
       { h2: 'What you bring', items: v.requirements.map((r) => ({ name: r })) },
-      { h2: 'How to apply', paras: ['Apply on this page with your CV and portfolio. We shortlist within 3 to 5 working days, then run an interview or a short task.'], more: { href: '/careers', label: 'See all open roles' } },
+      { h2: 'How to apply', paras: ['Apply on this page with your CV and portfolio. We shortlist within 5 working days, then run an interview or a short task.'], more: { href: '/careers', label: 'See all open roles' } },
     ],
   }])),
   '/contact': {

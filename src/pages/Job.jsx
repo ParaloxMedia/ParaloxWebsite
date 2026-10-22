@@ -68,7 +68,7 @@ export default function Job({ job: v }) {
               <div><dt className="mono">Team</dt><dd>{v.team}</dd></div>
               <div><dt className="mono">Type</dt><dd>{v.type}</dd></div>
               <div><dt className="mono">Location</dt><dd>{v.location}</dd></div>
-              <div><dt className="mono">Shortlisting</dt><dd>Within 3–5 working days</dd></div>
+              <div><dt className="mono">Shortlisting</dt><dd>Within 5 working days</dd></div>
             </dl>
             <button type="button" className="btn btn-primary" onClick={apply}>Apply now <span className="arr">→</span></button>
           </aside>

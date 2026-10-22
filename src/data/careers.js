@@ -102,7 +102,7 @@ export const WHY_JOIN = [
 ];
 
 export const CAREER_FAQ = [
-  { q: 'What is the hiring process?', a: 'You apply here, we shortlist within 3 to 5 working days, then run an interview or a short task before making an offer.' },
+  { q: 'What is the hiring process?', a: 'You apply here, we shortlist within 5 working days, then run an interview or a short task before making an offer.' },
   { q: 'Are remote and hybrid roles available?', a: 'Most roles support remote or hybrid work. Roles that need you on site, such as camera work, say so on the vacancy.' },
   { q: 'Do I need AI tool experience?', a: 'It helps, but it is not required. We train new team members on the AI tools we use.' },
   { q: 'Can I apply for more than one role?', a: 'Yes. Send a separate application for each role, with answers written for that role.' },

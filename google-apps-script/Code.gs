@@ -171,7 +171,7 @@ function emailApplicant(d) {
   var body =
     'Hi ' + d.fullName + ',\n\n' +
     'Thank you for applying for the ' + d.position + ' role at ' + BRAND_NAME + '.\n\n' +
-    'We have received your application and our team will review it within 3–5 business days.\n' +
+    'We have received your application and our team will review it within 5 business days.\n' +
     'We will be in touch at ' + d.email + ' if you are shortlisted.\n\n' +
     'Best regards,\n' + BRAND_NAME + ' Careers Team\n' +
     'info@paraloxmedia.com';

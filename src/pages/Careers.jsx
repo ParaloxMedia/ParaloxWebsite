@@ -173,7 +173,7 @@ export function ApplyForm({ formRef, position, setPosition }) {
       <div className="cr-done" ref={doneRef} role="status">
         <span className="cr-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span>
         <h3>Application sent<span className="dot">.</span></h3>
-        <p>Thank you, {f.fullName.split(' ')[0]}. Your application for <b>{position}</b> is with our team, and a confirmation is on its way to {f.email}. We shortlist within 3 to 5 working days.</p>
+        <p>Thank you, {f.fullName.split(' ')[0]}. Your application for <b>{position}</b> is with our team, and a confirmation is on its way to {f.email}. We shortlist within 5 working days.</p>
         <button type="button" className="btn btn-primary" onClick={() => { setF(EMPTY); setCv(null); setSample(null); setAgree(false); setPosition(''); setStep(0); setReached(0); setStatus('idle'); }}>Apply for another role <span className="arr">→</span></button>
       </div>
     );
@@ -302,7 +302,7 @@ export function ApplySection({ sectionRef, formRef, position, setPosition, title
           <p>It takes about five minutes. Fields marked * are required.</p>
           <ol className="cr-steps">
             <li><span className="mono">01</span>You apply here</li>
-            <li><span className="mono">02</span>We shortlist in 3–5 working days</li>
+            <li><span className="mono">02</span>We shortlist in 5 working days</li>
             <li><span className="mono">03</span>An interview or short task</li>
             <li><span className="mono">04</span>An offer</li>
           </ol>
@@ -351,7 +351,7 @@ export default function Careers() {
           <p className="rc-tagline fu" style={{ '--d': '.28s' }}>We are a creative technology team in Colombo, working across AI, engineering, media and growth for brands like Renault, Nissan and Keells. If you want your work to be seen, join us.</p>
           <dl className="wk-stats fu" style={{ '--d': '.4s' }}>
             <div><dt>{VACANCIES.length}</dt><dd>Open roles</dd></div>
-            <div><dt>3–5</dt><dd>Days to shortlist</dd></div>
+            <div><dt>5</dt><dd>Days to shortlist</dd></div>
             <div><dt>Colombo</dt><dd>Remote · Hybrid</dd></div>
           </dl>
           <div className="rc-hero-actions fu" style={{ '--d': '.5s' }}>
