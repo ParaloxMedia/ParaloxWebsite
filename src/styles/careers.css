@@ -214,11 +214,16 @@ form.cr-form{display:block;scroll-margin-top:110px}
 }
 @media (prefers-reduced-motion:reduce){.cr-job-poster .px{animation:none}}
 
-/* Careers hero: team photo */
-.cr-team{position:relative;margin:0;justify-self:end;width:min(100%,430px)}
-.cr-team .px{border-radius:28px;overflow:hidden;rotate:-2deg;box-shadow:0 50px 90px -30px rgba(0,0,0,.75),0 0 0 1px rgba(233,227,250,.16);animation:wkBob 8s ease-in-out infinite alternate}
-.cr-team img{display:block;width:100%;height:auto;transition:scale 1.2s var(--ease-expo)}
-.cr-team:hover img{scale:1.04}
-.cr-team figcaption{position:absolute;left:18px;bottom:18px;padding:7px 12px;border-radius:999px;font-size:.66rem;color:#fff;background:rgba(14,10,30,.6);border:1px solid rgba(233,227,250,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);rotate:-2deg}
-@media (max-width:1000px){.cr-team{justify-self:start;width:min(100%,360px)}}
-@media (prefers-reduced-motion:reduce){.cr-team .px{animation:none}}
+/* Careers hero: the team cut out, standing on the hero's bottom edge */
+.cr-hero-team{--hero-pb:clamp(72px,9vw,130px)}
+.cr-hero-team .cr-job-hero-in{align-items:end}
+.cr-team{position:relative;margin:0 -2% calc(-1 * var(--hero-pb)) 0;justify-self:end;width:min(112%,660px)}
+.cr-team .px{position:relative;z-index:1}
+.cr-team img{display:block;width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+/* Violet glow behind the team and a soft floor shadow under their feet */
+.cr-team-glow{position:absolute;z-index:0;left:6%;right:6%;top:12%;bottom:6%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(182,156,255,.55),rgba(124,58,237,.3) 55%,transparent);filter:blur(30px);animation:wkOrb 12s ease-in-out infinite alternate}
+.cr-team::after{content:"";position:absolute;z-index:0;left:4%;right:4%;bottom:-2%;height:12%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);pointer-events:none}
+.cr-team figcaption{position:absolute;z-index:2;left:-4%;bottom:30%;padding:7px 12px;border-radius:999px;font-size:.66rem;color:#fff;background:rgba(14,10,30,.55);border:1px solid rgba(233,227,250,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:wkBob 6s ease-in-out infinite alternate}
+@media (max-width:1000px){.cr-team{justify-self:center;width:min(100%,460px);margin-top:10px}}
+@media (prefers-reduced-motion:reduce){.cr-team-glow,.cr-team figcaption{animation:none}}

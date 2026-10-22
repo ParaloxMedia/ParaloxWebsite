@@ -3,7 +3,7 @@ import { CONTACT } from '../data/content';
 import { APPLY_ENDPOINT, CAREER_FAQ, VACANCIES, WHY_JOIN } from '../data/careers';
 import { Glass } from '../components/Glass';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
-import teamPhoto from '../assets/careers/team.jpg';
+import teamCutout from '../assets/careers/team-cutout.webp';
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 
@@ -343,7 +343,7 @@ export default function Careers() {
 
   return (
     <>
-      <header className="rc-hero wk-hero cr-hero" data-parallax>
+      <header className="rc-hero wk-hero cr-hero cr-hero-team" data-parallax>
         <div className="gridlines" />
         <span className="wk-orb" aria-hidden="true" />
         <div className="wrap cr-job-hero-in">
@@ -361,9 +361,11 @@ export default function Careers() {
             <button type="button" className="link cr-link-btn" onClick={() => applyFor(OPEN_APPLICATION)}>Send an open application <span className="arr">→</span></button>
           </div>
           </div>
+          {/* The team, cut out, standing on the bottom edge of the hero */}
           <figure className="cr-team fu" style={{ '--d': '.3s' }}>
-            <div className="px" style={{ '--d': '16px' }}>
-              <img src={teamPhoto} alt="The Paralox Media team in Colombo" width="1122" height="1402" decoding="async" fetchPriority="high" />
+            <span className="cr-team-glow" aria-hidden="true" />
+            <div className="px" style={{ '--d': '12px' }}>
+              <img src={teamCutout} alt="The Paralox Media team in Colombo" width="1198" height="1313" decoding="async" fetchPriority="high" />
             </div>
             <figcaption className="mono">The team · Colombo</figcaption>
           </figure>
