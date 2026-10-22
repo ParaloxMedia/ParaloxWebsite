@@ -56,7 +56,7 @@ export default function Project({ project: p }) {
   return (
     <article className="pp pj" ref={root}>
       {/* 1. Full-screen hero */}
-      <header className={`cs-hero${p.heroShade ? ` hero-${p.heroShade}` : ''}`}>
+      <header className={`cs-hero${p.heroShade ? ` hero-${p.heroShade}` : ''}${p.heroTop ? ' hero-top' : ''}`}>
         <div className="cs-hero-bg" style={{ backgroundImage: `url(${p.hero})` }} />
         <div className="cs-hero-shade" />
         <a className="cs-back mono" href={fromWorks ? '/works' : '/#work'}>

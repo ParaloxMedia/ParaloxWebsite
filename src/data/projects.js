@@ -502,6 +502,10 @@ export const PROJECTS = [
     headline: 'Renault, unleashed. Made with AI, in one day.',
     summary: 'An AI-generated TV commercial for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Made in a single day by Paralox Media as WPP Media’s production house.',
     hero: renaultHero,
+    // The key visual: shade the title side, keep the cars and animals on the right.
+    heroShade: 'side',
+    // On phones, keep the cars in the upper half, above the title.
+    heroTop: true,
     pillar: 'Media',
     year: '2026',
     iso: '2026-10-22',

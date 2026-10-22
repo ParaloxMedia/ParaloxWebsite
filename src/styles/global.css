@@ -1132,6 +1132,8 @@ html.is-loading .c2 *{animation-play-state:paused!important}
 @media (max-width:760px){
   .hero-side .cs-hero-shade{background:linear-gradient(0deg,rgba(8,4,20,.97) 0%,rgba(8,4,20,.85) 50%,rgba(8,4,20,.35) 100%)}
   .hero-side .cs-hero-bg{background-position:70% 30%}
+  .hero-top .cs-hero-bg{background-size:auto 50%;background-repeat:no-repeat;background-position:62% 15%}
+  .hero-top .cs-hero-shade{background:linear-gradient(0deg,rgba(8,4,20,.98) 0%,rgba(8,4,20,.9) 45%,rgba(8,4,20,0) 62%)}
 }
 .cs-hero.no-photo .cs-hero-shade{background:linear-gradient(0deg,rgba(8,4,20,.85) 0%,rgba(8,4,20,.2) 55%,transparent 100%)}
 .cs-back{position:absolute;z-index:3;left:max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)));top:calc(100px + env(safe-area-inset-top,0px));display:inline-flex;align-items:center;gap:8px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .25s}
