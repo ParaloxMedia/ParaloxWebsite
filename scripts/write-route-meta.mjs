@@ -56,6 +56,9 @@ ${paths.filter((p) => p.startsWith('/work/')).map(line).join('\n')}
 ## Company
 ${['/about', '/careers', '/contact', '/pulse'].map(line).join('\n')}
 
+## Open roles
+${paths.filter((p) => p.startsWith('/careers/')).map(line).join('\n')}
+
 ## Pulse articles
 ${paths.filter((p) => p.startsWith('/pulse/')).map(line).join('\n')}
 

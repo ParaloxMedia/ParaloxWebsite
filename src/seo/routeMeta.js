@@ -169,25 +169,41 @@ export const ROUTE_META = {
     ...card('about'), type: 'website',
   }, {
     type: 'CollectionPage', trail: [{ name: 'Careers', path: '/careers' }],
-    // One JobPosting per open role, so they can appear in Google's job listings.
-    extra: VACANCIES.map((v) => ({
-      '@type': 'JobPosting',
-      '@id': `${SITE}/careers#${v.id}`,
-      title: v.title,
-      description: `<p>${v.summary}</p>${v.duties ? `<p>What you’ll do:</p><ul>${v.duties.map((d) => `<li>${d}</li>`).join('')}</ul>` : ''}<p>What you bring:</p><ul>${v.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>`,
-      datePosted: v.posted,
-      validThrough: `${Number(v.posted.slice(0, 4)) + 1}${v.posted.slice(4)}`,
-      employmentType: v.employmentType,
-      hiringOrganization: { '@id': ORG_ID },
-      directApply: true,
-      url: `${SITE}/careers#role-${v.id}`,
-      jobLocation: {
-        '@type': 'Place',
-        address: { '@type': 'PostalAddress', streetAddress: '14 Sir Baron Jayathilake Mawatha', addressLocality: 'Colombo', postalCode: '00100', addressCountry: 'LK' },
-      },
-      ...(!v.onsite && { jobLocationType: 'TELECOMMUTE', applicantLocationRequirements: { '@type': 'Country', name: 'Sri Lanka' } }),
-    })),
+    extra: [{
+      '@type': 'ItemList', '@id': `${SITE}/careers#roles`,
+      itemListElement: VACANCIES.map((v, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/careers/${v.id}`, name: v.title })),
+    }],
   }),
+  // One page per open role, each with its JobPosting so it can appear in Google's job listings.
+  ...Object.fromEntries(VACANCIES.map((v) => {
+    const path = `/careers/${v.id}`;
+    return [path, page(path, {
+      title: `${v.title} | Careers at Paralox Media, Colombo`,
+      ogTitle: `We are hiring: ${v.title} · Paralox Media`,
+      description: v.summary,
+      ...(v.poster ? { image: v.poster } : card('about')), type: 'website',
+    }, {
+      trail: [{ name: 'Careers', path: '/careers' }, { name: v.title, path }],
+      extra: [{
+        '@type': 'JobPosting',
+        '@id': `${SITE}${path}#job`,
+        title: v.title,
+        description: `<p>${v.summary}</p>${v.duties ? `<p>What you’ll do:</p><ul>${v.duties.map((d) => `<li>${d}</li>`).join('')}</ul>` : ''}<p>What you bring:</p><ul>${v.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>`,
+        datePosted: v.posted,
+        validThrough: `${Number(v.posted.slice(0, 4)) + 1}${v.posted.slice(4)}`,
+        employmentType: v.employmentType,
+        hiringOrganization: { '@id': ORG_ID },
+        directApply: true,
+        url: `${SITE}${path}`,
+        ...(v.poster && { image: abs(v.poster) }),
+        jobLocation: {
+          '@type': 'Place',
+          address: { '@type': 'PostalAddress', streetAddress: '14 Sir Baron Jayathilake Mawatha', addressLocality: 'Colombo', postalCode: '00100', addressCountry: 'LK' },
+        },
+        ...(!v.onsite && { jobLocationType: 'TELECOMMUTE', applicantLocationRequirements: { '@type': 'Country', name: 'Sri Lanka' } }),
+      }],
+    })];
+  })),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',

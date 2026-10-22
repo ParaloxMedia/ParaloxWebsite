@@ -161,3 +161,55 @@ form.cr-form{display:block;scroll-margin-top:110px}
   .cr-back{justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.cr-step{animation:none}}
+
+/* Role cards on /careers (each links to its page) */
+.cr-role-card{display:grid;grid-template-columns:minmax(0,1fr) auto 48px;align-items:center;gap:24px;padding:26px 28px;border-radius:24px;background:#fff;border:1px solid var(--line-light);color:inherit;
+  transition:translate .5s var(--ease-expo),border-color .3s,box-shadow .5s var(--ease-expo)}
+.cr-role-card:hover{translate:0 -4px;border-color:#D9CCFF;box-shadow:0 28px 60px -34px rgba(62,32,135,.45)}
+.cr-role-sum{display:block;max-width:44rem;color:var(--ink-soft);font-size:.98rem;line-height:1.55;margin-top:2px}
+.cr-go{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-light);color:var(--ink-text);transition:background .3s,border-color .3s,color .3s}
+.cr-go svg{width:20px;height:20px;transition:translate .35s var(--ease)}
+.cr-role-card:hover .cr-go{background:var(--violet);border-color:var(--violet);color:#fff}
+.cr-role-card:hover .cr-go svg{translate:3px 0}
+
+/* Role page */
+.cr-job-hero-in{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,72px);align-items:center}
+.cr-job-hero h1{max-width:16ch;font-size:clamp(2.4rem,5.4vw,5rem)}
+.cr-back-link{display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;color:var(--silver);font-size:.72rem;transition:color .3s}
+.cr-back-link svg{width:16px;height:16px;transition:translate .35s var(--ease)}
+.cr-back-link:hover{color:#fff}
+.cr-back-link:hover svg{translate:-3px 0}
+.cr-job-chips{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cr-job-chips li{padding:8px 14px;border-radius:999px;font-size:.88rem;color:var(--lav);background:rgba(255,255,255,.06);border:1px solid rgba(233,227,250,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cr-job-poster{justify-self:end;width:min(100%,400px)}
+.cr-job-poster .px{border-radius:24px;overflow:hidden;rotate:2.5deg;box-shadow:0 50px 90px -30px rgba(0,0,0,.7),0 0 0 1px rgba(233,227,250,.14);animation:wkBob 7s ease-in-out infinite alternate}
+.cr-job-poster img{display:block;width:100%;height:auto}
+
+.cr-job{background:#fff;color:var(--ink-text)}
+.cr-job-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,320px);gap:clamp(20px,3vw,40px);align-items:start}
+.cr-job-in:not(:has(.cr-job-block + .cr-job-block)){grid-template-columns:minmax(0,2fr) minmax(0,320px)}
+.cr-job-block .rc-kick{margin-bottom:16px}
+.cr-job-block ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cr-job-block li{display:flex;gap:14px;align-items:baseline;padding:16px 18px;border-radius:16px;background:var(--pearl);border:1px solid var(--line-light);line-height:1.5;
+  transition:border-color .3s,translate .4s var(--ease-expo)}
+.cr-job-block li:hover{border-color:#D9CCFF;translate:4px 0}
+.cr-job-block li .mono{flex:none;color:var(--violet);font-size:.72rem}
+.cr-job-facts{position:sticky;top:110px;padding:26px;border-radius:24px;background:#120A26;color:#fff;box-shadow:0 30px 60px -30px rgba(30,15,69,.55)}
+.cr-job-facts dl{margin:0 0 22px;display:grid;gap:16px}
+.cr-job-facts dt{color:var(--lilac);font-size:.68rem;margin-bottom:4px}
+.cr-job-facts dd{margin:0;font-weight:600}
+.cr-job-facts .btn{width:100%;justify-content:center}
+
+@media (max-width:1000px){
+  .cr-job-hero-in{grid-template-columns:minmax(0,1fr)}
+  .cr-job-poster{justify-self:start;width:min(100%,320px)}
+  .cr-job-in,.cr-job-in:not(:has(.cr-job-block + .cr-job-block)){grid-template-columns:minmax(0,1fr)}
+  .cr-job-facts{position:static}
+}
+@media (max-width:640px){
+  .cr-role-card{grid-template-columns:minmax(0,1fr) 44px;padding:22px 20px;gap:14px}
+  .cr-role-card .cr-meta{grid-column:1;grid-row:2;align-items:flex-start;text-align:left}
+  .cr-go{grid-column:2;grid-row:1;width:44px;height:44px}
+  .cr-job-poster{width:min(100%,280px)}
+}
+@media (prefers-reduced-motion:reduce){.cr-job-poster .px{animation:none}}

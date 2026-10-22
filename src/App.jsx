@@ -17,6 +17,8 @@ import Project from './pages/Project';
 import RateCard from './pages/RateCard';
 import Works from './pages/Works';
 import Careers from './pages/Careers';
+import Job from './pages/Job';
+import { VACANCIES } from './data/careers';
 import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
@@ -33,6 +35,9 @@ function resolve(hash) {
   if (project) return { view: 'project', nav: 'home', project };
   // Private pages: only reachable by a shared link; the token decrypts the content.
   if (/^rate-card\/[A-Za-z0-9_-]+$/.test(hash)) return { view: 'ratecard', nav: '', token: hash.slice('rate-card/'.length) };
+  // An open role: /careers/<id>.
+  const job = hash.startsWith('careers/') && VACANCIES.find((v) => `careers/${v.id}` === hash);
+  if (job) return { view: 'job', nav: '', job };
   const workPillar = hash.match(/^works\/(ai|engineering|media|growth)$/);
   if (workPillar) return { view: 'works', nav: '', pillar: workPillar[1] };
   if (PAGES.includes(hash)) return { view: hash, nav: hash };
@@ -146,6 +151,7 @@ export default function App() {
   const canonicalPath = r.view === 'ratecard' ? `/rate-card/${r.token}`
     : r.view === 'article' ? pathFor(r.post.id, true)
     : r.view === 'project' ? `/work/${r.project.id}`
+    : r.view === 'job' ? `/careers/${r.job.id}`
     : r.pillar ? `/works/${r.pillar}`
     : r.anchor === 'work' ? '/'
     : pathFor(r.anchor || r.view);
@@ -222,6 +228,7 @@ export default function App() {
   else if (r.view === 'pulse') page = <Pulse />;
   else if (r.view === 'contact') page = <Contact />;
   else if (r.view === 'careers') page = <Careers />;
+  else if (r.view === 'job') page = <Job job={r.job} />;
   else page = <Home />;
 
   return (
@@ -229,7 +236,7 @@ export default function App() {
       <GlassDefs />
       <Loader />
       <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
-      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' || r.view === 'works' ? hash : r.view}>
+      <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' || r.view === 'works' || r.view === 'job' ? hash : r.view}>
         {page}
         {r.view !== 'contact' && <FinalCta />}
       </main>

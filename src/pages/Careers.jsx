@@ -55,7 +55,7 @@ function FileField({ id, label, hint, accept, file, onFile, error }) {
   );
 }
 
-function ApplyForm({ formRef, position, setPosition }) {
+export function ApplyForm({ formRef, position, setPosition }) {
   const [f, setF] = useState(EMPTY);
   const [cv, setCv] = useState(null);
   const [sample, setSample] = useState(null);
@@ -291,10 +291,46 @@ function ApplyForm({ formRef, position, setPosition }) {
   );
 }
 
-/** /careers: open roles and the application form (applications land in Google Drive). */
+/** The Apply section: hiring steps beside the four-step form. Used on /careers and each role page. */
+export function ApplySection({ sectionRef, formRef, position, setPosition, title = 'Tell us about you' }) {
+  return (
+    <section className="cr-apply sec" id="apply" ref={sectionRef} aria-labelledby="cr-apply-h">
+      <div className="wrap cr-apply-in">
+        <div className="cr-apply-intro">
+          <p className="rc-kick">Apply</p>
+          <h2 className="d-m" id="cr-apply-h">{title}<span className="dot">.</span></h2>
+          <p>It takes about five minutes. Fields marked * are required.</p>
+          <ol className="cr-steps">
+            <li><span className="mono">01</span>You apply here</li>
+            <li><span className="mono">02</span>We shortlist in 3–5 working days</li>
+            <li><span className="mono">03</span>An interview or short task</li>
+            <li><span className="mono">04</span>An offer</li>
+          </ol>
+        </div>
+        <ApplyForm formRef={formRef} position={position} setPosition={setPosition} />
+      </div>
+    </section>
+  );
+}
+
+/** A role as a link card to its own page (/careers/<id>). */
+export function RoleCard({ v, i = 0 }) {
+  return (
+    <a className="cr-role-card" href={`/careers/${v.id}`} style={{ '--i': i }}>
+      <span className="cr-role-title">
+        <span className="cr-tags"><span className="mono">{v.team}</span>{v.urgent && <span className="cr-urgent mono">Hiring now</span>}</span>
+        <b>{v.title}</b>
+        <span className="cr-role-sum">{v.summary}</span>
+      </span>
+      <span className="cr-meta"><span>{v.type}</span><span>{v.location}</span></span>
+      <span className="cr-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-6-6l6 6-6 6" /></svg></span>
+    </a>
+  );
+}
+
+/** /careers: open roles (each with its own page) and an open application. */
 export default function Careers() {
   const [position, setPosition] = useState('');
-  const [open, setOpen] = useState(VACANCIES[0]?.id);
   const formRef = useRef(null);
   const applyRef = useRef(null);
 
@@ -338,53 +374,14 @@ export default function Careers() {
 
       <section className="cr-roles sec lt" id="roles" aria-labelledby="cr-roles-h">
         <div className="wrap">
-          <div className="sec-head"><h2 className="d-m" id="cr-roles-h">Open roles<span className="dot">.</span></h2><p>Open a role for the details, then apply in one step. Your CV and answers go straight to our hiring team.</p></div>
+          <div className="sec-head"><h2 className="d-m" id="cr-roles-h">Open roles<span className="dot">.</span></h2><p>Open a role for the full details and to apply. Your CV and answers go straight to our hiring team.</p></div>
           <div className="cr-list">
-            {VACANCIES.map((v) => {
-              const isOpen = open === v.id;
-              return (
-                <article key={v.id} className={`cr-role${isOpen ? ' open' : ''}`} id={`role-${v.id}`}>
-                  <button type="button" className="cr-role-head" aria-expanded={isOpen} aria-controls={`role-body-${v.id}`} onClick={() => setOpen(isOpen ? null : v.id)}>
-                    <span className="cr-role-title">
-                      <span className="cr-tags"><span className="mono">{v.team}</span>{v.urgent && <span className="cr-urgent mono">Hiring now</span>}</span>
-                      <b>{v.title}</b>
-                    </span>
-                    <span className="cr-meta"><span>{v.type}</span><span>{v.location}</span></span>
-                    <span className="cr-plus" aria-hidden="true" />
-                  </button>
-                  <div className={`cr-role-body${v.poster ? ' has-poster' : ''}`} id={`role-body-${v.id}`} hidden={!isOpen}>
-                    <div className="cr-role-text">
-                      <p>{v.summary}</p>
-                      {v.duties && (<><span className="mono">What you’ll do</span><ul>{v.duties.map((r) => <li key={r}>{r}</li>)}</ul></>)}
-                      <span className="mono">What you bring</span>
-                      <ul>{v.requirements.map((r) => <li key={r}>{r}</li>)}</ul>
-                      <button type="button" className="btn btn-primary" onClick={() => applyFor(v.title)}>Apply for this role <span className="arr">→</span></button>
-                    </div>
-                    {v.poster && <img className="cr-poster" src={v.poster} alt={`We are hiring: ${v.title} at Paralox Media`} width="1122" height="1402" loading="lazy" decoding="async" />}
-                  </div>
-                </article>
-              );
-            })}
+            {VACANCIES.map((v, i) => <RoleCard key={v.id} v={v} i={i} />)}
           </div>
         </div>
       </section>
 
-      <section className="cr-apply sec" id="apply" ref={applyRef} aria-labelledby="cr-apply-h">
-        <div className="wrap cr-apply-in">
-          <div className="cr-apply-intro">
-            <p className="rc-kick">Apply</p>
-            <h2 className="d-m" id="cr-apply-h">Tell us about you<span className="dot">.</span></h2>
-            <p>It takes about five minutes. Fields marked * are required.</p>
-            <ol className="cr-steps">
-              <li><span className="mono">01</span>You apply here</li>
-              <li><span className="mono">02</span>We shortlist in 3–5 working days</li>
-              <li><span className="mono">03</span>An interview or short task</li>
-              <li><span className="mono">04</span>An offer</li>
-            </ol>
-          </div>
-          <ApplyForm formRef={formRef} position={position} setPosition={setPosition} />
-        </div>
-      </section>
+      <ApplySection sectionRef={applyRef} formRef={formRef} position={position} setPosition={setPosition} title="Not sure which role?" />
 
       <section className="faq sec lt" aria-labelledby="cr-faq-h">
         <div className="wrap faq-grid">

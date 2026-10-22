@@ -55,11 +55,20 @@ export const ROUTE_BODY = {
     h1: 'Careers at Paralox Media',
     intro: ROUTE_META['/careers'].description,
     sections: [
-      { h2: 'Open roles', items: VACANCIES.map((v) => ({ name: `${v.title} (${v.type}, ${v.location})`, text: `${v.summary}${v.duties ? ` What you’ll do: ${v.duties.join('; ')}.` : ''} What you bring: ${v.requirements.join('; ')}.` })) },
+      { h2: 'Open roles', items: VACANCIES.map((v) => ({ name: v.title, href: `/careers/${v.id}`, text: `${v.type}, ${v.location}. ${v.summary}` })) },
       { h2: 'Why Paralox', items: WHY_JOIN.map((w) => ({ name: w.title, text: w.text })) },
       { h2: 'Hiring, answered', items: CAREER_FAQ.map((f) => ({ name: f.q, text: f.a })) },
     ],
   },
+  ...Object.fromEntries(VACANCIES.map((v) => [`/careers/${v.id}`, {
+    h1: v.title,
+    intro: `${v.summary} ${v.type}, ${v.location}.`,
+    sections: [
+      ...(v.duties ? [{ h2: 'What you’ll do', items: v.duties.map((d) => ({ name: d })) }] : []),
+      { h2: 'What you bring', items: v.requirements.map((r) => ({ name: r })) },
+      { h2: 'How to apply', paras: ['Apply on this page with your CV and portfolio. We shortlist within 3 to 5 working days, then run an interview or a short task.'], more: { href: '/careers', label: 'See all open roles' } },
+    ],
+  }])),
   '/contact': {
     h1: 'Contact Paralox Media',
     intro: ROUTE_META['/contact'].description,
