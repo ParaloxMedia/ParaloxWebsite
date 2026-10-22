@@ -57,7 +57,7 @@
 
 /* Form: a light card on the dark section */
 .cr-form,.cr-done{background:#fff;color:var(--ink-text);border-radius:28px;padding:clamp(22px,3.4vw,40px);box-shadow:0 40px 90px -40px rgba(0,0,0,.6)}
-form.cr-form{display:block}
+form.cr-form{display:block;scroll-margin-top:110px}
 .cr-form fieldset{border:0;margin:0 0 30px;padding:0;min-width:0}
 .cr-form legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:18px;font-weight:900;font-size:1.3rem;letter-spacing:-.02em}
 .cr-form legend .mono{color:var(--violet);font-size:.75rem}
@@ -127,3 +127,37 @@ form.cr-form{display:block}
   .cr-submit{width:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.cr-role-body,.cr-done{animation:none}}
+
+/* Steps: progress header, one section at a time */
+.cr-progress{margin-bottom:28px}
+.cr-progress ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cr-progress button{display:flex;align-items:center;gap:10px;width:100%;padding:6px 0;background:none;border:0;color:var(--mute);font:inherit;font-size:.9rem;font-weight:600;text-align:left;cursor:pointer}
+.cr-progress button[disabled]{cursor:default}
+.cr-dot{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid #DCD8E6;background:#fff;font-size:.8rem;font-weight:700;transition:background .3s,border-color .3s,color .3s,box-shadow .3s}
+.cr-progress li.now button{color:var(--ink-text)}
+.cr-progress li.now .cr-dot{border-color:var(--violet);color:var(--violet);box-shadow:0 0 0 4px rgba(124,58,237,.14)}
+.cr-progress li.done button{color:var(--ink-soft)}
+.cr-progress li.done .cr-dot{background:var(--violet);border-color:var(--violet);color:#fff}
+.cr-progress li.done button:hover .cr-step-name{color:var(--violet)}
+.cr-bar{height:4px;margin-top:14px;border-radius:4px;background:#ECE8F5;overflow:hidden}
+.cr-bar span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--lilac));transition:width .6s var(--ease-expo)}
+.cr-step-count{display:none;margin:10px 0 0;color:var(--mute);font-size:.7rem}
+.cr-step{animation:crStep .45s var(--ease-expo)}
+@keyframes crStep{from{opacity:0;translate:16px 0}to{opacity:1;translate:0 0}}
+.cr-form fieldset.cr-step{margin-bottom:8px}
+.cr-step .cr-check{margin-top:22px}
+.cr-back{border-color:#DCD8E6;color:var(--ink-text);background:#fff}
+.cr-back:hover{border-color:var(--violet);color:var(--violet)}
+.cr-back .arr{transition:transform .35s var(--ease)}
+.cr-back:hover .arr{transform:translateX(-4px)}
+@media (max-width:640px){
+  .cr-step-name{display:none}
+  .cr-progress ol{display:flex;gap:10px}
+  .cr-progress li{flex:none}
+  .cr-progress li.now{flex:1}
+  .cr-progress li.now .cr-step-name{display:inline}
+  .cr-step-count{display:block}
+  .cr-submit-row{flex-direction:column-reverse;align-items:stretch}
+  .cr-back{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.cr-step{animation:none}}

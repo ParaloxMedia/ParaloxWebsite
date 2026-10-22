@@ -20,6 +20,9 @@ const EMPTY = {
   whyJoin: '', whyFit: '', proudProject: '', aiTools: '', comfortableFeedback: 'yes', ownEquipment: 'yes', additionalInfo: '',
 };
 
+// The form's steps, in order; each is checked before moving on.
+const STEPS = ['About you', 'The role', 'Your work', 'A few questions'];
+
 const mb = (f) => (f ? f.size / 1024 / 1024 : 0);
 // A File as plain base64 (no data: prefix), the format the Apps Script expects.
 const toBase64 = (file) => new Promise((resolve, reject) => {
@@ -59,7 +62,10 @@ function ApplyForm({ formRef, position, setPosition }) {
   const [agree, setAgree] = useState(false);
   const [errs, setErrs] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | sent | failed
+  const [step, setStep] = useState(0);
+  const [reached, setReached] = useState(0); // furthest step opened, so earlier steps stay clickable
   const doneRef = useRef(null);
+  const last = STEPS.length - 1;
 
   const role = VACANCIES.find((v) => v.title === position);
   const portfolioRequired = position !== OPEN_APPLICATION && role?.portfolio !== false;
@@ -84,34 +90,60 @@ function ApplyForm({ formRef, position, setPosition }) {
     </div>
   );
 
-  const validate = () => {
+  /** Errors for one step (0-3). */
+  const check = (n) => {
     const e = {};
-    if (!f.fullName.trim()) e.fullName = 'Add your full name.';
-    if (!/^\S+@\S+\.\S+$/.test(f.email.trim())) e.email = 'Add a valid email address.';
-    if (!/^\+?[\d\s()-]{7,}$/.test(f.phone.trim())) e.phone = 'Add a phone or WhatsApp number.';
-    if (!f.location.trim()) e.location = 'Add your current city.';
-    if (!position) e.position = 'Choose the role you are applying for.';
-    if (portfolioRequired && !/^https?:\/\/\S+\.\S+/.test(f.portfolioLink.trim())) e.portfolioLink = 'Add a link to your portfolio or showreel (starting with https://).';
-    if (!cv) e.cv = 'Attach your CV.';
-    else if (!CV_TYPES.includes(cv.type) && !/\.(pdf|docx?)$/i.test(cv.name)) e.cv = 'The CV must be a PDF or Word file.';
-    else if (mb(cv) > MAX_CV_MB) e.cv = `The CV must be under ${MAX_CV_MB} MB.`;
-    if (sample && mb(sample) > MAX_SAMPLE_MB) e.sample = `The file must be under ${MAX_SAMPLE_MB} MB. Share larger work as a link.`;
-    if (!f.whyJoin.trim()) e.whyJoin = 'Tell us briefly why you want to join.';
-    if (!agree) e.agree = 'Please confirm your details are accurate.';
+    if (n === 0) {
+      if (!f.fullName.trim()) e.fullName = 'Add your full name.';
+      if (!/^\S+@\S+\.\S+$/.test(f.email.trim())) e.email = 'Add a valid email address.';
+      if (!/^\+?[\d\s()-]{7,}$/.test(f.phone.trim())) e.phone = 'Add a phone or WhatsApp number.';
+      if (!f.location.trim()) e.location = 'Add your current city.';
+    }
+    if (n === 1 && !position) e.position = 'Choose the role you are applying for.';
+    if (n === 2) {
+      if (portfolioRequired && !/^https?:\/\/\S+\.\S+/.test(f.portfolioLink.trim())) e.portfolioLink = 'Add a link to your portfolio or showreel (starting with https://).';
+      if (!cv) e.cv = 'Attach your CV.';
+      else if (!CV_TYPES.includes(cv.type) && !/\.(pdf|docx?)$/i.test(cv.name)) e.cv = 'The CV must be a PDF or Word file.';
+      else if (mb(cv) > MAX_CV_MB) e.cv = `The CV must be under ${MAX_CV_MB} MB.`;
+      if (sample && mb(sample) > MAX_SAMPLE_MB) e.sample = `The file must be under ${MAX_SAMPLE_MB} MB. Share larger work as a link.`;
+    }
+    if (n === 3) {
+      if (!f.whyJoin.trim()) e.whyJoin = 'Tell us briefly why you want to join.';
+      if (!agree) e.agree = 'Please confirm your details are accurate.';
+    }
     return e;
+  };
+
+  // Bring the form's top into view and focus the first field (or the first error) of the step.
+  const focusStep = (errorsOnly = false) => requestAnimationFrame(() => {
+    const el = formRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top;
+    if (top < 80 || top > window.innerHeight * 0.6) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+    const target = errorsOnly
+      ? el.querySelector('.has-err input, .has-err select, .has-err textarea, .has-err .cr-drop')
+      : el.querySelector('fieldset input:not([type=file]), fieldset select, fieldset textarea');
+    target?.focus?.({ preventScroll: true });
+  });
+
+  const go = (n) => { setErrs({}); setStep(n); setReached((r) => Math.max(r, n)); focusStep(); };
+  const next = () => {
+    const e = check(step);
+    setErrs(e);
+    if (Object.keys(e).length) { focusStep(true); return; }
+    go(step + 1);
   };
 
   const submit = async (ev) => {
     ev.preventDefault();
     if (status === 'sending') return;
-    const e = validate();
-    setErrs(e);
-    if (Object.keys(e).length) {
-      const first = formRef.current?.querySelector('.has-err input, .has-err select, .has-err textarea, .has-err .cr-drop');
-      first?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'center' });
-      first?.focus?.({ preventScroll: true });
-      return;
+    if (step < last) { next(); return; } // Enter in a field moves to the next step
+    // Re-check every step; jump back to the first with a problem.
+    for (let n = 0; n <= last; n += 1) {
+      const e = check(n);
+      if (Object.keys(e).length) { setStep(n); setErrs(e); focusStep(true); return; }
     }
+    setErrs({});
     setStatus('sending');
     try {
       const [cvB64, sampleB64] = await Promise.all([toBase64(cv), toBase64(sample)]);
@@ -142,14 +174,30 @@ function ApplyForm({ formRef, position, setPosition }) {
         <span className="cr-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span>
         <h3>Application sent<span className="dot">.</span></h3>
         <p>Thank you, {f.fullName.split(' ')[0]}. Your application for <b>{position}</b> is with our team, and a confirmation is on its way to {f.email}. We shortlist within 3 to 5 working days.</p>
-        <button type="button" className="btn btn-primary" onClick={() => { setF(EMPTY); setCv(null); setSample(null); setAgree(false); setPosition(''); setStatus('idle'); }}>Apply for another role <span className="arr">→</span></button>
+        <button type="button" className="btn btn-primary" onClick={() => { setF(EMPTY); setCv(null); setSample(null); setAgree(false); setPosition(''); setStep(0); setReached(0); setStatus('idle'); }}>Apply for another role <span className="arr">→</span></button>
       </div>
     );
   }
 
   return (
     <form className="cr-form" ref={formRef} onSubmit={submit} noValidate>
-      <fieldset>
+      <div className="cr-progress">
+        <ol>
+          {STEPS.map((label, n) => (
+            <li key={label} className={n === step ? 'now' : n < step ? 'done' : undefined}>
+              <button type="button" disabled={n > reached || status === 'sending'} aria-current={n === step ? 'step' : undefined} onClick={() => go(n)}>
+                <span className="cr-dot" aria-hidden="true">{n < step ? '✓' : n + 1}</span>
+                <span className="cr-step-name">{label}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+        <div className="cr-bar" aria-hidden="true"><span style={{ width: `${(step / last) * 100}%` }} /></div>
+        <p className="cr-step-count mono" aria-live="polite">Step {step + 1} of {STEPS.length}</p>
+      </div>
+
+      {step === 0 && (
+      <fieldset className="cr-step">
         <legend><span className="mono">01</span>About you</legend>
         <div className="cr-grid">
           {field('fullName', 'Full name', { auto: 'name' }, true)}
@@ -166,8 +214,10 @@ function ApplyForm({ formRef, position, setPosition }) {
           </div>
         </div>
       </fieldset>
+      )}
 
-      <fieldset>
+      {step === 1 && (
+      <fieldset className="cr-step">
         <legend><span className="mono">02</span>The role</legend>
         <div className="cr-grid">
           {select('position', 'Role', [...VACANCIES.map((v) => v.title), OPEN_APPLICATION], true, position, (e) => setPosition(e.target.value))}
@@ -178,8 +228,10 @@ function ApplyForm({ formRef, position, setPosition }) {
           {field('expectedSalary', 'Expected monthly salary', { placeholder: 'LKR' })}
         </div>
       </fieldset>
+      )}
 
-      <fieldset>
+      {step === 2 && (
+      <fieldset className="cr-step">
         <legend><span className="mono">03</span>Your work</legend>
         <div className="cr-grid">
           {field('portfolioLink', portfolioRequired ? 'Portfolio or showreel link' : 'Portfolio link (optional)', { type: 'url', placeholder: 'https://' }, portfolioRequired)}
@@ -188,8 +240,10 @@ function ApplyForm({ formRef, position, setPosition }) {
           <FileField id="cr-sample" label="Work sample (optional)" hint={`Any file up to ${MAX_SAMPLE_MB} MB. Larger work? Add a link above.`} file={sample} onFile={setSample} error={errs.sample} />
         </div>
       </fieldset>
+      )}
 
-      <fieldset>
+      {step === 3 && (
+      <fieldset className="cr-step">
         <legend><span className="mono">04</span>A few questions</legend>
         <div className="cr-grid">
           {field('whyJoin', 'Why do you want to join Paralox Media?', { area: true, full: true }, true)}
@@ -208,19 +262,24 @@ function ApplyForm({ formRef, position, setPosition }) {
           {f.source === 'Referral' ? field('referral', 'Who referred you?') : <div className="cr-field cr-spacer" aria-hidden="true" />}
           {field('additionalInfo', 'Anything else? (optional)', { area: true, full: true, rows: 3 })}
         </div>
+        <label className={`cr-check${errs.agree ? ' has-err' : ''}`}>
+          <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
+          <span>The information I have given is accurate, and Paralox Media may contact me about this application.</span>
+        </label>
+        {errs.agree && <span className="cr-err" role="alert">{errs.agree}</span>}
       </fieldset>
-
-      <label className={`cr-check${errs.agree ? ' has-err' : ''}`}>
-        <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
-        <span>The information I have given is accurate, and Paralox Media may contact me about this application.</span>
-      </label>
-      {errs.agree && <span className="cr-err" role="alert">{errs.agree}</span>}
+      )}
 
       <div className="cr-submit-row">
-        <button className="btn btn-primary cr-submit" type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
-          {status === 'sending' ? <><span className="cr-spin" aria-hidden="true" /> Sending your application…</> : <>Submit application <span className="arr">→</span></>}
-        </button>
-        <small>Your CV goes straight to our hiring team. Nothing is shared outside Paralox Media.</small>
+        {step > 0 && <button type="button" className="btn cr-back" onClick={() => go(step - 1)} disabled={status === 'sending'}><span className="arr">←</span> Back</button>}
+        {step < last ? (
+          <button className="btn btn-primary cr-submit" type="submit">Next: {STEPS[step + 1]} <span className="arr">→</span></button>
+        ) : (
+          <button className="btn btn-primary cr-submit" type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
+            {status === 'sending' ? <><span className="cr-spin" aria-hidden="true" /> Sending your application…</> : <>Submit application <span className="arr">→</span></>}
+          </button>
+        )}
+        {step === last && <small>Your CV goes straight to our hiring team. Nothing is shared outside Paralox Media.</small>}
       </div>
       {status === 'failed' && (
         <div className="cr-fail" ref={doneRef} role="alert">
