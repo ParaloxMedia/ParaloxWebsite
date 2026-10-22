@@ -179,7 +179,8 @@ function emailApplicant(d) {
 }
 
 function emailAdmin(d, folderUrl) {
-  var subject = '🆕 New Application: ' + d.fullName + ' — ' + d.position;
+  // Name and role first, plain text only (emoji in subjects can show as garbled characters).
+  var subject = d.fullName + ' - ' + d.position + ' | New application';
   var body =
     'A new application was submitted.\n\n' +
     'Name     : ' + d.fullName  + '\n' +
