@@ -590,6 +590,14 @@ fieldset.field{border:0;padding:0;margin:0}
 .wk:hover{translate:0 -6px;box-shadow:0 30px 60px rgba(25,23,32,.14)}
 .wk-lg{grid-column:span 7;grid-row:span 2}
 .wk-sm{grid-column:span 5}
+/* The odd card left over at the end of a grid: full row, image beside the text */
+.wk-wide{grid-column:span 12}
+@media (min-width:901px){
+  .wk-wide{flex-direction:row}
+  .wk-wide .wk-vis{flex:0 0 58%;min-height:340px}
+  .wk-wide .wk-body{flex:1;justify-content:center;padding:34px 38px}
+  .wk-wide .wk-body h3{font-size:clamp(1.6rem,2.2vw,2.2rem)}
+}
 .wk-vis{position:relative;flex:1;min-height:220px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(360px 260px at 50% 75%,rgba(124,58,237,.42),transparent 70%),linear-gradient(150deg,#1d1a26,#0E0C13)}
 .wk-lg .wk-vis{min-height:420px}
 .wk-vis .gridlines{-webkit-mask-image:radial-gradient(closest-side,#000,transparent);mask-image:radial-gradient(closest-side,#000,transparent);background-size:44px 44px}

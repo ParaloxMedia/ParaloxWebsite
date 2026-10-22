@@ -178,6 +178,20 @@ export function Automations() {
   );
 }
 
+/**
+ * Card sizes for a project grid. Lead: the first project large, the next two medium, then
+ * pairs. Equal (pillar lists): all the same. Either way, an odd card left over at the end
+ * spans the full row, so no card sits alone beside a gap.
+ */
+export function bento(list, { lead = true } = {}) {
+  const head = lead ? 3 : 0;
+  const oddTail = Math.max(0, list.length - head) % 2 === 1 && list.length > 1;
+  return list.map((w, i) => ({
+    ...w,
+    size: lead && i === 0 ? 'lg' : lead && i < 3 ? 'sm' : oddTail && i === list.length - 1 ? 'wide' : undefined,
+  }));
+}
+
 /** A project card. `className`/`style` let a page add its own motion (e.g. the Works page reveal). */
 export function WorkCard({ w, className = '', style }) {
   const Tag = w.href ? 'a' : 'article';
@@ -208,7 +222,7 @@ export function Work() {
           </div>
         </div>
         <div className="bento">
-          {WORK.filter((w) => w.home !== false).map((w) => (
+          {bento(WORK.filter((w) => w.home !== false)).map((w) => (
             // Projects with a case study (href) are links and show a still from the work.
             <WorkCard key={w.title} w={w} />
           ))}
