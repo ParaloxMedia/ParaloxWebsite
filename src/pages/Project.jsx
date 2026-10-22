@@ -179,6 +179,24 @@ export default function Project({ project: p }) {
       {/* Photos on their own */}
       {p.photos?.length > 0 && !p.bts && <Gallery photos={p.photos} />}
 
+      {/* How we made it: numbered steps */}
+      {p.process?.length > 0 && (
+        <section className="cs-main pj-process">
+          <div className="wrap">
+            <div className="cs-reveal"><Label>How we made it</Label></div>
+            <ol>
+              {p.process.map((s, i) => (
+                <li key={s.title} className="cs-reveal" style={{ transitionDelay: `${(i % 3) * 80}ms` }}>
+                  <span className="mono">{String(i + 1).padStart(2, '0')}</span>
+                  <b>{s.title}</b>
+                  <p>{s.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* 4. What we delivered */}
       <section className="cs-dark cs-high">
         <div className="wrap">

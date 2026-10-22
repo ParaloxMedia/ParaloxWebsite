@@ -1567,3 +1567,17 @@ html.is-loading .pp *{animation-play-state:paused!important}
 .pj-video-grid.solo{grid-template-columns:minmax(0,400px);justify-content:center}
 /* One landscape film on its own: full width */
 .pj-video-grid.single{grid-template-columns:minmax(0,1fr)}
+
+/* Project page: How we made it */
+.pj-process{background:#fff}
+.pj-process ol{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:step}
+.pj-process li{position:relative;padding:26px 26px 28px;border-radius:24px;background:var(--pearl);border:1px solid var(--line-light);overflow:hidden;
+  transition:border-color .3s,box-shadow .5s var(--ease-expo),translate .5s var(--ease-expo),opacity .9s var(--ease-expo),transform .9s var(--ease-expo)}
+.pj-process li::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--violet),var(--lilac));transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease-expo)}
+.pj-process li:hover{translate:0 -4px;border-color:#D9CCFF;box-shadow:0 24px 50px -28px rgba(62,32,135,.4)}
+.pj-process li:hover::before{transform:scaleX(1)}
+.pj-process li .mono{display:block;color:var(--violet);margin-bottom:16px;font-size:.8rem}
+.pj-process li b{display:block;font-size:1.15rem;letter-spacing:-.01em;margin-bottom:8px;color:var(--ink-text)}
+.pj-process li p{margin:0;color:var(--ink-soft);font-size:.96rem;line-height:1.6}
+@media (max-width:900px){.pj-process ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.pj-process ol{grid-template-columns:minmax(0,1fr)}}

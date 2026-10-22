@@ -78,6 +78,7 @@ export const ROUTE_BODY = {
     sections: [
       { h2: 'Project', items: (p.facts || []).map(([k, v]) => ({ name: k, text: v })) },
       ...(p.story?.length ? [{ h2: 'The story', paras: p.story }] : []),
+      ...(p.process?.length ? [{ h2: 'How we made it', items: p.process.map((s) => ({ name: s.title, text: s.text })) }] : []),
       ...(p.videos?.length ? [{ h2: 'Films', items: p.videos.map((v) => ({ name: v.title, text: v.text })) }] : []),
       { h2: 'More work', items: [{ name: `${WORK_PILLARS[mainPillarOf(p)]?.heading || 'Work'}`, href: `/works/${mainPillarOf(p)}` }, { name: 'All work', href: '/works' }] },
     ],
