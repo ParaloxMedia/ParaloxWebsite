@@ -2,11 +2,58 @@
 // (google-apps-script/Code.gs), which saves each one to a candidate folder in
 // Google Drive with the CV and a summary, and emails info@paraloxmedia.com.
 
+import growthLeadPoster from '../assets/careers/growth-client-strategy-lead.jpg';
+import videoEditorPoster from '../assets/careers/junior-video-editor.jpg';
+
 export const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz5Uuf7WXD2RBG4tMV2IX3ITo4rWvy5-iRbbe51zr4tS11SJxD3Sd1Om4sCKjbnz_CT/exec';
 
-// Open roles (junior level for now). Remove a role when it is filled; `posted` feeds Google's job listings.
+// Open roles. Remove a role when it is filled; `poster` shows the hiring post beside the details; `posted` feeds Google's job listings.
 // `portfolio: false` makes the portfolio link optional for that role.
 export const VACANCIES = [
+  {
+    id: 'growth-client-strategy-lead',
+    title: 'Growth & Client Strategy Lead',
+    team: 'Growth',
+    type: 'Full-time',
+    employmentType: ['FULL_TIME'],
+    location: 'Colombo · Hybrid',
+    urgent: true,
+    portfolio: false,
+    poster: growthLeadPoster,
+    posted: '2026-10-22',
+    summary: 'Lead growth and client strategy across digital marketing, creative strategy and client management: plan how our clients grow, shape the campaigns that get them there, and own the relationships behind them.',
+    duties: [
+      'Plan marketing and growth strategies for clients',
+      'Develop creative campaign ideas with the media team',
+      'Manage client relationships from brief to results',
+      'Support sales and discovery calls with new clients',
+    ],
+    requirements: [
+      'Experience in digital marketing, creative strategy or client management',
+      'Clear, confident communication with clients and the team',
+      'Able to turn a business goal into a campaign plan and measure the result',
+      'Comfortable presenting ideas and leading discovery calls',
+      'An interest in AI and what it can do for marketing is a plus',
+    ],
+  },
+  {
+    id: 'junior-video-editor',
+    title: 'Junior Video Editor',
+    team: 'Media',
+    type: 'Full-time',
+    employmentType: ['FULL_TIME'],
+    location: 'Colombo · Hybrid',
+    poster: videoEditorPoster,
+    posted: '2026-10-22',
+    summary: 'Edit and help shoot content for real client campaigns, from social reels to brand films, learning alongside our senior editors and AI video team.',
+    requirements: [
+      'Video editing and storytelling',
+      'Videography and camera handling',
+      'Basic lighting and audio recording',
+      'Premiere Pro or DaVinci Resolve',
+      'Creativity and a willingness to learn',
+    ],
+  },
   {
     id: 'videographer-photographer',
     title: 'Junior Videographer & Photographer',

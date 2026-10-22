@@ -55,7 +55,7 @@ export const ROUTE_BODY = {
     h1: 'Careers at Paralox Media',
     intro: ROUTE_META['/careers'].description,
     sections: [
-      { h2: 'Open roles', items: VACANCIES.map((v) => ({ name: `${v.title} (${v.type}, ${v.location})`, text: `${v.summary} What you bring: ${v.requirements.join('; ')}.` })) },
+      { h2: 'Open roles', items: VACANCIES.map((v) => ({ name: `${v.title} (${v.type}, ${v.location})`, text: `${v.summary}${v.duties ? ` What you’ll do: ${v.duties.join('; ')}.` : ''} What you bring: ${v.requirements.join('; ')}.` })) },
       { h2: 'Why Paralox', items: WHY_JOIN.map((w) => ({ name: w.title, text: w.text })) },
       { h2: 'Hiring, answered', items: CAREER_FAQ.map((f) => ({ name: f.q, text: f.a })) },
     ],

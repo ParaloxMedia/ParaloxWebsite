@@ -174,7 +174,7 @@ export const ROUTE_META = {
       '@type': 'JobPosting',
       '@id': `${SITE}/careers#${v.id}`,
       title: v.title,
-      description: `<p>${v.summary}</p><p>What you bring:</p><ul>${v.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>`,
+      description: `<p>${v.summary}</p>${v.duties ? `<p>What you’ll do:</p><ul>${v.duties.map((d) => `<li>${d}</li>`).join('')}</ul>` : ''}<p>What you bring:</p><ul>${v.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>`,
       datePosted: v.posted,
       validThrough: `${Number(v.posted.slice(0, 4)) + 1}${v.posted.slice(4)}`,
       employmentType: v.employmentType,
