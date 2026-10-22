@@ -87,8 +87,11 @@ export default function Works({ pillar }) {
     const row = tabsRef.current, cur = row?.querySelector('[aria-current]');
     if (row && cur && row.scrollWidth > row.clientWidth) row.scrollLeft = cur.offsetLeft - row.offsetLeft - 16;
   }, [pillar]);
-  // Pillar lists use equal tiles: the home page's large/small mix only fits the full list.
-  const items = cat ? WORK.filter((w) => w.pillars?.includes(pillar)).map((w) => ({ ...w, size: undefined })) : WORK;
+  // The full list leads with the newest project as the large tile, then two medium ones
+  // (the home page keeps its own sizes); pillar lists use equal tiles.
+  const items = cat
+    ? WORK.filter((w) => w.pillars?.includes(pillar)).map((w) => ({ ...w, size: undefined }))
+    : WORK.map((w, i) => ({ ...w, size: i === 0 ? 'lg' : i < 3 ? 'sm' : undefined }));
   const stack = items.filter((w) => w.image).slice(0, 3);
   const brands = STATS.find((s) => s.plus);
   return (

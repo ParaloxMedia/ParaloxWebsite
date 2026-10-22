@@ -1555,3 +1555,5 @@ html.is-loading .pp *{animation-play-state:paused!important}
 .pj-yt:hover .pj-yt-play{scale:1.08}
 /* One vertical film on its own: centred, phone-sized */
 .pj-video-grid.solo{grid-template-columns:minmax(0,400px);justify-content:center}
+/* One landscape film on its own: full width */
+.pj-video-grid.single{grid-template-columns:minmax(0,1fr)}

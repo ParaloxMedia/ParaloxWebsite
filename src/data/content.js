@@ -14,6 +14,7 @@ import combankCard from '../assets/projects/combank/morning-rush.jpg';
 import hnbCard from '../assets/projects/hnb/banner.jpg';
 import webxpayCard from '../assets/projects/webxpay/card.jpg';
 import malibanCard from '../assets/projects/maliban/poster-card.jpg';
+import renaultCard from '../assets/projects/renault/hero.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -219,6 +220,7 @@ export const FLOWS = [
 // `home: false` keeps a project on the Works pages only, out of the home page's Selected work.
 // `year` defaults to 2026.
 export const WORK = [
+  { code: 'AI TVC', glyph: 'play', meta: 'Media · With WPP Media', title: 'Renault Sri Lanka AI TVC', pillars: ['media'], home: false, text: 'An AI-generated TV commercial for Renault in Sri Lanka, made in one day: Sri Lanka’s wild, and the Triber, Kwid, Kiger and Duster unleashed.', chips: ['AI TVC', 'One-day turnaround', 'Post-production'], href: '/work/renault-ai-tvc', image: renaultCard },
   { size: 'lg', code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { size: 'sm', code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', pillars: ['engineering'], text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },
   { size: 'sm', code: 'Event shoot', glyph: 'play', meta: 'Media · With WPP Media', title: 'Ritzbury MasterChef Masterclass', pillars: ['media'], text: 'Full video coverage, fast-cut reels with playful voice-over edits, and a product and people photoshoot on the MasterChef set.', chips: ['Event coverage', 'Reels', 'Photoshoot', 'AI video'], href: '/work/ritzbury-masterchef-masterclass', image: ritzburyCard },

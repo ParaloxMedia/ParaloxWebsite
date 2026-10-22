@@ -13,3 +13,7 @@ public/Images/Projects/
 # Readable private pages (rate card prices, share links). Only the encrypted
 # copy in public/sealed/ is committed: the repository is public.
 private/rate-card/
+
+# Source masters for project films (large originals); the site serves the web
+# encodes in public/work/<project>/.
+public/work/Renault/

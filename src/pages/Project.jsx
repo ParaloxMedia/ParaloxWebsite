@@ -101,7 +101,7 @@ export default function Project({ project: p }) {
       <section className="cs-dark pj-films">
         <div className="wrap">
           <div className="cs-reveal"><Label>The films</Label></div>
-          <div className={`pj-video-grid${p.videos.length === 1 && p.videos[0].portrait ? ' solo' : p.videos.some((v) => v.portrait) ? ' has-portrait' : p.videos.length % 2 === 0 ? ' pair' : ''}`}>
+          <div className={`pj-video-grid${p.videos.length === 1 ? (p.videos[0].portrait ? ' solo' : ' single') : p.videos.some((v) => v.portrait) ? ' has-portrait' : p.videos.length % 2 === 0 ? ' pair' : ''}`}>
             {p.videos.map((v, i) => (
               <figure key={v.src || v.youtube} className={`pj-video cs-reveal${i === 0 ? ' feature' : ''}${v.portrait ? ' portrait' : ''}`} style={{ transitionDelay: `${i * 90}ms` }}>
                 <div className="pj-frame">

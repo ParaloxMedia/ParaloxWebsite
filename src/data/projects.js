@@ -21,6 +21,7 @@ import hnbFilm from '../assets/projects/hnb/film.jpg';
 import webxpayCover from '../assets/projects/webxpay/cover.jpg';
 import malibanCover from '../assets/projects/maliban/poster-wide.jpg';
 import malibanFilm from '../assets/projects/maliban/film.jpg';
+import renaultHero from '../assets/projects/renault/hero.jpg';
 
 export const PROJECTS = [
   {
@@ -490,6 +491,39 @@ export const PROJECTS = [
       { glyph: 'user', title: 'Talent shoot', text: 'Racing driver Yevan David, on set for Maliban.' },
       { glyph: 'play', title: 'Long-form vertical video', text: 'A 24-minute cut, filmed and edited vertical for phones.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour, captions and sound handled in-house.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'renault-ai-tvc',
+    client: 'Renault',
+    title: 'Renault Sri Lanka AI TVC',
+    kicker: 'Production partner to WPP Media',
+    headline: 'Renault, unleashed. Made with AI, in one day.',
+    summary: 'An AI-generated TV commercial for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Made in a single day by Paralox Media as WPP Media’s production house.',
+    hero: renaultHero,
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-22',
+    facts: [
+      ['Client', 'Renault Sri Lanka'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Production house'],
+      ['Turnaround', 'One day'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Renault needed a TV commercial to introduce its range in Sri Lanka. WPP Media led the campaign and brought in Paralox Media as its production house.',
+      'The film follows an explorer through Sri Lanka’s wild: a sloth bear, a leopard, elephants and an eagle, then a stampede through a canyon. The animals return as glowing spirits beside the Triber, Kwid, Kiger and Duster, for the line Heightened Evolution, Unleashed.',
+      'We made it with AI video tools, and we made it in one day, from the first shot to the final edit, colour and sound.',
+    ],
+    videos: [
+      { src: '/work/renault-ai-tvc/tvc.mp4', poster: '/work/renault-ai-tvc/tvc.jpg', duration: 'PT1M7S', title: 'Unleashed', text: 'The full TVC: Sri Lanka’s wild, and the Renault range unleashed.' },
+    ],
+    deliverables: [
+      { glyph: 'ai', title: 'AI-generated TVC', text: 'A one-minute TV commercial, made with AI video tools.' },
+      { glyph: 'calendar', title: 'One-day turnaround', text: 'From the first shot to the final cut in a single day.' },
+      { glyph: 'check', title: 'Finishing', text: 'Edit, colour and sound handled in-house by our video team.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
