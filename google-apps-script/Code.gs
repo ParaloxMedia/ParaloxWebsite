@@ -7,7 +7,7 @@
  *  2. Deploy → New deployment → Web app
  *     Execute as: Me  |  Who has access: Anyone
  *  3. On first deploy Google will ask you to authorise Drive + Gmail — accept all.
- *  4. Copy the /exec URL → React .env → REACT_APP_SCRIPT_URL=...
+ *  4. Copy the /exec URL → APPLY_ENDPOINT in src/data/careers.js (the /careers form posts there).
  *
  * TESTING WITHOUT THE FRONTEND:
  *  Run testPost() from the editor to verify Drive + email work before going live.

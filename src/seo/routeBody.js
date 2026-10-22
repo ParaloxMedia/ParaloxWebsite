@@ -1,5 +1,6 @@
 import { POSTS, PILLARS, CONTACT, WORK, WORK_PILLARS, FAQ, CLIENTS, ABOUT } from '../data/content';
 import { PROJECTS } from '../data/projects';
+import { VACANCIES, WHY_JOIN, CAREER_FAQ } from '../data/careers';
 import { ROUTE_META, workIn, mainPillarOf } from './routeMeta';
 
 /* ---------- Page text for crawlers that do not run JavaScript ----------
@@ -49,6 +50,15 @@ export const ROUTE_BODY = {
     h1: 'Pulse: news, events and insights',
     intro: ROUTE_META['/pulse'].description,
     sections: [{ h2: 'Articles', items: POSTS.map((p) => ({ name: p.title, href: `/pulse/${p.id}`, text: p.excerpt })) }],
+  },
+  '/careers': {
+    h1: 'Careers at Paralox Media',
+    intro: ROUTE_META['/careers'].description,
+    sections: [
+      { h2: 'Open roles', items: VACANCIES.map((v) => ({ name: `${v.title} (${v.type}, ${v.location})`, text: `${v.summary} What you bring: ${v.requirements.join('; ')}.` })) },
+      { h2: 'Why Paralox', items: WHY_JOIN.map((w) => ({ name: w.title, text: w.text })) },
+      { h2: 'Hiring, answered', items: CAREER_FAQ.map((f) => ({ name: f.q, text: f.a })) },
+    ],
   },
   '/contact': {
     h1: 'Contact Paralox Media',

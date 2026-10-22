@@ -86,7 +86,6 @@ const ORIGIN = process.env.SITE_ORIGIN || 'https://paraloxmedia.com';
 
 // URLs from the previous site, moved permanently so their search ranking carries over.
 const LEGACY = {
-  '/careers': '/about',
   '/gallery': '/',
   '/packages': '/',
   '/feedback': '/contact',

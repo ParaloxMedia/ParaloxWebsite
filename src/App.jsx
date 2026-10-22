@@ -16,10 +16,11 @@ import Contact from './pages/Contact';
 import Project from './pages/Project';
 import RateCard from './pages/RateCard';
 import Works from './pages/Works';
+import Careers from './pages/Careers';
 import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
-const PAGES = ['home', 'about', 'pulse', 'contact', 'works', ...PILLAR_KEYS];
+const PAGES = ['home', 'about', 'pulse', 'contact', 'works', 'careers', ...PILLAR_KEYS];
 
 /** Resolve a route key into { view, nav, post, anchor }. */
 function resolve(hash) {
@@ -220,6 +221,7 @@ export default function App() {
   else if (r.view === 'about') page = <About />;
   else if (r.view === 'pulse') page = <Pulse />;
   else if (r.view === 'contact') page = <Contact />;
+  else if (r.view === 'careers') page = <Careers />;
   else page = <Home />;
 
   return (

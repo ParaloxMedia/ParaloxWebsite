@@ -9,6 +9,7 @@
 //    Google sees after rendering JavaScript match the server's.
 import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK, WORK_PILLARS, FAQ } from '../data/content';
 import { PROJECTS } from '../data/projects';
+import { VACANCIES } from '../data/careers';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -161,6 +162,32 @@ export const ROUTE_META = {
       }],
     })];
   })),
+  '/careers': page('/careers', {
+    title: 'Careers at Paralox Media | Jobs in Colombo, Sri Lanka',
+    ogTitle: 'Careers · Paralox Media',
+    description: `Join Paralox Media in Colombo. Open roles: ${VACANCIES.map((v) => v.title).join(', ')}. Remote and hybrid options.`,
+    ...card('about'), type: 'website',
+  }, {
+    type: 'CollectionPage', trail: [{ name: 'Careers', path: '/careers' }],
+    // One JobPosting per open role, so they can appear in Google's job listings.
+    extra: VACANCIES.map((v) => ({
+      '@type': 'JobPosting',
+      '@id': `${SITE}/careers#${v.id}`,
+      title: v.title,
+      description: `<p>${v.summary}</p><p>What you bring:</p><ul>${v.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>`,
+      datePosted: v.posted,
+      validThrough: `${Number(v.posted.slice(0, 4)) + 1}${v.posted.slice(4)}`,
+      employmentType: v.employmentType,
+      hiringOrganization: { '@id': ORG_ID },
+      directApply: true,
+      url: `${SITE}/careers#role-${v.id}`,
+      jobLocation: {
+        '@type': 'Place',
+        address: { '@type': 'PostalAddress', streetAddress: '14 Sir Baron Jayathilake Mawatha', addressLocality: 'Colombo', postalCode: '00100', addressCountry: 'LK' },
+      },
+      ...(!v.onsite && { jobLocationType: 'TELECOMMUTE', applicantLocationRequirements: { '@type': 'Country', name: 'Sri Lanka' } }),
+    })),
+  }),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',

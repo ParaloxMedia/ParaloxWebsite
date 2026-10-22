@@ -16,6 +16,7 @@ const PAGES = [
   { path: '/works',       priority: '0.8', changefreq: 'monthly' },
   ...['ai', 'engineering', 'media', 'growth'].map((k) => ({ path: `/works/${k}`, priority: '0.7', changefreq: 'monthly' })),
   { path: '/about',       priority: '0.8', changefreq: 'monthly' },
+  { path: '/careers',     priority: '0.7', changefreq: 'weekly' },
   { path: '/contact',     priority: '0.8', changefreq: 'yearly' },
   { path: '/pulse',       priority: '0.7', changefreq: 'weekly' },
 ];
