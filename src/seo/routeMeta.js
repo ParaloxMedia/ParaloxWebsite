@@ -10,6 +10,7 @@
 import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK, WORK_PILLARS, FAQ } from '../data/content';
 import { PROJECTS } from '../data/projects';
 import { VACANCIES } from '../data/careers';
+import teamPhoto from '../assets/careers/team.jpg';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -166,7 +167,7 @@ export const ROUTE_META = {
     title: 'Careers at Paralox Media | Jobs in Colombo, Sri Lanka',
     ogTitle: 'Careers · Paralox Media',
     description: `Join Paralox Media in Colombo. Open roles: ${VACANCIES.map((v) => v.title).join(', ')}. Remote and hybrid options.`,
-    ...card('about'), type: 'website',
+    image: teamPhoto, width: 1122, height: 1402, type: 'website',
   }, {
     type: 'CollectionPage', trail: [{ name: 'Careers', path: '/careers' }],
     extra: [{

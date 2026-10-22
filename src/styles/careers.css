@@ -213,3 +213,12 @@ form.cr-form{display:block;scroll-margin-top:110px}
   .cr-job-poster{width:min(100%,280px)}
 }
 @media (prefers-reduced-motion:reduce){.cr-job-poster .px{animation:none}}
+
+/* Careers hero: team photo */
+.cr-team{position:relative;margin:0;justify-self:end;width:min(100%,430px)}
+.cr-team .px{border-radius:28px;overflow:hidden;rotate:-2deg;box-shadow:0 50px 90px -30px rgba(0,0,0,.75),0 0 0 1px rgba(233,227,250,.16);animation:wkBob 8s ease-in-out infinite alternate}
+.cr-team img{display:block;width:100%;height:auto;transition:scale 1.2s var(--ease-expo)}
+.cr-team:hover img{scale:1.04}
+.cr-team figcaption{position:absolute;left:18px;bottom:18px;padding:7px 12px;border-radius:999px;font-size:.66rem;color:#fff;background:rgba(14,10,30,.6);border:1px solid rgba(233,227,250,.2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);rotate:-2deg}
+@media (max-width:1000px){.cr-team{justify-self:start;width:min(100%,360px)}}
+@media (prefers-reduced-motion:reduce){.cr-team .px{animation:none}}

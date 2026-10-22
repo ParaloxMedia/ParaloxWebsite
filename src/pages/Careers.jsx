@@ -3,6 +3,7 @@ import { CONTACT } from '../data/content';
 import { APPLY_ENDPOINT, CAREER_FAQ, VACANCIES, WHY_JOIN } from '../data/careers';
 import { Glass } from '../components/Glass';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
+import teamPhoto from '../assets/careers/team.jpg';
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 
@@ -345,7 +346,8 @@ export default function Careers() {
       <header className="rc-hero wk-hero cr-hero" data-parallax>
         <div className="gridlines" />
         <span className="wk-orb" aria-hidden="true" />
-        <div className="wrap">
+        <div className="wrap cr-job-hero-in">
+          <div>
           <p className="rc-kick fu" style={{ '--d': '.05s' }}>Paralox Media · Careers</p>
           <h1 className="fu" style={{ '--d': '.15s' }}>Build the future with us<span className="dot">.</span></h1>
           <p className="rc-tagline fu" style={{ '--d': '.28s' }}>We are a creative technology team in Colombo, working across AI, engineering, media and growth for brands like Renault, Nissan and Keells. If you want your work to be seen, join us.</p>
@@ -358,6 +360,13 @@ export default function Careers() {
             <a className="btn btn-white" href="#roles">See open roles <span className="arr">↓</span></a>
             <button type="button" className="link cr-link-btn" onClick={() => applyFor(OPEN_APPLICATION)}>Send an open application <span className="arr">→</span></button>
           </div>
+          </div>
+          <figure className="cr-team fu" style={{ '--d': '.3s' }}>
+            <div className="px" style={{ '--d': '16px' }}>
+              <img src={teamPhoto} alt="The Paralox Media team in Colombo" width="1122" height="1402" decoding="async" fetchPriority="high" />
+            </div>
+            <figcaption className="mono">The team · Colombo</figcaption>
+          </figure>
         </div>
       </header>
 
