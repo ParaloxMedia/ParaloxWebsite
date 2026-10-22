@@ -4,66 +4,9 @@
 
 export const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz5Uuf7WXD2RBG4tMV2IX3ITo4rWvy5-iRbbe51zr4tS11SJxD3Sd1Om4sCKjbnz_CT/exec';
 
-// Open roles. Remove a role when it is filled; `posted` feeds Google's job listings.
+// Open roles (junior level for now). Remove a role when it is filled; `posted` feeds Google's job listings.
 // `portfolio: false` makes the portfolio link optional for that role.
 export const VACANCIES = [
-  {
-    id: 'sales-executive',
-    title: 'Sales Executive',
-    team: 'Sales',
-    type: 'Full-time',
-    employmentType: ['FULL_TIME'],
-    location: 'Colombo · Remote · Hybrid',
-    urgent: true,
-    portfolio: false,
-    posted: '2026-10-22',
-    summary: 'A confident, results-driven Sales Executive to grow Paralox Media’s client base across AI, engineering, media and growth.',
-    requirements: [
-      'Strong communication and negotiation skills',
-      'A passion for sales and business growth',
-      'Able to generate leads and close deals',
-      'Self-driven and target-oriented',
-      'A basic understanding of digital marketing or AI solutions is a plus',
-    ],
-  },
-  {
-    id: 'video-editor',
-    title: 'Full Stack Video Editor',
-    team: 'Media',
-    type: 'Full-time or part-time',
-    employmentType: ['FULL_TIME', 'PART_TIME'],
-    location: 'Colombo · Remote · Hybrid',
-    posted: '2026-10-22',
-    summary: 'Own the whole video pipeline, from concept and script through edit, motion graphics, colour and final delivery on every platform, including AI films like our TVCs for Renault and Nissan.',
-    requirements: [
-      'Expert in DaVinci Resolve, Premiere Pro and After Effects',
-      'Strong 2D/3D animation, motion graphics and visual effects skills',
-      'Comfortable across the pipeline: scripting, shooting guidance, editing and delivery',
-      'Professional colour grading, audio mixing and sound design',
-      'Thumbnails and platform formats for YouTube, Instagram and TikTok',
-      'Hands-on with AI video tools in a production workflow',
-      'A strong sense of story, pacing and composition',
-    ],
-  },
-  {
-    id: 'graphic-designer',
-    title: 'Full Stack Graphic Designer',
-    team: 'Media',
-    type: 'Full-time or part-time',
-    employmentType: ['FULL_TIME', 'PART_TIME'],
-    location: 'Colombo · Remote · Hybrid',
-    posted: '2026-10-22',
-    summary: 'Cover the full design range, from brand identity and UI/UX to social creatives, ad campaigns and AI-assisted visuals.',
-    requirements: [
-      'Expert in Photoshop, Illustrator, InDesign and Canva',
-      'UI/UX design in Figma',
-      'Brand identity systems: logos, type, colour and guidelines',
-      'High-converting social creatives, ad visuals and marketing collateral',
-      'Print design, layout and pre-press',
-      'Basic HTML/CSS for web handoff',
-      'Hands-on with AI design tools in a production workflow',
-    ],
-  },
   {
     id: 'videographer-photographer',
     title: 'Junior Videographer & Photographer',

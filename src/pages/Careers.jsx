@@ -253,7 +253,7 @@ export default function Careers() {
         <div className="wrap">
           <p className="rc-kick fu" style={{ '--d': '.05s' }}>Paralox Media · Careers</p>
           <h1 className="fu" style={{ '--d': '.15s' }}>Build the future with us<span className="dot">.</span></h1>
-          <p className="rc-tagline fu" style={{ '--d': '.28s' }}>We are a creative technology team in Colombo, working across AI, engineering, media and growth for brands like Renault, Nissan and Keells. If you want your work to be seen, join us.</p>
+          <p className="rc-tagline fu" style={{ '--d': '.28s' }}>We are a creative technology team in Colombo, working across AI, engineering, media and growth for brands like Renault, Nissan and Keells. We are hiring at junior level: if you are starting out and want your work to be seen, join us.</p>
           <dl className="wk-stats fu" style={{ '--d': '.4s' }}>
             <div><dt>{VACANCIES.length}</dt><dd>Open roles</dd></div>
             <div><dt>3–5</dt><dd>Days to shortlist</dd></div>
@@ -279,7 +279,7 @@ export default function Careers() {
 
       <section className="cr-roles sec lt" id="roles" aria-labelledby="cr-roles-h">
         <div className="wrap">
-          <div className="sec-head"><h2 className="d-m" id="cr-roles-h">Open roles<span className="dot">.</span></h2><p>Open a role for the details, then apply in one step. Your CV and answers go straight to our hiring team.</p></div>
+          <div className="sec-head"><h2 className="d-m" id="cr-roles-h">Open roles<span className="dot">.</span></h2><p>Junior roles for people early in their careers. Open a role for the details, then apply in one step.</p></div>
           <div className="cr-list">
             {VACANCIES.map((v) => {
               const isOpen = open === v.id;
