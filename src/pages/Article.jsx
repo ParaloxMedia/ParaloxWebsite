@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { POSTS } from '../data/content';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
 import { Glass } from '../components/Glass';
+import InstagramPosts from '../components/InstagramPosts';
 
 /** Header image: an explicit hero, else the first photo that can be cropped. */
 const heroOf = (p) => p.hero || p.photos?.find((ph) => !ph.whole)?.src || null;
@@ -159,6 +160,19 @@ export default function Article({ post }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Reel: an Instagram video beside its intro */}
+      {post.reel && (
+        <section className="cs-main pj-bts">
+          <div className="wrap pj-bts-in">
+            <div className="pj-bts-copy cs-reveal">
+              <Label>{post.reel.label || 'Watch'}</Label>
+              <p className="lead">{post.reel.text}</p>
+            </div>
+            <InstagramPosts posts={[post.reel.code]} />
           </div>
         </section>
       )}

@@ -22,9 +22,41 @@ import sundayMorning1 from '../assets/pulse/sunday-morning-1.jpg';
 import sundayMorningCover from '../assets/pulse/sunday-morning-cover.jpg';
 import sundayMorningPage4 from '../assets/pulse/sunday-morning-page-4.jpg';
 import sundayMorningPage5 from '../assets/pulse/sunday-morning-page-5.jpg';
+import grokMeetup1 from '../assets/pulse/grok-meetup-1.jpg';
+import grokMeetup2 from '../assets/pulse/grok-meetup-2.jpg';
 import zahira2015a from '../assets/pulse/zahira-2015-1.jpg';
 
 export const PULSE_POSTS = [
+  {
+    id: "past-grok-bot-meetup-colombo-2026", kind: "event", pillar: "Past Event", glyph: "agent", iso: "2026-10-17", date: "October 17, 2026", mins: 2, featured: true,
+    kicker: "Grok Bot Meetup Colombo · DHPL Auditorium",
+    title: "Paralox Media at the Grok Bot Meetup Colombo",
+    excerpt: "Our founder, Abubakker Bakthathi, joined builders and founders at the first Grok Bot Meetup in Colombo, and sat down with BuiltList for three quick questions on his journey and on what Sri Lanka’s founders need next.",
+    body: [
+      "On behalf of Paralox Media, our founder and CEO Abubakker Bakthathi attended the Grok Bot Meetup Colombo, held at the DHPL Auditorium on Saturday 17 October. It was the first meetup of its kind in Colombo, and it filled the auditorium.",
+      "The meetup was about Grok Bot, xAI’s bot, and how teams put it to work across product, design, mobile and go-to-market. Across two sessions with slides, a live demo and Q&A, the audience saw multi-agent Grok Bot setups running on stage, the same kind of agent work we build for clients at Paralox Media.",
+      "Between sessions, BuiltList, a platform that shows what Sri Lankans are building, stopped Abubakker for three quick questions. He spoke about his path from freelancer and AI engineer at a UK company, to losing that job, to starting Paralox Media, which today builds AI agents, software, AI creatives and performance marketing for brands in Sri Lanka and beyond.",
+      "Asked what founders here need, his answer was about community: “Each and everyone can learn from each other and build new things. The Sri Lankan ecosystem will come to that level, like what Europe and other countries do.”",
+      "Events like this are where that happens. We came away with new connections, fresh ideas for our own agent work, and a clear sense that Colombo’s builder community is growing fast. The organisers plan to take the meetup to Kandy and Galle next.",
+    ],
+    event: { status: "past", location: "Colombo, Sri Lanka", venue: "DHPL Auditorium", time: null, seats: null },
+    highlights: [
+      { glyph: "agent", title: "Grok Bot in action", text: "Live demos of multi-agent Grok Bot setups for product, design, mobile and go-to-market teams." },
+      { glyph: "user", title: "Meet the founder", text: "BuiltList asked Abubakker three questions on his journey and the Sri Lankan startup ecosystem." },
+      { glyph: "chat", title: "Learning together", text: "His take: founders grow faster when they learn from each other and build together." },
+      { glyph: "growth", title: "A full house", text: "The first Grok Bot meetup in Colombo filled the DHPL Auditorium, with Kandy and Galle next." },
+    ],
+    reel: {
+      code: "De1LRaAIdCi",
+      label: "Meet the founder",
+      text: "BuiltList met Abubakker at the meetup and asked him three questions: how he went from freelancer and AI engineer to founder, and what Sri Lanka’s founders need next.",
+    },
+    photos: [
+      { src: grokMeetup1, caption: "Founders and builders talking after the sessions at the DHPL Auditorium. Photo © Sahan Thiwanka / Pulse" },
+      { src: grokMeetup2, caption: "Abubakker Bakthathi in conversation at the Grok Bot Meetup Colombo. Photo © Sahan Thiwanka / Pulse" },
+    ],
+    cta: { label: "About the meetup", href: "https://cursorsrilanka.com/grok-bot" },
+  },
   {
     id: "news-zahira-batch-2015-recognition-2026", kind: "news", pillar: "Company News", glyph: "check", iso: "2026-09-27", date: "Sep 2026", mins: 1, featured: true,
     kicker: "ZOAL 6.0 · Zahira College Batch of 2015",
