@@ -497,10 +497,10 @@ export const PROJECTS = [
   {
     id: 'renault-ai-tvc',
     client: 'Renault',
-    title: 'Renault Sri Lanka AI TVC',
+    title: 'Renault Sri Lanka AI film',
     kicker: 'Production partner to WPP Media',
     headline: 'Renault, unleashed. Made with AI, in one day.',
-    summary: 'An AI-generated TV commercial for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Visuals, voice, music and sound design all made with AI, in a single day, by Paralox Media as WPP Media’s production house.',
+    summary: 'An AI-generated film for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Visuals, voice, music and sound design all made with AI, in a single day, by Paralox Media as WPP Media’s production house.',
     hero: renaultHero,
     // The key visual: shade the title side, keep the cars and animals on the right.
     heroShade: 'side',
@@ -517,12 +517,12 @@ export const PROJECTS = [
       ['Year', '2026'],
     ],
     story: [
-      'Renault needed a TV commercial to introduce its range in Sri Lanka, and it needed it fast. WPP Media led the campaign and brought in Paralox Media as its production house. From the approved storyboard to the finished film, we delivered in a single day.',
+      'Renault needed a film to introduce its range in Sri Lanka, and it needed it fast. WPP Media led the campaign and brought in Paralox Media as its production house. From the approved storyboard to the finished film, we delivered in a single day.',
       'The idea is evolution. An explorer moves through Sri Lanka’s wild and meets the animals the island is known for: a sloth bear in the forest, a leopard on a branch, elephants in the trees and an eagle overhead. The journey builds to a stampede through a canyon, and the animals return as glowing spirits beside the Triber, Kwid, Kiger and Duster on a Colombo street, under the Lotus Tower, for the line Heightened Evolution, Unleashed.',
       'Every frame was generated with AI, and so was everything you hear: the voice-over, the music score and the sound engineering. The challenge with AI film is not making a shot, it is making a film: the same explorer in every scene, light that matches from cut to cut, animals that move with real weight, and cars that look exactly like the cars in the showroom. That is where most of the day went.',
       'We worked from the storyboard frame by frame. Each scene was built from detailed shot prompts written by our team, generated in many versions and narrowed down to the takes with true realism: believable skin and fabric, natural fur, honest depth of field and camera movement that feels like a real lens. Reference images held the explorer’s face, wardrobe and gear steady across the film, and the Renault models were checked against the real vehicles, down to the badges, grilles and colours.',
-      'The soundtrack was built the same way. The music score was generated with AI to match the film’s rise from quiet forest to full stampede, the voice-over was generated with AI, and the sound design, from birdsong and footsteps to the animals and the roar of the stampede, was generated and engineered with AI, then mixed and balanced for broadcast.',
-      'The final takes were upscaled and finished: edited to the music, colour graded into one consistent cinematic look, with the Renault end frame and dealer sign-off. The master was delivered in 4K, ready for TV and social.',
+      'The soundtrack was built the same way. The music score was generated with AI to match the film’s rise from quiet forest to full stampede, the voice-over was generated with AI, and the sound design, from birdsong and footsteps to the animals and the roar of the stampede, was generated and engineered with AI, then mixed and balanced into the final soundtrack.',
+      'The final takes were upscaled and finished: edited to the music, colour graded into one consistent cinematic look, with the Renault end frame and dealer sign-off. The master was delivered in 4K.',
     ],
     // How we made it: shown as steps on the project page.
     process: [
@@ -530,18 +530,18 @@ export const PROJECTS = [
       { title: 'Look and references', text: 'We set the film’s look and built references for the explorer, the animals and the Renault range, so every shot starts from the same world.' },
       { title: 'Shot generation', text: 'Each shot was generated in many versions from detailed prompts, and only the takes with real-world realism made the cut.' },
       { title: 'Consistency and realism', text: 'One explorer, matching light and true-to-life cars across every cut, with natural movement for the animals and the camera.' },
-      { title: 'AI sound, voice and music', text: 'The music score, voice-over and sound design were all generated with AI, then engineered and mixed for broadcast.' },
+      { title: 'AI sound, voice and music', text: 'The music score, voice-over and sound design were all generated with AI, then engineered and mixed into the final soundtrack.' },
       { title: 'Finish and deliver', text: 'Takes upscaled, edited to the music and colour graded, then a 4K master with the Renault end frame, delivered in one day.' },
     ],
     videos: [
-      { src: '/work/renault-ai-tvc/tvc.mp4', poster: '/work/renault-ai-tvc/tvc.jpg', duration: 'PT1M7S', title: 'Unleashed', text: 'The full TVC: Sri Lanka’s wild, and the Renault range unleashed.' },
+      { src: '/work/renault-ai-tvc/tvc.mp4', poster: '/work/renault-ai-tvc/tvc.jpg', duration: 'PT1M7S', title: 'Unleashed', text: 'The full film: Sri Lanka’s wild, and the Renault range unleashed.' },
     ],
     deliverables: [
-      { glyph: 'ai', title: 'AI-generated TVC', text: 'A one-minute TV commercial, every frame generated with AI.' },
+      { glyph: 'ai', title: 'AI-generated film', text: 'A one-minute film, every frame generated with AI.' },
       { glyph: 'audio', title: 'AI voice, music and sound', text: 'Voice-over, music score and sound engineering, all generated with AI.' },
       { glyph: 'doc', title: 'Storyboard to shot list', text: 'The approved storyboard turned into a timed, shot-by-shot plan.' },
       { glyph: 'spark', title: 'Realism and consistency', text: 'One explorer, matching light and accurate Renault models in every scene.' },
-      { glyph: 'play', title: 'Broadcast finish', text: 'Upscaled 4K master, edited, colour graded and mixed, ready for TV and social.' },
+      { glyph: 'play', title: 'Final finish', text: 'Upscaled 4K master, edited, colour graded and mixed in-house.' },
       { glyph: 'calendar', title: 'One-day turnaround', text: 'From storyboard to final delivery in a single day.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
