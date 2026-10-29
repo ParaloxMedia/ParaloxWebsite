@@ -3,7 +3,10 @@
  * Off until PIXEL_ID is set: nothing loads and track() does nothing. When on, it starts
  * with consent off and only measures after the visitor accepts (see CookieConsent).
  */
-export const PIXEL_ID = ''; // Paste the Pixel ID from ChatGPT Ads Manager → Conversions.
+export const PIXEL_ID = '976pigAgZaxzebj4eRJZyG'; // From ChatGPT Ads Manager → Conversions.
+
+// Debug logs pixel activity to the browser console, for verifying the setup in Ads Manager. Set false once verified.
+const DEBUG = true;
 
 const CONSENT_KEY = 'plx-measure-consent'; // 'yes' | 'no'
 let started = false;
@@ -29,7 +32,7 @@ export function startPixel() {
     const f = d.getElementsByTagName(s)[0];
     f.parentNode.insertBefore(js, f);
   })(window, document, 'script', 'https://bzrcdn.openai.com/sdk/oaiq.min.js');
-  window.oaiq('init', { pixelId: PIXEL_ID });
+  window.oaiq('init', { pixelId: PIXEL_ID, debug: DEBUG });
   // No measurement until the visitor says yes.
   window.oaiq('consent', storedConsent() === 'yes');
 }
