@@ -42,10 +42,25 @@ export function setConsent(yes) {
   if (pixelEnabled() && window.oaiq) window.oaiq('consent', yes);
 }
 
-/** Sends a conversion event (standard event names and shapes from OpenAI's docs). */
-export function track(event, data = {}) {
-  if (!pixelEnabled() || !window.oaiq || storedConsent() !== 'yes') return;
-  window.oaiq('measure', event, { type: 'customer_action', ...data });
+const newId = () => (window.crypto?.randomUUID ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+
+/**
+ * Sends a conversion from the browser (pixel) and, with the same event id, from our
+ * server (Conversions API, /api/conversion), so OpenAI counts it once even if one is
+ * blocked. `contact` ({ name, email, phone }) goes only to our server, which hashes it.
+ */
+export function track(event, data = {}, contact = {}) {
+  if (!pixelEnabled() || storedConsent() !== 'yes') return;
+  const id = newId();
+  if (window.oaiq) window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
+  try {
+    fetch('/api/conversion', {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event, id, source_url: window.location.href, amount: data.amount, currency: data.currency, ...contact }),
+    }).catch(() => {});
+  } catch { /* offline */ }
 }
 
 /** A page view, in the 'contents' shape page_viewed requires. */

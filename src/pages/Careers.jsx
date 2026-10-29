@@ -164,7 +164,7 @@ export function ApplyForm({ formRef, position, setPosition }) {
       // The script always answers 200; failures are reported in the message.
       if (!res.ok || /error/i.test(out.message || '')) throw new Error(out.message || `HTTP ${res.status}`);
       setStatus('sent');
-      track('registration_completed');
+      track('registration_completed', {}, { name: f.fullName, email: f.email, phone: f.phone });
     } catch {
       setStatus('failed');
     }

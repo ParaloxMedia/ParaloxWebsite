@@ -150,6 +150,79 @@ function send(res, file, urlPath, req) {
   fs.createReadStream(file).pipe(res);
 }
 
+/* ---------- ChatGPT Ads Conversions API (https://developers.openai.com/ads/conversions-api) ----------
+   The browser posts a conversion here (only after the visitor accepted the measurement
+   cookie); this server hashes the contact details and forwards the event to OpenAI with
+   the secret key from the OPENAI_ADS_API_KEY environment variable. The same event id is
+   sent by the pixel, so OpenAI counts each conversion once. Without a key it does nothing. */
+const ADS_PIXEL_ID = process.env.OPENAI_ADS_PIXEL_ID || '976pigAgZaxzebj4eRJZyG';
+const ADS_EVENTS = new Set(['lead_created', 'appointment_scheduled', 'registration_completed']);
+const sha = (v) => crypto.createHash('sha256').update(v, 'utf8').digest('hex');
+const normEmail = (v) => String(v || '').trim().toLowerCase();
+// Keep the country code; local Sri Lankan numbers (07…) become 947….
+const normPhone = (v) => {
+  const raw = String(v || '').replace(/[\s().-]/g, '');
+  if (/^0\d{9}$/.test(raw)) return `94${raw.slice(1)}`;
+  return raw.replace(/^\+/, '').replace(/^0+/, '');
+};
+const normName = (v) => String(v || '').toLowerCase().replace(/\s+/g, '').replace(/[!-/:-@[-`{-~]/g, '');
+const cookieValue = (req, name) => (String(req.headers.cookie || '').match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`)) || [])[1];
+
+function readJson(req, limit = 8192) {
+  return new Promise((resolve, reject) => {
+    let body = '';
+    req.on('data', (c) => { body += c; if (body.length > limit) { reject(new Error('too large')); req.destroy(); } });
+    req.on('end', () => { try { resolve(JSON.parse(body || '{}')); } catch (e) { reject(e); } });
+    req.on('error', reject);
+  });
+}
+
+async function handleConversion(req, res) {
+  const done = (code) => { res.writeHead(code, { 'Cache-Control': 'no-store' }); res.end(); };
+  if (req.method !== 'POST') return done(405);
+  let b;
+  try { b = await readJson(req); } catch { return done(400); }
+  if (!ADS_EVENTS.has(b.event) || typeof b.id !== 'string' || !b.id || b.id.length > 100) return done(400);
+  const key = process.env.OPENAI_ADS_API_KEY;
+  if (!key) return done(204); // not configured yet
+
+  const user = {};
+  const email = normEmail(b.email);
+  if (/^\S+@\S+\.\S+$/.test(email)) user.emails_sha256 = [sha(email)];
+  const phone = normPhone(b.phone);
+  if (/^\d{8,15}$/.test(phone)) user.phone_numbers_sha256 = [sha(phone)];
+  const [first, ...rest] = String(b.name || '').trim().split(/\s+/);
+  if (first) user.first_names_sha256 = [sha(normName(first))];
+  if (rest.length) user.last_names_sha256 = [sha(normName(rest.join(' ')))];
+  const ip = String(req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress;
+  if (ip) user.ip_address = ip;
+  if (req.headers['user-agent']) user.user_agent = String(req.headers['user-agent']).slice(0, 512);
+  const obref = cookieValue(req, '__obref');
+  if (obref) user.obref = decodeURIComponent(obref);
+
+  let sourceUrl = `${ORIGIN}/`;
+  try { const u = new URL(b.source_url); if (u.origin === ORIGIN) sourceUrl = u.href; } catch { /* keep default */ }
+  const data = { type: 'customer_action' };
+  if (Number.isInteger(b.amount) && b.amount > 0 && /^[A-Z]{3}$/.test(b.currency || '')) { data.amount = b.amount; data.currency = b.currency; }
+
+  const event = { id: b.id, type: b.event, timestamp_ms: Date.now(), action_source: 'web', source_url: sourceUrl, data, user };
+  try {
+    const r = await fetch(`https://bzr.openai.com/v1/events?pid=${encodeURIComponent(ADS_PIXEL_ID)}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      // OPENAI_ADS_VALIDATE_ONLY=1 checks events without recording them (for testing).
+      body: JSON.stringify({ events: [event], ...(process.env.OPENAI_ADS_VALIDATE_ONLY === '1' && { validate_only: true }) }),
+    });
+    const reply = (await r.text()).slice(0, 300);
+    if (!r.ok) console.warn(`Conversions API ${r.status}: ${reply}`);
+    else if (process.env.OPENAI_ADS_VALIDATE_ONLY === '1') console.log(`Conversions API (validate only) ${b.event}: ${reply}`);
+    return done(r.ok ? 204 : 502);
+  } catch (e) {
+    console.warn(`Conversions API error: ${e.message}`);
+    return done(502);
+  }
+}
+
 const server = http.createServer((req, res) => {
   const [rawPath, query] = req.url.split('?');
   const search = query ? `?${query}` : '';
@@ -163,6 +236,7 @@ const server = http.createServer((req, res) => {
 
   const index = path.join(DIST, 'index.html');
 
+  if (urlPath === '/api/conversion') { handleConversion(req, res); return; }
   if (handlePrivatePage(req, res, urlPath, index)) return;
 
   // Keep redirects and origin overrides consistent even with generated indexes.

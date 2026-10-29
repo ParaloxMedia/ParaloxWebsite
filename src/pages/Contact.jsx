@@ -71,7 +71,7 @@ function ContactForm() {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus('sent');
-      track('lead_created');
+      track('lead_created', {}, { name, email, phone });
       setF({ name: '', email: '', phone: '', message: '' });
       setNeeds([]);
     } catch {
