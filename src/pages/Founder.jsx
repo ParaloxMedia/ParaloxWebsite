@@ -225,8 +225,9 @@ export default function Founder() {
       raf = 0;
       const c = document.getElementById('consult');
       const pastHero = window.scrollY > window.innerHeight * 1.2;
-      const atForm = c && c.getBoundingClientRect().top < window.innerHeight * 0.85 && c.getBoundingClientRect().bottom > 0;
-      setFab(pastHero && !atForm);
+      // Hidden from the form onwards (form, FAQ and footer), so it never covers them.
+      const reachedForm = c && c.getBoundingClientRect().top < window.innerHeight * 0.85;
+      setFab(pastHero && !reachedForm);
     };
     const on = () => { if (!raf) raf = requestAnimationFrame(check); };
     check();
