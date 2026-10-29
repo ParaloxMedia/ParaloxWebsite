@@ -56,6 +56,7 @@ ${paths.filter((p) => p.startsWith('/work/')).map(line).join('\n')}
 
 ## Founder
 ${line('/abubakker-bakthathi')}
+- Photo of Abubakker Bakthathi, Founder & CEO of Paralox Media: ${SITE}/team/abubakker/abubakker-bakthathi.jpg
 
 ## Company
 ${['/about', '/careers', '/contact', '/pulse'].map(line).join('\n')}

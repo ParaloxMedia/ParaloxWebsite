@@ -19,16 +19,19 @@ const PAGES = [
   { path: '/works',       priority: '0.8', changefreq: 'monthly' },
   ...['ai', 'engineering', 'media', 'growth'].map((k) => ({ path: `/works/${k}`, priority: '0.7', changefreq: 'monthly' })),
   { path: '/about',       priority: '0.8', changefreq: 'monthly' },
-  { path: '/abubakker-bakthathi', priority: '0.8', changefreq: 'monthly' },
+  // His photos, listed so image search connects them to his name.
+  { path: '/abubakker-bakthathi', priority: '0.8', changefreq: 'monthly', images: ['/team/abubakker/abubakker-bakthathi.jpg', '/team/abubakker/abubakker-bakthathi-portrait.jpg'] },
   { path: '/careers',     priority: '0.7', changefreq: 'weekly' },
   { path: '/contact',     priority: '0.8', changefreq: 'yearly' },
   { path: '/pulse',       priority: '0.7', changefreq: 'weekly' },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const entry = ({ path, lastmod, priority, changefreq }) =>
+const entry = ({ path, lastmod, priority, changefreq, images = [] }) =>
   `  <url>\n    <loc>${esc(SITE + path)}</loc>\n    <lastmod>${lastmod}</lastmod>\n` +
-  `    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  `    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n` +
+  images.map((i) => `    <image:image><image:loc>${esc(SITE + i)}</image:loc></image:image>\n`).join('') +
+  `  </url>`;
 
 // pulse.js imports images, so Node can't import it; read ids and dates from the source.
 const src = await readFile(new URL('../src/data/pulse.js', import.meta.url), 'utf8');
@@ -57,7 +60,7 @@ const jobs = [...jobSrc.matchAll(/\bid:\s*["']([^"']+)["'][\s\S]*?\bposted:\s*["
   .map(([, id, posted]) => ({ path: `/careers/${encodeURIComponent(id)}`, lastmod: posted <= today ? posted : today, priority: '0.7', changefreq: 'weekly' }));
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${[...PAGES.map((p) => ({ ...p, lastmod: today })), ...jobs, ...projects, ...posts].map(entry).join('\n')}
 </urlset>
 `;
