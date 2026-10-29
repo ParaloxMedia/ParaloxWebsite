@@ -11,7 +11,7 @@ import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK, WORK_PILLARS, FAQ
 import { PROJECTS } from '../data/projects';
 import { VACANCIES } from '../data/careers';
 import teamPhoto from '../assets/careers/team.jpg';
-import { AI_AGENCY } from '../data/aiAgency';
+import { LANDING_PAGES } from '../data/aiAgency';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -63,7 +63,7 @@ const ORGANIZATION = {
     },
   },
   areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
-  knowsAbout: ['Generative AI', 'AI video production', 'AI agents', 'Business automation', ...CAPABILITIES.flatMap((c) => c.chips)],
+  knowsAbout: ['Generative AI', 'AI video generation', 'AI video production', 'AI creative', 'Agentic AI', 'AI agents', 'AI engineering', 'Business automation', ...CAPABILITIES.flatMap((c) => c.chips)],
   sameAs: SOCIALS.map((s) => s.url),
   contactPoint: {
     '@type': 'ContactPoint', contactType: 'sales', telephone: CONTACT.phoneRaw, email: CONTACT.email,
@@ -216,32 +216,37 @@ export const ROUTE_META = {
       }],
     })];
   })),
-  '/ai-agency-sri-lanka': page('/ai-agency-sri-lanka', {
-    title: 'AI Creative & Technology Agency in Sri Lanka | Paralox Media',
-    ogTitle: 'AI creative & technology agency in Sri Lanka · Paralox Media',
-    description: AI_AGENCY.lede,
-    ...card('ai'), type: 'website',
+  // Landing pages (AI agency, AI video, agentic AI in Sri Lanka): Service + FAQPage, and the film as a VideoObject.
+  ...Object.fromEntries(LANDING_PAGES.map((l) => [l.path, page(l.path, {
+    title: l.seoTitle,
+    ogTitle: `${l.h1} · Paralox Media`,
+    description: l.lede,
+    ...card(l.path === '/ai-video-sri-lanka' ? 'media' : l.path === '/ai-engineering-sri-lanka' ? 'engineering' : 'ai'), type: 'website',
   }, {
-    trail: [{ name: 'AI agency in Sri Lanka', path: '/ai-agency-sri-lanka' }],
+    trail: [{ name: l.h1, path: l.path }],
     extra: [
       {
-        '@type': 'Service', '@id': `${SITE}/ai-agency-sri-lanka#service`,
-        name: 'AI creative and technology agency services',
-        serviceType: 'AI creative agency, AI technology agency',
-        description: AI_AGENCY.lede,
+        '@type': 'Service', '@id': `${SITE}${l.path}#service`,
+        name: l.title, serviceType: l.title, description: l.lede,
         provider: { '@id': ORG_ID },
-        areaServed: [{ '@type': 'Country', name: 'Sri Lanka' }, ...ORGANIZATION.areaServed.filter((c) => c !== 'Sri Lanka').map((name) => ({ '@type': 'Country', name }))],
+        areaServed: ORGANIZATION.areaServed.map((name) => ({ '@type': 'Country', name })),
         hasOfferCatalog: {
-          '@type': 'OfferCatalog', name: 'AI services',
-          itemListElement: AI_AGENCY.sides.flatMap((s) => s.points).map((p) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p } })),
+          '@type': 'OfferCatalog', name: l.title,
+          itemListElement: l.sides.flatMap((s) => s.points).map((p) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p } })),
         },
       },
       {
-        '@type': 'FAQPage', '@id': `${SITE}/ai-agency-sri-lanka#faq`,
-        mainEntity: AI_AGENCY.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        '@type': 'FAQPage', '@id': `${SITE}${l.path}#faq`,
+        mainEntity: l.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
       },
+      ...(l.film ? [{
+        '@type': 'VideoObject', '@id': `${SITE}${l.path}#film`,
+        name: l.film.title, description: l.film.caption,
+        thumbnailUrl: abs(l.film.poster), contentUrl: abs(l.film.src), uploadDate: '2026-10-22', duration: l.film.duration,
+        creator: { '@id': ORG_ID },
+      }] : []),
     ],
-  }),
+  })])),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',

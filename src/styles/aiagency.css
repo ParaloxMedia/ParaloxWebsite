@@ -44,3 +44,26 @@
 
 @media (max-width:1000px){.aa-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aa-sides-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.aa-proof-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Featured AI film */
+.aa-film{background:#07040F;color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.aa-film::before{content:"";position:absolute;z-index:-1;width:min(760px,80vw);aspect-ratio:1;right:-10%;top:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.38),transparent);filter:blur(20px)}
+.aa-film-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,4vw,56px);align-items:center}
+.aa-film-copy .rc-kick{color:var(--lilac)}
+.aa-film-copy h2{margin:0 0 14px}
+.aa-film-copy p:not(.rc-kick){margin:0 0 20px;color:var(--lav);line-height:1.6}
+.aa-film-frame{border-radius:24px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 40px 90px -40px rgba(0,0,0,.8),0 0 0 1px rgba(233,227,250,.14)}
+.aa-film-frame video{display:block;width:100%;height:100%;object-fit:cover}
+.pj-process .sec-head p{color:var(--ink-soft)}
+
+/* Links to the other landing pages */
+.aa-more{background:var(--pearl);padding-block:clamp(40px,5vw,72px)}
+.aa-more-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.aa-more-grid a{position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 56px 24px 26px;border-radius:22px;background:#fff;border:1px solid var(--line-light);color:var(--ink-text);
+  transition:translate .5s var(--ease-expo),border-color .3s,box-shadow .5s var(--ease-expo)}
+.aa-more-grid a:hover{translate:0 -4px;border-color:#D9CCFF;box-shadow:0 24px 50px -30px rgba(62,32,135,.45)}
+.aa-more-grid .mono{color:var(--violet);font-size:.68rem}
+.aa-more-grid b{font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:900;letter-spacing:-.02em;line-height:1.15}
+.aa-more-grid .arr{position:absolute;right:24px;top:50%;translate:0 -50%;font-style:normal;color:var(--violet);transition:translate .35s var(--ease)}
+.aa-more-grid a:hover .arr{translate:4px -50%}
+@media (max-width:900px){.aa-film-in,.aa-more-grid{grid-template-columns:minmax(0,1fr)}}

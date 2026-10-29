@@ -2,8 +2,22 @@
 // AI creative and technology agency in Sri Lanka. Facts only; every claim links to the work.
 import reviewsData from './reviews.json';
 
+// Landing pages share one layout (src/pages/AiAgency.jsx); section headings are per page.
 export const AI_AGENCY = {
+  path: '/ai-agency-sri-lanka',
+  seoTitle: 'AI Creative & Technology Agency in Sri Lanka | Paralox Media',
+  kicker: 'Paralox Media · Colombo, Sri Lanka',
+  h1: 'AI creative & technology agency in Sri Lanka',
   title: 'AI creative and technology agency in Sri Lanka',
+  sidesTitle: 'Two halves, one team',
+  sidesText: 'Most agencies in Sri Lanka do creative or technology. We do both, with AI at the centre of each.',
+  featured: ['/work/renault-ai-tvc', '/work/nissan-gravite', '/work/webxpay-govpay'],
+  workTitle: 'AI work for real brands',
+  workText: 'Films, campaigns and platforms made with AI for brands in Sri Lanka.',
+  whyTitle: 'Why brands choose Paralox',
+  whyText: 'What sets an AI agency apart is the work it has shipped. Here is ours.',
+  faqTitle: ['AI agency,', 'answered'],
+  faqIntro: 'Planning an AI film, agent or campaign? Tell us what you need.',
   lede: 'Paralox Media is an AI creative and technology agency in Colombo, Sri Lanka. We make AI films and creatives for brands, and we build AI agents, automation and software for businesses, as one team.',
   rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
   proof: [
@@ -24,7 +38,8 @@ export const AI_AGENCY = {
         { name: 'Nissan Gravite launch films', href: '/work/nissan-gravite' },
         { name: 'WebXPay GovPay AI video', href: '/work/webxpay-govpay' },
       ],
-      href: '/media',
+      href: '/ai-video-sri-lanka',
+      hrefLabel: 'AI video generation in Sri Lanka',
     },
     {
       key: 'technology',
@@ -37,6 +52,7 @@ export const AI_AGENCY = {
         { name: 'Ace+ online electronics store', href: '/work/ace-plus-online-store' },
       ],
       href: '/ai',
+      hrefLabel: 'All AI services',
     },
   ],
   why: [
@@ -54,3 +70,160 @@ export const AI_AGENCY = {
     { q: 'Where is Paralox Media based?', a: 'At 14 Sir Baron Jayathilake Mawatha, Colombo 00100, Sri Lanka. We work with clients in Sri Lanka, the UAE, Saudi Arabia, Qatar, Singapore and the United Kingdom.' },
   ],
 };
+
+// /ai-video-sri-lanka: AI video generation and production in Sri Lanka.
+export const AI_VIDEO = {
+  path: '/ai-video-sri-lanka',
+  seoTitle: 'AI Video Generation & Production in Sri Lanka | Paralox Media',
+  kicker: 'AI video generation · Colombo, Sri Lanka',
+  h1: 'AI video generation & production in Sri Lanka',
+  title: 'AI video generation and production in Sri Lanka',
+  lede: 'Paralox Media makes AI-generated videos in Colombo, Sri Lanka: films, ads and social content where the visuals, voice, music and sound are all made with AI, then edited and finished by our team. We made Renault’s film in a single day.',
+  rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
+  film: {
+    src: '/work/renault-ai-tvc/tvc.mp4', poster: '/work/renault-ai-tvc/tvc.jpg', duration: 'PT1M7S',
+    title: 'Renault Sri Lanka: Unleashed', caption: 'Every frame, voice, note of music and sound in this film was generated with AI, in one day.', href: '/work/renault-ai-tvc',
+  },
+  proof: [
+    { stat: '1 day', label: 'From approved storyboard to finished 4K film for Renault', href: '/work/renault-ai-tvc' },
+    { stat: '100%', label: 'AI-generated visuals, voice-over, music and sound design on the Renault film', href: '/work/renault-ai-tvc' },
+    { stat: '280K+', label: 'Instagram views for our AI video for WebXPay GovPay', href: '/work/webxpay-govpay' },
+    { stat: '3', label: 'AI launch films for the Nissan Gravite, produced with WPP Media', href: '/work/nissan-gravite' },
+  ],
+  sidesTitle: 'What we make with AI',
+  sidesText: 'From a one-minute brand film to a month of reels, every video is generated with AI and finished by people.',
+  sides: [
+    {
+      key: 'creative',
+      kicker: 'AI films and ads',
+      title: 'Brand films, launches and campaigns',
+      text: 'Story-led AI films for product launches and brand campaigns, with consistent characters, true-to-life products and cinematic camera work, delivered in 4K.',
+      points: ['Launch films and brand films', 'Campaign and product videos', 'Realistic people, places and products', 'AI voice-over in your languages', 'AI music score and sound design'],
+      work: [
+        { name: 'Renault Sri Lanka AI film', href: '/work/renault-ai-tvc' },
+        { name: 'Nissan Gravite AI launch films', href: '/work/nissan-gravite' },
+      ],
+      href: '/media',
+      hrefLabel: 'All media services',
+    },
+    {
+      key: 'technology',
+      kicker: 'AI video for social',
+      title: 'Reels, explainers and always-on content',
+      text: 'Short AI videos made for Instagram, TikTok, YouTube and Facebook: explainers, offers and content series that reach people and drive action.',
+      points: ['Reels and short-form ads', 'Explainer and how-to videos', 'Content series for brands', 'Vertical and landscape versions', 'Fast turnaround for campaigns'],
+      work: [
+        { name: 'WebXPay GovPay AI video (280K+ views)', href: '/work/webxpay-govpay' },
+        { name: 'Ritzbury MasterChef AI video', href: '/work/ritzbury-masterchef-masterclass' },
+      ],
+      href: '/works/media',
+      hrefLabel: 'See all media work',
+    },
+  ],
+  steps: [
+    { title: 'Brief and storyboard', text: 'We agree the idea, script and storyboard, then break it into a timed shot list.' },
+    { title: 'Look and references', text: 'We set the look and build references for characters, places and your products.' },
+    { title: 'Generate and select', text: 'Every shot is generated in many versions; only the most realistic takes make the cut.' },
+    { title: 'Voice, music and sound', text: 'Voice-over, music and sound design are generated with AI and mixed into one soundtrack.' },
+    { title: 'Edit and grade', text: 'Our editors cut to the music, grade every shot into one look and upscale to 4K.' },
+    { title: 'Deliver', text: 'Final masters in every format you need, for web, social and screens.' },
+  ],
+  featured: ['/work/renault-ai-tvc', '/work/nissan-gravite', '/work/webxpay-govpay'],
+  workTitle: 'AI videos we have made',
+  workText: 'AI films and social videos for brands and agencies in Sri Lanka.',
+  whyTitle: 'Why Paralox for AI video',
+  whyText: 'Anyone can generate a clip. Making a film people believe takes craft.',
+  why: [
+    { glyph: 'calendar', title: 'Speed', text: 'Renault’s one-minute film went from storyboard to 4K master in a single day.' },
+    { glyph: 'spark', title: 'Realism and consistency', text: 'The same characters in every scene, matching light, and products checked against the real thing.' },
+    { glyph: 'audio', title: 'Complete AI sound', text: 'Voice-over, music and sound design made with AI, not just the pictures.' },
+    { glyph: 'user', title: 'Agency-grade', text: 'AI video produced for WPP Media and MullenLowe Sri Lanka on national brands.' },
+  ],
+  faqTitle: ['AI video,', 'answered'],
+  faqIntro: 'Planning an AI film, ad or content series? Tell us about it.',
+  faq: [
+    { q: 'What is AI video generation?', a: 'AI video generation uses generative AI to create the shots of a video from written prompts and reference images, instead of filming them with a camera. At Paralox Media we also generate the voice-over, music and sound with AI, then our editors cut, grade and finish the film.' },
+    { q: 'Who makes AI videos in Sri Lanka?', a: 'Paralox Media is an AI video production company in Colombo, Sri Lanka. We made Renault Sri Lanka’s AI film in one day and three AI launch films for the Nissan Gravite with WPP Media, and our AI video for WebXPay GovPay passed 280,000 views on Instagram.' },
+    { q: 'How long does an AI video take to make?', a: 'It depends on length and complexity. A short social video can take a day or two; Renault’s one-minute film went from approved storyboard to finished 4K master in one day.' },
+    { q: 'Can AI video look realistic?', a: 'Yes, with the right process. We generate each shot in many versions, keep only the takes with believable people, light and movement, keep characters consistent across scenes, and check products such as cars against the real models.' },
+    { q: 'Can you use our real products and brand in an AI video?', a: 'Yes. We build references from your product photos and brand guidelines so the product, colours and logo stay accurate, and we check every shot before it is used.' },
+    { q: 'How much does an AI video cost in Sri Lanka?', a: 'It is priced per project, based on length, the number of shots, characters and locations, and how many versions you need. Tell us about your video and we will send a written quote.' },
+  ],
+};
+
+// /ai-engineering-sri-lanka: agentic AI, AI agents and AI engineering in Sri Lanka.
+export const AI_ENGINEERING = {
+  path: '/ai-engineering-sri-lanka',
+  seoTitle: 'Agentic AI, AI Agents & AI Engineering in Sri Lanka | Paralox Media',
+  kicker: 'Agentic AI · AI engineering · Colombo, Sri Lanka',
+  h1: 'Agentic AI & AI engineering in Sri Lanka',
+  title: 'Agentic AI and AI engineering company in Sri Lanka',
+  lede: 'Paralox Media designs and builds agentic AI in Colombo, Sri Lanka: AI agents that answer, qualify and act on WhatsApp, the web and email, automations that run your workflows, and the software they live in, with the access controls you set.',
+  rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
+  proof: [
+    { stat: 'ExxonMobil', label: 'Vendor portal we built for PNG Embroidery: ordering, quotations, invoicing and CRM', href: '/work/exxonmobil-png-embroidery-vendor-portal' },
+    { stat: 'Ace+', label: 'Mobile-first e-commerce store rebuilt for a Sri Lankan electronics retailer', href: '/work/ace-plus-online-store' },
+    { stat: '4 in 1', label: 'AI, engineering, media and growth in one team, so agents ship with the product', href: '/about' },
+    { stat: `${reviewsData.rating.toFixed(1)}★`, label: `Rated on Google from ${reviewsData.count} reviews`, href: reviewsData.url },
+  ],
+  sidesTitle: 'Agents that do real work',
+  sidesText: 'We start with one task your team repeats every day, and build from there.',
+  sides: [
+    {
+      key: 'creative',
+      kicker: 'Agentic AI',
+      title: 'AI agents for sales, support and operations',
+      text: 'Agents that read the message, look up your data, take the next step and hand over to a person with the context attached: on WhatsApp, Instagram, web chat and email.',
+      points: ['Customer and sales agents on WhatsApp and web', 'Lead qualification and booking', 'Knowledge assistants on your documents', 'Multi-step agents that use your tools', 'Human handover with the full conversation'],
+      work: [
+        { name: 'How our agents work, step by step', href: '/ai' },
+      ],
+      href: '/ai',
+      hrefLabel: 'All AI services',
+    },
+    {
+      key: 'technology',
+      kicker: 'AI engineering',
+      title: 'Automation, integrations and software',
+      text: 'The engineering behind the agents: workflows between your CRM, sheets and inboxes, language models connected to your systems, and the portals and apps that bring it together.',
+      points: ['Business process automation', 'LLM integrations with your data and tools', 'Access control and audit of what the AI sees', 'Web apps, portals and internal tools', 'Websites and e-commerce'],
+      work: [
+        { name: 'ExxonMobil × PNG Embroidery vendor portal', href: '/work/exxonmobil-png-embroidery-vendor-portal' },
+        { name: 'Ace+ online electronics store', href: '/work/ace-plus-online-store' },
+      ],
+      href: '/engineering',
+      hrefLabel: 'All engineering services',
+    },
+  ],
+  steps: [
+    { title: 'Pick one task', text: 'We find one repeated task worth automating and agree what success looks like.' },
+    { title: 'Map the data', text: 'We map the tools, documents and systems the agent needs, and what it must never see.' },
+    { title: 'Build the agent', text: 'We build and connect the agent, with clear rules for when it acts and when it hands over.' },
+    { title: 'Test with your team', text: 'Your team tries it on real cases; we tune answers, steps and handovers.' },
+    { title: 'Launch and measure', text: 'We go live on your channels and report on the numbers that matter: replies, leads, time saved.' },
+    { title: 'Extend', text: 'Once one task runs well, we add the next, on the same foundation.' },
+  ],
+  featured: ['/work/exxonmobil-png-embroidery-vendor-portal', '/work/ace-plus-online-store', '/work/renault-ai-tvc'],
+  workTitle: 'What we have built',
+  workText: 'Platforms and AI systems for businesses in Sri Lanka and beyond.',
+  whyTitle: 'Why Paralox for agentic AI',
+  whyText: 'An agent is only as good as the engineering and data behind it.',
+  why: [
+    { glyph: 'agent', title: 'Agents that act', text: 'Not just chatbots: agents that look things up, take steps and hand over to people.' },
+    { glyph: 'code', title: 'Real engineering', text: 'The same team builds the portals, stores and integrations the agents run on.' },
+    { glyph: 'check', title: 'Your data, your rules', text: 'Access controls you set, and a clear record of what the AI can and cannot see.' },
+    { glyph: 'growth', title: 'Measured results', text: 'Reports against replies, leads, bookings and time saved, not vanity numbers.' },
+  ],
+  faqTitle: ['Agentic AI,', 'answered'],
+  faqIntro: 'Have a task you want an AI agent to take on? Tell us about it.',
+  faq: [
+    { q: 'What is agentic AI?', a: 'Agentic AI is AI that does not just answer but takes action: it reads a request, looks up the information it needs, uses tools such as your CRM or calendar, completes the next step and knows when to hand over to a person. Paralox Media builds agentic AI for businesses in Sri Lanka.' },
+    { q: 'Who builds AI agents in Sri Lanka?', a: 'Paralox Media is an AI engineering company in Colombo, Sri Lanka that builds AI agents for WhatsApp, Instagram, web chat and email, plus the automations and software they connect to. The same team builds websites, portals and e-commerce, so agents fit into your existing systems.' },
+    { q: 'What is AI engineering?', a: 'AI engineering is building AI into real software: connecting language models to your data and tools, designing the workflows and guardrails around them, and running them reliably. It is the difference between a demo and an AI system your team can depend on.' },
+    { q: 'Can an AI agent work on WhatsApp?', a: 'Yes. We build agents that answer enquiries on WhatsApp, qualify leads, share prices and availability from your data, book appointments and hand over to your team with the conversation attached.' },
+    { q: 'Is our data safe with an AI agent?', a: 'We set access controls with you, connect the agent only to the data it needs, and keep a clear record of what the AI can and cannot see. Sensitive actions can always require a person to approve them.' },
+    { q: 'How do we start?', a: 'With one task your team repeats every day. We scope it, agree the cost and timing in writing, build it, test it with your team and measure the result before adding the next.' },
+  ],
+};
+
+export const LANDING_PAGES = [AI_AGENCY, AI_VIDEO, AI_ENGINEERING];
