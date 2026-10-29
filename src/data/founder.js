@@ -9,26 +9,26 @@ export const FOUNDER = {
   email: 'abubakker@paraloxmedia.com',
   linkedin: 'https://www.linkedin.com/in/bakthathi/',
   connect: 'https://abubakker98.github.io/Connect/',
-  kicker: 'Leading AI trainer · Colombo, Sri Lanka',
-  seoTitle: 'Abubakker Bakthathi | Leading AI Trainer & AI Consultant in Sri Lanka',
-  lede: 'Abubakker Bakthathi is a leading AI trainer and AI consultant in Sri Lanka. He lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams with Cocoon and BuildrLabs, and has delivered 20+ AI sessions to more than 500 people. A software engineer turned founder, he helps leaders and teams turn AI from a buzzword into everyday results.',
+  kicker: 'Founder & CEO, Paralox Media · AI trainer & lecturer',
+  seoTitle: 'Abubakker Bakthathi | Founder & CEO, Paralox Media · AI Trainer & Lecturer',
+  lede: 'Abubakker Bakthathi is the founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka. He is also a leading AI trainer and lecturer: he lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams with Cocoon and BuildrLabs, and has delivered 20+ AI sessions to more than 500 people.',
   portrait: '/team/abubakker/abubakker-bakthathi-portrait.jpg',
   hero: '/team/abubakker/abubakker-bakthathi-hero.jpg',
   // Hero: one line per row, then the two side labels.
-  heroLines: ['Teaching AI', 'that works', 'in real life'],
-  heroSide: [['Leading', 'AI trainer'], ['AI consultant', '& speaker']],
+  heroLines: ['Training teams', 'on AI that works', 'in real life'],
+  heroSide: [['Founder & CEO', 'Paralox Media'], ['AI trainer', '& lecturer']],
   headshot: '/team/abubakker/abubakker-bakthathi.jpg',
   rate: { amount: 150, currency: 'USD', unit: 'hour' },
   highlights: [
+    { stat: 'Founder', label: 'Founder & CEO of Paralox Media, an AI creative and technology agency in Colombo', href: '/about' },
     { stat: '20+', label: 'AI sessions delivered to 500+ people, for corporate teams, colleges and communities', href: '#teaching' },
     { stat: 'Lecturer', label: 'AI for Leadership & Business Productivity, Inspire College', href: '#teaching' },
     { stat: 'Trainer', label: 'AI Trainer & Consultant with Cocoon, and applied AI trainer with BuildrLabs', href: '#teaching' },
-    { stat: 'Cover', label: 'Happinez at The Sunday Morning, with an in-depth interview, July 2026', href: '#feature' },
   ],
   story: [
     'Abubakker started freelancing with a close friend to pay for university, building websites and digital work for clients while he studied. That habit of solving real problems for real people never left.',
     'He went on to spend more than three years as a software engineer for Third Space Global, a UK company, working remotely from Sri Lanka, alongside part-time web development for La Maison in the UAE. In 2025 his job ended in an AI-driven transformation. Rather than fear the technology, he set out to understand it. In his words: “AI wasn’t the problem; the world was evolving and businesses needed to adapt.”',
-    'That became his mission: helping people and businesses adapt. He founded Paralox Media in Colombo in 2025, and he started teaching what he learned.',
+    'That became his mission: helping people and businesses adapt. He founded Paralox Media in Colombo in 2025, and he started training others in what he learned.',
     'Today he lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams as an AI Trainer & Consultant with Cocoon and as an applied AI trainer with BuildrLabs, speaks at events across Colombo, and advises founders and leadership teams one-to-one on how to use AI well.',
   ],
   expertise: [
@@ -52,7 +52,7 @@ export const FOUNDER = {
     { org: 'Cocoon', role: 'AI Trainer & Consultant', when: 'Jan 2026 – present', text: 'Corporate training and consulting on generative AI, automation and business integration. Designed and delivered hands-on workshops for corporate teams including WIA Systems Inc., with participants producing real output by the end of each session.', href: 'https://mycocoon.life/trainers' },
     { org: 'BuildrLabs', role: 'Applied AI trainer', when: 'Hatch Works, Colombo', text: 'In-person applied AI training for working professionals: AI solutions, consulting and training for brands.', href: 'https://buildrlabs.ai/trainers/' },
   ],
-  // A Short from his workshop, shown in the teaching section.
+  // A Short from his workshop, shown in the training section.
   workshop: {
     youtube: 'T0ha4SJjOhk',
     poster: '/team/abubakker/applied-ai-workshop.jpg',
@@ -63,8 +63,11 @@ export const FOUNDER = {
   },
   // Events, talks and workshops he has run or attended.
   events: [
-    { kind: 'Workshop · Trainer', title: 'AI for Creativity, Applied AI Workshop', meta: 'BuildrLabs · Hatch Works, Colombo · delivered by Cocoon', text: 'Co-led with Lishan Peiris: brand strategy and design, image creation, character-led AI video and choosing the right model, with everyone making their own videos.', image: '/team/abubakker/applied-ai-workshop.jpg', href: 'https://www.youtube.com/shorts/T0ha4SJjOhk' },
-    { kind: 'Event · Attended', title: 'Grok Bot Meetup Colombo', meta: 'DHPL Auditorium, Colombo · October 2026', text: 'Joined builders and founders at the first Grok Bot meetup in Colombo, and spoke to BuiltList about his journey and what Sri Lanka’s founders need next.', image: 'grok', href: '/pulse/past-grok-bot-meetup-colombo-2026' },
+    { kind: 'Workshop · Trainer', title: 'Applied AI Workshop: AI for Creativity', meta: 'BuildrLabs · Hatch Works, Colombo · delivered by Cocoon', text: 'Co-led with Lishan Peiris: brand strategy and design, image creation, character-led AI video and choosing the right model, with everyone making their own videos.', image: '/team/abubakker/web/bl1-main.jpg', pos: '50% 40%', thumbs: ['/team/abubakker/web/bl1-room.jpg', '/team/abubakker/web/bl1-talk.jpg', '/team/abubakker/web/bl1-team.jpg'], href: 'https://www.youtube.com/shorts/T0ha4SJjOhk' },
+    { kind: 'Workshop · Trainer', title: 'Applied AI Workshop: how generative AI works', meta: 'BuildrLabs · Hatch Works, Colombo', text: 'From how language models turn context into the next word to using them well at work, with a full room of professionals building along.', image: '/team/abubakker/web/bl2-main.jpg', thumbs: ['/team/abubakker/web/bl2-talk.jpg', '/team/abubakker/web/bl2-screen.jpg', '/team/abubakker/web/bl2-room.jpg'], href: 'https://buildrlabs.ai/trainers/' },
+    { kind: 'Corporate training · Cocoon', title: 'AI training for WIA Systems', meta: 'Cocoon · corporate team training', text: 'Hands-on workshops for WIA Systems, a leading ERP and enterprise technology provider, on AI for marketing, creative production, workflow automation and development.', image: '/team/abubakker/web/wia-main.jpg', thumbs: ['/team/abubakker/web/wia-room.jpg', '/team/abubakker/web/wia-desk.jpg', '/team/abubakker/web/wia-wide.jpg'], href: 'https://mycocoon.life/trainers' },
+    { kind: 'Corporate training · Cocoon', title: 'Ideation & Research with AI at Derana', meta: 'Cocoon · Derana', text: 'A full-house session for the Derana team on using AI for ideation and research, from first idea to structured creative direction.', image: '/team/abubakker/web/derana-main.jpg', pos: '50% 35%', thumbs: ['/team/abubakker/web/derana-stage.jpg', '/team/abubakker/web/derana-talk.jpg'], href: 'https://mycocoon.life/trainers' },
+    { kind: 'Event · Attended', title: 'Grok Bot Meetup Colombo', meta: 'DHPL Auditorium, Colombo · October 2026', text: 'Joined builders and founders at the first Grok Bot meetup in Colombo, and spoke to BuiltList about his journey and what Sri Lanka’s founders need next.', image: '/team/abubakker/web/grok-main.jpg', thumbs: ['/team/abubakker/web/grok-talk.jpg'], href: '/pulse/past-grok-bot-meetup-colombo-2026' },
     { kind: 'Talk · Featured speaker', title: 'AI & Automation: Career Impact Workshop', meta: 'Rotaract Club of Colombo Mid Town · January 2026', text: 'On the evolution of AI, how it is reshaping jobs, the new roles it creates and why prompt engineering matters.', image: 'rotaract', href: '/pulse/past-rotaract-ai-workshop-2026' },
   ],
   // Recognition and talks, as hairline rows.

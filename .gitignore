@@ -17,3 +17,10 @@ private/rate-card/
 # Source masters for project films (large originals); the site serves the web
 # encodes in public/work/<project>/.
 public/work/Renault/
+
+# Full-size originals of Abubakker's event photos (hundreds of MB). The site uses
+# the web-size copies in public/team/abubakker/web/.
+public/team/abubakker/Builder Labs/
+public/team/abubakker/Cocoon/
+public/team/abubakker/Grokbot/
+public/team/abubakker/Paralox/

@@ -56,7 +56,7 @@ const ORGANIZATION = {
   // The founder's headshot lives at a fixed URL (public/team/abubakker/) so search and AI answers can show it.
   founder: {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
-    description: 'Leading AI trainer and AI consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
+    description: 'Founder and CEO of Paralox Media, and a leading AI trainer and lecturer in Sri Lanka: lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
     sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/', 'https://www.youtube.com/@AbubakkerBakthathi'],
     // Independent press about him: a strong signal for search and AI answers.
@@ -158,7 +158,7 @@ export const ROUTE_META = {
   // The founder's own page: a ProfilePage about him, with the consultation as an hourly offer.
   [FOUNDER.path]: page(FOUNDER.path, {
     title: FOUNDER.seoTitle,
-    ogTitle: `${FOUNDER.name} · Leading AI trainer & AI consultant in Sri Lanka`,
+    ogTitle: `${FOUNDER.name} · Founder & CEO, Paralox Media · AI trainer & lecturer`,
     description: FOUNDER.lede,
     image: FOUNDER.portrait, width: 975, height: 1300, type: 'profile',
   }, {

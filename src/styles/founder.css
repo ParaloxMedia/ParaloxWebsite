@@ -127,7 +127,7 @@
 /* 4. Why */
 .fx-why{background:#07040F;position:relative}
 .fx-why::before{content:"";position:absolute;inset:0 0 auto;height:180px;background:linear-gradient(180deg,#B69CFF33,transparent);pointer-events:none}
-.fx-why-grid{list-style:none;margin:clamp(48px,6vw,90px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.fx-why-grid{list-style:none;margin:clamp(48px,6vw,90px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .fx-why-grid .ic{display:block;width:52px;margin-bottom:24px}
 .fx-why-grid h3{margin:0 0 14px;font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:600;letter-spacing:-.02em}
 .fx-why-grid p{margin:0;color:rgba(233,227,250,.7);line-height:1.6}
@@ -238,3 +238,35 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 .fx-shot-cap small{font-size:.86rem;color:rgba(233,227,250,.8);line-height:1.45}
 .fx-trust-orb{position:absolute;width:min(720px,80vw);aspect-ratio:1;left:calc(50% - min(360px,40vw));top:calc(50% - min(360px,40vw));border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.42),rgba(62,32,135,.16) 60%,transparent);filter:blur(24px);animation:wkOrb 14s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){.fx-trust-orb{animation:none}}
+
+/* Extra photos on each event still */
+.fx-thumbs{position:absolute;top:16px;right:16px;display:flex;gap:8px}
+.fx-thumbs img{width:clamp(56px,7vw,92px);aspect-ratio:1;object-fit:cover;border-radius:12px;border:2px solid rgba(255,255,255,.85);box-shadow:0 12px 24px -10px rgba(0,0,0,.6);transition:transform .5s var(--ease-expo)}
+.fx-shot:hover .fx-thumbs img{transform:translateY(-4px) rotate(-2deg)}
+.fx-shot:hover .fx-thumbs img:nth-child(2){transform:translateY(-6px) rotate(2deg)}
+@media (max-width:600px){.fx-thumbs img{width:48px}}
+
+/* Why: word-by-word title, staggered cards, pointer glow, drawn line, floating icons */
+.fx-why{overflow:hidden;isolation:isolate}
+.fx-why-orb{position:absolute;z-index:-1;width:min(820px,90vw);aspect-ratio:1;left:calc(50% - min(410px,45vw));top:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.3),transparent);filter:blur(30px);animation:wkOrb 16s ease-in-out infinite alternate}
+.fx-why-title .w{display:inline-block;margin-right:.26em;opacity:0;translate:0 .5em;filter:blur(8px);transition:opacity .9s var(--ease-expo),translate .9s var(--ease-expo),filter .9s var(--ease-expo);transition-delay:calc(var(--i) * 90ms)}
+.fx-why.in .fx-why-title .w{opacity:1;translate:0 0;filter:none}
+.fx-why-sub{opacity:0;transition:opacity 1s ease .45s}
+.fx-why.in .fx-why-sub{opacity:1}
+.fx-why-card{position:relative;padding:32px;border-radius:26px;overflow:hidden;background:#141019;border:1px solid rgba(233,227,250,.1);
+  opacity:0;translate:0 50px;scale:.96;transition:opacity .9s var(--ease-expo),translate .9s var(--ease-expo),scale .9s var(--ease-expo),border-color .4s,box-shadow .5s;transition-delay:calc(.35s + var(--i) * 120ms)}
+.fx-why.in .fx-why-card{opacity:1;translate:0 0;scale:1}
+.fx-why.in .fx-why-card:hover{translate:0 -8px;transition-delay:0s;border-color:rgba(182,156,255,.5);box-shadow:0 30px 60px -30px rgba(124,58,237,.55)}
+.fx-why-card::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none;background:radial-gradient(360px circle at var(--gx,50%) var(--gy,30%),rgba(182,156,255,.2),transparent 45%)}
+.fx-why-card:hover::before{opacity:1}
+.fx-why-num{position:absolute;right:26px;top:22px;font-size:3.4rem;font-weight:500;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(182,156,255,.35);transition:-webkit-text-stroke-color .4s,translate .5s var(--ease-expo)}
+.fx-why-card:hover .fx-why-num{-webkit-text-stroke-color:rgba(182,156,255,.9);translate:0 -4px}
+.fx-why-grid .fx-why-card .ic{animation:fxIcon 5s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -1.2s)}
+@keyframes fxIcon{from{translate:0 -3px;rotate:-4deg}to{translate:0 4px;rotate:4deg}}
+.fx-why-line{position:absolute;left:32px;right:32px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--violet),var(--lilac));transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease-expo);transition-delay:calc(.8s + var(--i) * 120ms)}
+.fx-why.in .fx-why-line{transform:scaleX(.25)}
+.fx-why.in .fx-why-card:hover .fx-why-line{transform:scaleX(1);transition-delay:0s}
+@media (prefers-reduced-motion:reduce){
+  .fx-why-title .w,.fx-why-sub,.fx-why-card{opacity:1;translate:none;scale:none;filter:none;transition:none}
+  .fx-why-orb,.fx-why-grid .fx-why-card .ic{animation:none}
+}

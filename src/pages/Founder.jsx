@@ -4,13 +4,10 @@ import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
 import { finePointer, prefersReducedMotion } from '../hooks/useHashRoute';
 import coverImg from '../assets/pulse/sunday-morning-cover.jpg';
-import grokImg from '../assets/pulse/grok-meetup-1.jpg';
-import grokImg2 from '../assets/pulse/grok-meetup-2.jpg';
 import rotaractImg from '../assets/pulse/rotaract-2.jpg';
-import rotaractImg2 from '../assets/pulse/rotaract-1.jpg';
 
 // Event stills by key (local imports resolve to hashed asset URLs).
-const EVENT_IMG = { grok: grokImg, rotaract: rotaractImg };
+const EVENT_IMG = { rotaract: rotaractImg };
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 import '../styles/founder.css';
@@ -211,6 +208,16 @@ export default function Founder() {
   const work = p.events.map((e) => ({ ...e, src: EVENT_IMG[e.image] || e.image }));
   const active = useActiveWork(workRef, work.length);
   useFounderMotion(root);
+  // Why section: words and cards reveal in sequence when it scrolls into view.
+  const whyRef = useRef(null);
+  useEffect(() => {
+    const el = whyRef.current;
+    if (!el) return undefined;
+    if (prefersReducedMotion() || !('IntersectionObserver' in window)) { el.classList.add('in'); return undefined; }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('in'); io.disconnect(); } }, { rootMargin: '0px 0px -20% 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   // A pointer glow on the advisory cards (fine pointers only).
   const glow = (e) => {
     if (!finePointer()) return;
@@ -218,7 +225,8 @@ export default function Founder() {
     e.currentTarget.style.setProperty('--gx', `${e.clientX - r.left}px`);
     e.currentTarget.style.setProperty('--gy', `${e.clientY - r.top}px`);
   };
-  const collage = [grokImg, coverImg, p.workshop.poster, grokImg2, rotaractImg, rotaractImg2];
+  const W = '/team/abubakker/web/';
+  const collage = [`${W}bl2-main.jpg`, `${W}derana-talk.jpg`, `${W}grok-main.jpg`, `${W}wia-main.jpg`, `${W}paralox-talk.jpg`, `${W}derana-main.jpg`];
 
   return (
     <div className="fx" ref={root}>
@@ -232,7 +240,7 @@ export default function Founder() {
             <img className="fx-photo" src={p.hero} alt={`${p.name}, ${p.role}`} width="1650" height="2200" decoding="async" fetchPriority="high" />
             <div className="fx-shade" aria-hidden="true" />
             <div className="fx-copy wrap">
-              <p className="fx-kicker mono fu" style={{ '--d': '.05s' }}>{p.name} · Colombo, Sri Lanka</p>
+              <p className="fx-kicker mono fu" style={{ '--d': '.05s' }}>{p.name} · {p.kicker}</p>
               <h1 id="fx-title" className="fx-h1">
                 {p.heroLines.map((l, i) => <span key={l} className="ln"><span className="fu" style={{ '--d': `${0.12 + i * 0.09}s` }}>{l}{i === p.heroLines.length - 1 && <span className="dot">.</span>}</span></span>)}
               </h1>
@@ -278,7 +286,8 @@ export default function Founder() {
                 const ext = w.href.startsWith('http');
                 return (
                   <a key={w.title} href={w.href} className="fx-shot" data-work={i} {...(ext && { target: '_blank', rel: 'noopener' })}>
-                    <img src={w.src} alt={w.title} loading="lazy" decoding="async" />
+                    <img src={w.src} alt={w.title} loading="lazy" decoding="async" style={w.pos ? { objectPosition: w.pos } : undefined} />
+                    {w.thumbs?.length > 0 && <span className="fx-thumbs" aria-hidden="true">{w.thumbs.map((t) => <img key={t} src={t} alt="" loading="lazy" decoding="async" />)}</span>}
                     <span className="fx-shot-cap"><span><b>{w.title}</b><small>{w.text}</small></span><i className="arr" aria-hidden="true">{ext ? '↗' : '→'}</i></span>
                   </a>
                 );
@@ -289,20 +298,31 @@ export default function Founder() {
       </section>
 
       {/* 4. Why work with him */}
-      <section className="fx-why sec" aria-labelledby="fx-why-h">
+      <section className="fx-why sec" aria-labelledby="fx-why-h" ref={whyRef}>
+        <span className="fx-why-orb" aria-hidden="true" />
         <div className="wrap">
-          <h2 className="fx-big center" id="fx-why-h">Why work with Abubakker?</h2>
-          <p className="fx-sub">AI advice from someone who ships it.</p>
+          <h2 className="fx-big center fx-why-title" id="fx-why-h">
+            {'Why work with Abubakker?'.split(' ').map((word, i) => <span key={i} className="w" style={{ '--i': i }}>{word}</span>)}
+          </h2>
+          <p className="fx-sub fx-why-sub">AI training and advice from someone who builds with it.</p>
           <ul className="fx-why-grid">
-            {p.why.map((w) => <li key={w.title}><Glass glyph={w.glyph} className="ic" /><h3>{w.title}</h3><p>{w.text}</p></li>)}
+            {p.why.map((w, i) => (
+              <li key={w.title} className="fx-why-card" style={{ '--i': i }} onPointerMove={glow}>
+                <span className="fx-why-num mono" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <Glass glyph={w.glyph} className="ic" />
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+                <span className="fx-why-line" aria-hidden="true" />
+              </li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* Teaching: where he lectures and trains */}
+      {/* Training: where he lectures and trains */}
       <section className="fx-teach sec" id="teaching" aria-labelledby="fx-teach-h">
         <div className="wrap">
-          <h2 className="fx-big" id="fx-teach-h">Where he teaches AI<span className="dot">.</span></h2>
+          <h2 className="fx-big" id="fx-teach-h">Where he trains<span className="dot">.</span></h2>
           <p className="fx-teach-sub">20+ sessions, 500+ people trained, from boardrooms to classrooms.</p>
           <ul className="fx-teach-grid">
             {p.teaching.map((t) => {
@@ -380,21 +400,6 @@ export default function Founder() {
         <div className="wrap">
           <h2 className="d-m" id="fd-story-h">From engineer to founder<span className="dot">.</span></h2>
           {p.story.map((t, i) => <p key={i} className={i === 0 ? 'lead' : undefined}>{t}</p>)}
-        </div>
-      </section>
-
-      {/* 8. Skills */}
-      <section className="fd-skills sec lt" aria-labelledby="fd-skills-h">
-        <div className="wrap">
-          <div className="sec-head"><h2 className="d-m" id="fd-skills-h">Skills<span className="dot">.</span></h2><p>Six-plus years across software, AI and growth, from writing code to leading teams and campaigns.</p></div>
-          <div className="fd-skill-grid">
-            {p.skills.map((g) => (
-              <div key={g.group} className="fd-skill">
-                <p className="mono">{g.group}</p>
-                <ul>{g.items.map((x) => <li key={x}>{x}</li>)}</ul>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
