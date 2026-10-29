@@ -21,6 +21,8 @@ export const FOUNDER = {
   portrait: '/team/abubakker/abubakker-bakthathi-portrait.jpg',
   hero: '/team/abubakker/abubakker-bakthathi-hero.jpg',
   banner: '/team/abubakker/abubakker-bakthathi-banner.jpg',
+  // Share image (1200x630, face-centred): what link previews and AI answers pick up.
+  card: '/team/abubakker/abubakker-bakthathi-card.jpg',
   // Hero: one line per row, then the two side labels.
   heroLines: ['Training teams', 'on AI that works', 'in real life'],
   heroSide: [['Founder & CEO', 'Paralox Media'], ['AI trainer', '& lecturer']],

@@ -60,6 +60,7 @@ const FOUNDER_PERSON = {
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
     // His photos: on his own page only.
     image: [
+      { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-card.jpg`, width: 1200, height: 630, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi.jpg`, width: 800, height: 800, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-banner.jpg`, width: 1280, height: 720, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media, AI trainer and consultant' },
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-portrait.jpg`, width: 975, height: 1300, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
@@ -166,7 +167,7 @@ export const ROUTE_META = {
     title: FOUNDER.seoTitle,
     ogTitle: `${FOUNDER.name} · Founder & CEO, Paralox Media · AI trainer & lecturer`,
     description: FOUNDER.lede,
-    image: FOUNDER.banner, width: 1280, height: 720, type: 'profile',
+    image: FOUNDER.card, width: 1200, height: 630, type: 'profile',
   }, {
     type: 'ProfilePage',
     trail: [{ name: FOUNDER.name, path: FOUNDER.path }],

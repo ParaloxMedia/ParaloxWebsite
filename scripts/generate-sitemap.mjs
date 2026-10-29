@@ -20,7 +20,7 @@ const PAGES = [
   ...['ai', 'engineering', 'media', 'growth'].map((k) => ({ path: `/works/${k}`, priority: '0.7', changefreq: 'monthly' })),
   { path: '/about',       priority: '0.8', changefreq: 'monthly' },
   // His photos, listed so image search connects them to his name.
-  { path: '/abubakker-bakthathi', priority: '0.8', changefreq: 'monthly', images: ['/team/abubakker/abubakker-bakthathi.jpg', '/team/abubakker/abubakker-bakthathi-banner.jpg', '/team/abubakker/abubakker-bakthathi-portrait.jpg'] },
+  { path: '/abubakker-bakthathi', priority: '0.8', changefreq: 'monthly', images: ['/team/abubakker/abubakker-bakthathi-card.jpg', '/team/abubakker/abubakker-bakthathi.jpg', '/team/abubakker/abubakker-bakthathi-banner.jpg', '/team/abubakker/abubakker-bakthathi-portrait.jpg'] },
   { path: '/careers',     priority: '0.7', changefreq: 'weekly' },
   { path: '/contact',     priority: '0.8', changefreq: 'yearly' },
   { path: '/pulse',       priority: '0.7', changefreq: 'weekly' },
