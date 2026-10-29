@@ -86,7 +86,7 @@ export const ROUTE_BODY = {
     ],
   }])),
   [FOUNDER.path]: {
-    h1: `${FOUNDER.name}: AI leader, trainer and consultant in Sri Lanka`,
+    h1: `${FOUNDER.name}: leading AI trainer and AI consultant in Sri Lanka`,
     intro: FOUNDER.lede,
     image: { src: FOUNDER.headshot, alt: `${FOUNDER.name}, ${FOUNDER.role}`, width: 800, height: 800 },
     sections: [
@@ -95,6 +95,7 @@ export const ROUTE_BODY = {
       { h2: 'From engineer to founder', paras: FOUNDER.story },
       { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
       { h2: 'Where he teaches AI', items: FOUNDER.teaching.map((t) => ({ name: `${t.role}, ${t.org}`, href: t.href, text: `${t.when}. ${t.text}` })) },
+      { h2: 'Workshops, talks and events', items: FOUNDER.events.map((e) => ({ name: `${e.title} (${e.kind})`, href: e.href, text: `${e.meta}. ${e.text}` })) },
       { h2: FOUNDER.workshop.title, paras: [`${FOUNDER.workshop.meta}.`, FOUNDER.workshop.text], more: { href: `https://www.youtube.com/shorts/${FOUNDER.workshop.youtube}`, label: 'Watch on YouTube' } },
       { h2: 'Skills', items: FOUNDER.skills.map((g) => ({ name: g.group, text: g.items.join(', ') })) },
       { h2: 'In his words', items: FOUNDER.quotes.map((q) => ({ name: q.source, href: q.href, text: `“${q.text}”` })) },

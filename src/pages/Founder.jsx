@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { FOUNDER } from '../data/founder';
-import { CLIENTS, CONTACT, WORK } from '../data/content';
+import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
 import { finePointer, prefersReducedMotion } from '../hooks/useHashRoute';
 import coverImg from '../assets/pulse/sunday-morning-cover.jpg';
-import teamImg from '../assets/careers/team.jpg';
+import grokImg from '../assets/pulse/grok-meetup-1.jpg';
+import grokImg2 from '../assets/pulse/grok-meetup-2.jpg';
+import rotaractImg from '../assets/pulse/rotaract-2.jpg';
+import rotaractImg2 from '../assets/pulse/rotaract-1.jpg';
+
+// Event stills by key (local imports resolve to hashed asset URLs).
+const EVENT_IMG = { grok: grokImg, rotaract: rotaractImg };
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 import '../styles/founder.css';
@@ -18,7 +24,7 @@ const stageProgress = (el) => {
 
 /**
  * Scroll motion for the page, one rAF loop writing styles directly:
- * the hero shrinks into a framed card as a collage of work gathers around it,
+ * the hero shrinks into a framed card as a collage of his talks and events gathers around it,
  * and the advisory cards slide sideways while their section is pinned.
  * Skipped for reduced motion and on narrow screens (they get plain layouts).
  */
@@ -78,7 +84,7 @@ function ShortVideo({ id, poster, title }) {
     );
 }
 
-/** The sticky work list: the item whose still is in view is marked active. */
+/** The sticky events list: the item whose still is in view is marked active. */
 function useActiveWork(listRef, count) {
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -202,7 +208,7 @@ export default function Founder() {
   const p = FOUNDER;
   const root = useRef(null);
   const workRef = useRef(null);
-  const work = p.work.map((h) => WORK.find((w) => w.href === h)).filter(Boolean);
+  const work = p.events.map((e) => ({ ...e, src: EVENT_IMG[e.image] || e.image }));
   const active = useActiveWork(workRef, work.length);
   useFounderMotion(root);
   // A pointer glow on the advisory cards (fine pointers only).
@@ -212,11 +218,11 @@ export default function Founder() {
     e.currentTarget.style.setProperty('--gx', `${e.clientX - r.left}px`);
     e.currentTarget.style.setProperty('--gy', `${e.clientY - r.top}px`);
   };
-  const collage = [work[0]?.image, coverImg, work[1]?.image, teamImg, work[2]?.image, work[3]?.image].filter(Boolean);
+  const collage = [grokImg, coverImg, p.workshop.poster, grokImg2, rotaractImg, rotaractImg2];
 
   return (
     <div className="fx" ref={root}>
-      {/* 1. Hero: full-bleed portrait that shrinks into a framed card as a collage of work gathers around it. */}
+      {/* 1. Hero: full-bleed portrait that shrinks into a framed card as a collage of his talks and events gathers around it. */}
       <section className="fx-hero" aria-labelledby="fx-title">
         <div className="fx-stage">
           <div className="fx-collage" aria-hidden="true">
@@ -254,26 +260,29 @@ export default function Founder() {
         </div>
       </section>
 
-      {/* 3. Work he has led: gradient arch, sticky list beside a stack of stills */}
+      {/* 3. Workshops, talks and events: gradient arch, sticky list beside a stack of stills */}
       <section className="fx-work" aria-labelledby="fx-work-h">
         <div className="fx-arch" aria-hidden="true" />
         <div className="wrap">
-          <h2 className="fx-big" id="fx-work-h">Work he has led<span className="dot">.</span></h2>
+          <h2 className="fx-big" id="fx-work-h">Workshops, talks<br />and events<span className="dot">.</span></h2>
           <div className="fx-work-in" ref={workRef}>
             <ol className="fx-work-list">
               {work.map((w, i) => (
-                <li key={w.href} className={i === active ? 'on' : undefined}>
-                  <a href={w.href}><b>{w.title}</b><span>{w.meta}</span></a>
+                <li key={w.title} className={i === active ? 'on' : undefined}>
+                  <a href={w.href}><span className="mono">{w.kind}</span><b>{w.title}</b><span>{w.meta}</span></a>
                 </li>
               ))}
             </ol>
             <div className="fx-work-stack">
-              {work.map((w, i) => (
-                <a key={w.href} href={w.href} className="fx-shot" data-work={i}>
-                  <img src={w.image} alt={w.title} loading="lazy" decoding="async" />
-                  <span className="fx-shot-cap"><b>{w.title}</b><i className="arr" aria-hidden="true">→</i></span>
-                </a>
-              ))}
+              {work.map((w, i) => {
+                const ext = w.href.startsWith('http');
+                return (
+                  <a key={w.title} href={w.href} className="fx-shot" data-work={i} {...(ext && { target: '_blank', rel: 'noopener' })}>
+                    <img src={w.src} alt={w.title} loading="lazy" decoding="async" />
+                    <span className="fx-shot-cap"><span><b>{w.title}</b><small>{w.text}</small></span><i className="arr" aria-hidden="true">{ext ? '↗' : '→'}</i></span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -325,7 +334,7 @@ export default function Founder() {
       </section>
 
       {/* 5. As featured in: The Sunday Morning */}
-      <section className="fd-feature sec" aria-labelledby="fd-feature-h">
+      <section className="fd-feature sec" id="feature" aria-labelledby="fd-feature-h">
         <div className="wrap fd-feature-in">
           <a className="fd-cover" href={p.feature.url} target="_blank" rel="noopener" aria-label={`Read “${p.feature.headline}” at The Morning`}>
             <img src={coverImg} alt={`${p.name} on the cover of Happinez at The Sunday Morning, ${p.feature.date}`} loading="lazy" decoding="async" />
@@ -403,9 +412,7 @@ export default function Founder() {
 
       {/* 10. Trusted by: a statement with client logos drifting around it */}
       <section className="fx-trust" aria-labelledby="fx-trust-h">
-        <ul className="fx-logos" aria-hidden="true">
-          {CLIENTS.slice(0, 10).map((c, i) => <li key={c.name} className={`l${i}`}><img src={c.logo} alt="" loading="lazy" decoding="async" /></li>)}
-        </ul>
+        <span className="fx-trust-orb" aria-hidden="true" />
         <h2 className="fx-big center" id="fx-trust-h">{p.trust.map((l) => <span key={l}>{l}<br /></span>)}</h2>
       </section>
 
@@ -440,7 +447,7 @@ export default function Founder() {
         <div className="wrap faq-grid">
           <div className="faq-intro">
             <h2 className="d-l" id="fd-faq-h">About<br />Abubakker<span className="dot">.</span></h2>
-            <p>Want to work with his team instead? <a className="link" href="/contact" style={{ color: 'var(--violet)' }}>Start a project <span className="arr">→</span></a></p>
+            <p>Prefer to write? <a className="link" href={`mailto:${p.email}`} style={{ color: 'var(--violet)' }}>{p.email} <span className="arr">→</span></a></p>
           </div>
           <div className="faq-list">
             {p.faq.map((f, i) => (

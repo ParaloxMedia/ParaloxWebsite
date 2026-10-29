@@ -231,3 +231,10 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 .fx-ws-meta{margin:12px 0 0;color:var(--lilac);font-size:.72rem}
 .fx-workshop p:not(.rc-kick):not(.mono){margin:18px 0 22px;color:rgba(233,227,250,.75);line-height:1.65;max-width:38rem}
 @media (max-width:899px){.fx-workshop{grid-template-columns:minmax(0,1fr)}.fx-short{max-width:300px}}
+
+/* Events list and captions */
+.fx-work-list .mono{color:rgba(255,255,255,.75);font-size:.66rem}
+.fx-shot-cap>span{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fx-shot-cap small{font-size:.86rem;color:rgba(233,227,250,.8);line-height:1.45}
+.fx-trust-orb{position:absolute;width:min(720px,80vw);aspect-ratio:1;left:calc(50% - min(360px,40vw));top:calc(50% - min(360px,40vw));border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.42),rgba(62,32,135,.16) 60%,transparent);filter:blur(24px);animation:wkOrb 14s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.fx-trust-orb{animation:none}}
