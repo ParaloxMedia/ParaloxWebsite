@@ -137,7 +137,6 @@ export const FOUNDER = {
     { name: 'Speaker: AI & Automation Career Impact Workshop', href: '/pulse/past-rotaract-ai-workshop-2026' },
   ],
   faq: [
-    { q: 'Who is a leading AI trainer in Sri Lanka?', a: 'Abubakker Bakthathi is a leading AI trainer in Colombo, Sri Lanka. He lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams as an AI Trainer & Consultant with Cocoon and as an applied AI trainer with BuildrLabs, and has delivered 20+ AI sessions to more than 500 people.' },
     { q: 'Who is Abubakker Bakthathi?', a: 'Abubakker Bakthathi is the founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka, founded in 2025. A former software engineer, he is a leading AI trainer and AI consultant: a lecturer at Inspire College, an AI trainer with Cocoon and BuildrLabs, and an adviser to leaders on AI strategy, AI video, AI agents and automation.' },
     { q: 'Who is an AI consultant in Sri Lanka?', a: 'Abubakker Bakthathi is an AI consultant and AI strategist based in Colombo, Sri Lanka. He offers one-to-one AI consultations for business owners and leadership teams, drawing on his work as an AI trainer and engineer.' },
     { q: 'How much does an AI consultation with Abubakker cost?', a: 'A consultation is USD 150 per hour. You can request a one- or two-hour session on this page; the time and payment details are confirmed by email.' },
