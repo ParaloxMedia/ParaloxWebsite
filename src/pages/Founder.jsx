@@ -4,10 +4,7 @@ import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
 import { finePointer, prefersReducedMotion } from '../hooks/useHashRoute';
 import coverImg from '../assets/pulse/sunday-morning-cover.jpg';
-import rotaractImg from '../assets/pulse/rotaract-2.jpg';
 
-// Event stills by key (local imports resolve to hashed asset URLs).
-const EVENT_IMG = { rotaract: rotaractImg };
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 import '../styles/founder.css';
@@ -205,7 +202,7 @@ export default function Founder() {
   const p = FOUNDER;
   const root = useRef(null);
   const workRef = useRef(null);
-  const work = p.events.map((e) => ({ ...e, src: EVENT_IMG[e.image] || e.image }));
+  const work = p.events.map((e) => ({ ...e, src: e.image }));
   const active = useActiveWork(workRef, work.length);
   useFounderMotion(root);
   // Why section: words and cards reveal in sequence when it scrolls into view.
