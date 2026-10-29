@@ -109,7 +109,9 @@ export default function About() {
           <div className="team">
             {ABOUT.team.map((m) => (
               <div className={`tm${m.lead ? ' tm-lead' : ''}`} key={m.name}>
-                {m.lead ? <span className="av">{m.initials}</span> : <Glass glyph={m.g} />}
+                {m.photo
+                  ? <img className="av av-photo" src={m.photo} alt={`${m.name}, ${m.role} of Paralox Media`} width="96" height="96" loading="lazy" decoding="async" />
+                  : m.lead ? <span className="av">{m.initials}</span> : <Glass glyph={m.g} />}
                 <span className="mono">{m.role}</span><h3>{m.name}</h3><p>{m.text}</p>
               </div>
             ))}

@@ -15,9 +15,11 @@ function renderBody(body) {
   const section = (s) => `<section>${s.h2 ? `<h2>${esc(s.h2)}</h2>` : ''}${(s.paras || []).map((p) => `<p>${esc(p)}</p>`).join('')}`
     + `${s.items?.length ? `<ul>${s.items.map(item).join('')}</ul>` : ''}${s.more ? `<p><a href="${esc(s.more.href)}">${esc(s.more.label)}</a></p>` : ''}</section>`;
   return '<div class="prerender">'
-    + '<style>.prerender{max-width:760px;margin:0 auto;padding:110px 20px 60px;color:#E9E3FA;line-height:1.6}.prerender a{color:#C9B5FF}html.is-loading .prerender{visibility:hidden}</style>'
+    + '<style>.prerender{max-width:760px;margin:0 auto;padding:110px 20px 60px;color:#E9E3FA;line-height:1.6}.prerender a{color:#C9B5FF}.prerender img{width:160px;height:auto;border-radius:50%}html.is-loading .prerender{visibility:hidden}</style>'
     + `<nav aria-label="Site">${SITE_NAV.map(([h, t]) => `<a href="${h}">${t}</a>`).join(' · ')}</nav>`
-    + `<main><h1>${esc(body.h1)}</h1>${body.intro ? `<p>${esc(body.intro)}</p>` : ''}${(body.sections || []).map(section).join('')}</main>`
+    + `<main><h1>${esc(body.h1)}</h1>${body.intro ? `<p>${esc(body.intro)}</p>` : ''}`
+    + `${body.image ? `<figure><img src="${esc(body.image.src)}" alt="${esc(body.image.alt)}" width="${body.image.width}" height="${body.image.height}"><figcaption>${esc(body.image.alt)}</figcaption></figure>` : ''}`
+    + `${(body.sections || []).map(section).join('')}</main>`
     + `<footer><p>${esc(NAP)}</p></footer></div>`;
 }
 

@@ -2,4 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /sealed/
 
+# OpenAI search crawlers (ChatGPT search results and user-requested browsing)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /sealed/
+
 Sitemap: https://paraloxmedia.com/sitemap.xml

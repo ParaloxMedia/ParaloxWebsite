@@ -30,6 +30,7 @@ export const ROUTE_BODY = {
   },
   '/about': {
     h1: 'About Paralox Media',
+    image: { src: '/team/abubakker-bakthathi.jpg', alt: 'Abubakker Bakthathi, Founder & CEO of Paralox Media', width: 800, height: 800 },
     intro: ROUTE_META['/about'].description,
     sections: [
       { h2: 'How we work', items: ABOUT.traits.map((t) => ({ name: t.t, text: t.p })) },

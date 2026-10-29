@@ -50,7 +50,16 @@ const ORGANIZATION = {
   },
   hasMap: 'https://www.google.com/maps?cid=7204718456650954838',
   foundingDate: '2025-05',
-  founder: { '@type': 'Person', name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO' },
+  // The founder's headshot lives at a fixed URL (public/team/) so search and AI answers can show it.
+  founder: {
+    '@type': 'Person', '@id': `${SITE}/about#founder`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
+    description: 'Founder and CEO of Paralox Media, a creative technology company in Colombo, Sri Lanka.',
+    worksFor: { '@id': ORG_ID }, url: `${SITE}/about`,
+    image: {
+      '@type': 'ImageObject', url: `${SITE}/team/abubakker-bakthathi.jpg`, width: 800, height: 800,
+      caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media',
+    },
+  },
   areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
   knowsAbout: CAPABILITIES.flatMap((c) => c.chips),
   sameAs: SOCIALS.map((s) => s.url),
@@ -121,7 +130,7 @@ export const ROUTE_META = {
     ogTitle: 'About · Paralox Media',
     description: 'A creative technology company founded in Colombo in 2025, bringing AI, engineering, media and growth together in one team.',
     ...card('about'), type: 'website',
-  }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }] }),
+  }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }], extra: [{ '@type': 'ProfilePage', '@id': `${SITE}/about#founder-profile`, mainEntity: { '@id': `${SITE}/about#founder` } }] }),
   '/pulse': page('/pulse', {
     title: 'Pulse: News, Events & Insights | Paralox Media',
     ogTitle: 'Pulse · Paralox Media',
