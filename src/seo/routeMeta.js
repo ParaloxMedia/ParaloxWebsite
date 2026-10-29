@@ -53,7 +53,7 @@ const ORGANIZATION = {
   },
   hasMap: 'https://www.google.com/maps?cid=7204718456650954838',
   foundingDate: '2025-05',
-  // The founder's headshot lives at a fixed URL (public/team/) so search and AI answers can show it.
+  // The founder's headshot lives at a fixed URL (public/team/abubakker/) so search and AI answers can show it.
   founder: {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
     description: 'AI leader, trainer and consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
@@ -80,7 +80,7 @@ const ORGANIZATION = {
     knowsAbout: ['AI training', 'AI for leadership', 'AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
     image: {
-      '@type': 'ImageObject', url: `${SITE}/team/abubakker-bakthathi.jpg`, width: 800, height: 800,
+      '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi.jpg`, width: 800, height: 800,
       caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media',
     },
   },

@@ -12,12 +12,12 @@ export const FOUNDER = {
   kicker: 'AI leader, trainer & consultant · Colombo, Sri Lanka',
   seoTitle: 'Abubakker Bakthathi | AI Trainer, Strategist & Consultant in Sri Lanka',
   lede: 'Abubakker Bakthathi is an AI leader, trainer and consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and an AI trainer with Cocoon and BuildrLabs, with 6+ years across software engineering, AI and growth. He helps business leaders turn AI from a buzzword into results: AI films and creatives, AI agents and automation, and a clear plan for where AI fits in their business.',
-  portrait: '/team/abubakker-bakthathi-portrait.jpg',
-  hero: '/team/abubakker-bakthathi-hero.jpg',
+  portrait: '/team/abubakker/abubakker-bakthathi-portrait.jpg',
+  hero: '/team/abubakker/abubakker-bakthathi-hero.jpg',
   // Hero: one line per row, then the two side labels.
   heroLines: ['Making AI', 'work for', 'real business'],
   heroSide: [['AI trainer', '& consultant'], ['Founder & CEO', 'Paralox Media']],
-  headshot: '/team/abubakker-bakthathi.jpg',
+  headshot: '/team/abubakker/abubakker-bakthathi.jpg',
   rate: { amount: 150, currency: 'USD', unit: 'hour' },
   highlights: [
     { stat: 'Founder', label: 'Paralox Media, an AI creative and technology agency, founded in Colombo in 2025', href: '/about' },
@@ -55,7 +55,7 @@ export const FOUNDER = {
   // A Short from his workshop, shown in the teaching section.
   workshop: {
     youtube: 'T0ha4SJjOhk',
-    poster: '/team/applied-ai-workshop.jpg',
+    poster: '/team/abubakker/applied-ai-workshop.jpg',
     title: 'AI for Creativity at the Applied AI Workshop',
     meta: 'BuildrLabs · Hatch Works, Colombo · delivered by Cocoon',
     text: 'Abubakker and Lishan Peiris showed real AI work made for brands and broke down the workflows behind it: brand strategy and design, image creation, character-led AI video, and how to choose the right model. Everyone got hands-on and made their own videos by the end of the session.',
