@@ -20,6 +20,7 @@ export const FOUNDER = {
   lede: 'Abubakker Bakthathi is the founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka. He is also a leading AI trainer and lecturer: he lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams with Cocoon and BuildrLabs, and has delivered 20+ AI sessions to more than 500 people.',
   portrait: '/team/abubakker/abubakker-bakthathi-portrait.jpg',
   hero: '/team/abubakker/abubakker-bakthathi-hero.jpg',
+  banner: '/team/abubakker/abubakker-bakthathi-banner.jpg',
   // Hero: one line per row, then the two side labels.
   heroLines: ['Training teams', 'on AI that works', 'in real life'],
   heroSide: [['Founder & CEO', 'Paralox Media'], ['AI trainer', '& lecturer']],

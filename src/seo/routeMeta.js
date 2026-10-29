@@ -16,6 +16,7 @@ import { FOUNDER } from '../data/founder';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
+const FOUNDER_ID = `${SITE}/abubakker-bakthathi#person`;
 const WEBSITE_ID = `${SITE}/#website`;
 const DEFAULT_IMAGE = '/apple-touch-icon.png';
 
@@ -79,10 +80,12 @@ const ORGANIZATION = {
     ],
     knowsAbout: ['AI training', 'AI for leadership', 'AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
-    image: {
-      '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi.jpg`, width: 800, height: 800,
-      caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media',
-    },
+    // All his own photos, so every page that mentions him points to his real face.
+    image: [
+      { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi.jpg`, width: 800, height: 800, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
+      { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-banner.jpg`, width: 1280, height: 720, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media, AI trainer and consultant' },
+      { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-portrait.jpg`, width: 975, height: 1300, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
+    ],
   },
   areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
   knowsAbout: ['Generative AI', 'AI video generation', 'AI video production', 'AI creative', 'Agentic AI', 'AI agents', 'AI engineering', 'Business automation', ...CAPABILITIES.flatMap((c) => c.chips)],
@@ -160,7 +163,7 @@ export const ROUTE_META = {
     title: FOUNDER.seoTitle,
     ogTitle: `${FOUNDER.name} · Founder & CEO, Paralox Media · AI trainer & lecturer`,
     description: FOUNDER.lede,
-    image: FOUNDER.portrait, width: 975, height: 1300, type: 'profile',
+    image: FOUNDER.banner, width: 1280, height: 720, type: 'profile',
   }, {
     type: 'ProfilePage',
     trail: [{ name: FOUNDER.name, path: FOUNDER.path }],
@@ -343,6 +346,8 @@ export const ROUTE_META = {
         headline: p.title.slice(0, 110), description: p.excerpt, image: [abs(image)],
         datePublished: p.iso, dateModified: p.iso,
         author: { '@id': ORG_ID }, publisher: { '@id': ORG_ID },
+        // Posts about the founder name him, so his profile (and photo) is tied to them.
+        ...(/Abubakker/.test(`${p.title} ${p.excerpt} ${(p.body || []).join(' ')}`) && { about: { '@id': FOUNDER_ID }, mentions: { '@id': FOUNDER_ID } }),
         mainEntityOfPage: { '@id': `${SITE}${path}#webpage` }, inLanguage: 'en',
       }],
     })];
