@@ -149,14 +149,11 @@ export default function Founder() {
       </section>
 
       <section className="fd-story sec lt" aria-labelledby="fd-story-h">
-        <div className="wrap fd-story-in">
+        <div className="wrap">
           <div>
             <h2 className="d-m" id="fd-story-h">From engineer to founder<span className="dot">.</span></h2>
             {p.story.map((t, i) => <p key={i} className={i === 0 ? 'lead' : undefined}>{t}</p>)}
           </div>
-          <ol className="fd-timeline">
-            {p.timeline.map((t) => <li key={t.when + t.what}><span className="mono">{t.when}</span><p>{t.what}</p></li>)}
-          </ol>
         </div>
       </section>
 

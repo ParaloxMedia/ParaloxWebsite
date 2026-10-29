@@ -7,18 +7,11 @@
 .fd-portrait img{display:block;width:100%;height:auto;transition:scale 1.2s var(--ease-expo)}
 .fd-portrait:hover img{scale:1.04}
 
-/* Story and timeline */
+/* Story */
 .fd-story{background:#fff;color:var(--ink-text)}
-.fd-story-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:start}
 .fd-story h2{margin:0 0 22px}
 .fd-story p{margin:0 0 1.1em;font-size:1.08rem;line-height:1.75;color:rgba(25,23,32,.8);max-width:44rem}
 .fd-story p.lead{font-size:clamp(1.2rem,1.7vw,1.4rem);line-height:1.55;color:var(--ink-text);font-weight:500}
-.fd-timeline{position:sticky;top:110px;list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid #E6DEFA;display:grid;gap:18px}
-.fd-timeline li{position:relative}
-.fd-timeline li::before{content:"";position:absolute;left:-29px;top:4px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--violet)}
-.fd-timeline li:last-child::before{background:var(--violet)}
-.fd-timeline .mono{color:var(--violet);font-size:.7rem}
-.fd-timeline p{margin:4px 0 0;font-size:.98rem;line-height:1.5;color:var(--ink-soft)}
 .fd-exp{grid-template-columns:repeat(3,minmax(0,1fr))}
 
 /* Quotes */
@@ -40,10 +33,8 @@
 .fd-form .cr-pills button{font-size:.92rem}
 
 @media (max-width:1000px){
-  .fd-hero-in,.fd-story-in{grid-template-columns:minmax(0,1fr)}
-  .fd-portrait{justify-self:start;width:min(100%,340px)}
-  .fd-timeline{position:static}
-  .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
+  .fd-hero-in,  .fd-portrait{justify-self:start;width:min(100%,340px)}
+    .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.fd-portrait .px{animation:none}}
 .cr-submit-row small a{color:var(--violet);font-weight:600}

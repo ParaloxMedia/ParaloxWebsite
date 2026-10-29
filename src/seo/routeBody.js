@@ -92,7 +92,6 @@ export const ROUTE_BODY = {
     sections: [
       { h2: 'Highlights', items: FOUNDER.highlights.map((h) => ({ name: h.stat, href: h.href, text: h.label })) },
       { h2: 'From engineer to founder', paras: FOUNDER.story },
-      { h2: 'Timeline', items: FOUNDER.timeline.map((t) => ({ name: t.when, text: t.what })) },
       { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
       { h2: 'Skills', items: FOUNDER.skills.map((g) => ({ name: g.group, text: g.items.join(', ') })) },
       { h2: 'In his words', items: FOUNDER.quotes.map((q) => ({ name: q.source, href: q.href, text: `“${q.text}”` })) },
