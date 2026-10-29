@@ -9,32 +9,63 @@ export const FOUNDER = {
   email: 'abubakker@paraloxmedia.com',
   linkedin: 'https://www.linkedin.com/in/bakthathi/',
   connect: 'https://abubakker98.github.io/Connect/',
-  kicker: 'AI strategist & AI consultant · Colombo, Sri Lanka',
-  seoTitle: 'Abubakker Bakthathi | AI Strategist & AI Consultant in Sri Lanka',
-  lede: 'Abubakker Bakthathi is an AI strategist and AI consultant in Sri Lanka, and the founder and CEO of Paralox Media, with 6+ years across software engineering, AI and growth. He helps business leaders turn AI from a buzzword into results: AI films and creatives, AI agents and automation, and a clear plan for where AI fits in their business.',
+  kicker: 'AI leader, trainer & consultant · Colombo, Sri Lanka',
+  seoTitle: 'Abubakker Bakthathi | AI Trainer, Strategist & Consultant in Sri Lanka',
+  lede: 'Abubakker Bakthathi is an AI leader, trainer and consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and an AI trainer with Cocoon and BuildrLabs, with 6+ years across software engineering, AI and growth. He helps business leaders turn AI from a buzzword into results: AI films and creatives, AI agents and automation, and a clear plan for where AI fits in their business.',
   portrait: '/team/abubakker-bakthathi-portrait.jpg',
+  hero: '/team/abubakker-bakthathi-hero.jpg',
+  // Hero: one line per row, then the two side labels.
+  heroLines: ['Making AI', 'work for', 'real business'],
+  heroSide: [['AI trainer', '& consultant'], ['Founder & CEO', 'Paralox Media']],
   headshot: '/team/abubakker-bakthathi.jpg',
   rate: { amount: 150, currency: 'USD', unit: 'hour' },
   highlights: [
     { stat: 'Founder', label: 'Paralox Media, an AI creative and technology agency, founded in Colombo in 2025', href: '/about' },
     { stat: 'Cover', label: 'Happinez at The Sunday Morning, with an in-depth interview, July 2026', href: '/pulse/news-sunday-morning-happinez-2026' },
     { stat: '1 day', label: 'To lead Renault Sri Lanka’s AI film from storyboard to 4K master', href: '/work/renault-ai-tvc' },
-    { stat: '20+', label: 'AI sessions delivered to 500+ people, including the Rotaract Club of Colombo Mid Town workshop', href: '/pulse/past-rotaract-ai-workshop-2026' },
+    { stat: '20+', label: 'AI sessions delivered to 500+ people, for corporate teams, colleges and communities', href: '#teaching' },
   ],
   story: [
     'Abubakker started freelancing with a close friend to pay for university, building websites and digital work for clients while he studied. That habit of solving real problems for real businesses never left.',
     'He went on to spend more than three years as a software engineer for Third Space Global, a UK company, working remotely from Sri Lanka, alongside part-time web development for La Maison in the UAE. In 2025 his job ended in an AI-driven transformation. Rather than fear the technology, he set out to understand it. In his words: “AI wasn’t the problem; the world was evolving and businesses needed to adapt.”',
     'In 2025 he founded Paralox Media in Colombo to help businesses make that shift: one team for AI, engineering, media and growth. Within its first year the company became a production partner to WPP Media and MullenLowe Sri Lanka, working on campaigns for brands such as Nissan, Renault, Keells and Commercial Bank.',
-    'Today he leads Paralox Media’s strategy and every client partnership, speaks about AI and careers at events in Colombo, and advises founders and leadership teams on how to use AI well. His goal is for Paralox Media to become one of Sri Lanka’s leading AI innovation companies and to prove that a Sri Lankan company can compete on the global stage.',
+    'Today he leads Paralox Media’s strategy and every client partnership, lectures on AI for leadership at Inspire College, trains corporate teams as an AI trainer with Cocoon and BuildrLabs, and advises founders and leadership teams on how to use AI well. His goal is for Paralox Media to become one of Sri Lanka’s leading AI innovation companies and to prove that a Sri Lankan company can compete on the global stage.',
   ],
   expertise: [
-    { glyph: 'ai', title: 'AI strategy', text: 'Where AI fits in your business, what to do first, and what to leave alone, as a clear, costed plan.' },
-    { glyph: 'play', title: 'AI video and creative', text: 'How to use AI films, visuals and content in your marketing without losing quality or your brand.' },
-    { glyph: 'agent', title: 'AI agents and automation', text: 'Which tasks an AI agent can take on, on WhatsApp, web and email, and how to roll it out safely.' },
-    { glyph: 'growth', title: 'AI for marketing and growth', text: 'Using AI to plan, produce and measure campaigns against the numbers your business runs on.' },
-    { glyph: 'code', title: 'AI products and SaaS', text: 'Shaping an AI product idea, choosing the build approach and planning the first release.' },
-    { glyph: 'user', title: 'AI for your team', text: 'Helping your people work with AI, from prompt skills to new roles, so adoption sticks.' },
+    { glyph: 'ai', title: 'AI strategy', text: 'Where AI fits in your business, what to do first, and what to leave alone, as a clear, costed plan.', points: ['AI readiness review', 'Priorities and roadmap', 'Build, buy or skip', 'Costs and returns'] },
+    { glyph: 'play', title: 'AI video and creative', text: 'How to use AI films, visuals and content in your marketing without losing quality or your brand.', points: ['AI films and ads', 'Realism and consistency', 'AI voice and music', 'Brand-safe workflows'] },
+    { glyph: 'agent', title: 'AI agents and automation', text: 'Which tasks an AI agent can take on, on WhatsApp, web and email, and how to roll it out safely.', points: ['WhatsApp and web agents', 'Workflow automation', 'Data and access rules', 'Human handover'] },
+    { glyph: 'growth', title: 'AI for marketing and growth', text: 'Using AI to plan, produce and measure campaigns against the numbers your business runs on.', points: ['Campaign planning', 'Content at scale', 'Performance marketing', 'Measurement'] },
+    { glyph: 'code', title: 'AI products and SaaS', text: 'Shaping an AI product idea, choosing the build approach and planning the first release.', points: ['Product shaping', 'LLM and RAG design', 'MVP scope', 'Launch plan'] },
+    { glyph: 'user', title: 'AI training for your team', text: 'Hands-on workshops where your people learn prompt engineering, AI video and automation, and leave with real work done.', points: ['Corporate workshops', 'Leadership sessions', 'Prompt and GenAI skills', 'Adoption that sticks'] },
   ],
+  // Why work with him: three columns.
+  why: [
+    { glyph: 'code', title: 'He builds what he advises', text: 'Paralox ships AI films, agents and platforms for brands every week, so every recommendation has been tested in production, not on slides.' },
+    { glyph: 'calendar', title: 'Speed without shortcuts', text: 'Renault Sri Lanka’s AI film went from storyboard to 4K master in one day. He knows where AI saves time, and where it costs quality.' },
+    { glyph: 'user', title: 'He teaches it', text: 'He lectures on AI for leadership at Inspire College and trains corporate teams with Cocoon and BuildrLabs, so he knows how to make AI click for people, not just for engineers.' },
+    { glyph: 'check', title: 'Straight answers', text: 'He will tell you where AI will not help your business, too. No buzzwords, no lock-in, just a plan your team can act on.' },
+  ],
+  // Where he trains and lectures (from his LinkedIn and the trainer pages).
+  teaching: [
+    { org: 'Inspire College', role: 'Lecturer, AI for Leadership & Business Productivity', when: 'Oct 2026 – present', text: 'Lecturing on the AI for Leadership and Business Productivity programme in the Department of Continuing Professional Development, helping professionals and business leaders use AI to improve productivity, support decisions and run better operations.' },
+    { org: 'Cocoon', role: 'AI Trainer & Consultant', when: 'Jan 2026 – present', text: 'Corporate training and consulting on generative AI, automation and business integration. Designed and delivered hands-on workshops for corporate teams including WIA Systems Inc., with participants producing real output by the end of each session.', href: 'https://mycocoon.life/trainers' },
+    { org: 'BuildrLabs', role: 'Applied AI trainer', when: 'Hatch Works, Colombo', text: 'In-person applied AI training for working professionals: AI solutions, consulting and training for brands.', href: 'https://buildrlabs.ai/trainers/' },
+  ],
+  // The work he has led, shown as a sticky list beside a stack of stills.
+  work: ['/work/renault-ai-tvc', '/work/nissan-gravite', '/work/webxpay-govpay', '/work/exxonmobil-png-embroidery-vendor-portal', '/work/keells-masterchef-sri-lanka'],
+  // Recognition and talks, as hairline rows.
+  recognition: [
+    { title: 'Lecturer, AI for Leadership & Business Productivity', meta: '2026 · Inspire College', href: '#teaching' },
+    { title: 'AI Trainer & Consultant', meta: '2026 · Cocoon', href: 'https://mycocoon.life/trainers' },
+    { title: 'Applied AI trainer', meta: '2026 · BuildrLabs', href: 'https://buildrlabs.ai/trainers/' },
+    { title: 'Cover feature, Happinez', meta: '2026 · The Sunday Morning', href: '/pulse/news-sunday-morning-happinez-2026' },
+    { title: 'Meet the founder interview', meta: '2026 · BuiltList, Grok Bot Meetup Colombo', href: '/pulse/past-grok-bot-meetup-colombo-2026' },
+    { title: 'Featured speaker, AI & Automation workshop', meta: '2026 · Rotaract Club of Colombo Mid Town', href: '/pulse/past-rotaract-ai-workshop-2026' },
+    { title: 'Production partner', meta: '2026 · MullenLowe Sri Lanka', href: '/pulse/news-mullenlowe-partnership-2026' },
+    { title: 'Production partner', meta: '2025 · WPP Media', href: '/pulse/news-wpp-media-partnership-2025' },
+  ],
+  trust: ['Trusted by national brands', 'and global agency networks,', 'built for ambitious leaders.'],
   // The Sunday Morning cover interview, featured near the top of the page.
   feature: {
     outlet: 'Happinez · The Sunday Morning',
@@ -83,6 +114,7 @@ export const FOUNDER = {
     { name: 'Speaker: AI & Automation Career Impact Workshop', href: '/pulse/past-rotaract-ai-workshop-2026' },
   ],
   faq: [
+    { q: 'Who is an AI trainer in Sri Lanka?', a: 'Abubakker Bakthathi is an AI trainer in Colombo, Sri Lanka. He lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams as an AI Trainer & Consultant with Cocoon and as an applied AI trainer with BuildrLabs, and has delivered 20+ AI sessions to more than 500 people.' },
     { q: 'Who is Abubakker Bakthathi?', a: 'Abubakker Bakthathi is the founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka, founded in 2025. A former software and AI engineer, he is an AI strategist and AI consultant who advises businesses on AI strategy, AI video, AI agents and automation.' },
     { q: 'Who is an AI consultant in Sri Lanka?', a: 'Abubakker Bakthathi is an AI consultant and AI strategist based in Colombo, Sri Lanka. He offers one-to-one AI consultations for business owners and leadership teams, drawing on the AI films, agents and automation his company Paralox Media builds for brands.' },
     { q: 'How much does an AI consultation with Abubakker cost?', a: 'A consultation is USD 150 per hour. You can request a one- or two-hour session on this page; the time and payment details are confirmed by email.' },

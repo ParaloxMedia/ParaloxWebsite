@@ -56,9 +56,9 @@ const ORGANIZATION = {
   // The founder's headshot lives at a fixed URL (public/team/) so search and AI answers can show it.
   founder: {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
-    description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka; AI strategist and AI consultant.',
+    description: 'AI leader, trainer and consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
-    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/'],
+    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/'],
     // Independent press about him: a strong signal for search and AI answers.
     subjectOf: {
       '@type': 'NewsArticle',
@@ -68,8 +68,16 @@ const ORGANIZATION = {
       author: { '@type': 'Person', name: 'Nuskiya Nasar Aakhir' },
       publisher: { '@type': 'NewsMediaOrganization', name: 'The Morning', url: 'https://www.themorning.lk' },
     },
-    hasOccupation: { '@type': 'Occupation', name: 'AI consultant', occupationLocation: { '@type': 'City', name: 'Colombo' } },
-    knowsAbout: ['AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
+    hasOccupation: [
+      { '@type': 'Occupation', name: 'AI consultant', occupationLocation: { '@type': 'City', name: 'Colombo' } },
+      { '@type': 'Occupation', name: 'AI trainer', occupationLocation: { '@type': 'City', name: 'Colombo' } },
+    ],
+    affiliation: [
+      { '@type': 'EducationalOrganization', name: 'Inspire College' },
+      { '@type': 'Organization', name: 'Cocoon', url: 'https://mycocoon.life' },
+      { '@type': 'Organization', name: 'BuildrLabs', url: 'https://buildrlabs.ai' },
+    ],
+    knowsAbout: ['AI training', 'AI for leadership', 'AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
     image: {
       '@type': 'ImageObject', url: `${SITE}/team/abubakker-bakthathi.jpg`, width: 800, height: 800,

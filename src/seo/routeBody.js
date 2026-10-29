@@ -86,7 +86,7 @@ export const ROUTE_BODY = {
     ],
   }])),
   [FOUNDER.path]: {
-    h1: `${FOUNDER.name}: AI strategist and AI consultant in Sri Lanka`,
+    h1: `${FOUNDER.name}: AI leader, trainer and consultant in Sri Lanka`,
     intro: FOUNDER.lede,
     image: { src: FOUNDER.headshot, alt: `${FOUNDER.name}, ${FOUNDER.role}`, width: 800, height: 800 },
     sections: [
@@ -94,6 +94,7 @@ export const ROUTE_BODY = {
       { h2: `As featured in ${FOUNDER.feature.outlet}`, paras: [`“${FOUNDER.feature.headline}”, by ${FOUNDER.feature.author}, ${FOUNDER.feature.date}.`, ...FOUNDER.feature.quotes.map((q) => `“${q}”`)], more: { href: FOUNDER.feature.url, label: 'Read the full interview at The Morning' } },
       { h2: 'From engineer to founder', paras: FOUNDER.story },
       { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
+      { h2: 'Where he teaches AI', items: FOUNDER.teaching.map((t) => ({ name: `${t.role}, ${t.org}`, href: t.href, text: `${t.when}. ${t.text}` })) },
       { h2: 'Skills', items: FOUNDER.skills.map((g) => ({ name: g.group, text: g.items.join(', ') })) },
       { h2: 'In his words', items: FOUNDER.quotes.map((q) => ({ name: q.source, href: q.href, text: `“${q.text}”` })) },
       { h2: `${FOUNDER.consult.title}: USD ${FOUNDER.rate.amount} per hour`, paras: [FOUNDER.consult.text], items: FOUNDER.consult.includes.map((x) => ({ name: x })) },

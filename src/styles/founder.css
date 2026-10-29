@@ -1,11 +1,4 @@
 /* ---------- /abubakker-bakthathi ---------- */
-.fd-hero-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,5vw,72px);align-items:center}
-.fd-hero h1{max-width:12ch;font-size:clamp(2.6rem,6vw,5.6rem)}
-.fd-role{margin:12px 0 0;font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac)}
-.fd-portrait{margin:0;justify-self:end;width:min(100%,420px)}
-.fd-portrait .px{border-radius:28px;overflow:hidden;rotate:2deg;box-shadow:0 50px 90px -30px rgba(0,0,0,.7),0 0 0 1px rgba(233,227,250,.16);animation:wkBob 8s ease-in-out infinite alternate}
-.fd-portrait img{display:block;width:100%;height:auto;transition:scale 1.2s var(--ease-expo)}
-.fd-portrait:hover img{scale:1.04}
 
 /* Story */
 .fd-story{background:#fff;color:var(--ink-text)}
@@ -33,10 +26,8 @@
 .fd-form .cr-pills button{font-size:.92rem}
 
 @media (max-width:1000px){
-  .fd-hero-in,  .fd-portrait{justify-self:start;width:min(100%,340px)}
-    .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
+  .fd-hero-in,      .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
 }
-@media (prefers-reduced-motion:reduce){.fd-portrait .px{animation:none}}
 .cr-submit-row small a{color:var(--violet);font-weight:600}
 
 /* Skills */
@@ -66,3 +57,168 @@
 .fd-feature-quotes blockquote{margin:0;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.5;font-weight:500;color:var(--lav)}
 .fd-feature-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px;margin-top:28px}
 @media (max-width:900px){.fd-feature-in{grid-template-columns:minmax(0,1fr)}.fd-cover{width:min(100%,260px)}}
+
+/* ================= Portfolio layout (fx-) ================= */
+.fx{background:#07040F;color:#fff}
+.fx-big{margin:0;font-weight:500;font-size:clamp(2.4rem,5.6vw,5.4rem);letter-spacing:-.04em;line-height:1.02;text-wrap:balance}
+.fx-big.center{text-align:center;margin-inline:auto}
+.fx-sub{margin:18px 0 0;text-align:center;color:var(--lav);font-weight:500}
+
+/* 1. Hero: a tall pinned stage; the card shrinks and the collage gathers */
+.fx-hero{position:relative;height:200svh}
+.fx-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;background:#07040F}
+.fx-card{position:absolute;inset:0;overflow:hidden;transform-origin:50% 50%;will-change:transform;z-index:2;box-shadow:0 60px 120px -40px rgba(0,0,0,.8)}
+.fx-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 18%}
+.fx-shade{position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(30,15,69,.94) 0%,rgba(62,32,135,.72) 34%,rgba(124,58,237,.18) 62%,transparent 80%),
+  linear-gradient(0deg,rgba(14,8,36,.85) 0%,transparent 40%),
+  radial-gradient(60% 50% at 10% 85%,rgba(182,156,255,.35),transparent 70%)}
+.fx-copy{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:80px}
+.fx-kicker{margin:0 0 22px;color:var(--lilac);font-size:.74rem}
+.fx-h1{margin:0;font-weight:500;font-size:clamp(3.2rem,8.4vw,8.4rem);line-height:1;letter-spacing:-.045em}
+.fx-h1 .ln{display:block}
+.fx-side{position:absolute;right:var(--gut);top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(80px,20vh,220px);text-align:right;font-weight:600;font-size:1.05rem;line-height:1.3}
+.fx-side p{margin:0}
+.fx-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:40px}
+.fx-pill{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:#fff;color:var(--ink-text);font-weight:600;font-size:.98rem;transition:background .3s,translate .35s var(--ease)}
+.fx-pill i{width:8px;height:8px;border-radius:50%;background:var(--violet);box-shadow:0 0 0 0 rgba(124,58,237,.55);animation:csPulse 2s ease-out infinite}
+.fx-pill:hover{background:var(--lav);translate:0 -2px}
+/* Collage tiles behind the card, revealed as it shrinks */
+.fx-collage{position:absolute;inset:0;z-index:1}
+.fx-tile{position:absolute;overflow:hidden;border-radius:18px;opacity:0;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);background:#120A26}
+.fx-tile img{width:100%;height:100%;object-fit:cover}
+.fx-tile.t0{left:3%;top:4%;width:26%;height:28%}
+.fx-tile.t1{left:3%;top:36%;width:15%;height:42%}
+.fx-tile.t2{left:3%;bottom:4%;width:26%;height:16%}
+.fx-tile.t3{right:3%;top:4%;width:26%;height:28%}
+.fx-tile.t4{right:3%;top:36%;width:22%;height:30%}
+.fx-tile.t5{right:3%;bottom:4%;width:26%;height:24%}
+
+/* 2. Intro */
+.fx-intro{background:#07040F}
+.fx-lede{margin:0 0 clamp(36px,5vw,64px);max-width:62rem;font-size:clamp(1.3rem,2.3vw,2.1rem);line-height:1.35;letter-spacing:-.02em;font-weight:500;color:var(--lav)}
+.fx-proof a{background:rgba(255,255,255,.04)!important;border-color:rgba(233,227,250,.12)!important;color:#fff!important}
+.fx-proof a:hover{border-color:rgba(182,156,255,.5)!important}
+.fx-proof b{color:var(--lilac)!important}
+.fx-proof span{color:var(--silver)!important}
+
+/* 3. Work: a gradient arch, sticky list beside stacked stills */
+.fx-work{position:relative;padding:clamp(120px,14vw,220px) 0 clamp(80px,10vw,140px);isolation:isolate}
+.fx-arch{position:absolute;z-index:-1;inset:0;border-radius:50% 50% 0 0 / clamp(80px,14vw,240px) clamp(80px,14vw,240px) 0 0;
+  background:linear-gradient(100deg,#3E2087 0%,#7C3AED 55%,#B69CFF 100%)}
+.fx-work .fx-big{text-align:center}
+.fx-work-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,4vw,64px);margin-top:clamp(48px,6vw,90px)}
+.fx-work-list{position:sticky;top:40vh;align-self:start;list-style:none;margin:0;padding:0 0 0 22px;border-left:1px solid rgba(255,255,255,.35);display:grid;gap:26px}
+.fx-work-list li{position:relative}
+.fx-work-list li::before{content:"";position:absolute;left:-28px;top:7px;width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;transition:background .3s,transform .3s}
+.fx-work-list li.on::before{background:#fff;transform:scale(1.15)}
+.fx-work-list a{display:flex;flex-direction:column;gap:4px;color:rgba(255,255,255,.7);transition:color .3s}
+.fx-work-list li.on a,.fx-work-list a:hover{color:#fff}
+.fx-work-list b{font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.fx-work-list span{font-size:.88rem;opacity:.85}
+.fx-work-stack{display:grid;gap:clamp(18px,3vw,36px)}
+.fx-shot{position:relative;display:block;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:#120A26;box-shadow:0 40px 80px -40px rgba(14,8,36,.8)}
+.fx-shot img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-expo)}
+.fx-shot:hover img{transform:scale(1.04)}
+.fx-shot-cap{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(14,8,36,.6);border:1px solid rgba(233,227,250,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.fx-shot-cap .arr{font-style:normal;transition:translate .35s var(--ease)}
+.fx-shot:hover .fx-shot-cap .arr{translate:4px 0}
+
+/* 4. Why */
+.fx-why{background:#07040F;position:relative}
+.fx-why::before{content:"";position:absolute;inset:0 0 auto;height:180px;background:linear-gradient(180deg,#B69CFF33,transparent);pointer-events:none}
+.fx-why-grid{list-style:none;margin:clamp(48px,6vw,90px) 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.fx-why-grid .ic{display:block;width:52px;margin-bottom:24px}
+.fx-why-grid h3{margin:0 0 14px;font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:600;letter-spacing:-.02em}
+.fx-why-grid p{margin:0;color:rgba(233,227,250,.7);line-height:1.6}
+
+/* 6. Advisory cards: pinned, sliding sideways */
+.fx-rail{position:relative;height:280svh;background:#07040F}
+.fx-rail-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;gap:clamp(28px,4vw,48px)}
+.fx-rail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;width:100%}
+.fx-rail-head p{margin:0;max-width:24rem;color:var(--lav)}
+.fx-track{list-style:none;margin:0;padding:0 0 0 max(var(--gut),calc((100vw - var(--wrap)) / 2 + var(--gut)));display:flex;gap:22px;will-change:transform}
+.fx-svc{flex:0 0 clamp(280px,27vw,390px)}
+.fx-svc a{position:relative;display:flex;flex-direction:column;height:100%;min-height:clamp(380px,48vh,460px);padding:28px;border-radius:24px;overflow:hidden;color:#fff;background:#141019;border:1px solid rgba(233,227,250,.1);transition:border-color .3s,translate .5s var(--ease-expo)}
+.fx-svc a::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;background:radial-gradient(380px circle at var(--gx,50%) var(--gy,30%),rgba(182,156,255,.22),transparent 45%);pointer-events:none}
+.fx-svc a:hover{border-color:rgba(182,156,255,.45);translate:0 -6px}
+.fx-svc a:hover::before{opacity:1}
+.fx-svc.hot a{background:linear-gradient(120deg,#3E2087,#7C3AED 60%,#9F6BFF);border-color:transparent}
+.fx-svc .mono{color:var(--lilac);font-size:.72rem}
+.fx-svc.hot .mono{color:#fff}
+.fx-svc h3{margin:auto 0 12px;padding-top:60px;font-size:clamp(1.5rem,2.2vw,2rem);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.fx-svc p{margin:0 0 18px;color:rgba(233,227,250,.75);font-size:.95rem;line-height:1.55}
+.fx-svc ul{margin:0;padding-left:18px;display:grid;gap:6px;font-weight:500}
+.fx-svc-go{position:absolute;right:22px;top:22px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--ink-text);font-size:1.05rem;transition:transform .35s var(--ease)}
+.fx-svc a:hover .fx-svc-go{transform:rotate(45deg)}
+
+/* 9. Recognition rows */
+.fx-rec{background:#07040F}
+.fx-rec-list{list-style:none;margin:clamp(40px,5vw,72px) 0 0;padding:0}
+.fx-rec-list a{position:relative;display:flex;flex-direction:column;gap:8px;padding:26px 48px 26px 0;border-bottom:1px solid rgba(233,227,250,.16);color:#fff;transition:padding .4s var(--ease-expo)}
+.fx-rec-list li:first-child a{border-top:1px solid rgba(233,227,250,.16)}
+.fx-rec-list b{font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.015em}
+.fx-rec-list .mono{color:var(--silver);font-size:.74rem}
+.fx-rec-list .arr{position:absolute;right:8px;top:50%;translate:0 -50%;font-style:normal;color:var(--lilac);transition:translate .35s var(--ease)}
+.fx-rec-list a:hover{padding-left:14px}
+.fx-rec-list a:hover .arr{translate:6px -50%}
+
+/* 10. Trust: statement with drifting logos */
+.fx-trust{position:relative;min-height:90vh;display:grid;place-items:center;padding:120px var(--gut);overflow:hidden;background:#07040F}
+.fx-trust h2{position:relative;z-index:2;font-size:clamp(2rem,4.4vw,4.2rem)}
+.fx-logos{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+.fx-logos li{position:absolute;width:clamp(70px,8vw,120px);aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#fff;opacity:.38;filter:blur(1.5px) grayscale(.2);animation:fxFloat 9s ease-in-out infinite alternate;transition:opacity .4s,filter .4s}
+.fx-logos li:hover{opacity:.95;filter:none}
+.fx-logos img{width:100%;height:100%;object-fit:contain;padding:10px}
+@keyframes fxFloat{from{translate:0 -10px}to{translate:0 12px}}
+.fx-logos .l0{left:8%;top:12%}.fx-logos .l1{left:44%;top:6%;animation-delay:-2s}.fx-logos .l2{right:10%;top:14%;animation-delay:-4s}
+.fx-logos .l3{left:4%;top:44%;animation-delay:-1s}.fx-logos .l4{right:4%;top:46%;animation-delay:-3s}
+.fx-logos .l5{left:14%;bottom:12%;animation-delay:-5s}.fx-logos .l6{left:40%;bottom:6%;animation-delay:-6s}.fx-logos .l7{right:16%;bottom:10%;animation-delay:-2.5s}
+.fx-logos .l8{left:26%;top:26%;animation-delay:-7s;opacity:.25}.fx-logos .l9{right:26%;bottom:26%;animation-delay:-1.5s;opacity:.25}
+
+/* The light sections on this dark page */
+.fx .fd-story,.fx .fd-skills{background:#fff}
+.fx .fd-skills{background:var(--pearl)}
+
+/* Narrow screens: plain stacked layouts, no pinning */
+@media (max-width:899px){
+  .fx-hero{height:auto}
+  .fx-stage{position:relative;height:100svh}
+  .fx-collage{display:none}
+  .fx-photo{object-position:58% 12%}
+  .fx-shade{background:linear-gradient(0deg,rgba(30,15,69,.96) 0%,rgba(62,32,135,.7) 45%,rgba(14,8,36,.15) 75%)}
+  .fx-copy{justify-content:flex-end;padding-bottom:48px}
+  .fx-side{position:static;flex-direction:row;justify-content:flex-start;gap:28px;text-align:left;margin-top:24px;font-size:.92rem}
+  .fx-work-in{grid-template-columns:minmax(0,1fr)}
+  .fx-work-list{display:none}
+  .fx-why-grid{grid-template-columns:minmax(0,1fr)}
+  .fx-rail{height:auto;padding-block:clamp(64px,10vw,100px)}
+  .fx-rail-stage{position:static;height:auto}
+  .fx-rail-head{flex-direction:column;align-items:flex-start}
+  .fx-track{overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:var(--gut);scrollbar-width:none}
+  .fx-track::-webkit-scrollbar{display:none}
+  .fx-svc{flex-basis:82%;scroll-snap-align:start}
+  .fx-logos li{width:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx-hero{height:auto}.fx-stage{position:relative}
+  .fx-collage{display:none}
+  .fx-rail{height:auto;padding-block:80px}.fx-rail-stage{position:static;height:auto}
+  .fx-track{overflow-x:auto;padding-inline:var(--gut)}
+  .fx-logos li,.fx-pill i{animation:none}
+}
+
+/* Teaching */
+.fx-teach{background:#07040F}
+.fx-teach-sub{margin:16px 0 0;color:var(--lav);max-width:32rem}
+.fx-teach-grid{list-style:none;margin:clamp(40px,5vw,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.fx-teach-card{display:flex;flex-direction:column;gap:10px;height:100%;padding:28px;border-radius:24px;background:#141019;border:1px solid rgba(233,227,250,.1);color:#fff;transition:border-color .3s,translate .5s var(--ease-expo)}
+a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
+.fx-teach-grid li:first-child .fx-teach-card{background:linear-gradient(120deg,#3E2087,#7C3AED 60%,#9F6BFF);border-color:transparent}
+.fx-teach-card .mono{color:var(--lilac);font-size:.7rem}
+.fx-teach-grid li:first-child .mono{color:#fff}
+.fx-teach-card b{font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-top:24px}
+.fx-teach-role{font-weight:600;color:var(--lav)}
+.fx-teach-card p{margin:4px 0 0;color:rgba(233,227,250,.72);line-height:1.6;font-size:.95rem}
+.fx-teach-card .link{margin-top:auto;padding-top:14px;color:#fff}
+@media (max-width:899px){.fx-teach-grid,.fx-why-grid{grid-template-columns:minmax(0,1fr)}}
