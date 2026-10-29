@@ -5,7 +5,7 @@ import { useRoute, navigate, pathFor, keyFromLocation, prefersReducedMotion, fin
 import { GlassDefs } from './components/Glass';
 import Loader from './components/Loader';
 import CookieConsent from './components/CookieConsent';
-import { track } from './lib/oaiPixel';
+import { trackPageView } from './lib/oaiPixel';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import FinalCta from './components/FinalCta';
@@ -223,7 +223,8 @@ export default function App() {
   }, [hash, tick]);
 
   // Measurement pixel page views (does nothing unless the pixel is on and the visitor agreed).
-  useEffect(() => { track('page_viewed'); }, [hash]);
+  // Runs after the title effect, so the page name sent is the new page's.
+  useEffect(() => { trackPageView(); }, [hash]);
 
 
   useGlobalEffects();

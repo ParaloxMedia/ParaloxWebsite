@@ -42,8 +42,18 @@ export function setConsent(yes) {
   if (pixelEnabled() && window.oaiq) window.oaiq('consent', yes);
 }
 
-/** Sends a conversion event (standard event names from OpenAI's docs). */
+/** Sends a conversion event (standard event names and shapes from OpenAI's docs). */
 export function track(event, data = {}) {
   if (!pixelEnabled() || !window.oaiq || storedConsent() !== 'yes') return;
   window.oaiq('measure', event, { type: 'customer_action', ...data });
+}
+
+/** A page view, in the 'contents' shape page_viewed requires. */
+export function trackPageView() {
+  if (!pixelEnabled() || !window.oaiq || storedConsent() !== 'yes') return;
+  const path = window.location.pathname;
+  window.oaiq('measure', 'page_viewed', {
+    type: 'contents',
+    contents: [{ id: path, name: document.title, content_type: 'page' }],
+  });
 }
