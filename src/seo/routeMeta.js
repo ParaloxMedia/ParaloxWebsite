@@ -73,8 +73,12 @@ const ORGANIZATION = {
   name: 'Paralox Media',
   legalName: CONTACT.company,
   url: `${SITE}/`,
-  logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
-  image: `${SITE}/og/home.jpg`,
+  // Large, clear brand images so search and AI answers can show the Paralox logo.
+  logo: { '@type': 'ImageObject', url: `${SITE}/brand/paralox-media-icon-512.png`, width: 512, height: 512, caption: 'Paralox Media logo' },
+  image: [
+    { '@type': 'ImageObject', url: `${SITE}/brand/paralox-media-logo.png`, width: 1200, height: 630, caption: 'Paralox Media logo' },
+    { '@type': 'ImageObject', url: `${SITE}/og/home.jpg`, width: 1200, height: 630, caption: 'Paralox Media, AI creative and technology agency in Sri Lanka' },
+  ],
   alternateName: ['Paralox', 'Paralox Media Sri Lanka'],
   description: 'AI creative and technology agency in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
   slogan: 'Let’s build the future together.',

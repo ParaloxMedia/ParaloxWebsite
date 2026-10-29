@@ -8,7 +8,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 // Keep in step with PAGES in src/App.jsx.
 const PAGES = [
-  { path: '/',            priority: '1.0', changefreq: 'weekly' },
+  { path: '/',            priority: '1.0', changefreq: 'weekly', images: ['/brand/paralox-media-logo.png', '/brand/paralox-media-icon-512.png', '/og/home.jpg'] },
   { path: '/ai-agency-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai-video-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai-engineering-sri-lanka', priority: '0.9', changefreq: 'monthly' },
