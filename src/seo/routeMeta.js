@@ -12,6 +12,7 @@ import { PROJECTS } from '../data/projects';
 import { VACANCIES } from '../data/careers';
 import teamPhoto from '../assets/careers/team.jpg';
 import { LANDING_PAGES } from '../data/aiAgency';
+import { FOUNDER } from '../data/founder';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -54,9 +55,11 @@ const ORGANIZATION = {
   foundingDate: '2025-05',
   // The founder's headshot lives at a fixed URL (public/team/) so search and AI answers can show it.
   founder: {
-    '@type': 'Person', '@id': `${SITE}/about#founder`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
-    description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka.',
-    worksFor: { '@id': ORG_ID }, url: `${SITE}/about`,
+    '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
+    description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka; AI strategist and AI consultant.',
+    worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`,
+    knowsAbout: ['AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'Business automation', 'Digital marketing'],
+    homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
     image: {
       '@type': 'ImageObject', url: `${SITE}/team/abubakker-bakthathi.jpg`, width: 800, height: 800,
       caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media',
@@ -132,7 +135,32 @@ export const ROUTE_META = {
     ogTitle: 'About · Paralox Media',
     description: 'An AI creative and technology agency founded in Colombo, Sri Lanka in 2025, bringing AI, engineering, media and growth together in one team.',
     ...card('about'), type: 'website',
-  }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }], extra: [{ '@type': 'ProfilePage', '@id': `${SITE}/about#founder-profile`, mainEntity: { '@id': `${SITE}/about#founder` } }] }),
+  }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }] }),
+  // The founder's own page: a ProfilePage about him, with the consultation as an hourly offer.
+  [FOUNDER.path]: page(FOUNDER.path, {
+    title: FOUNDER.seoTitle,
+    ogTitle: `${FOUNDER.name} · AI strategist & AI consultant in Sri Lanka`,
+    description: FOUNDER.lede,
+    image: FOUNDER.portrait, width: 975, height: 1300, type: 'profile',
+  }, {
+    type: 'ProfilePage',
+    trail: [{ name: FOUNDER.name, path: FOUNDER.path }],
+    extra: [
+      { '@id': `${SITE}${FOUNDER.path}#webpage`, mainEntity: { '@id': `${SITE}${FOUNDER.path}#person` } },
+      {
+        '@type': 'Service', '@id': `${SITE}${FOUNDER.path}#consultation`,
+        name: `AI strategy consultation with ${FOUNDER.name}`,
+        serviceType: 'AI consulting', description: FOUNDER.consult.text,
+        provider: { '@id': `${SITE}${FOUNDER.path}#person` },
+        areaServed: 'Worldwide',
+        offers: {
+          '@type': 'Offer', price: FOUNDER.rate.amount, priceCurrency: FOUNDER.rate.currency, url: `${SITE}${FOUNDER.path}#consult`,
+          priceSpecification: { '@type': 'UnitPriceSpecification', price: FOUNDER.rate.amount, priceCurrency: FOUNDER.rate.currency, unitCode: 'HUR', referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'HUR' } },
+        },
+      },
+      { '@type': 'FAQPage', '@id': `${SITE}${FOUNDER.path}#faq`, mainEntity: FOUNDER.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    ],
+  }),
   '/pulse': page('/pulse', {
     title: 'Pulse: News, Events & Insights | Paralox Media',
     ogTitle: 'Pulse · Paralox Media',

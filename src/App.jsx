@@ -18,6 +18,7 @@ import RateCard from './pages/RateCard';
 import Works from './pages/Works';
 import Careers from './pages/Careers';
 import AiAgency from './pages/AiAgency';
+import Founder from './pages/Founder';
 import { LANDING_PAGES } from './data/aiAgency';
 import Job from './pages/Job';
 import { VACANCIES } from './data/careers';
@@ -25,7 +26,8 @@ import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
 const LANDING_KEYS = LANDING_PAGES.map((l) => l.path.slice(1));
-const PAGES = ['home', 'about', 'pulse', 'contact', 'works', 'careers', ...LANDING_KEYS, ...PILLAR_KEYS];
+// abubakker-bakthathi: the founder's page, reachable by URL and search, not linked in the nav.
+const PAGES = ['home', 'about', 'pulse', 'contact', 'works', 'careers', 'abubakker-bakthathi', ...LANDING_KEYS, ...PILLAR_KEYS];
 
 /** Resolve a route key into { view, nav, post, anchor }. */
 function resolve(hash) {
@@ -231,6 +233,7 @@ export default function App() {
   else if (r.view === 'pulse') page = <Pulse />;
   else if (r.view === 'contact') page = <Contact />;
   else if (r.view === 'careers') page = <Careers />;
+  else if (r.view === 'abubakker-bakthathi') page = <Founder />;
   else if (LANDING_KEYS.includes(r.view)) page = <AiAgency key={r.view} page={LANDING_PAGES.find((l) => l.path === `/${r.view}`)} />;
   else if (r.view === 'job') page = <Job job={r.job} />;
   else page = <Home />;

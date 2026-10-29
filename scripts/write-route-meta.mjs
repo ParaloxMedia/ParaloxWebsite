@@ -54,6 +54,9 @@ ${paths.filter((p) => p.startsWith('/works/')).map(line).join('\n')}
 ## Projects
 ${paths.filter((p) => p.startsWith('/work/')).map(line).join('\n')}
 
+## Founder
+${line('/abubakker-bakthathi')}
+
 ## Company
 ${['/about', '/careers', '/contact', '/pulse'].map(line).join('\n')}
 

@@ -1,6 +1,7 @@
 import { POSTS, PILLARS, CONTACT, WORK, WORK_PILLARS, FAQ, CLIENTS, ABOUT } from '../data/content';
 import { PROJECTS } from '../data/projects';
 import { LANDING_PAGES } from '../data/aiAgency';
+import { FOUNDER } from '../data/founder';
 import { VACANCIES, WHY_JOIN, CAREER_FAQ } from '../data/careers';
 import { ROUTE_META, workIn, mainPillarOf } from './routeMeta';
 
@@ -84,6 +85,21 @@ export const ROUTE_BODY = {
       { h2: 'More from Paralox Media', items: LANDING_PAGES.filter((o) => o.path !== l.path).map((o) => ({ name: o.h1, href: o.path })) },
     ],
   }])),
+  [FOUNDER.path]: {
+    h1: `${FOUNDER.name}: AI strategist and AI consultant in Sri Lanka`,
+    intro: FOUNDER.lede,
+    image: { src: FOUNDER.headshot, alt: `${FOUNDER.name}, ${FOUNDER.role}`, width: 800, height: 800 },
+    sections: [
+      { h2: 'Highlights', items: FOUNDER.highlights.map((h) => ({ name: h.stat, href: h.href, text: h.label })) },
+      { h2: 'From engineer to founder', paras: FOUNDER.story },
+      { h2: 'Timeline', items: FOUNDER.timeline.map((t) => ({ name: t.when, text: t.what })) },
+      { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
+      { h2: 'In his words', items: FOUNDER.quotes.map((q) => ({ name: q.source, href: q.href, text: `“${q.text}”` })) },
+      { h2: `${FOUNDER.consult.title}: USD ${FOUNDER.rate.amount} per hour`, paras: [FOUNDER.consult.text], items: FOUNDER.consult.includes.map((x) => ({ name: x })) },
+      { h2: 'Press and talks', items: FOUNDER.press.map((x) => ({ name: x.name, href: x.href })) },
+      { h2: 'About Abubakker', items: FOUNDER.faq.map((f) => ({ name: f.q, text: f.a })) },
+    ],
+  },
   '/contact': {
     h1: 'Contact Paralox Media',
     intro: ROUTE_META['/contact'].description,
