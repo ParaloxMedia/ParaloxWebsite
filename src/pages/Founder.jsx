@@ -96,12 +96,12 @@ function ConsultForm() {
         <button className="btn btn-primary cr-submit" type="submit" disabled={status === 'sending'} aria-busy={status === 'sending'}>
           {status === 'sending' ? <><span className="cr-spin" aria-hidden="true" /> Sending…</> : <>Request a session · ${total} <span className="arr">→</span></>}
         </button>
-        <small>No payment now. We confirm the time and how to pay by email.</small>
+        <small>No payment now. We confirm the time and how to pay by email. Prefer to write? <a href={`mailto:${FOUNDER.email}?subject=${encodeURIComponent('Consultation request')}`}>{FOUNDER.email}</a></small>
       </div>
       {status === 'failed' && (
         <div className="cr-fail" role="alert">
           <b>We could not send your request just now.</b>
-          <span>Please try again, or message us on <a href={`${CONTACT.whatsapp}?text=${encodeURIComponent('Hi, I would like to book a consultation with Abubakker.')}`} target="_blank" rel="noopener">WhatsApp</a> or email <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Consultation with Abubakker')}`}>{CONTACT.email}</a>.</span>
+          <span>Please try again, or message us on <a href={`${CONTACT.whatsapp}?text=${encodeURIComponent('Hi, I would like to book a consultation with Abubakker.')}`} target="_blank" rel="noopener">WhatsApp</a> or email Abubakker at <a href={`mailto:${FOUNDER.email}?subject=${encodeURIComponent('Consultation request')}`}>{FOUNDER.email}</a>.</span>
         </div>
       )}
     </form>
@@ -124,7 +124,7 @@ export default function Founder() {
             <p className="rc-tagline fu" style={{ '--d': '.3s' }}>{p.lede}</p>
             <div className="rc-hero-actions fu" style={{ '--d': '.42s' }}>
               <a className="btn btn-white" href="#consult">Book a consultation · ${p.rate.amount}/hr <span className="arr">↓</span></a>
-              <a className="link" href="/about" style={{ color: '#fff' }}>About Paralox Media <span className="arr">→</span></a>
+              <a className="link" href={`mailto:${FOUNDER.email}`} style={{ color: '#fff' }}>{FOUNDER.email} <span className="arr">→</span></a>
             </div>
           </div>
           <figure className="fd-portrait fu" style={{ '--d': '.25s' }}>

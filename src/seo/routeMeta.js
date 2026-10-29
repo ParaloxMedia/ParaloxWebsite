@@ -57,7 +57,7 @@ const ORGANIZATION = {
   founder: {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
     description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka; AI strategist and AI consultant.',
-    worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`,
+    worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
     knowsAbout: ['AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'Business automation', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
     image: {

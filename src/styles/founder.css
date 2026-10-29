@@ -46,3 +46,4 @@
   .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.fd-portrait .px{animation:none}}
+.cr-submit-row small a{color:var(--violet);font-weight:600}

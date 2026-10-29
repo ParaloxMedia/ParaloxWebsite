@@ -6,6 +6,7 @@ export const FOUNDER = {
   path: '/abubakker-bakthathi',
   name: 'Abubakker Bakthathi',
   role: 'Founder & CEO, Paralox Media',
+  email: 'abubakker@paraloxmedia.com',
   kicker: 'AI strategist & AI consultant · Colombo, Sri Lanka',
   seoTitle: 'Abubakker Bakthathi | AI Strategist & AI Consultant in Sri Lanka',
   lede: 'Abubakker Bakthathi is an AI strategist and AI consultant in Sri Lanka, and the founder and CEO of Paralox Media. He helps business leaders turn AI from a buzzword into results: AI films and creatives, AI agents and automation, and a clear plan for where AI fits in their business.',
