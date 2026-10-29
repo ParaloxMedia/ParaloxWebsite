@@ -28,7 +28,7 @@
 @media (max-width:1000px){
   .fd-hero-in,      .fd-exp,.fd-quotes ul{grid-template-columns:minmax(0,1fr)}
 }
-.cr-submit-row small a{color:var(--violet);font-weight:600}
+.fx .cr-submit-row small a{color:var(--violet);font-weight:600}
 
 /* Skills */
 .fd-skills{background:var(--pearl);color:var(--ink-text)}
