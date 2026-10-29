@@ -3,6 +3,7 @@ import { CONTACT } from '../data/content';
 import { APPLY_ENDPOINT, CAREER_FAQ, VACANCIES, WHY_JOIN } from '../data/careers';
 import { Glass } from '../components/Glass';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
+import { track } from '../lib/oaiPixel';
 import teamPhoto from '../assets/careers/team.jpg';
 import '../styles/ratecard.css';
 import '../styles/careers.css';
@@ -163,6 +164,7 @@ export function ApplyForm({ formRef, position, setPosition }) {
       // The script always answers 200; failures are reported in the message.
       if (!res.ok || /error/i.test(out.message || '')) throw new Error(out.message || `HTTP ${res.status}`);
       setStatus('sent');
+      track('registration_completed');
     } catch {
       setStatus('failed');
     }

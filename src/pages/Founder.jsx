@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { FOUNDER } from '../data/founder';
+import { track } from '../lib/oaiPixel';
 import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
 import { BrandIcon } from '../components/Icons';
@@ -140,6 +141,7 @@ function ConsultForm() {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus('sent');
+      track('appointment_scheduled', { amount: total * 100, currency: 'USD' });
     } catch {
       setStatus('failed');
     }

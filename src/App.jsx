@@ -4,6 +4,8 @@ import { ROUTE_META, SITE } from './seo/routeMeta';
 import { useRoute, navigate, pathFor, keyFromLocation, prefersReducedMotion, finePointer } from './hooks/useHashRoute';
 import { GlassDefs } from './components/Glass';
 import Loader from './components/Loader';
+import CookieConsent from './components/CookieConsent';
+import { track } from './lib/oaiPixel';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import FinalCta from './components/FinalCta';
@@ -220,6 +222,9 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hash, tick]);
 
+  // Measurement pixel page views (does nothing unless the pixel is on and the visitor agreed).
+  useEffect(() => { track('page_viewed'); }, [hash]);
+
 
   useGlobalEffects();
 
@@ -242,6 +247,7 @@ export default function App() {
     <>
       <GlassDefs />
       <Loader />
+      <CookieConsent />
       <Nav active={r.nav} lightTop={r.view === 'pulse'} tick={tick} />
       <main id="main" key={r.view === 'article' || r.view === 'project' || r.view === 'ratecard' || r.view === 'works' || r.view === 'job' ? hash : r.view}>
         {page}

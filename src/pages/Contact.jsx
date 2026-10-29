@@ -3,6 +3,7 @@ import { CONTACT } from '../data/content';
 import { ArrowUpRight, BrandIcon, CopyIcon, MailIcon, PhoneIcon, PinIcon, Socials, copyText } from '../components/Icons';
 import MapCard from '../components/MapCard';
 import { prefersReducedMotion } from '../hooks/useHashRoute';
+import { track } from '../lib/oaiPixel';
 
 const PILLS = [
   { id: 'p-ai', value: 'AI' },
@@ -70,6 +71,7 @@ function ContactForm() {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus('sent');
+      track('lead_created');
       setF({ name: '', email: '', phone: '', message: '' });
       setNeeds([]);
     } catch {
