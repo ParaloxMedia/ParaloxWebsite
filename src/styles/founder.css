@@ -279,41 +279,6 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 .fd-story-photo figcaption{margin-top:14px;color:var(--mute);font-size:.7rem}
 @media (max-width:899px){.fd-story-in{grid-template-columns:minmax(0,1fr)}.fd-story-photo{position:static;max-width:420px}}
 
-/* ===== Brighter rhythm: light sections between the dark ones ===== */
-.fx .fx-intro{background:linear-gradient(180deg,#F4EFFF 0%,#FBF9FF 100%);color:var(--ink-text)}
-.fx .fx-lede{color:var(--ink-text)}
-.fx .fx-proof a{background:#fff!important;border-color:#E6DEFA!important;color:var(--ink-text)!important;box-shadow:0 20px 40px -30px rgba(62,32,135,.35)}
-.fx .fx-proof b{color:var(--violet)!important}
-.fx .fx-proof span{color:var(--ink-soft)!important}
-
-.fx .fx-teach{background:#fff;color:var(--ink-text)}
-.fx .fx-teach-sub{color:var(--ink-soft)}
-.fx .fx-teach-card{background:var(--pearl);border-color:#E6DEFA;color:var(--ink-text)}
-.fx a.fx-teach-card:hover{border-color:var(--lilac);box-shadow:0 26px 50px -30px rgba(62,32,135,.45)}
-.fx .fx-teach-card .mono{color:var(--violet)}
-.fx .fx-teach-role{color:var(--deep)}
-.fx .fx-teach-card p{color:var(--ink-soft)}
-.fx .fx-teach-card .link{color:var(--violet)}
-.fx .fx-teach-grid li:first-child .fx-teach-card{color:#fff}
-.fx .fx-teach-grid li:first-child .fx-teach-role{color:#fff}
-.fx .fx-teach-grid li:first-child .fx-teach-card p{color:rgba(255,255,255,.85)}
-.fx .fx-workshop h3{color:var(--ink-text)}
-.fx .fx-workshop p:not(.rc-kick):not(.mono){color:var(--ink-soft)}
-.fx .fx-workshop .link{color:var(--violet)!important}
-.fx .fx-ws-meta{color:var(--violet)}
-
-.fx .fx-rec{background:linear-gradient(180deg,#FBF9FF,#F1EBFF);color:var(--ink-text)}
-.fx .fx-rec-list a{color:var(--ink-text);border-color:#DDD2F7}
-.fx .fx-rec-list li:first-child a{border-color:#DDD2F7}
-.fx .fx-rec-list .mono{color:var(--ink-soft)}
-.fx .fx-rec-list .arr{color:var(--violet)}
-
-.fx .fd-quotes{background:#fff;color:var(--ink-text)}
-.fx .fd-quotes .rc-kick{color:var(--violet)}
-.fx .fd-quotes li{background:var(--pearl);border-color:#E6DEFA}
-.fx .fd-quotes li:hover{background:#F4EFFF;border-color:var(--lilac)}
-.fx .fd-quotes a{color:var(--violet)}
-
 /* ===== Book a consultation: the bright, highlighted section ===== */
 .fx .fx-consult{background:radial-gradient(120% 90% at 0% 0%,#9F6BFF 0%,#7C3AED 35%,#3E2087 75%,#1E0F45 100%);color:#fff}
 .fx .fx-consult::before{display:none}
@@ -355,8 +320,6 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 @media (max-width:600px){.fx-fab{left:14px;right:14px;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.fx-consult-ring,.fx-consult-badge i,.fx-fab i,.fx .fx-pill{animation:none}}
 
-/* Events arch sits on the same light tone as the intro above, not black */
-.fx .fx-work{background:#FBF9FF}
 
 /* Desktop hero uses the wide banner: keep his face on the right, clear of the headline */
 @media (min-width:900px){.fx-photo{object-position:78% 30%}}
