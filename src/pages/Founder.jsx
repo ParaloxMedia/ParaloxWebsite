@@ -65,6 +65,19 @@ function useFounderMotion(root) {
   }, [root]);
 }
 
+/** A YouTube Short: its poster until pressed, then the privacy-enhanced player. */
+function ShortVideo({ id, poster, title }) {
+  const [on, setOn] = useState(false);
+  return on
+    ? <iframe src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+    : (
+      <button type="button" className="pj-yt" onClick={() => setOn(true)} aria-label={`Play: ${title}`}>
+        <img src={poster} alt="" loading="lazy" decoding="async" />
+        <span className="pj-yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
+      </button>
+    );
+}
+
 /** The sticky work list: the item whose still is in view is marked active. */
 function useActiveWork(listRef, count) {
   const [active, setActive] = useState(0);
@@ -298,6 +311,16 @@ export default function Founder() {
               );
             })}
           </ul>
+          <div className="fx-workshop">
+            <div className="fx-short"><ShortVideo id={p.workshop.youtube} poster={p.workshop.poster} title={p.workshop.title} /></div>
+            <div>
+              <p className="rc-kick">Inside a workshop</p>
+              <h3>{p.workshop.title}</h3>
+              <p className="mono fx-ws-meta">{p.workshop.meta}</p>
+              <p>{p.workshop.text}</p>
+              <a className="link" href={p.workshop.channel} target="_blank" rel="noopener me" style={{ color: '#fff' }}>More on his YouTube <span className="arr">↗</span></a>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -58,7 +58,7 @@ const ORGANIZATION = {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
     description: 'AI leader, trainer and consultant in Sri Lanka: founder and CEO of Paralox Media, lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
-    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/'],
+    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/', 'https://www.youtube.com/@AbubakkerBakthathi'],
     // Independent press about him: a strong signal for search and AI answers.
     subjectOf: {
       '@type': 'NewsArticle',
@@ -176,6 +176,13 @@ export const ROUTE_META = {
           '@type': 'Offer', price: FOUNDER.rate.amount, priceCurrency: FOUNDER.rate.currency, url: `${SITE}${FOUNDER.path}#consult`,
           priceSpecification: { '@type': 'UnitPriceSpecification', price: FOUNDER.rate.amount, priceCurrency: FOUNDER.rate.currency, unitCode: 'HUR', referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'HUR' } },
         },
+      },
+      {
+        '@type': 'VideoObject', '@id': `${SITE}${FOUNDER.path}#workshop`,
+        name: FOUNDER.workshop.title, description: FOUNDER.workshop.text,
+        thumbnailUrl: `${SITE}${FOUNDER.workshop.poster}`, embedUrl: `https://www.youtube.com/embed/${FOUNDER.workshop.youtube}`,
+        url: `https://www.youtube.com/shorts/${FOUNDER.workshop.youtube}`, uploadDate: '2026-10-29', duration: 'PT21S',
+        creator: { '@id': `${SITE}${FOUNDER.path}#person` },
       },
       { '@type': 'FAQPage', '@id': `${SITE}${FOUNDER.path}#faq`, mainEntity: FOUNDER.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
     ],

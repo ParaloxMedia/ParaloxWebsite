@@ -52,6 +52,15 @@ export const FOUNDER = {
     { org: 'Cocoon', role: 'AI Trainer & Consultant', when: 'Jan 2026 – present', text: 'Corporate training and consulting on generative AI, automation and business integration. Designed and delivered hands-on workshops for corporate teams including WIA Systems Inc., with participants producing real output by the end of each session.', href: 'https://mycocoon.life/trainers' },
     { org: 'BuildrLabs', role: 'Applied AI trainer', when: 'Hatch Works, Colombo', text: 'In-person applied AI training for working professionals: AI solutions, consulting and training for brands.', href: 'https://buildrlabs.ai/trainers/' },
   ],
+  // A Short from his workshop, shown in the teaching section.
+  workshop: {
+    youtube: 'T0ha4SJjOhk',
+    poster: '/team/applied-ai-workshop.jpg',
+    title: 'AI for Creativity at the Applied AI Workshop',
+    meta: 'BuildrLabs · Hatch Works, Colombo · delivered by Cocoon',
+    text: 'Abubakker and Lishan Peiris showed real AI work made for brands and broke down the workflows behind it: brand strategy and design, image creation, character-led AI video, and how to choose the right model. Everyone got hands-on and made their own videos by the end of the session.',
+    channel: 'https://www.youtube.com/@AbubakkerBakthathi',
+  },
   // The work he has led, shown as a sticky list beside a stack of stills.
   work: ['/work/renault-ai-tvc', '/work/nissan-gravite', '/work/webxpay-govpay', '/work/exxonmobil-png-embroidery-vendor-portal', '/work/keells-masterchef-sri-lanka'],
   // Recognition and talks, as hairline rows.

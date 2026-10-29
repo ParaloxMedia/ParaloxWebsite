@@ -222,3 +222,12 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 .fx-teach-card p{margin:4px 0 0;color:rgba(233,227,250,.72);line-height:1.6;font-size:.95rem}
 .fx-teach-card .link{margin-top:auto;padding-top:14px;color:#fff}
 @media (max-width:899px){.fx-teach-grid,.fx-why-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Workshop Short */
+.fx-workshop{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(40px,5vw,72px)}
+.fx-short{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:#000;box-shadow:0 40px 80px -40px rgba(0,0,0,.8),0 0 0 1px rgba(233,227,250,.14)}
+.fx-short iframe{display:block;width:100%;height:100%;border:0}
+.fx-workshop h3{margin:0;font-size:clamp(1.6rem,2.6vw,2.4rem);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.fx-ws-meta{margin:12px 0 0;color:var(--lilac);font-size:.72rem}
+.fx-workshop p:not(.rc-kick):not(.mono){margin:18px 0 22px;color:rgba(233,227,250,.75);line-height:1.65;max-width:38rem}
+@media (max-width:899px){.fx-workshop{grid-template-columns:minmax(0,1fr)}.fx-short{max-width:300px}}
