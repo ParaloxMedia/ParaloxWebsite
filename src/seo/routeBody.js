@@ -91,6 +91,7 @@ export const ROUTE_BODY = {
     image: { src: FOUNDER.headshot, alt: `${FOUNDER.name}, ${FOUNDER.role}`, width: 800, height: 800 },
     sections: [
       { h2: 'Highlights', items: FOUNDER.highlights.map((h) => ({ name: h.stat, href: h.href, text: h.label })) },
+      { h2: `As featured in ${FOUNDER.feature.outlet}`, paras: [`“${FOUNDER.feature.headline}”, by ${FOUNDER.feature.author}, ${FOUNDER.feature.date}.`, ...FOUNDER.feature.quotes.map((q) => `“${q}”`)], more: { href: FOUNDER.feature.url, label: 'Read the full interview at The Morning' } },
       { h2: 'From engineer to founder', paras: FOUNDER.story },
       { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
       { h2: 'Skills', items: FOUNDER.skills.map((g) => ({ name: g.group, text: g.items.join(', ') })) },

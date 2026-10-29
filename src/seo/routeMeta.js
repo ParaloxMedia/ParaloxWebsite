@@ -59,6 +59,15 @@ const ORGANIZATION = {
     description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka; AI strategist and AI consultant.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
     sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/'],
+    // Independent press about him: a strong signal for search and AI answers.
+    subjectOf: {
+      '@type': 'NewsArticle',
+      headline: 'Inside the vision behind Paralox Media with Abubakker Bakthathi',
+      url: 'https://www.themorning.lk/articles/ZfDBpXFjPctroSm6LX1J',
+      datePublished: '2026-07-26',
+      author: { '@type': 'Person', name: 'Nuskiya Nasar Aakhir' },
+      publisher: { '@type': 'NewsMediaOrganization', name: 'The Morning', url: 'https://www.themorning.lk' },
+    },
     hasOccupation: { '@type': 'Occupation', name: 'AI consultant', occupationLocation: { '@type': 'City', name: 'Colombo' } },
     knowsAbout: ['AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },

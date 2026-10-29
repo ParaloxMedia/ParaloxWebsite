@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FOUNDER } from '../data/founder';
 import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
+import coverImg from '../assets/pulse/sunday-morning-cover.jpg';
 import '../styles/ratecard.css';
 import '../styles/careers.css';
 import '../styles/founder.css';
@@ -145,6 +146,24 @@ export default function Founder() {
               <li key={h.label}><a href={h.href}><b>{h.stat}</b><span>{h.label}</span><i className="arr" aria-hidden="true">→</i></a></li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="fd-feature sec" aria-labelledby="fd-feature-h">
+        <div className="wrap fd-feature-in">
+          <a className="fd-cover" href={p.feature.url} target="_blank" rel="noopener" aria-label={`Read “${p.feature.headline}” at The Morning`}>
+            <img src={coverImg} alt={`${p.name} on the cover of Happinez at The Sunday Morning, ${p.feature.date}`} loading="lazy" decoding="async" />
+          </a>
+          <div className="fd-feature-copy">
+            <p className="rc-kick">As featured in · {p.feature.outlet}</p>
+            <h2 className="d-m" id="fd-feature-h">{p.feature.headline}<span className="dot">.</span></h2>
+            <p className="fd-byline mono">By {p.feature.author} · {p.feature.date}</p>
+            <ul className="fd-feature-quotes">{p.feature.quotes.map((q) => <li key={q}><blockquote>“{q}”</blockquote></li>)}</ul>
+            <div className="fd-feature-actions">
+              <a className="btn btn-white" href={p.feature.url} target="_blank" rel="noopener">Read the full interview <span className="arr">↗</span></a>
+              <a className="link" href={p.feature.story} style={{ color: '#fff' }}>See the cover and pages <span className="arr">→</span></a>
+            </div>
+          </div>
         </div>
       </section>
 

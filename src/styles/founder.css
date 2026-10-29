@@ -50,3 +50,19 @@
 .fd-skill li{padding:6px 11px;border-radius:999px;background:var(--pearl);border:1px solid var(--line-light);font-size:.86rem;color:var(--ink-soft)}
 @media (max-width:1000px){.fd-skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.fd-skill-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* As featured in: The Sunday Morning */
+.fd-feature{background:#07040F;color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.fd-feature::before{content:"";position:absolute;z-index:-1;width:min(700px,80vw);aspect-ratio:1;left:-12%;top:-30%;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.35),transparent);filter:blur(20px)}
+.fd-feature-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,72px);align-items:center}
+.fd-cover{display:block;justify-self:center;width:min(100%,340px);border-radius:10px;overflow:hidden;rotate:-3deg;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(233,227,250,.14);transition:rotate .6s var(--ease-expo),scale .6s var(--ease-expo)}
+.fd-cover:hover{rotate:0deg;scale:1.03}
+.fd-cover img{display:block;width:100%;height:auto}
+.fd-feature-copy .rc-kick{color:var(--lilac)}
+.fd-feature-copy h2{margin:0;max-width:22ch}
+.fd-byline{margin:16px 0 0;color:var(--silver);font-size:.72rem}
+.fd-feature-quotes{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+.fd-feature-quotes li{padding:18px 20px;border-left:3px solid var(--violet);background:rgba(255,255,255,.04);border-radius:0 14px 14px 0}
+.fd-feature-quotes blockquote{margin:0;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.5;font-weight:500;color:var(--lav)}
+.fd-feature-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px;margin-top:28px}
+@media (max-width:900px){.fd-feature-in{grid-template-columns:minmax(0,1fr)}.fd-cover{width:min(100%,260px)}}

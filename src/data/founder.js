@@ -35,6 +35,20 @@ export const FOUNDER = {
     { glyph: 'code', title: 'AI products and SaaS', text: 'Shaping an AI product idea, choosing the build approach and planning the first release.' },
     { glyph: 'user', title: 'AI for your team', text: 'Helping your people work with AI, from prompt skills to new roles, so adoption sticks.' },
   ],
+  // The Sunday Morning cover interview, featured near the top of the page.
+  feature: {
+    outlet: 'Happinez · The Sunday Morning',
+    headline: 'Inside the vision behind Paralox Media with Abubakker Bakthathi',
+    author: 'Nuskiya Nasar Aakhir',
+    date: '26 July 2026',
+    iso: '2026-07-26',
+    url: 'https://www.themorning.lk/articles/ZfDBpXFjPctroSm6LX1J',
+    story: '/pulse/news-sunday-morning-happinez-2026',
+    quotes: [
+      'We’re not in the business of selling services, we’re in the business of creating meaningful, measurable impact.',
+      'AI is only as valuable as the way in which it is used.',
+    ],
+  },
   quotes: [
     { text: 'I help businesses see AI not as a threat, but as their most powerful competitive advantage.', source: 'Abubakker Bakthathi', href: 'https://abubakker98.github.io/Connect/' },
     { text: 'AI wasn’t the problem; the world was evolving and businesses needed to adapt.', source: 'Happinez, The Sunday Morning', href: '/pulse/news-sunday-morning-happinez-2026' },
