@@ -331,7 +331,7 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 /* ===== Phones ===== */
 @media (max-width:600px){
   /* Hero: the long kicker wraps instead of running off the screen */
-  .fx-kicker{white-space:normal;line-height:1.6;font-size:.62rem;letter-spacing:.08em;max-width:30ch;margin-bottom:16px}
+  .fx-kicker{white-space:normal;line-height:1.6;font-size:.68rem;letter-spacing:.07em;max-width:34ch;margin-bottom:16px;color:#fff;opacity:.9}
   .fx-h1{font-size:clamp(2.5rem,11vw,3.4rem)}
   .fx-actions{margin-top:28px;gap:14px}
   .fx-pill{padding:13px 20px;font-size:.92rem}
