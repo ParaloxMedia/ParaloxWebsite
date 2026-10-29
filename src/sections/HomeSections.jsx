@@ -198,7 +198,7 @@ export function WorkCard({ w, className = '', style }) {
   return (
     <Tag className={`wk${w.size ? ` wk-${w.size}` : ''}${w.href ? ' wk-link' : ''}${className ? ` ${className}` : ''}`} style={style} {...(w.href && { href: w.href })}>
       <div className={`wk-vis${w.image ? ' has-img' : ''}`}>
-        {w.image ? <img src={w.image} alt="" loading="lazy" decoding="async" /> : <><div className="gridlines" /><Glass glyph={w.glyph} tilt /></>}
+        {w.image ? <img src={w.image} alt={`${w.title}, ${w.meta.split(' · ').pop()} (Paralox Media)`} loading="lazy" decoding="async" /> : <><div className="gridlines" /><Glass glyph={w.glyph} tilt /></>}
         <span className="code mono">{w.code}</span><span className="yr mono">{w.year || '2026'}</span>
       </div>
       <div className="wk-body">

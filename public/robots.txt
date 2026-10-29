@@ -14,4 +14,12 @@ User-agent: OAI-AdsBot
 Allow: /
 Disallow: /sealed/
 
+# Anthropic (https://support.claude.com/en/articles/8896518). ClaudeBot: model training.
+# Claude-User: pages Claude fetches for a user's question. Claude-SearchBot: Claude's search index.
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /sealed/
+
 Sitemap: https://paraloxmedia.com/sitemap.xml

@@ -74,7 +74,7 @@ function ShortVideo({ id, poster, title }) {
     ? <iframe src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
     : (
       <button type="button" className="pj-yt" onClick={() => setOn(true)} aria-label={`Play: ${title}`}>
-        <img src={poster} alt="" loading="lazy" decoding="async" />
+        <img src={poster} alt={`Abubakker Bakthathi presenting: ${title}`} loading="lazy" decoding="async" />
         <span className="pj-yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
       </button>
     );
