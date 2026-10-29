@@ -160,7 +160,7 @@ export default function Hero() {
               <span className="ln"><span style={{ '--d': '.42s' }}>Creative</span></span>
               <span className="ln"><span style={{ '--d': '.52s' }}>Technology<span className="dot">.</span></span></span>
             </h2>
-            <p className="xbody fu" style={{ '--d': '.78s' }}><strong>Paralox Media</strong> is a creative technology company building intelligent systems, experiences and media. <strong>We build for businesses</strong> that want technology to feel <strong>intentional</strong>, not assembled.</p>
+            <p className="xbody fu" style={{ '--d': '.78s' }}><strong>Paralox Media</strong> is an <a href="/ai-agency-sri-lanka">AI creative and technology agency in Sri Lanka</a>, building intelligent systems, experiences and media. <strong>We build for businesses</strong> that want technology to feel <strong>intentional</strong>, not assembled.</p>
           </div>
         </div>
 

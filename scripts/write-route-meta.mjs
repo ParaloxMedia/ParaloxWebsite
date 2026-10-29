@@ -44,6 +44,7 @@ const llms = `# Paralox Media
 Based at 14 Sir Baron Jayathilake Mawatha, Colombo, Sri Lanka. Contact: info@paraloxmedia.com.
 
 ## Services
+${line('/ai-agency-sri-lanka')}
 ${['/ai', '/engineering', '/media', '/growth'].filter((p) => ROUTE_META[p]).map(line).join('\n')}
 
 ## Work

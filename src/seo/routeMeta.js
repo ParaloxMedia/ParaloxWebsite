@@ -11,6 +11,7 @@ import { POSTS, PILLARS, CAPABILITIES, CONTACT, SOCIALS, WORK, WORK_PILLARS, FAQ
 import { PROJECTS } from '../data/projects';
 import { VACANCIES } from '../data/careers';
 import teamPhoto from '../assets/careers/team.jpg';
+import { AI_AGENCY } from '../data/aiAgency';
 
 export const SITE = 'https://paraloxmedia.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -37,7 +38,8 @@ const ORGANIZATION = {
   url: `${SITE}/`,
   logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
   image: `${SITE}/og/home.jpg`,
-  description: 'Creative technology company in Colombo, Sri Lanka, working across AI, engineering, media and growth.',
+  alternateName: ['Paralox', 'Paralox Media Sri Lanka'],
+  description: 'AI creative and technology agency in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
   slogan: 'Let’s build the future together.',
   email: CONTACT.email,
   telephone: CONTACT.phoneRaw,
@@ -53,7 +55,7 @@ const ORGANIZATION = {
   // The founder's headshot lives at a fixed URL (public/team/) so search and AI answers can show it.
   founder: {
     '@type': 'Person', '@id': `${SITE}/about#founder`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
-    description: 'Founder and CEO of Paralox Media, a creative technology company in Colombo, Sri Lanka.',
+    description: 'Founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/about`,
     image: {
       '@type': 'ImageObject', url: `${SITE}/team/abubakker-bakthathi.jpg`, width: 800, height: 800,
@@ -61,7 +63,7 @@ const ORGANIZATION = {
     },
   },
   areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
-  knowsAbout: CAPABILITIES.flatMap((c) => c.chips),
+  knowsAbout: ['Generative AI', 'AI video production', 'AI agents', 'Business automation', ...CAPABILITIES.flatMap((c) => c.chips)],
   sameAs: SOCIALS.map((s) => s.url),
   contactPoint: {
     '@type': 'ContactPoint', contactType: 'sales', telephone: CONTACT.phoneRaw, email: CONTACT.email,
@@ -102,9 +104,9 @@ const page = (path, meta, opts) => ({ ...meta, jsonld: graph(path, meta, opts) }
 /* ---------- Pages ---------- */
 
 const PILLAR_SEO = {
-  ai: { name: 'AI', title: 'AI Agents & Business Automation in Sri Lanka | Paralox Media' },
+  ai: { name: 'AI', title: 'AI Agency in Sri Lanka: AI Agents & Automation | Paralox Media' },
   engineering: { name: 'Engineering', title: 'Website & Web App Development in Sri Lanka | Paralox Media' },
-  media: { name: 'Media', title: 'Video Production, AI Creatives & Branding | Paralox Media' },
+  media: { name: 'Media', title: 'AI Creative Agency in Sri Lanka: AI Films, Video & Branding | Paralox Media' },
   growth: { name: 'Growth', title: 'Performance & Digital Marketing in Sri Lanka | Paralox Media' },
 };
 const capabilityFor = (key) => CAPABILITIES.find((c) => c.href === `/${key}`);
@@ -114,9 +116,9 @@ export const mainPillarOf = (p) => WORK.find((w) => w.href === `/work/${p.id}`)?
 
 export const ROUTE_META = {
   '/': page('/', {
-    title: 'Paralox Media | AI, Web Development & Digital Marketing in Sri Lanka',
-    ogTitle: 'Paralox Media — Building the future of AI-powered business solutions',
-    description: 'Paralox Media is a creative technology company in Colombo. We build AI agents, websites and apps, produce video and AI creatives, and run performance marketing.',
+    title: 'Paralox Media | AI Creative & Technology Agency in Sri Lanka',
+    ogTitle: 'Paralox Media — AI creative & technology agency in Sri Lanka',
+    description: 'Paralox Media is an AI creative and technology agency in Colombo, Sri Lanka. We make AI films and creatives, build AI agents and automation, develop websites and apps, and run performance marketing.',
     ...card('home'), type: 'website',
   }, {
     // The home page FAQ, so search and AI answers can quote it directly.
@@ -126,9 +128,9 @@ export const ROUTE_META = {
     }],
   }),
   '/about': page('/about', {
-    title: 'About Paralox Media | Creative Technology Company in Colombo',
+    title: 'About Paralox Media | AI Creative & Technology Agency, Colombo',
     ogTitle: 'About · Paralox Media',
-    description: 'A creative technology company founded in Colombo in 2025, bringing AI, engineering, media and growth together in one team.',
+    description: 'An AI creative and technology agency founded in Colombo, Sri Lanka in 2025, bringing AI, engineering, media and growth together in one team.',
     ...card('about'), type: 'website',
   }, { type: 'AboutPage', trail: [{ name: 'About', path: '/about' }], extra: [{ '@type': 'ProfilePage', '@id': `${SITE}/about#founder-profile`, mainEntity: { '@id': `${SITE}/about#founder` } }] }),
   '/pulse': page('/pulse', {
@@ -214,6 +216,32 @@ export const ROUTE_META = {
       }],
     })];
   })),
+  '/ai-agency-sri-lanka': page('/ai-agency-sri-lanka', {
+    title: 'AI Creative & Technology Agency in Sri Lanka | Paralox Media',
+    ogTitle: 'AI creative & technology agency in Sri Lanka · Paralox Media',
+    description: AI_AGENCY.lede,
+    ...card('ai'), type: 'website',
+  }, {
+    trail: [{ name: 'AI agency in Sri Lanka', path: '/ai-agency-sri-lanka' }],
+    extra: [
+      {
+        '@type': 'Service', '@id': `${SITE}/ai-agency-sri-lanka#service`,
+        name: 'AI creative and technology agency services',
+        serviceType: 'AI creative agency, AI technology agency',
+        description: AI_AGENCY.lede,
+        provider: { '@id': ORG_ID },
+        areaServed: [{ '@type': 'Country', name: 'Sri Lanka' }, ...ORGANIZATION.areaServed.filter((c) => c !== 'Sri Lanka').map((name) => ({ '@type': 'Country', name }))],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog', name: 'AI services',
+          itemListElement: AI_AGENCY.sides.flatMap((s) => s.points).map((p) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p } })),
+        },
+      },
+      {
+        '@type': 'FAQPage', '@id': `${SITE}/ai-agency-sri-lanka#faq`,
+        mainEntity: AI_AGENCY.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  }),
   '/contact': page('/contact', {
     title: 'Contact Paralox Media | Start a Project in Colombo, Sri Lanka',
     ogTitle: 'Contact · Paralox Media',

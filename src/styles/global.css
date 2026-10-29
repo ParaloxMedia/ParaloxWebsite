@@ -1582,3 +1582,5 @@ html.is-loading .pp *{animation-play-state:paused!important}
 .pj-process li p{margin:0;color:var(--ink-soft);font-size:.96rem;line-height:1.6}
 @media (max-width:900px){.pj-process ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.pj-process ol{grid-template-columns:minmax(0,1fr)}}
+.xstudio .xbody a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:var(--lilac);text-underline-offset:3px;transition:color .3s}
+.xstudio .xbody a:hover{color:var(--violet)}

@@ -9,6 +9,7 @@ const today = new Date().toISOString().slice(0, 10);
 // Keep in step with PAGES in src/App.jsx.
 const PAGES = [
   { path: '/',            priority: '1.0', changefreq: 'weekly' },
+  { path: '/ai-agency-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai',          priority: '0.9', changefreq: 'monthly' },
   { path: '/engineering', priority: '0.9', changefreq: 'monthly' },
   { path: '/media',       priority: '0.9', changefreq: 'monthly' },

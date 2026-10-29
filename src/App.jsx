@@ -17,12 +17,13 @@ import Project from './pages/Project';
 import RateCard from './pages/RateCard';
 import Works from './pages/Works';
 import Careers from './pages/Careers';
+import AiAgency from './pages/AiAgency';
 import Job from './pages/Job';
 import { VACANCIES } from './data/careers';
 import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
-const PAGES = ['home', 'about', 'pulse', 'contact', 'works', 'careers', ...PILLAR_KEYS];
+const PAGES = ['home', 'about', 'pulse', 'contact', 'works', 'careers', 'ai-agency-sri-lanka', ...PILLAR_KEYS];
 
 /** Resolve a route key into { view, nav, post, anchor }. */
 function resolve(hash) {
@@ -228,6 +229,7 @@ export default function App() {
   else if (r.view === 'pulse') page = <Pulse />;
   else if (r.view === 'contact') page = <Contact />;
   else if (r.view === 'careers') page = <Careers />;
+  else if (r.view === 'ai-agency-sri-lanka') page = <AiAgency />;
   else if (r.view === 'job') page = <Job job={r.job} />;
   else page = <Home />;
 

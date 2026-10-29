@@ -258,6 +258,7 @@ export const WHY = [
 ];
 
 export const FAQ = [
+  { q: 'What kind of agency is Paralox Media?', a: 'Paralox Media is an AI creative and technology agency in Colombo, Sri Lanka. We make AI films and creatives for brands, build AI agents, automation, websites and apps for businesses, and run performance marketing, all as one team.' },
   { q: 'How does a project start?', a: 'With a discovery call and a written brief. You receive the scope, method, timing and cost in writing before any work begins.' },
   { q: 'Do you work with clients outside Sri Lanka?', a: 'Yes. We are based in Colombo and work with clients in the UAE, Saudi Arabia, Singapore, Qatar and the United Kingdom. Most collaboration happens over video calls and shared workspaces, with on-ground production arranged per project.' },
   { q: 'Can you work alongside our agency or in-house team?', a: 'Yes. We produce work for agency networks including WPP Media and MullenLowe, and we slot into in-house teams as a production or technology partner.' },

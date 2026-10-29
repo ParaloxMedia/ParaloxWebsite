@@ -1,5 +1,6 @@
 import { POSTS, PILLARS, CONTACT, WORK, WORK_PILLARS, FAQ, CLIENTS, ABOUT } from '../data/content';
 import { PROJECTS } from '../data/projects';
+import { AI_AGENCY } from '../data/aiAgency';
 import { VACANCIES, WHY_JOIN, CAREER_FAQ } from '../data/careers';
 import { ROUTE_META, workIn, mainPillarOf } from './routeMeta';
 
@@ -18,7 +19,7 @@ const SERVICES_SECTION = {
 
 export const ROUTE_BODY = {
   '/': {
-    h1: 'Paralox Media: AI, engineering, media and growth in Colombo, Sri Lanka',
+    h1: 'Paralox Media: AI creative and technology agency in Sri Lanka',
     intro: ROUTE_META['/'].description,
     sections: [
       SERVICES_SECTION,
@@ -70,6 +71,16 @@ export const ROUTE_BODY = {
       { h2: 'How to apply', paras: ['Apply on this page with your CV and portfolio. We shortlist within 5 working days, then run an interview or a short task.'], more: { href: '/careers', label: 'See all open roles' } },
     ],
   }])),
+  '/ai-agency-sri-lanka': {
+    h1: 'AI creative and technology agency in Sri Lanka',
+    intro: `${AI_AGENCY.lede} Rated ${AI_AGENCY.rating.value.toFixed(1)} on Google from ${AI_AGENCY.rating.count} reviews.`,
+    sections: [
+      { h2: 'Proof', items: AI_AGENCY.proof.map((p) => ({ name: p.stat, href: p.href, text: p.label })) },
+      ...AI_AGENCY.sides.map((s) => ({ h2: `${s.kicker}: ${s.title}`, paras: [s.text], items: [...s.points.map((p) => ({ name: p })), ...s.work.map((w) => ({ name: w.name, href: w.href }))] })),
+      { h2: 'Why brands choose Paralox', items: AI_AGENCY.why.map((w) => ({ name: w.title, text: w.text })) },
+      { h2: 'AI agency, answered', items: AI_AGENCY.faq.map((f) => ({ name: f.q, text: f.a })) },
+    ],
+  },
   '/contact': {
     h1: 'Contact Paralox Media',
     intro: ROUTE_META['/contact'].description,
