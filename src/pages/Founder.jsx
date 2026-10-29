@@ -32,6 +32,8 @@ function ConsultForm() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           _subject: `${f.name.trim()} - Consultation request (${f.hours}h, USD ${total})`,
+          // A copy goes straight to Abubakker (Formspree's _cc; the form itself delivers to info@).
+          _cc: FOUNDER.email,
           type: 'Consultation with Abubakker Bakthathi',
           name: f.name, email: f.email, phone: f.phone || '—', company: f.company || '—',
           topic: f.topic, duration: `${f.hours} hour(s), USD ${total}`, preferred_time: f.when || '—', message: f.notes,
@@ -124,6 +126,7 @@ export default function Founder() {
             <p className="rc-tagline fu" style={{ '--d': '.3s' }}>{p.lede}</p>
             <div className="rc-hero-actions fu" style={{ '--d': '.42s' }}>
               <a className="btn btn-white" href="#consult">Book a consultation · ${p.rate.amount}/hr <span className="arr">↓</span></a>
+              <a className="link" href={p.linkedin} target="_blank" rel="noopener me" style={{ color: '#fff' }}>LinkedIn <span className="arr">↗</span></a>
               <a className="link" href={`mailto:${FOUNDER.email}`} style={{ color: '#fff' }}>{FOUNDER.email} <span className="arr">→</span></a>
             </div>
           </div>
@@ -196,7 +199,7 @@ export default function Founder() {
           <ul className="aa-more-grid">
             {p.press.map((x) => {
               const ext = x.href.startsWith('http');
-              return <li key={x.href}><a href={x.href} {...(ext && { target: '_blank', rel: 'noopener' })}><span className="mono">{ext ? 'The Morning' : 'Paralox Pulse'}</span><b>{x.name}</b><i className="arr" aria-hidden="true">{ext ? '↗' : '→'}</i></a></li>;
+              return <li key={x.href}><a href={x.href} {...(ext && { target: '_blank', rel: 'noopener' })}><span className="mono">{x.source || (ext ? 'The Morning' : 'Paralox Pulse')}</span><b>{x.name}</b><i className="arr" aria-hidden="true">{ext ? '↗' : '→'}</i></a></li>;
             })}
           </ul>
         </div>

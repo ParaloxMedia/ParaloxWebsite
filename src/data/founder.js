@@ -7,6 +7,7 @@ export const FOUNDER = {
   name: 'Abubakker Bakthathi',
   role: 'Founder & CEO, Paralox Media',
   email: 'abubakker@paraloxmedia.com',
+  linkedin: 'https://www.linkedin.com/in/bakthathi/',
   kicker: 'AI strategist & AI consultant · Colombo, Sri Lanka',
   seoTitle: 'Abubakker Bakthathi | AI Strategist & AI Consultant in Sri Lanka',
   lede: 'Abubakker Bakthathi is an AI strategist and AI consultant in Sri Lanka, and the founder and CEO of Paralox Media. He helps business leaders turn AI from a buzzword into results: AI films and creatives, AI agents and automation, and a clear plan for where AI fits in their business.',
@@ -61,6 +62,7 @@ export const FOUNDER = {
     durations: [1, 2],
   },
   press: [
+    { name: 'Follow Abubakker on LinkedIn', href: 'https://www.linkedin.com/in/bakthathi/', source: 'LinkedIn' },
     { name: 'On the cover of Happinez at The Sunday Morning', href: '/pulse/news-sunday-morning-happinez-2026' },
     { name: 'Read the full interview at The Morning', href: 'https://www.themorning.lk/articles/ZfDBpXFjPctroSm6LX1J' },
     { name: 'Meet the founder: BuiltList at the Grok Bot Meetup Colombo', href: '/pulse/past-grok-bot-meetup-colombo-2026' },
