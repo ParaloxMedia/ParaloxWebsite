@@ -94,6 +94,7 @@ export const ROUTE_BODY = {
       { h2: 'From engineer to founder', paras: FOUNDER.story },
       { h2: 'Timeline', items: FOUNDER.timeline.map((t) => ({ name: t.when, text: t.what })) },
       { h2: 'What he advises on', items: FOUNDER.expertise.map((x) => ({ name: x.title, text: x.text })) },
+      { h2: 'Skills', items: FOUNDER.skills.map((g) => ({ name: g.group, text: g.items.join(', ') })) },
       { h2: 'In his words', items: FOUNDER.quotes.map((q) => ({ name: q.source, href: q.href, text: `“${q.text}”` })) },
       { h2: `${FOUNDER.consult.title}: USD ${FOUNDER.rate.amount} per hour`, paras: [FOUNDER.consult.text], items: FOUNDER.consult.includes.map((x) => ({ name: x })) },
       { h2: 'Press and talks', items: FOUNDER.press.map((x) => ({ name: x.name, href: x.href })) },

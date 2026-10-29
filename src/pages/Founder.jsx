@@ -169,6 +169,20 @@ export default function Founder() {
         </div>
       </section>
 
+      <section className="fd-skills sec lt" aria-labelledby="fd-skills-h">
+        <div className="wrap">
+          <div className="sec-head"><h2 className="d-m" id="fd-skills-h">Skills<span className="dot">.</span></h2><p>Six-plus years across software, AI and growth, from writing code to leading teams and campaigns.</p></div>
+          <div className="fd-skill-grid">
+            {p.skills.map((g) => (
+              <div key={g.group} className="fd-skill">
+                <p className="mono">{g.group}</p>
+                <ul>{g.items.map((x) => <li key={x}>{x}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="fd-quotes sec" aria-label="In his words">
         <div className="wrap">
           <p className="rc-kick">In his words</p>
