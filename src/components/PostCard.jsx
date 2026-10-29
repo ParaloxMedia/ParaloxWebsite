@@ -5,7 +5,7 @@ export default function PostCard({ p }) {
   return (
     <a className="post" href={`/pulse/${p.id}`}>
       <div className={`thumb${cover ? ' has-photo' : ''}${cover?.whole ? ' whole' : ''}${p.logo ? ' has-logo' : ''}`}>
-        {cover ? <img src={cover.src} alt="" loading="lazy" decoding="async" />
+        {cover ? <img src={cover.src} alt={cover.caption || p.title} loading="lazy" decoding="async" />
           : p.logo ? <img className="thumb-logo" src={p.logo.src} alt={p.logo.alt} loading="lazy" decoding="async" />
           : <><div className="gridlines" /><Glass glyph={p.glyph} /></>}
         <span className={`tagline mono${p.upcoming ? ' soon' : ''}`}>{p.pillar}</span>

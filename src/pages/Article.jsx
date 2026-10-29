@@ -72,7 +72,7 @@ export function Gallery({ photos, bare = false }) {
         <div className="cs-thumbs cs-reveal">
           {photos.map((t, k) => (
             <button key={t.src} type="button" className={k === i ? 'on' : undefined} onClick={() => setI(k)} aria-label={`Show photo ${k + 1}: ${t.caption}`} aria-pressed={k === i}>
-              <img src={t.src} alt="" loading="lazy" decoding="async" />
+              <img src={t.src} alt={t.caption} loading="lazy" decoding="async" />
             </button>
           ))}
         </div>
