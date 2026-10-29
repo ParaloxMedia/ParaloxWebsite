@@ -354,3 +354,13 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 @keyframes fxPill{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
 @media (max-width:600px){.fx-fab{left:14px;right:14px;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.fx-consult-ring,.fx-consult-badge i,.fx-fab i,.fx .fx-pill{animation:none}}
+
+/* Events arch sits on the same light tone as the intro above, not black */
+.fx .fx-work{background:#FBF9FF}
+
+/* Desktop hero uses the wide banner: keep his face on the right, clear of the headline */
+@media (min-width:900px){.fx-photo{object-position:78% 30%}}
+@media (min-width:900px){
+  .fx-side{justify-content:space-between;padding:130px 0 110px;gap:0}
+  .fx-side p{padding:10px 16px;border-radius:16px;background:rgba(30,15,69,.42);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:.95rem}
+}

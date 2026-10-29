@@ -32,30 +32,8 @@ const imageOf = (p) =>
 /* ---------- Structured data (schema.org JSON-LD) ---------- */
 
 // The business, referenced by @id from every page.
-const ORGANIZATION = {
-  '@type': ['Organization', 'ProfessionalService'],
-  '@id': ORG_ID,
-  name: 'Paralox Media',
-  legalName: CONTACT.company,
-  url: `${SITE}/`,
-  logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
-  image: `${SITE}/og/home.jpg`,
-  alternateName: ['Paralox', 'Paralox Media Sri Lanka'],
-  description: 'AI creative and technology agency in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
-  slogan: 'Let’s build the future together.',
-  email: CONTACT.email,
-  telephone: CONTACT.phoneRaw,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '14 Sir Baron Jayathilake Mawatha',
-    addressLocality: 'Colombo',
-    postalCode: '00100',
-    addressCountry: 'LK',
-  },
-  hasMap: 'https://www.google.com/maps?cid=7204718456650954838',
-  foundingDate: '2025-05',
-  // The founder's headshot lives at a fixed URL (public/team/abubakker/) so search and AI answers can show it.
-  founder: {
+// The founder's full profile, used only on /abubakker-bakthathi.
+const FOUNDER_PERSON = {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
     description: 'Founder and CEO of Paralox Media, and a leading AI trainer and lecturer in Sri Lanka: lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
@@ -80,13 +58,38 @@ const ORGANIZATION = {
     ],
     knowsAbout: ['AI training', 'AI for leadership', 'AI strategy', 'AI consulting', 'Generative AI', 'AI video generation', 'Agentic AI', 'AI agents', 'LLM integration', 'RAG systems', 'Prompt engineering', 'Business automation', 'Software engineering', 'React', 'Node.js', 'Brand strategy', 'Performance marketing', 'Digital marketing'],
     homeLocation: { '@type': 'Place', name: 'Colombo, Sri Lanka' },
-    // All his own photos, so every page that mentions him points to his real face.
+    // His photos: on his own page only.
     image: [
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi.jpg`, width: 800, height: 800, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-banner.jpg`, width: 1280, height: 720, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media, AI trainer and consultant' },
       { '@type': 'ImageObject', url: `${SITE}/team/abubakker/abubakker-bakthathi-portrait.jpg`, width: 975, height: 1300, caption: 'Abubakker Bakthathi, Founder & CEO of Paralox Media' },
     ],
+};
+
+const ORGANIZATION = {
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': ORG_ID,
+  name: 'Paralox Media',
+  legalName: CONTACT.company,
+  url: `${SITE}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE}/icon-192.png`, width: 192, height: 192 },
+  image: `${SITE}/og/home.jpg`,
+  alternateName: ['Paralox', 'Paralox Media Sri Lanka'],
+  description: 'AI creative and technology agency in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
+  slogan: 'Let’s build the future together.',
+  email: CONTACT.email,
+  telephone: CONTACT.phoneRaw,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '14 Sir Baron Jayathilake Mawatha',
+    addressLocality: 'Colombo',
+    postalCode: '00100',
+    addressCountry: 'LK',
   },
+  hasMap: 'https://www.google.com/maps?cid=7204718456650954838',
+  foundingDate: '2025-05',
+  // Every page names the founder; his full profile (and photo) is only on his own page.
+  founder: { '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO', url: `${SITE}/abubakker-bakthathi` },
   areaServed: ['Sri Lanka', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Singapore', 'Papua New Guinea'],
   knowsAbout: ['Generative AI', 'AI video generation', 'AI video production', 'AI creative', 'Agentic AI', 'AI agents', 'AI engineering', 'Business automation', ...CAPABILITIES.flatMap((c) => c.chips)],
   sameAs: SOCIALS.map((s) => s.url),
@@ -169,6 +172,7 @@ export const ROUTE_META = {
     trail: [{ name: FOUNDER.name, path: FOUNDER.path }],
     extra: [
       { '@id': `${SITE}${FOUNDER.path}#webpage`, mainEntity: { '@id': `${SITE}${FOUNDER.path}#person` } },
+      FOUNDER_PERSON,
       {
         '@type': 'Service', '@id': `${SITE}${FOUNDER.path}#consultation`,
         name: `AI strategy consultation with ${FOUNDER.name}`,

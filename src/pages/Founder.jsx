@@ -265,7 +265,11 @@ export default function Founder() {
             {collage.map((src, i) => <div key={i} className={`fx-tile t${i}`}><img src={src} alt="" loading="lazy" decoding="async" /></div>)}
           </div>
           <div className="fx-card">
-            <img className="fx-photo" src={p.hero} alt={`${p.name}, ${p.role}`} width="1650" height="2200" decoding="async" fetchPriority="high" />
+            {/* Desktop: the wide banner; phones keep the portrait crop. */}
+            <picture>
+              <source media="(min-width: 900px)" srcSet={p.banner} width="1280" height="720" />
+              <img className="fx-photo" src={p.hero} alt={`${p.name}, ${p.role}`} width="1650" height="2200" decoding="async" fetchPriority="high" />
+            </picture>
             <div className="fx-shade" aria-hidden="true" />
             <div className="fx-copy wrap">
               <p className="fx-kicker mono fu" style={{ '--d': '.05s' }}>{p.name} · {p.kicker}</p>

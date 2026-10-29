@@ -306,7 +306,7 @@ export const ABOUT = {
     { g: 'spark', t: 'Contemporary', p: 'Current tools, uncluttered design.' },
   ],
   team: [
-    { lead: true, initials: 'AB', photo: '/team/abubakker/abubakker-bakthathi.jpg', role: 'Founder & CEO', name: 'Abubakker Bakthathi', text: 'Leads strategy and every client partnership across AI, engineering, media and growth.' },
+    { lead: true, initials: 'AB', role: 'Founder & CEO', name: 'Abubakker Bakthathi', text: 'Leads strategy and every client partnership across AI, engineering, media and growth.' },
     { g: 'play', role: 'Media', name: 'Creative Director', text: 'Brand films, AI creatives, campaigns and identity.' },
     { g: 'growth', role: 'Growth', name: 'Marketing Lead', text: 'Campaign strategy, performance marketing and reporting.' },
     { g: 'code', role: 'AI + Engineering', name: 'Tech Lead', text: 'AI agents, automation, web apps and custom software.' },
