@@ -55,9 +55,9 @@ export const FOUNDER = {
   // A Short from his workshop, shown in the training section.
   workshop: {
     youtube: 'T0ha4SJjOhk',
-    poster: '/team/abubakker/applied-ai-workshop.jpg',
+    poster: '/team/abubakker/web/workshop-cover.jpg',
     title: 'AI for Creativity at the Applied AI Workshop',
-    meta: 'BuildrLabs · Hatch Works, Colombo · delivered by Cocoon',
+    meta: 'Cocoon · BuildrLabs · Hatch Works, Colombo',
     text: 'Abubakker and Lishan Peiris showed real AI work made for brands and broke down the workflows behind it: brand strategy and design, image creation, character-led AI video, and how to choose the right model. Everyone got hands-on and made their own videos by the end of the session.',
     channel: 'https://www.youtube.com/@AbubakkerBakthathi',
   },

@@ -394,9 +394,15 @@ export default function Founder() {
 
       {/* 7. Story */}
       <section className="fd-story sec lt" aria-labelledby="fd-story-h">
-        <div className="wrap">
-          <h2 className="d-m" id="fd-story-h">From engineer to founder<span className="dot">.</span></h2>
-          {p.story.map((t, i) => <p key={i} className={i === 0 ? 'lead' : undefined}>{t}</p>)}
+        <div className="wrap fd-story-in">
+          <div>
+            <h2 className="d-m" id="fd-story-h">From engineer to founder<span className="dot">.</span></h2>
+            {p.story.map((t, i) => <p key={i} className={i === 0 ? 'lead' : undefined}>{t}</p>)}
+          </div>
+          <figure className="fd-story-photo">
+            <img src={p.portrait} alt={`${p.name}, ${p.role}`} width="975" height="1300" loading="lazy" decoding="async" />
+            <figcaption className="mono">{p.name} · Founder &amp; CEO, Paralox Media</figcaption>
+          </figure>
         </div>
       </section>
 

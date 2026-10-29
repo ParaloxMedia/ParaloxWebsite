@@ -270,3 +270,11 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
   .fx-why-title .w,.fx-why-sub,.fx-why-card{opacity:1;translate:none;scale:none;filter:none;transition:none}
   .fx-why-orb,.fx-why-grid .fx-why-card .ic{animation:none}
 }
+
+/* Story with portrait */
+.fd-story-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:start}
+.fd-story-photo{position:sticky;top:110px;margin:0}
+.fd-story-photo img{display:block;width:100%;height:auto;border-radius:28px;box-shadow:0 40px 80px -40px rgba(62,32,135,.55);transition:transform 1s var(--ease-expo)}
+.fd-story-photo:hover img{transform:scale(1.02) rotate(-.6deg)}
+.fd-story-photo figcaption{margin-top:14px;color:var(--mute);font-size:.7rem}
+@media (max-width:899px){.fd-story-in{grid-template-columns:minmax(0,1fr)}.fd-story-photo{position:static;max-width:420px}}
