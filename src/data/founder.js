@@ -9,6 +9,12 @@ export const FOUNDER = {
   email: 'abubakker@paraloxmedia.com',
   linkedin: 'https://www.linkedin.com/in/bakthathi/',
   connect: 'https://abubakker98.github.io/Connect/',
+  socials: [
+    { key: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/abubakkerbakthathi/' },
+    { key: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@AbubakkerBakthathi' },
+    { key: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/bakthathi/' },
+    { key: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/BAKTHATHI' },
+  ],
   kicker: 'Founder & CEO, Paralox Media · AI trainer & lecturer',
   seoTitle: 'Abubakker Bakthathi | Founder & CEO, Paralox Media · AI Trainer & Lecturer',
   lede: 'Abubakker Bakthathi is the founder and CEO of Paralox Media, an AI creative and technology agency in Colombo, Sri Lanka. He is also a leading AI trainer and lecturer: he lectures on AI for Leadership & Business Productivity at Inspire College, trains corporate teams with Cocoon and BuildrLabs, and has delivered 20+ AI sessions to more than 500 people.',

@@ -58,7 +58,7 @@ const ORGANIZATION = {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
     description: 'Founder and CEO of Paralox Media, and a leading AI trainer and lecturer in Sri Lanka: lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
-    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/', 'https://www.youtube.com/@AbubakkerBakthathi'],
+    sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/', 'https://www.youtube.com/@AbubakkerBakthathi', 'https://www.instagram.com/abubakkerbakthathi/', 'https://www.facebook.com/BAKTHATHI'],
     // Independent press about him: a strong signal for search and AI answers.
     subjectOf: {
       '@type': 'NewsArticle',

@@ -278,3 +278,79 @@ a.fx-teach-card:hover{border-color:rgba(182,156,255,.45);translate:0 -5px}
 .fd-story-photo:hover img{transform:scale(1.02) rotate(-.6deg)}
 .fd-story-photo figcaption{margin-top:14px;color:var(--mute);font-size:.7rem}
 @media (max-width:899px){.fd-story-in{grid-template-columns:minmax(0,1fr)}.fd-story-photo{position:static;max-width:420px}}
+
+/* ===== Brighter rhythm: light sections between the dark ones ===== */
+.fx .fx-intro{background:linear-gradient(180deg,#F4EFFF 0%,#FBF9FF 100%);color:var(--ink-text)}
+.fx .fx-lede{color:var(--ink-text)}
+.fx .fx-proof a{background:#fff!important;border-color:#E6DEFA!important;color:var(--ink-text)!important;box-shadow:0 20px 40px -30px rgba(62,32,135,.35)}
+.fx .fx-proof b{color:var(--violet)!important}
+.fx .fx-proof span{color:var(--ink-soft)!important}
+
+.fx .fx-teach{background:#fff;color:var(--ink-text)}
+.fx .fx-teach-sub{color:var(--ink-soft)}
+.fx .fx-teach-card{background:var(--pearl);border-color:#E6DEFA;color:var(--ink-text)}
+.fx a.fx-teach-card:hover{border-color:var(--lilac);box-shadow:0 26px 50px -30px rgba(62,32,135,.45)}
+.fx .fx-teach-card .mono{color:var(--violet)}
+.fx .fx-teach-role{color:var(--deep)}
+.fx .fx-teach-card p{color:var(--ink-soft)}
+.fx .fx-teach-card .link{color:var(--violet)}
+.fx .fx-teach-grid li:first-child .fx-teach-card{color:#fff}
+.fx .fx-teach-grid li:first-child .fx-teach-role{color:#fff}
+.fx .fx-teach-grid li:first-child .fx-teach-card p{color:rgba(255,255,255,.85)}
+.fx .fx-workshop h3{color:var(--ink-text)}
+.fx .fx-workshop p:not(.rc-kick):not(.mono){color:var(--ink-soft)}
+.fx .fx-workshop .link{color:var(--violet)!important}
+.fx .fx-ws-meta{color:var(--violet)}
+
+.fx .fx-rec{background:linear-gradient(180deg,#FBF9FF,#F1EBFF);color:var(--ink-text)}
+.fx .fx-rec-list a{color:var(--ink-text);border-color:#DDD2F7}
+.fx .fx-rec-list li:first-child a{border-color:#DDD2F7}
+.fx .fx-rec-list .mono{color:var(--ink-soft)}
+.fx .fx-rec-list .arr{color:var(--violet)}
+
+.fx .fd-quotes{background:#fff;color:var(--ink-text)}
+.fx .fd-quotes .rc-kick{color:var(--violet)}
+.fx .fd-quotes li{background:var(--pearl);border-color:#E6DEFA}
+.fx .fd-quotes li:hover{background:#F4EFFF;border-color:var(--lilac)}
+.fx .fd-quotes a{color:var(--violet)}
+
+/* ===== Book a consultation: the bright, highlighted section ===== */
+.fx .fx-consult{background:radial-gradient(120% 90% at 0% 0%,#9F6BFF 0%,#7C3AED 35%,#3E2087 75%,#1E0F45 100%);color:#fff}
+.fx .fx-consult::before{display:none}
+.fx-consult-ring{position:absolute;z-index:0;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none;animation:fxRing 9s ease-in-out infinite alternate}
+.fx-consult-ring.r1{width:620px;height:620px;left:-180px;top:-160px}
+.fx-consult-ring.r2{width:900px;height:900px;right:-360px;bottom:-460px;animation-delay:-4s}
+@keyframes fxRing{from{transform:scale(1)}to{transform:scale(1.08)}}
+.fx .fx-consult .wrap{position:relative;z-index:1}
+.fx-consult-badge{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font-weight:600;font-size:.88rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.fx-consult-badge i{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:fxLive 1.8s ease-out infinite}
+@keyframes fxLive{0%{box-shadow:0 0 0 0 rgba(74,222,128,.7)}100%{box-shadow:0 0 0 10px rgba(74,222,128,0)}}
+.fx .fx-consult .fd-price b{font-size:clamp(3.2rem,5.6vw,4.8rem)}
+.fx .fx-consult .fd-price span{color:#fff;opacity:.85}
+.fx .fx-consult .cr-apply-intro > p:not(.fx-consult-badge):not(.fd-price){color:rgba(255,255,255,.9)}
+.fx .fx-consult .fd-includes li{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);color:#fff}
+.fx .fx-consult .fd-includes li::before{color:#C9FFD9}
+.fx .fx-consult .cr-form{box-shadow:0 50px 100px -40px rgba(14,8,36,.7),0 0 0 6px rgba(255,255,255,.12)}
+.fx-consult-social{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px;margin-top:26px}
+.fx-consult-social .mono{font-size:.7rem;opacity:.85}
+
+/* Social icons */
+.fx-socials{list-style:none;margin:0;padding:0;display:flex;gap:10px}
+.fx-socials a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .3s,color .3s,translate .35s var(--ease)}
+.fx-socials a:hover{background:#fff;color:var(--violet);translate:0 -3px}
+.fx-socials svg{width:18px;height:18px}
+
+/* Floating "Book a consultation" button */
+.fx-fab{position:fixed;z-index:60;right:clamp(14px,2.4vw,28px);bottom:clamp(14px,2.4vw,28px);display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;
+  background:linear-gradient(120deg,#7C3AED,#9F6BFF);color:#fff;font-weight:700;font-size:.95rem;box-shadow:0 20px 40px -12px rgba(124,58,237,.7),0 0 0 1px rgba(255,255,255,.2) inset;
+  opacity:0;translate:0 20px;pointer-events:none;transition:opacity .45s var(--ease-expo),translate .45s var(--ease-expo),box-shadow .3s}
+.fx-fab.on{opacity:1;translate:0 0;pointer-events:auto}
+.fx-fab:hover{box-shadow:0 26px 50px -12px rgba(124,58,237,.9),0 0 0 1px rgba(255,255,255,.35) inset}
+.fx-fab i{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:fxLive 1.8s ease-out infinite}
+.fx-fab .arr{transition:translate .35s var(--ease)}
+.fx-fab:hover .arr{translate:4px 0}
+/* The hero pill: make it glow so it reads as the main action */
+.fx .fx-pill{box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:fxPill 2.6s ease-out infinite}
+@keyframes fxPill{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
+@media (max-width:600px){.fx-fab{left:14px;right:14px;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.fx-consult-ring,.fx-consult-badge i,.fx-fab i,.fx .fx-pill{animation:none}}

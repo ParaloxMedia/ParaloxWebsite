@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { FOUNDER } from '../data/founder';
 import { CONTACT } from '../data/content';
 import { Glass } from '../components/Glass';
+import { BrandIcon } from '../components/Icons';
 import { finePointer, prefersReducedMotion } from '../hooks/useHashRoute';
 import coverImg from '../assets/pulse/sunday-morning-cover.jpg';
 
@@ -76,6 +77,17 @@ function ShortVideo({ id, poster, title }) {
         <span className="pj-yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg></span>
       </button>
     );
+}
+
+/** His social profiles as round icon links. */
+function SocialLinks({ items, className = '' }) {
+  return (
+    <ul className={`fx-socials ${className}`}>
+      {items.map((s) => (
+        <li key={s.key}><a href={s.url} target="_blank" rel="noopener me" aria-label={`Abubakker Bakthathi on ${s.label}`}><BrandIcon name={s.key} /></a></li>
+      ))}
+    </ul>
+  );
 }
 
 /** The sticky events list: the item whose still is in view is marked active. */
@@ -205,6 +217,22 @@ export default function Founder() {
   const work = p.events.map((e) => ({ ...e, src: e.image }));
   const active = useActiveWork(workRef, work.length);
   useFounderMotion(root);
+  // Floating "Book a consultation" button: visible after the hero, hidden at the form.
+  const [fab, setFab] = useState(false);
+  useEffect(() => {
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      const c = document.getElementById('consult');
+      const pastHero = window.scrollY > window.innerHeight * 1.2;
+      const atForm = c && c.getBoundingClientRect().top < window.innerHeight * 0.85 && c.getBoundingClientRect().bottom > 0;
+      setFab(pastHero && !atForm);
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(check); };
+    check();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => { window.removeEventListener('scroll', on); cancelAnimationFrame(raf); };
+  }, []);
   // Why section: words and cards reveal in sequence when it scrolls into view.
   const whyRef = useRef(null);
   useEffect(() => {
@@ -227,6 +255,9 @@ export default function Founder() {
 
   return (
     <div className="fx" ref={root}>
+      <a className={`fx-fab${fab ? ' on' : ''}`} href="#consult" aria-hidden={!fab} tabIndex={fab ? 0 : -1}>
+        <i aria-hidden="true" />Book a consultation · ${p.rate.amount}/hr <span className="arr">→</span>
+      </a>
       {/* 1. Hero: full-bleed portrait that shrinks into a framed card as a collage of his talks and events gathers around it. */}
       <section className="fx-hero" aria-labelledby="fx-title">
         <div className="fx-stage">
@@ -246,7 +277,7 @@ export default function Founder() {
               </div>
               <div className="fx-actions fu" style={{ '--d': '.6s' }}>
                 <a className="fx-pill" href="#consult"><i aria-hidden="true" />Book a consultation · ${p.rate.amount}/hr</a>
-                <a className="link" href={p.linkedin} target="_blank" rel="noopener me" style={{ color: '#fff' }}>LinkedIn <span className="arr">↗</span></a>
+                <SocialLinks items={p.socials} />
               </div>
             </div>
           </div>
@@ -437,14 +468,17 @@ export default function Founder() {
       </section>
 
       {/* 12. Consultation */}
-      <section className="cr-apply sec" id="consult" aria-labelledby="fd-consult-h">
+      <section className="cr-apply sec fx-consult" id="consult" aria-labelledby="fd-consult-h">
+        <span className="fx-consult-ring r1" aria-hidden="true" />
+        <span className="fx-consult-ring r2" aria-hidden="true" />
         <div className="wrap cr-apply-in">
           <div className="cr-apply-intro">
-            <p className="rc-kick">Consultation</p>
+            <p className="fx-consult-badge"><i aria-hidden="true" />Now booking · one-to-one with Abubakker</p>
             <h2 className="d-m" id="fd-consult-h">{p.consult.title}<span className="dot">.</span></h2>
             <p className="fd-price"><b>${p.rate.amount}</b> <span>USD per hour</span></p>
             <p>{p.consult.text}</p>
             <ul className="fd-includes">{p.consult.includes.map((x) => <li key={x}>{x}</li>)}</ul>
+            <div className="fx-consult-social"><span className="mono">Follow Abubakker</span><SocialLinks items={p.socials} /></div>
           </div>
           <ConsultForm />
         </div>
