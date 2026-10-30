@@ -498,9 +498,9 @@ export const PROJECTS = [
     id: 'renault-ai-tvc',
     client: 'Renault',
     title: 'Renault Sri Lanka AI film',
-    kicker: 'Production partner to WPP Media',
+    kicker: 'AI film for Renault Sri Lanka',
     headline: 'Renault, unleashed. Made with AI, in one day.',
-    summary: 'An AI-generated film for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Visuals, voice, music and sound design all made with AI, in a single day, by Paralox Media as WPP Media’s production house.',
+    summary: 'An AI-generated film for Renault in Sri Lanka: an explorer’s journey through the island’s wild that ends with the Triber, Kwid, Kiger and Duster, unleashed. Visuals, voice, music and sound design all made with AI, in a single day, by Paralox Media.',
     hero: renaultHero,
     // The key visual: shade the title side, keep the cars and animals on the right.
     heroShade: 'side',
@@ -511,13 +511,12 @@ export const PROJECTS = [
     iso: '2026-10-22',
     facts: [
       ['Client', 'Renault Sri Lanka'],
-      ['Lead agency', 'WPP Media'],
-      ['Our role', 'Production house'],
+      ['Our role', 'AI film production'],
       ['Turnaround', 'One day'],
       ['Year', '2026'],
     ],
     story: [
-      'Renault needed a film to introduce its range in Sri Lanka, and it needed it fast. WPP Media led the campaign and brought in Paralox Media as its production house. From the approved storyboard to the finished film, we delivered in a single day.',
+      'Renault needed a film to introduce its range in Sri Lanka, and it needed it fast. From the approved storyboard to the finished film, we delivered in a single day.',
       'The idea is evolution. An explorer moves through Sri Lanka’s wild and meets the animals the island is known for: a sloth bear in the forest, a leopard on a branch, elephants in the trees and an eagle overhead. The journey builds to a stampede through a canyon, and the animals return as glowing spirits beside the Triber, Kwid, Kiger and Duster on a Colombo street, under the Lotus Tower, for the line Heightened Evolution, Unleashed.',
       'Every frame was generated with AI, and so was everything you hear: the voice-over, the music score and the sound engineering. The challenge with AI film is not making a shot, it is making a film: the same explorer in every scene, light that matches from cut to cut, animals that move with real weight, and cars that look exactly like the cars in the showroom. That is where most of the day went.',
       'We worked from the storyboard frame by frame. Each scene was built from detailed shot prompts written by our team, generated in many versions and narrowed down to the takes with true realism: believable skin and fabric, natural fur, honest depth of field and camera movement that feels like a real lens. Reference images held the explorer’s face, wardrobe and gear steady across the film, and the Renault models were checked against the real vehicles, down to the badges, grilles and colours.',

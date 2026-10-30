@@ -363,6 +363,9 @@ export const ROUTE_META = {
   })),
 };
 
+// The lead agency a project was made with, if any (from its facts).
+const agencyOf = (p) => p.facts?.find(([k]) => k === 'Lead agency')?.[1];
+
 // Project case studies: a CreativeWork with its videos, so they can appear in video results.
 for (const p of PROJECTS) {
   const path = `/work/${p.id}`;
@@ -386,7 +389,7 @@ for (const p of PROJECTS) {
       image: [abs(p.hero)],
       dateCreated: p.iso,
       creator: { '@id': ORG_ID },
-      contributor: { '@type': 'Organization', name: 'WPP Media' },
+      ...(agencyOf(p) && { contributor: { '@type': 'Organization', name: agencyOf(p) } }),
       sourceOrganization: { '@type': 'Organization', name: p.client },
       genre: p.pillar,
       ...(p.videos?.length > 0 && { video: p.videos.map((v) => ({
