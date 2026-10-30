@@ -23,7 +23,7 @@ import AiAgency from './pages/AiAgency';
 import Founder from './pages/Founder';
 import { LANDING_PAGES } from './data/aiAgency';
 import Job from './pages/Job';
-import { VACANCIES } from './data/careers';
+import { ROLES, VACANCIES } from './data/careers';
 import { PROJECTS } from './data/projects';
 
 const PILLAR_KEYS = ['ai', 'engineering', 'media', 'growth'];
@@ -45,6 +45,8 @@ function resolve(hash) {
   // An open role: /careers/<id>.
   const job = hash.startsWith('careers/') && VACANCIES.find((v) => `careers/${v.id}` === hash);
   if (job) return { view: 'job', nav: '', job };
+  // A filled role's old link opens the careers page.
+  if (hash.startsWith('careers/') && ROLES.some((v) => `careers/${v.id}` === hash)) return { view: 'careers', nav: '' };
   const workPillar = hash.match(/^works\/(ai|engineering|media|growth)$/);
   if (workPillar) return { view: 'works', nav: '', pillar: workPillar[1] };
   if (PAGES.includes(hash)) return { view: hash, nav: hash };

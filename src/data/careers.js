@@ -9,9 +9,12 @@ export const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz5Uuf7WX
 
 // Open roles. Remove a role when it is filled; `poster` shows the hiring post beside the details; `posted` feeds Google's job listings.
 // `portfolio: false` makes the portfolio link optional for that role.
-export const VACANCIES = [
+// Every role ever listed; `filled: true` hides one everywhere (list, form, job pages,
+// Google listings, sitemap) and sends its old link to /careers. Delete the flag to reopen.
+export const ROLES = [
   {
     id: 'growth-client-strategy-lead',
+    filled: true, // hired, October 2026
     title: 'Growth & Client Strategy Lead',
     team: 'Growth',
     type: 'Full-time',
@@ -93,6 +96,9 @@ export const VACANCIES = [
     ],
   },
 ];
+
+/** Open roles only. */
+export const VACANCIES = ROLES.filter((r) => !r.filled);
 
 export const WHY_JOIN = [
   { glyph: 'ai', title: 'Real AI work', text: 'AI films, agents and automations for paying clients like Renault and Nissan, not internal demos.' },

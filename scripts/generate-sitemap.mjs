@@ -56,7 +56,9 @@ const projects = [...projSrc.matchAll(/\bid:\s*["']([^"']+)["'][\s\S]*?\biso:\s*
 
 // Open roles (careers.js imports images too): one page each.
 const jobSrc = await readFile(new URL('../src/data/careers.js', import.meta.url), 'utf8');
-const jobs = [...jobSrc.matchAll(/\bid:\s*["']([^"']+)["'][\s\S]*?\bposted:\s*["'](\d{4}-\d{2}-\d{2})["']/g)]
+const jobs = [...jobSrc.matchAll(/\bid:\s*["']([^"']+)["']([\s\S]*?)\bposted:\s*["'](\d{4}-\d{2}-\d{2})["']/g)]
+  .filter(([, , block]) => !/\bfilled:\s*true/.test(block)) // filled roles are not listed
+  .map(([m, id, , posted]) => [m, id, posted])
   .map(([, id, posted]) => ({ path: `/careers/${encodeURIComponent(id)}`, lastmod: posted <= today ? posted : today, priority: '0.7', changefreq: 'weekly' }));
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
