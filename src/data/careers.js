@@ -3,6 +3,7 @@
 // Google Drive with the CV and a summary, and emails info@paraloxmedia.com.
 
 import growthLeadPoster from '../assets/careers/growth-client-strategy-lead.jpg';
+import contentCreatorPoster from '../assets/careers/female-content-creator-presenter.jpg';
 import videoEditorPoster from '../assets/careers/junior-video-editor.jpg';
 
 export const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz5Uuf7WXD2RBG4tMV2IX3ITo4rWvy5-iRbbe51zr4tS11SJxD3Sd1Om4sCKjbnz_CT/exec';
@@ -48,6 +49,7 @@ export const ROLES = [
     employmentType: ['FULL_TIME', 'PART_TIME'],
     location: 'Colombo · On-site shoots · Hybrid',
     onsite: true,
+    poster: contentCreatorPoster,
     posted: '2026-10-30',
     summary: 'Be the face and voice of content for Paralox Media and our clients: present brand videos, reels, product launches and event coverage, and help shape the ideas behind them.',
     duties: [
