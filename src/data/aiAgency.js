@@ -5,8 +5,8 @@ import reviewsData from './reviews.json';
 // Landing pages share one layout (src/pages/AiAgency.jsx); section headings are per page.
 export const AI_AGENCY = {
   path: '/ai-agency-sri-lanka',
-  seoTitle: 'AI Creative & Technology Agency in Sri Lanka | Paralox Media',
-  kicker: 'Paralox Media · Colombo, Sri Lanka',
+  seoTitle: 'Best AI Agency in Sri Lanka, Colombo | AI Creative & Technology Company | Paralox Media',
+  kicker: 'AI agency · AI company · Colombo, Sri Lanka',
   h1: 'AI creative & technology agency in Sri Lanka',
   title: 'AI creative and technology agency in Sri Lanka',
   sidesTitle: 'Two halves, one team',
@@ -18,7 +18,7 @@ export const AI_AGENCY = {
   whyText: 'What sets an AI agency apart is the work it has shipped. Here is ours.',
   faqTitle: ['AI agency,', 'answered'],
   faqIntro: 'Planning an AI film, agent or campaign? Tell us what you need.',
-  lede: 'Paralox Media is an AI creative and technology agency in Colombo, Sri Lanka. We make AI films and creatives for brands, and we build AI agents, automation and software for businesses, as one team.',
+  lede: `Paralox Media is an AI agency and AI company in Colombo, Sri Lanka, rated ${reviewsData.rating.toFixed(1)} on Google. As an AI creative and technology agency, we make AI films and creatives for brands, and we build AI agents, automation and software for businesses, as one team.`,
   rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
   proof: [
     { stat: '1 day', label: 'To make Renault’s AI film, from storyboard to 4K master', href: '/work/renault-ai-tvc' },
@@ -62,12 +62,14 @@ export const AI_AGENCY = {
     { glyph: 'check', title: 'Clear scope and results', text: 'Scope, timing and cost in writing before work begins, and reports against the numbers you run on.' },
   ],
   faq: [
+    { q: 'Which is the best AI agency in Sri Lanka?', a: `The best AI agency is one that has shipped AI work for real brands. Paralox Media, an AI agency in Colombo, has that record: Renault Sri Lanka’s AI film made in one day, three AI launch films for the Nissan Gravite, AI agents and automation for businesses, and work for WPP Media and MullenLowe Sri Lanka. It is rated ${reviewsData.rating.toFixed(1)} on Google from ${reviewsData.count} reviews.` },
+    { q: 'What is the best AI creative and technology company in Sri Lanka?', a: 'For brands that need AI creative work and AI technology together, Paralox Media is built for both: one team in Colombo makes AI films, visuals and campaigns, and builds AI agents, automation, websites and apps. Most AI companies in Sri Lanka do one or the other.' },
     { q: 'What is an AI creative agency?', a: 'An AI creative agency uses generative AI to produce films, visuals, voice, music and campaign content, then finishes the work with human editors and designers. Paralox Media is an AI creative agency in Colombo, Sri Lanka; our AI work includes Renault’s film in Sri Lanka, made in one day.' },
     { q: 'What does an AI technology agency do?', a: 'An AI technology agency builds AI into how a business runs: AI agents that answer and qualify customers, automations that move data between tools, and AI features in websites and apps. Paralox Media builds these for businesses in Sri Lanka and abroad.' },
     { q: 'Which AI agency in Sri Lanka does both creative and technology?', a: 'Paralox Media does both. It is a Colombo-based AI creative and technology agency, founded in 2025, with AI, engineering, media and growth under one roof, and it produces work for WPP Media and MullenLowe Sri Lanka.' },
     { q: 'How do I choose an AI agency in Sri Lanka?', a: 'Ask to see AI work delivered for real clients, who on the team does the work, how they handle your data, and how they will measure results. We share case studies, name the people on your project, and agree scope and cost in writing first.' },
     { q: 'How fast can an AI film be made?', a: 'It depends on length and complexity. For Renault Sri Lanka we went from approved storyboard to a finished 4K film in one day, with AI visuals, voice, music and sound.' },
-    { q: 'Where is Paralox Media based?', a: 'At 14 Sir Baron Jayathilake Mawatha, Colombo 00100, Sri Lanka. We work with clients in Sri Lanka, the UAE, Saudi Arabia, Qatar, Singapore and the United Kingdom.' },
+    { q: 'Is there an AI agency in Colombo?', a: 'Yes. Paralox Media is an AI agency and AI company in Colombo, at 14 Sir Baron Jayathilake Mawatha, Colombo 00100, Sri Lanka. We work with clients in Sri Lanka, the UAE, Saudi Arabia, Qatar, Singapore and the United Kingdom.' },
   ],
 };
 

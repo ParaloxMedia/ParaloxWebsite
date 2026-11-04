@@ -35,7 +35,7 @@ const imageOf = (p) =>
 // The founder's full profile, used only on /abubakker-bakthathi.
 const FOUNDER_PERSON = {
     '@type': 'Person', '@id': `${SITE}/abubakker-bakthathi#person`, name: 'Abubakker Bakthathi', jobTitle: 'Founder & CEO',
-    description: 'Founder and CEO of Paralox Media, and a leading AI trainer and lecturer in Sri Lanka: lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
+    description: 'Founder and CEO of Paralox Media, and a leading AI trainer, lecturer and AI consultant in Sri Lanka: lecturer in AI for Leadership & Business Productivity at Inspire College, and AI trainer with Cocoon and BuildrLabs.',
     worksFor: { '@id': ORG_ID }, url: `${SITE}/abubakker-bakthathi`, email: 'abubakker@paraloxmedia.com',
     sameAs: ['https://www.linkedin.com/in/bakthathi/', 'https://abubakker98.github.io/Connect/', 'https://mycocoon.life/trainers', 'https://buildrlabs.ai/trainers/', 'https://www.youtube.com/@AbubakkerBakthathi', 'https://www.instagram.com/abubakkerbakthathi/', 'https://www.facebook.com/BAKTHATHI'],
     // Independent press about him: a strong signal for search and AI answers.
@@ -49,7 +49,8 @@ const FOUNDER_PERSON = {
     },
     hasOccupation: [
       { '@type': 'Occupation', name: 'AI consultant', occupationLocation: { '@type': 'City', name: 'Colombo' } },
-      { '@type': 'Occupation', name: 'AI trainer', occupationLocation: { '@type': 'City', name: 'Colombo' } },
+      { '@type': 'Occupation', name: 'AI trainer', occupationLocation: { '@type': 'Country', name: 'Sri Lanka' } },
+      { '@type': 'Occupation', name: 'AI lecturer', occupationLocation: { '@type': 'City', name: 'Colombo' } },
     ],
     affiliation: [
       { '@type': 'EducationalOrganization', name: 'Inspire College' },
@@ -80,7 +81,7 @@ const ORGANIZATION = {
     { '@type': 'ImageObject', url: `${SITE}/og/home.jpg`, width: 1200, height: 630, caption: 'Paralox Media, AI creative and technology agency in Sri Lanka' },
   ],
   alternateName: ['Paralox', 'Paralox Media Sri Lanka'],
-  description: 'AI creative and technology agency in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
+  description: 'AI creative and technology agency and AI company in Colombo, Sri Lanka: AI films and creatives, AI agents and automation, websites and apps, and performance marketing.',
   slogan: 'Let’s build the future together.',
   email: CONTACT.email,
   telephone: CONTACT.phoneRaw,
@@ -149,9 +150,9 @@ export const mainPillarOf = (p) => WORK.find((w) => w.href === `/work/${p.id}`)?
 
 export const ROUTE_META = {
   '/': page('/', {
-    title: 'Paralox Media | AI Creative & Technology Agency in Sri Lanka',
+    title: 'Paralox Media | Best AI Creative & Technology Agency in Sri Lanka',
     ogTitle: 'Paralox Media — AI creative & technology agency in Sri Lanka',
-    description: 'Paralox Media is an AI creative and technology agency in Colombo, Sri Lanka. We make AI films and creatives, build AI agents and automation, develop websites and apps, and run performance marketing.',
+    description: 'Paralox Media is an AI creative and technology agency and AI company in Colombo, Sri Lanka. We make AI films and creatives, build AI agents and automation, develop websites and apps, and run performance marketing.',
     ...card('home'), type: 'website',
   }, {
     // The home page FAQ, so search and AI answers can quote it directly.
