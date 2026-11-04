@@ -12,6 +12,7 @@ const PAGES = [
   { path: '/ai-agency-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai-video-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai-engineering-sri-lanka', priority: '0.9', changefreq: 'monthly' },
+  { path: '/seo-web-development-sri-lanka', priority: '0.9', changefreq: 'monthly' },
   { path: '/ai',          priority: '0.9', changefreq: 'monthly' },
   { path: '/engineering', priority: '0.9', changefreq: 'monthly' },
   { path: '/media',       priority: '0.9', changefreq: 'monthly' },

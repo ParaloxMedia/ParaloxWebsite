@@ -228,4 +228,78 @@ export const AI_ENGINEERING = {
   ],
 };
 
-export const LANDING_PAGES = [AI_AGENCY, AI_VIDEO, AI_ENGINEERING];
+// /seo-web-development-sri-lanka: websites built for Google and AI answers (SEO and GEO).
+export const WEB_SEO = {
+  path: '/seo-web-development-sri-lanka',
+  seoTitle: 'Best SEO & GEO Web Development in Sri Lanka, Colombo | Paralox Media',
+  kicker: 'SEO · GEO · Web development · Colombo, Sri Lanka',
+  h1: 'SEO & GEO web development in Sri Lanka',
+  title: 'SEO and GEO web development company in Sri Lanka',
+  lede: 'Paralox Media builds websites in Colombo, Sri Lanka that rank on Google and get quoted by ChatGPT, Gemini, Claude and Perplexity. We call it SEO and GEO by design: fast pages, clean structure and structured data from the first line of code, not added later.',
+  rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
+  proof: [
+    { stat: 'SEO + GEO', label: 'Built into the code: every page readable by Google and AI crawlers before any JavaScript runs', href: '/engineering' },
+    { stat: 'Ace+', label: 'Mobile-first e-commerce store rebuilt for a Sri Lankan electronics retailer', href: '/work/ace-plus-online-store' },
+    { stat: 'ExxonMobil', label: 'Vendor portal we built for PNG Embroidery: ordering, quotations, invoicing and CRM', href: '/work/exxonmobil-png-embroidery-vendor-portal' },
+    { stat: `${reviewsData.rating.toFixed(1)}★`, label: `Rated on Google from ${reviewsData.count} reviews`, href: reviewsData.url },
+  ],
+  sidesTitle: 'Found on Google, quoted by AI',
+  sidesText: 'Search has two front doors now: the results page and the AI answer. We build for both.',
+  sides: [
+    {
+      key: 'creative',
+      kicker: 'SEO web development',
+      title: 'Websites that rank on Google',
+      text: 'Technical SEO is decided by how a site is built. We build fast, mobile-first sites where every page has its own address, title, description and share image, and search engines can read the content without waiting for scripts.',
+      points: ['Fast, mobile-first pages (Core Web Vitals)', 'A unique title, description and share image per page', 'Clean URLs, canonicals and an XML sitemap with images', 'Schema markup: Organization, services, FAQs, jobs, videos', 'Keyword-led page structure for local search in Sri Lanka'],
+      work: [
+        { name: 'Ace+ online electronics store', href: '/work/ace-plus-online-store' },
+      ],
+      href: '/engineering',
+      hrefLabel: 'All engineering services',
+    },
+    {
+      key: 'technology',
+      kicker: 'GEO: generative engine optimisation',
+      title: 'Websites AI assistants can quote',
+      text: 'ChatGPT, Gemini, Claude and Perplexity answer from the pages they can read and trust. We make your site easy for them to read, with clear facts, direct answers and the files and permissions AI crawlers look for.',
+      points: ['llms.txt: a plain-text map of your site for AI', 'robots.txt rules for OpenAI, Anthropic and other AI crawlers', 'FAQ answers written to be quoted word for word', 'Facts tied to proof: projects, reviews, press', 'Alt text on every image, so AI shows the right photo and logo'],
+      work: [
+        { name: 'Agentic AI and AI engineering', href: '/ai-engineering-sri-lanka' },
+      ],
+      href: '/ai-agency-sri-lanka',
+      hrefLabel: 'AI agency in Sri Lanka',
+    },
+  ],
+  steps: [
+    { title: 'Search audit', text: 'We check what people search for in your market, how you show up on Google today, and what AI assistants say about you.' },
+    { title: 'Page plan', text: 'One page per service, location and question that matters, each with its own keywords and job to do.' },
+    { title: 'Design and build', text: 'A fast, mobile-first site with SEO and GEO in the code: titles, schema, sitemap, llms.txt and crawler rules.' },
+    { title: 'Content that answers', text: 'Clear copy and FAQ answers backed by your real work, reviews and facts, so search and AI can trust them.' },
+    { title: 'Launch and submit', text: 'We go live, submit to Google Search Console and Bing Webmaster Tools, and check every page is indexed.' },
+    { title: 'Measure and grow', text: 'Monthly reports on rankings, clicks and enquiries, and new pages added where the demand is.' },
+  ],
+  featured: ['/work/ace-plus-online-store', '/work/exxonmobil-png-embroidery-vendor-portal', '/work/webxpay-govpay'],
+  workTitle: 'Websites and platforms we have built',
+  workText: 'Stores, portals and campaigns for businesses in Sri Lanka and beyond.',
+  whyTitle: 'Why Paralox for SEO and GEO websites',
+  whyText: 'A site that ranks and gets quoted is an engineering job and a content job. We do both.',
+  why: [
+    { glyph: 'code', title: 'SEO in the code', text: 'Search is built into the site from day one, not bolted on with a plugin after launch.' },
+    { glyph: 'ai', title: 'Ready for AI search', text: 'llms.txt, AI crawler rules and quotable answers, so ChatGPT and Gemini can find and recommend you.' },
+    { glyph: 'spark', title: 'Design that converts', text: 'The same team designs the brand, writes the copy and builds the site, so it ranks and sells.' },
+    { glyph: 'growth', title: 'Measured results', text: 'Reports on rankings, clicks and enquiries, the numbers your business runs on.' },
+  ],
+  faqTitle: ['SEO and GEO,', 'answered'],
+  faqIntro: 'Want a website that ranks on Google and shows up in ChatGPT? Tell us about it.',
+  faq: [
+    { q: 'Which is the best SEO and GEO web development company in Sri Lanka?', a: `Look for a team that builds SEO and GEO into the code and can show it working. Paralox Media, in Colombo, builds websites with per-page titles and schema, image sitemaps, llms.txt and AI crawler rules from day one, alongside e-commerce stores and portals such as Ace+ and the ExxonMobil × PNG Embroidery vendor portal. It is rated ${reviewsData.rating.toFixed(1)} on Google from ${reviewsData.count} reviews.` },
+    { q: 'What is GEO (generative engine optimisation)?', a: 'GEO is making your website easy for AI assistants such as ChatGPT, Gemini, Claude and Perplexity to read, trust and quote. It covers clear facts and answers on the page, structured data, an llms.txt file, and robots.txt rules that let AI crawlers in.' },
+    { q: 'What is the difference between SEO and GEO?', a: 'SEO helps your pages rank in Google’s results. GEO helps AI assistants mention and link to you in their answers. They overlap: fast, well-structured pages with honest, specific content help both.' },
+    { q: 'Can you make my business show up in ChatGPT?', a: 'No one can guarantee it, but you can make it much more likely. We make sure AI crawlers can read your site, publish clear answers about what you do and where, and tie them to proof such as projects, reviews and press that AI assistants trust.' },
+    { q: 'How long does SEO take in Sri Lanka?', a: 'New pages are usually indexed within days of submitting them to Google Search Console. Rankings for competitive searches typically build over two to six months, depending on competition, content and reviews.' },
+    { q: 'How much does an SEO website cost in Sri Lanka?', a: 'It is priced per project, based on the number of pages, features such as e-commerce or booking, and how much content we write. Tell us what you need and we will send a written quote.' },
+  ],
+};
+
+export const LANDING_PAGES = [AI_AGENCY, AI_VIDEO, AI_ENGINEERING, WEB_SEO];

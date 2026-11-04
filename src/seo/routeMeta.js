@@ -288,7 +288,7 @@ export const ROUTE_META = {
     title: l.seoTitle,
     ogTitle: `${l.h1} · Paralox Media`,
     description: l.lede,
-    ...card(l.path === '/ai-video-sri-lanka' ? 'media' : l.path === '/ai-engineering-sri-lanka' ? 'engineering' : 'ai'), type: 'website',
+    ...card(l.path === '/ai-video-sri-lanka' ? 'media' : ['/ai-engineering-sri-lanka', '/seo-web-development-sri-lanka'].includes(l.path) ? 'engineering' : 'ai'), type: 'website',
   }, {
     trail: [{ name: l.h1, path: l.path }],
     extra: [

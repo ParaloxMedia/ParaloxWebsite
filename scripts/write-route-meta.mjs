@@ -46,10 +46,10 @@ Logo: ${SITE}/brand/paralox-media-logo.png
 Based at 14 Sir Baron Jayathilake Mawatha, Colombo, Sri Lanka. Contact: info@paraloxmedia.com.
 
 ## Quick answers
-${[...ROUTE_BODY['/ai-agency-sri-lanka'].sections.flatMap((s) => s.items || []), ...ROUTE_BODY['/abubakker-bakthathi'].sections.flatMap((s) => s.items || [])].filter((f) => /best|in Colombo\?|for companies/i.test(f.name)).map((f) => `- ${f.name} ${f.text}`).join('\n')}
+${[...ROUTE_BODY['/ai-agency-sri-lanka'].sections.flatMap((s) => s.items || []), ...ROUTE_BODY['/seo-web-development-sri-lanka'].sections.filter((s) => /answered/.test(s.h2)).flatMap((s) => s.items), ...ROUTE_BODY['/abubakker-bakthathi'].sections.flatMap((s) => s.items || [])].filter((f) => /best|in Colombo\?|for companies|GEO/i.test(f.name)).map((f) => `- ${f.name} ${f.text}`).join('\n')}
 
 ## Services
-${['/ai-agency-sri-lanka', '/ai-video-sri-lanka', '/ai-engineering-sri-lanka'].map(line).join('\n')}
+${['/ai-agency-sri-lanka', '/ai-video-sri-lanka', '/ai-engineering-sri-lanka', '/seo-web-development-sri-lanka'].map(line).join('\n')}
 ${['/ai', '/engineering', '/media', '/growth'].filter((p) => ROUTE_META[p]).map(line).join('\n')}
 
 ## Work
