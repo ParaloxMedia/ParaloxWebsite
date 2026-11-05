@@ -22,4 +22,13 @@ User-agent: Claude-SearchBot
 Allow: /
 Disallow: /sealed/
 
+# Google-Extended: lets Gemini use the site in its answers. PerplexityBot: Perplexity answers.
+# Applebot-Extended: Apple Intelligence. Bingbot (the * group) also feeds ChatGPT search and Copilot.
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /sealed/
+
 Sitemap: https://paraloxmedia.com/sitemap.xml

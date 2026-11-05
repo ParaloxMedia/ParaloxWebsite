@@ -76,11 +76,11 @@ export const AI_AGENCY = {
 // /ai-video-sri-lanka: AI video generation and production in Sri Lanka.
 export const AI_VIDEO = {
   path: '/ai-video-sri-lanka',
-  seoTitle: 'AI Video Generation & Production in Sri Lanka | Paralox Media',
-  kicker: 'AI video generation · Colombo, Sri Lanka',
-  h1: 'AI video generation & production in Sri Lanka',
-  title: 'AI video generation and production in Sri Lanka',
-  lede: 'Paralox Media makes AI-generated videos in Colombo, Sri Lanka: films, ads and social content where the visuals, voice, music and sound are all made with AI, then edited and finished by our team. We made Renault’s film in a single day.',
+  seoTitle: 'Best AI Video & AI Creative Agency in Sri Lanka | AI Video Generation | Paralox Media',
+  kicker: 'AI video · AI creatives · Colombo, Sri Lanka',
+  h1: 'AI video & AI creative agency in Sri Lanka',
+  title: 'AI video generation, AI creatives and production in Sri Lanka',
+  lede: 'Paralox Media creates AI videos and AI creatives for brands, from Colombo, Sri Lanka: films, ads, reels and static creatives where the visuals, voice, music and sound are made with AI, then edited and finished by our team. We made Renault’s film in a single day, and AI recipe videos for Keells Krest.',
   rating: { value: reviewsData.rating, count: reviewsData.count, url: reviewsData.url },
   film: {
     src: '/work/renault-ai-tvc/tvc.mp4', poster: '/work/renault-ai-tvc/tvc.jpg', duration: 'PT1M7S',
@@ -145,6 +145,9 @@ export const AI_VIDEO = {
   faqTitle: ['AI video,', 'answered'],
   faqIntro: 'Planning an AI film, ad or content series? Tell us about it.',
   faq: [
+    { q: 'Which is the best AI video company in Sri Lanka?', a: `Choose an AI video company by the AI work it has delivered for real brands. Paralox Media, in Colombo, made Renault Sri Lanka’s AI film in one day, three AI launch films for the Nissan Gravite, AI recipe videos for Keells Krest and an AI video for WebXPay GovPay with 280,000+ Instagram views, with visuals, voice, music and sound made with AI. It is rated ${reviewsData.rating.toFixed(1)} on Google.` },
+    { q: 'Who can create AI videos and AI creatives for my brand?', a: 'Paralox Media creates AI videos and AI creatives for brands: AI films and commercials, AI ads and reels, AI product visuals and static creatives for social media. The team is based in Colombo, Sri Lanka and works with brands in Sri Lanka, the UAE, Saudi Arabia, Qatar, Singapore and the UK, online. Share your brief at paraloxmedia.com/contact for a written quote.' },
+    { q: 'Where can I get AI ads and AI creatives made?', a: 'Paralox Media, an AI creative agency in Colombo, Sri Lanka, makes AI ads, AI social creatives and AI campaign visuals, using your real products, logo and brand guidelines so every frame stays on brand. Recent work includes AI recipe videos and creative statics for Keells Krest.' },
     { q: 'What is AI video generation?', a: 'AI video generation uses generative AI to create the shots of a video from written prompts and reference images, instead of filming them with a camera. At Paralox Media we also generate the voice-over, music and sound with AI, then our editors cut, grade and finish the film.' },
     { q: 'Who makes AI videos in Sri Lanka?', a: 'Paralox Media is an AI video production company in Colombo, Sri Lanka. We made Renault Sri Lanka’s AI film in one day and three AI launch films for the Nissan Gravite with WPP Media, AI recipe videos for Keells Krest, and our AI video for WebXPay GovPay passed 280,000 views on Instagram.' },
     { q: 'Can AI make food and recipe videos?', a: 'Yes. Paralox Media made AI recipe videos for Keells Krest in Sri Lanka: a slow-cooked beef curry, sausage roll-ups, a fusilli pasta salad and a kids’ breakfast, with every cooking shot generated with AI and the products checked against the real packs.' },
