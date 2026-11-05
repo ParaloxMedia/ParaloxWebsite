@@ -22,6 +22,7 @@ import webxpayCover from '../assets/projects/webxpay/cover.jpg';
 import malibanCover from '../assets/projects/maliban/poster-wide.jpg';
 import malibanFilm from '../assets/projects/maliban/film.jpg';
 import renaultHero from '../assets/projects/renault/hero.jpg';
+import krestAiHero from '../assets/projects/keells-krest/ai-recipes-hero.jpg';
 
 export const PROJECTS = [
   {
@@ -348,6 +349,53 @@ export const PROJECTS = [
       { glyph: 'user', title: 'Family stories', text: 'Short films with five mothers and their children.' },
       { glyph: 'play', title: 'Social content', text: 'Reels and posts, cut for the Keells Krest Instagram page.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'keells-krest-ai-recipe-videos',
+    client: 'Keells Krest',
+    title: 'Keells Krest AI recipe videos',
+    kicker: 'AI creative for Keells Krest',
+    headline: 'Recipe videos for Keells Krest, made with AI.',
+    summary: 'AI-generated recipe videos and creative statics for Keells Krest in Sri Lanka: a slow-cooked Sri Lankan beef curry, sausage roll-ups, a healthy fusilli pasta and a breakfast for little ones, plus statics for Halloween, Kirata Mirisata chicken meatballs and Jumbo Peanuts. AI video and creative by Paralox Media.',
+    hero: krestAiHero,
+    // The posts sit on the right: shade the title side.
+    heroShade: 'side',
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-10-31',
+    facts: [
+      ['Client', 'Keells Krest'],
+      ['Our role', 'AI video and creative'],
+      ['Work', 'AI recipe videos · Creative statics'],
+      ['Platform', 'Instagram and Facebook'],
+      ['Year', '2026'],
+    ],
+    story: [
+      'Keells Krest, the processed meat and food brand from Keells in Sri Lanka, shares recipes that show families what they can cook with its products. Paralox Media made a series of AI recipe videos for the Keells Krest social pages, with the recipe written out in each post.',
+      'Each video takes one Keells Krest product from pack to plate: Keells Krest Beef Topside slow-cooked into a classic Sri Lankan beef curry with roasted spices and coconut milk, Keells Krest Chicken Sausage roll-ups fried golden with cheese, a quick and healthy Keells Krest Fusilli pasta salad, and a Keells Krest Frankie breakfast for little ones.',
+      'Every cooking shot was generated with AI: sizzling pans, steam rising from the curry, cheese pulling from a roll-up, pasta tumbling into the bowl. The challenge with AI food video is appetite appeal, food that looks real enough to want to eat, and products that match the real Keells Krest packs. We generated each step in many versions, kept the takes with true-to-life texture, light and movement, and finished each video with the Keells Krest brand frames and recipe steps.',
+      'Alongside the videos we made creative statics for the brand: the Make Something Spooky & Win Halloween contest, the new and improved Keells Krest Kirata Mirisata chicken meatballs in Sinhala, and Keells Krest Jumbo Peanuts.',
+    ],
+    instagram: [
+      { title: 'AI recipe videos', text: 'Four recipes, from pack to plate, with every cooking shot made with AI.', posts: ['DebmSBQzUhP', 'DeOtq_ZM8-c', 'DeOGwatMXcg', 'DeMJwTkSS9G'] },
+      { title: 'Creative statics', text: 'Social statics for Halloween, Kirata Mirisata chicken meatballs and Jumbo Peanuts.', posts: ['DfGzBNOsTLE', 'Dd9OdToM9BG', 'DdvPaKsjHyC'] },
+    ],
+    process: [
+      { title: 'Recipe and product', text: 'One Keells Krest product per video, and a recipe families in Sri Lanka will actually cook.' },
+      { title: 'Shot list', text: 'The recipe broken into steps, each one a shot: prep, cooking, plating and the final dish.' },
+      { title: 'AI food generation', text: 'Each shot generated in many versions, keeping only the takes with real texture, steam and light.' },
+      { title: 'True to the pack', text: 'Products checked against the real Keells Krest packs, so the brand is exactly right.' },
+      { title: 'Edit and brand', text: 'Cut to a fast social rhythm, with Keells Krest brand frames, recipe steps and the end card.' },
+      { title: 'Statics', text: 'Campaign and product statics designed to sit alongside the videos on the brand’s feed.' },
+    ],
+    deliverables: [
+      { glyph: 'ai', title: 'AI recipe videos', text: 'Four vertical recipe videos, every cooking shot generated with AI.' },
+      { glyph: 'spark', title: 'Appetite appeal', text: 'Food that looks real enough to eat: texture, steam and light, take by take.' },
+      { glyph: 'check', title: 'Brand accuracy', text: 'Keells Krest products shown true to the real packs.' },
+      { glyph: 'doc', title: 'Creative statics', text: 'Statics for Halloween, Kirata Mirisata chicken meatballs and Jumbo Peanuts.' },
+      { glyph: 'play', title: 'Social-first edit', text: 'Cut for Instagram and Facebook, with recipe steps on screen.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
