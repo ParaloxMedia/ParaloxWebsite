@@ -1,4 +1,16 @@
-# OpenAI Ads tracking repair — 9 November 2026
+# OpenAI Ads tracking — static hosting
+
+Current deployment mode is **browser Pixel only** on DigitalOcean static hosting. The frontend no longer calls `/api/conversion`. No OpenAI API key or backend is required for this mode. Keep API keys out of browser environment variables.
+
+Consent, page views, hashed customer matching, contact/consultation leads and career application events remain active. The Pixel SDK handles browser attribution. Server-side fallback and Pixel/CAPI pairing do not run on this deployment; browser blocking can prevent measurement.
+
+`server.cjs` and its tests remain available for a future Node deployment, but static hosting does not execute them. Its environment variables in `.env.example` are optional and inactive here. Tests exercise the actual static browser configuration without enabling a server relay.
+
+Before deploying, review privacy, security, consent and data handling requirements. After deploying, verify a consented test submission in Ads Manager; live receipt has not been verified here.
+
+## Earlier repair record — 9 November 2026
+
+The following records the earlier Pixel+CAPI repair. Its CAPI details apply only if the optional Node server is deployed, not to the current static website.
 
 Applied locally to the existing React 18 / Vite 5 site and optional Node server, using Pixel + CAPI. No deployment or Ads Manager settings were changed.
 

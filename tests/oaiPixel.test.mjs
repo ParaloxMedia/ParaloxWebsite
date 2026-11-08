@@ -30,13 +30,13 @@ test('consent precedes init; acceptance records one page even when storage is bl
   assert.equal(b.calls.filter(c => c[0] === 'measure').length, 2);
   assert.equal(b.requests.length, 0);
 });
-test('paired conversion uses same id and hashed late matching without reinitializing pixel id', async () => {
+test('static conversion measures once with hashed matching and no server request', async () => {
   const b = browser(); b.run("setConsent(true); track('lead_created', {}, { email: ' Test@example.com ' });");
   for (let n = 0; n < 50 && !b.calls.some(c => c[1] === 'lead_created'); n++) await new Promise(r => setTimeout(r, 5));
   const event = b.calls.find(c => c[1] === 'lead_created');
-  const body = JSON.parse(b.requests[0][1].body);
-  assert.equal(event[3].event_id, body.id);
-  assert.equal(body.source_url, 'https://paraloxmedia.com/contact');
+  assert.ok(event[3].event_id);
+  assert.equal(b.calls.filter(c => c[1] === 'lead_created').length, 1);
+  assert.equal(b.requests.length, 0);
   const matching = b.calls.find(c => c[0] === 'init' && c[1].user);
   assert.equal(matching[1].pixelId, undefined);
   assert.match(matching[1].user.email_sha256, /^[a-f0-9]{64}$/);

@@ -84,10 +84,8 @@ async function matchingUser({ name, email, phone } = {}) {
 }
 
 /**
- * Sends a conversion from the browser (pixel) and, with the same event id, from our
- * server (Conversions API, /api/conversion), so OpenAI counts it once even if one is
- * blocked. Call only after a successful submission. `contact` ({ name, email, phone })
- * is hashed in the browser for pixel matching, and sent to our server, which hashes it too.
+ * Measures successful submissions through the browser Pixel on static hosting.
+ * Contact identifiers are hashed locally before matching; no server relay is called.
  */
 export function track(event, data = {}, contact = {}) {
   if (!pixelEnabled() || storedConsent() !== 'yes') return;
@@ -104,14 +102,6 @@ export function track(event, data = {}, contact = {}) {
       if (user) window.oaiq('init', { user });
       window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
     })().catch(() => {});
-    try {
-      fetch('/api/conversion', {
-        method: 'POST',
-        keepalive: true,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event, id, consent: true, source_url: window.location.origin + window.location.pathname, amount: data.amount, currency: data.currency, ...contact }),
-      }).catch(() => {});
-    } catch { /* offline */ }
   } catch { /* Never change a successful form result. */ }
 }
 
