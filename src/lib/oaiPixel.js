@@ -5,41 +5,52 @@
  */
 export const PIXEL_ID = '976pigAgZaxzebj4eRJZyG'; // From ChatGPT Ads Manager → Conversions.
 
-// Debug logs pixel activity to the browser console, for verifying the setup in Ads Manager. Set false once verified.
-const DEBUG = true;
+// Production measurement must not log customer matching activity.
+const DEBUG = false;
 
 const CONSENT_KEY = 'plx-measure-consent'; // 'yes' | 'no'
 let started = false;
+let lastPage = null;
+let consentInMemory;
 
 export const pixelEnabled = () => Boolean(PIXEL_ID) && typeof window !== 'undefined';
 
 export function storedConsent() {
+  if (consentInMemory !== undefined) return consentInMemory;
   try { return localStorage.getItem(CONSENT_KEY); } catch { return null; }
 }
 
 /** Loads the SDK once (official snippet) and applies any stored consent. */
 export function startPixel() {
   if (!pixelEnabled() || started) return;
-  started = true;
-  (function (w, d, s, u) {
-    if (w.oaiq) return;
-    const q = function () { q.q.push(arguments); };
-    q.q = [];
-    w.oaiq = q;
-    const js = d.createElement(s);
-    js.async = true;
-    js.src = u;
-    const f = d.getElementsByTagName(s)[0];
-    f.parentNode.insertBefore(js, f);
-  })(window, document, 'script', 'https://bzrcdn.openai.com/sdk/oaiq.min.js');
-  window.oaiq('init', { pixelId: PIXEL_ID, debug: DEBUG });
-  // No measurement until the visitor says yes.
-  window.oaiq('consent', storedConsent() === 'yes');
+  try {
+    (function (w, d, s, u) {
+      if (w.oaiq) return;
+      const q = function () { q.q.push(arguments); };
+      q.q = [];
+      w.oaiq = q;
+      const js = d.createElement(s);
+      js.async = true;
+      js.src = u;
+      const f = d.getElementsByTagName(s)[0];
+      f.parentNode.insertBefore(js, f);
+    })(window, document, 'script', 'https://bzrcdn.openai.com/sdk/oaiq.min.js');
+    // Consent must be queued before init; the SDK defaults to granted.
+    window.oaiq('consent', storedConsent() === 'yes');
+    window.oaiq('init', { pixelId: PIXEL_ID, debug: DEBUG });
+    started = true;
+  } catch { /* Measurement must never break the page. */ }
 }
 
 export function setConsent(yes) {
+  consentInMemory = yes ? 'yes' : 'no';
   try { localStorage.setItem(CONSENT_KEY, yes ? 'yes' : 'no'); } catch { /* private mode */ }
-  if (pixelEnabled() && window.oaiq) window.oaiq('consent', yes);
+  try {
+    startPixel();
+    if (pixelEnabled() && window.oaiq) window.oaiq('consent', yes);
+    if (yes) trackPageView();
+    else lastPage = null;
+  } catch { /* Measurement is optional. */ }
 }
 
 const newId = () => (window.crypto?.randomUUID ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
@@ -80,33 +91,42 @@ async function matchingUser({ name, email, phone } = {}) {
  */
 export function track(event, data = {}, contact = {}) {
   if (!pixelEnabled() || storedConsent() !== 'yes') return;
-  const id = newId();
-  // Matching first (pixel `init` with the hashed user), then the one conversion event.
-  // A matching failure never blocks the event or the form.
-  (async () => {
-    let user = null;
-    try { user = await matchingUser(contact); } catch { /* no matching data */ }
-    // Consent can change while hashing.
-    if (!window.oaiq || storedConsent() !== 'yes') return;
-    if (user) window.oaiq('init', { pixelId: PIXEL_ID, user });
-    window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
-  })();
   try {
-    fetch('/api/conversion', {
-      method: 'POST',
-      keepalive: true,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ event, id, source_url: window.location.href, amount: data.amount, currency: data.currency, ...contact }),
-    }).catch(() => {});
-  } catch { /* offline */ }
+    startPixel();
+    const id = newId();
+    // Matching first (pixel `init` with the hashed user), then the one conversion event.
+    // A matching failure never blocks the event or the form.
+    (async () => {
+      let user = null;
+      try { user = await matchingUser(contact); } catch { /* no matching data */ }
+      // Consent can change while hashing.
+      if (!window.oaiq || storedConsent() !== 'yes') return;
+      if (user) window.oaiq('init', { user });
+      window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
+    })().catch(() => {});
+    try {
+      fetch('/api/conversion', {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event, id, consent: true, source_url: window.location.origin + window.location.pathname, amount: data.amount, currency: data.currency, ...contact }),
+      }).catch(() => {});
+    } catch { /* offline */ }
+  } catch { /* Never change a successful form result. */ }
 }
 
 /** A page view, in the 'contents' shape page_viewed requires. */
 export function trackPageView() {
-  if (!pixelEnabled() || !window.oaiq || storedConsent() !== 'yes') return;
-  const path = window.location.pathname;
-  window.oaiq('measure', 'page_viewed', {
-    type: 'contents',
-    contents: [{ id: path, name: document.title, content_type: 'page' }],
-  });
+  try {
+    if (!pixelEnabled() || storedConsent() !== 'yes') return;
+    startPixel();
+    if (!window.oaiq) return;
+    const path = window.location.pathname;
+    if (path === lastPage || path.startsWith('/rate-card/')) return;
+    window.oaiq('measure', 'page_viewed', {
+      type: 'contents',
+      contents: [{ id: path, name: document.title, content_type: 'page' }],
+    });
+    lastPage = path;
+  } catch { /* Measurement must never break navigation. */ }
 }

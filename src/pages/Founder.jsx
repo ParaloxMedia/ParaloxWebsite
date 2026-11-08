@@ -141,7 +141,7 @@ function ConsultForm() {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       setStatus('sent');
-      track('appointment_scheduled', { amount: total * 100, currency: 'USD' }, { name: f.name, email: f.email, phone: f.phone });
+      track('lead_created', {}, { name: f.name, email: f.email, phone: f.phone });
     } catch {
       setStatus('failed');
     }

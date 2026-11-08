@@ -182,43 +182,48 @@ async function handleConversion(req, res) {
   if (req.method !== 'POST') return done(405);
   let b;
   try { b = await readJson(req); } catch { return done(400); }
-  if (!ADS_EVENTS.has(b.event) || typeof b.id !== 'string' || !b.id || b.id.length > 100) return done(400);
+  if (!b || typeof b !== 'object' || !ADS_EVENTS.has(b.event) || typeof b.id !== 'string' || !b.id || b.id.length > 100) return done(400);
+  if (b.consent !== true) return done(204);
+  if (req.headers.origin !== ORIGIN) return done(403);
   const key = process.env.OPENAI_ADS_API_KEY;
   if (!key) return done(204); // not configured yet
 
-  const user = {};
-  const email = normEmail(b.email);
-  if (/^\S+@\S+\.\S+$/.test(email)) user.emails_sha256 = [sha(email)];
-  const phone = normPhone(b.phone);
-  if (/^\d{8,15}$/.test(phone)) user.phone_numbers_sha256 = [sha(phone)];
-  const [first, ...rest] = String(b.name || '').trim().split(/\s+/);
-  if (first) user.first_names_sha256 = [sha(normName(first))];
-  if (rest.length) user.last_names_sha256 = [sha(normName(rest.join(' ')))];
-  const ip = String(req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress;
-  if (ip) user.ip_address = ip;
-  if (req.headers['user-agent']) user.user_agent = String(req.headers['user-agent']).slice(0, 512);
-  const obref = cookieValue(req, '__obref');
-  if (obref) user.obref = decodeURIComponent(obref);
-
-  let sourceUrl = `${ORIGIN}/`;
-  try { const u = new URL(b.source_url); if (u.origin === ORIGIN) sourceUrl = u.href; } catch { /* keep default */ }
-  const data = { type: 'customer_action' };
-  if (Number.isInteger(b.amount) && b.amount > 0 && /^[A-Z]{3}$/.test(b.currency || '')) { data.amount = b.amount; data.currency = b.currency; }
-
-  const event = { id: b.id, type: b.event, timestamp_ms: Date.now(), action_source: 'web', source_url: sourceUrl, data, user };
   try {
+    const user = {};
+    const email = normEmail(b.email);
+    if (/^\S+@\S+\.\S+$/.test(email)) user.emails_sha256 = [sha(email)];
+    const phone = normPhone(b.phone);
+    if (/^\d{8,15}$/.test(phone)) user.phone_numbers_sha256 = [sha(phone)];
+    const [first, ...rest] = String(b.name || '').trim().split(/\s+/);
+    if (first) user.first_names_sha256 = [sha(normName(first))];
+    if (rest.length) user.last_names_sha256 = [sha(normName(rest.join(' ')))];
+    // Only enable behind a proxy that overwrites this header and blocks direct access.
+    const ipHeader = process.env.OPENAI_ADS_TRUSTED_IP_HEADER;
+    const ip = ipHeader ? String(req.headers[ipHeader.toLowerCase()] || '').trim() : '';
+    if (require('net').isIP(ip)) user.ip_address = ip;
+    if (req.headers['user-agent']) user.user_agent = String(req.headers['user-agent']).slice(0, 512);
+    const obref = cookieValue(req, '__obref');
+    if (obref) user.obref = obref;
+
+    let sourceUrl = `${ORIGIN}/`;
+    try { const u = new URL(b.source_url); if (u.origin === ORIGIN && /^https?:$/.test(u.protocol)) sourceUrl = u.origin + u.pathname; } catch { /* keep default */ }
+    const data = { type: 'customer_action' };
+    if (Number.isInteger(b.amount) && b.amount > 0 && /^[A-Z]{3}$/.test(b.currency || '')) { data.amount = b.amount; data.currency = b.currency; }
+
+    const event = { id: b.id, type: b.event, timestamp_ms: Date.now(), action_source: 'web', source_url: sourceUrl, data, user };
+    const oppref = cookieValue(req, '__oppref');
+    if (oppref) event.oppref = oppref;
     const r = await fetch(`https://bzr.openai.com/v1/events?pid=${encodeURIComponent(ADS_PIXEL_ID)}`, {
       method: 'POST',
+      signal: AbortSignal.timeout(5000),
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
       // OPENAI_ADS_VALIDATE_ONLY=1 checks events without recording them (for testing).
       body: JSON.stringify({ events: [event], ...(process.env.OPENAI_ADS_VALIDATE_ONLY === '1' && { validate_only: true }) }),
     });
-    const reply = (await r.text()).slice(0, 300);
-    if (!r.ok) console.warn(`Conversions API ${r.status}: ${reply}`);
-    else if (process.env.OPENAI_ADS_VALIDATE_ONLY === '1') console.log(`Conversions API (validate only) ${b.event}: ${reply}`);
+    if (!r.ok) console.warn(`Conversions API HTTP ${r.status}`);
     return done(r.ok ? 204 : 502);
   } catch (e) {
-    console.warn(`Conversions API error: ${e.message}`);
+    console.warn('Conversions API request failed');
     return done(502);
   }
 }
