@@ -44,15 +44,53 @@ export function setConsent(yes) {
 
 const newId = () => (window.crypto?.randomUUID ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
+// Matching data, normalized as the pixel docs require (same rules as server.cjs).
+const normEmail = (v) => String(v || '').trim().toLowerCase();
+// Keep the country code; local Sri Lankan numbers (07…) become 947….
+const normPhone = (v) => {
+  const raw = String(v || '').replace(/[\s().-]/g, '');
+  if (/^0\d{9}$/.test(raw)) return `94${raw.slice(1)}`;
+  return raw.replace(/^\+/, '').replace(/^0+/, '');
+};
+const normName = (v) => String(v || '').toLowerCase().replace(/\s+/g, '').replace(/[!-/:-@[-`{-~]/g, '');
+const sha256 = async (v) => {
+  const digest = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(v));
+  return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
+};
+
+/** Hashes what the visitor typed into the pixel's `user` object; raw values never reach the pixel. */
+async function matchingUser({ name, email, phone } = {}) {
+  if (!window.crypto?.subtle) return null;
+  const user = {};
+  const e = normEmail(email);
+  if (e.includes('@')) user.email_sha256 = await sha256(e);
+  const p = normPhone(phone);
+  if (/^\d{8,15}$/.test(p)) user.phone_number_sha256 = await sha256(p);
+  const [first, ...rest] = String(name || '').trim().split(/\s+/);
+  if (first && normName(first)) user.first_name_sha256 = await sha256(normName(first));
+  if (rest.length && normName(rest.join(' '))) user.last_name_sha256 = await sha256(normName(rest.join(' ')));
+  return Object.keys(user).length ? user : null;
+}
+
 /**
  * Sends a conversion from the browser (pixel) and, with the same event id, from our
  * server (Conversions API, /api/conversion), so OpenAI counts it once even if one is
- * blocked. `contact` ({ name, email, phone }) goes only to our server, which hashes it.
+ * blocked. Call only after a successful submission. `contact` ({ name, email, phone })
+ * is hashed in the browser for pixel matching, and sent to our server, which hashes it too.
  */
 export function track(event, data = {}, contact = {}) {
   if (!pixelEnabled() || storedConsent() !== 'yes') return;
   const id = newId();
-  if (window.oaiq) window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
+  // Matching first (pixel `init` with the hashed user), then the one conversion event.
+  // A matching failure never blocks the event or the form.
+  (async () => {
+    let user = null;
+    try { user = await matchingUser(contact); } catch { /* no matching data */ }
+    // Consent can change while hashing.
+    if (!window.oaiq || storedConsent() !== 'yes') return;
+    if (user) window.oaiq('init', { pixelId: PIXEL_ID, user });
+    window.oaiq('measure', event, { type: 'customer_action', ...data }, { event_id: id });
+  })();
   try {
     fetch('/api/conversion', {
       method: 'POST',
