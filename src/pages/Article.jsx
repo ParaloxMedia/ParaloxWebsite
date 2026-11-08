@@ -140,6 +140,12 @@ export default function Article({ post }) {
             <span className="cs-rule" aria-hidden="true" />
           </aside>
           <div className="cs-story">
+            {post.answer && (
+              <div className="aeo-answer cs-reveal">
+                <Label>Quick answer</Label>
+                <p>{post.answer}</p>
+              </div>
+            )}
             <Label>The story</Label>
             {post.body.map((t, i) => <p key={i} className={`cs-reveal${i === 0 ? ' lead' : ''}`}>{t}</p>)}
           </div>
@@ -160,6 +166,26 @@ export default function Article({ post }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Questions answered directly (also FAQPage data for answer engines) */}
+      {post.faq?.length > 0 && (
+        <section className="faq sec" aria-labelledby="ar-faq-h">
+          <div className="wrap faq-grid">
+            <div className="faq-intro cs-reveal">
+              <h2 className="d-l" id="ar-faq-h">Questions,<br />answered<span className="dot">.</span></h2>
+              <p>Short answers to what people ask most.</p>
+            </div>
+            <div className="faq-list">
+              {post.faq.map((f, i) => (
+                <details className="qa" name="ar-faq" open={i === 0} key={f.q}>
+                  <summary><span>{f.q}</span><i aria-hidden="true" /></summary>
+                  <div className="qa-a"><p>{f.a}</p></div>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
       )}

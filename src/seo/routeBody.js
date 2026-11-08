@@ -137,9 +137,10 @@ export const ROUTE_BODY = {
   }])),
   ...Object.fromEntries(POSTS.map((p) => [`/pulse/${p.id}`, {
     h1: p.title,
-    intro: p.kicker || p.excerpt,
+    intro: p.answer || p.kicker || p.excerpt,
     sections: [
       { paras: p.body || [p.excerpt] },
+      ...(p.faq?.length ? [{ h2: 'Questions and answers', items: p.faq.map((f) => ({ name: f.q, text: f.a })) }] : []),
       ...(p.highlights?.length ? [{ h2: 'Highlights', items: p.highlights.map((h) => ({ name: h.title, text: h.text })) }] : []),
     ],
   }])),

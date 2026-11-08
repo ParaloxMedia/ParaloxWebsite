@@ -1165,6 +1165,10 @@ html.is-loading .c2 *{animation-play-state:paused!important}
 .cs-story{max-width:46rem}
 .cs-story p{margin:0 0 1.25em;font-size:1.12rem;line-height:1.75;color:rgba(25,23,32,.8)}
 .cs-story p.lead{font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.55;color:var(--ink-text);font-weight:500;letter-spacing:-.01em}
+/* AEO quick answer: the short answer first, above the story */
+.aeo-answer{margin:0 0 40px;padding:24px 26px 6px;border-radius:22px;background:#F4F0FF;border:1px solid #DCD0FF;border-left:4px solid var(--violet)}
+.aeo-answer .cs-label{color:var(--violet);margin-bottom:12px}
+.cs-story .aeo-answer p{font-size:1.12rem;line-height:1.65;color:var(--ink-text);font-weight:500}
 
 /* 3. dark bands */
 .cs-dark{background:#0D0D11;color:#fff;border-block:1px solid rgba(255,255,255,.08)}

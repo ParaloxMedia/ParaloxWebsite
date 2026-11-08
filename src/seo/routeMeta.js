@@ -125,6 +125,8 @@ function graph(path, meta, { type = 'WebPage', trail = [], extra = [] } = {}) {
     '@type': type, '@id': `${url}#webpage`, url, name: meta.title, description: meta.description,
     isPartOf: { '@id': WEBSITE_ID }, about: { '@id': ORG_ID }, inLanguage: 'en',
     primaryImageOfPage: { '@type': 'ImageObject', url: abs(meta.image) },
+    // AEO: the heading, the summary under it and any quick answer are what assistants read aloud.
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h1 + p', '.aeo-answer p'] },
     ...(trail.length && { breadcrumb: { '@id': `${url}#breadcrumb` } }),
   };
   return {
@@ -359,7 +361,11 @@ export const ROUTE_META = {
         // Posts about the founder name him, so his profile (and photo) is tied to them.
         ...(/Abubakker/.test(`${p.title} ${p.excerpt} ${(p.body || []).join(' ')}`) && { about: { '@id': FOUNDER_ID }, mentions: { '@id': FOUNDER_ID } }),
         mainEntityOfPage: { '@id': `${SITE}${path}#webpage` }, inLanguage: 'en',
-      }],
+        ...(p.answer && { abstract: p.answer }),
+      }, ...(p.faq?.length ? [{
+        '@type': 'FAQPage', '@id': `${SITE}${path}#faq`,
+        mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }] : [])],
     })];
   })),
 };
