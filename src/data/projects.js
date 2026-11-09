@@ -7,6 +7,7 @@ import ritzContestants from '../assets/projects/ritzbury/contestants.jpg';
 import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
 import pngHero from '../assets/projects/png-embroidery/hero.jpg';
 import aceCover from '../assets/projects/ace-plus/cover.jpg';
+import embraxCover from '../assets/projects/embrax/cover.jpg';
 import eliteCover from '../assets/projects/elite/cover.jpg';
 import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
 import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
@@ -172,6 +173,41 @@ export const PROJECTS = [
       { glyph: 'data', title: 'CRM', text: 'Customer details and order history kept together for the PNG Embroidery team.' },
       { glyph: 'growth', title: 'Reports', text: 'Order history and spend in one view for staff and admins.' },
       { glyph: 'api', title: 'Admin portal', text: 'A separate, secured sign-in for the PNG Embroidery team, usable on any device.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'embrax-website',
+    client: 'EMBRAX',
+    title: 'EMBRAX website',
+    kicker: 'Website · Design and development',
+    headline: 'A website for Sri Lanka’s first multiversity.',
+    summary: 'The website for EMBRAX, Sri Lanka’s first multiversity: a 14-floor building at No. 318, Galle Road, Colombo 04 where business education, offices, coworking, events and community come together. Designed and developed by Paralox Media.',
+    hero: embraxCover,
+    heroShade: 'side',
+    pillar: 'Engineering',
+    year: '2026',
+    iso: '2026-11-09',
+    facts: [
+      ['Client', 'EMBRAX'],
+      ['Our role', 'Website design and development'],
+      ['Built with', 'HTML, CSS and JavaScript'],
+      ['Pillar', 'Engineering'],
+      ['Live at', 'embrax.com', 'https://embrax.com/'],
+    ],
+    story: [
+      'EMBRAX calls itself Sri Lanka’s first multiversity: one building on Galle Road, Colombo 04, with 14 floors, more than 70,000 square feet and over 300 people a day. Inside are the EMBRAX Business School and Miami Ad School, private offices and coworking desks, meeting rooms, an event space, a podcast studio, Bees Café and the BeeBooBaa day care.',
+      'With that much under one roof, the website had to make it easy to find one thing. We organised it around four verbs, Learn, Work, Create and Experience, each with its own menu and page, so a student, a company looking for an office and a parent looking for day care each find their way in one or two clicks.',
+      'The home page walks through the whole building, from the programmes to the spaces, events and café, ending with a floor directory and a tour request. Every page is hand-coded and lightweight, adapts to phones, and carries search descriptions and structured data, so Google and AI search can describe EMBRAX correctly.',
+    ],
+    deliverables: [
+      { glyph: 'browser', title: 'Website design', text: 'A bold, clear design in the EMBRAX brand colours, built around Learn, Work, Create and Experience.' },
+      { glyph: 'code', title: 'Hand-coded build', text: 'Lightweight HTML, CSS and JavaScript pages that load fast and need no plugins.' },
+      { glyph: 'user', title: 'Mobile responsive', text: 'Every page and menu adapts to phones and tablets as well as desktops.' },
+      { glyph: 'flow', title: 'Navigation for many audiences', text: 'Mega menus that take students, companies, event organisers and parents straight to their page.' },
+      { glyph: 'doc', title: 'Floor directory', text: 'What is on each of the 14 floors, from reception to the executive lounge.' },
+      { glyph: 'search', title: 'SEO and structured data', text: 'Page titles, descriptions and EducationalOrganization schema for search and AI answers.' },
+      { glyph: 'calendar', title: 'Tour and enquiry paths', text: 'Calls to request a tour or get in touch on every page.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },

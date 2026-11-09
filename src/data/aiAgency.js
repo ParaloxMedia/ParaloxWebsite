@@ -286,7 +286,7 @@ export const WEB_SEO = {
     { title: 'Launch and submit', text: 'We go live, submit to Google Search Console and Bing Webmaster Tools, and check every page is indexed.' },
     { title: 'Measure and grow', text: 'Monthly reports on rankings, clicks and enquiries, and new pages added where the demand is.' },
   ],
-  featured: ['/work/ace-plus-online-store', '/work/exxonmobil-png-embroidery-vendor-portal', '/work/webxpay-govpay'],
+  featured: ['/work/embrax-website', '/work/ace-plus-online-store', '/work/exxonmobil-png-embroidery-vendor-portal'],
   workTitle: 'Websites and platforms we have built',
   workText: 'Stores, portals and campaigns for businesses in Sri Lanka and beyond.',
   whyTitle: 'Why Paralox for SEO and GEO websites',
