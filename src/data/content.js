@@ -35,6 +35,7 @@ import rnbLogo from '../assets/clients/rnb-special-tours.png';
 import abidsLogo from '../assets/clients/abids.png';
 import eliteLogo from '../assets/clients/elite-indian.jpeg';
 import pngLogo from '../assets/clients/png-embroidery.jpeg';
+import embraxLogo from '../assets/clients/embrax.png';
 
 export const CONTACT = {
   email: 'info@paraloxmedia.com',
@@ -82,6 +83,7 @@ export const CLIENTS = [
   { name: "Abid's Restaurant", logo: abidsLogo, fit: 'cover' },
   { name: 'Elite Indian Restaurant', logo: eliteLogo, fit: 'cover' },
   { name: 'PNG Embroidery', logo: pngLogo, fit: 'cover' },
+  { name: 'EMBRAX', logo: embraxLogo, fit: 'contain' },
 ];
 
 export const TICKER = [
@@ -229,8 +231,8 @@ export const WORK = [
   { code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', pillars: ['engineering'], text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },
   { code: 'Event shoot', glyph: 'play', meta: 'Media · With WPP Media', title: 'Ritzbury MasterChef Masterclass', pillars: ['media'], text: 'Full video coverage, fast-cut reels with playful voice-over edits, and a product and people photoshoot on the MasterChef set.', chips: ['Event coverage', 'Reels', 'Photoshoot', 'AI video'], href: '/work/ritzbury-masterchef-masterclass', image: ritzburyCard },
-  { code: 'Website', glyph: 'browser', meta: 'Engineering · Design and development', title: 'EMBRAX website', pillars: ['engineering'], text: 'The website for EMBRAX, Sri Lanka’s first multiversity: one hand-coded, mobile-responsive site for a 14-floor building of business schools, offices, coworking, events and a café.', chips: ['Website', 'Mobile responsive', 'SEO'], href: '/work/embrax-website', image: embraxCard },
-  { code: 'Export website', glyph: 'browser', meta: 'Engineering · Design and development', title: 'Noor Lanka export website', pillars: ['engineering'], text: 'A Next.js website for a Sri Lankan fruit and spice exporter: a product catalogue, a six-step export process and quotation requests built for international buyers.', chips: ['Next.js', 'Export', 'SEO'], href: '/work/noor-lanka-export-website', image: noorCard },
+  { code: 'Website', glyph: 'browser', meta: 'Engineering · Design and development', title: 'EMBRAX website', pillars: ['engineering'], home: false, text: 'The website for EMBRAX, Sri Lanka’s first multiversity: one hand-coded, mobile-responsive site for a 14-floor building of business schools, offices, coworking, events and a café.', chips: ['Website', 'Mobile responsive', 'SEO'], href: '/work/embrax-website', image: embraxCard },
+  { code: 'Export website', glyph: 'browser', meta: 'Engineering · Design and development', title: 'Noor Lanka export website', pillars: ['engineering'], home: false, text: 'A Next.js website for a Sri Lankan fruit and spice exporter: a product catalogue, a six-step export process and quotation requests built for international buyers.', chips: ['Next.js', 'Export', 'SEO'], href: '/work/noor-lanka-export-website', image: noorCard },
   { code: 'E-commerce', glyph: 'browser', meta: 'Engineering · Revamp and development', title: 'Ace+ online electronics store', pillars: ['engineering'], text: 'A revamped, mobile-responsive WooCommerce store for a Sri Lankan electronics retailer, with search and filters, product comparison, wishlists, order tracking and a store locator.', chips: ['WooCommerce', 'Mobile responsive', 'Revamp'], href: '/work/ace-plus-online-store', image: aceCard },
   { code: 'Campaign', glyph: 'growth', meta: 'Growth · Elite Indian Restaurant', title: 'Elite Koththu Rush', pillars: ['growth', 'media'], text: 'A brand awareness campaign and koththu-eating challenge that put a slow-moving dish in the spotlight. After the event, koththu sales reached their peak.', chips: ['Campaign', 'Event', 'Reels', 'Posters'], href: '/work/elite-koththu-rush', image: eliteCard },
   { code: 'Testimonials', glyph: 'play', meta: 'Media · Video production', title: 'Dr. Fixit customer testimonials', pillars: ['media'], home: false, text: 'Two customer testimonial films for Dr. Fixit, the waterproofing brand: a dealer and a homeowner from Hanwella talk about the products on camera.', chips: ['Testimonials', 'Interviews', 'Post-production'], href: '/work/dr-fixit-customer-testimonials', image: fixitCard },
