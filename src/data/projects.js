@@ -8,6 +8,7 @@ import ritzCooking from '../assets/projects/ritzbury/cooking.jpg';
 import pngHero from '../assets/projects/png-embroidery/hero.jpg';
 import aceCover from '../assets/projects/ace-plus/cover.jpg';
 import embraxCover from '../assets/projects/embrax/cover.jpg';
+import noorCover from '../assets/projects/noor-lanka/cover.jpg';
 import eliteCover from '../assets/projects/elite/cover.jpg';
 import fixitDealer from '../assets/projects/drfixit/dealer.jpg';
 import fixitHomeowner from '../assets/projects/drfixit/homeowner.jpg';
@@ -208,6 +209,42 @@ export const PROJECTS = [
       { glyph: 'doc', title: 'Floor directory', text: 'What is on each of the 14 floors, from reception to the executive lounge.' },
       { glyph: 'search', title: 'SEO and structured data', text: 'Page titles, descriptions and EducationalOrganization schema for search and AI answers.' },
       { glyph: 'calendar', title: 'Tour and enquiry paths', text: 'Calls to request a tour or get in touch on every page.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'noor-lanka-export-website',
+    client: 'Noor Lanka',
+    title: 'Noor Lanka export website',
+    kicker: 'Export website · Design and development',
+    headline: 'Sri Lankan fruits and spices, presented to buyers around the world.',
+    summary: 'The website for Noor Lanka, a Sri Lankan exporter of fresh tropical fruits and authentic spices. A product catalogue, export process and quotation requests built for international importers and distributors. Designed and developed by Paralox Media.',
+    hero: noorCover,
+    heroShade: 'side',
+    pillar: 'Engineering',
+    year: '2026',
+    iso: '2026-11-09',
+    facts: [
+      ['Client', 'Noor Lanka'],
+      ['Our role', 'Website design and development'],
+      ['Built with', 'Next.js'],
+      ['Pillar', 'Engineering'],
+      ['Live at', 'noorlanka.com', 'https://www.noorlanka.com/'],
+    ],
+    story: [
+      'Noor Lanka exports fresh pineapples, king coconuts and papayas, along with Ceylon cinnamon, black pepper, cloves, cardamom and nutmeg, to importers, distributors and retailers abroad. Its buyers are overseas businesses, so the website is often the first thing they see of the company.',
+      'We designed and built the site in Next.js around what a buyer needs to decide: a catalogue with a page for each fruit and spice, a six-step export process from enquiry to shipment, and a quotation request that asks for product, quantity, packing and destination.',
+      'Every product page leads to a quotation, and WhatsApp, phone and email are one tap away on every screen. Pages are fast, mobile responsive and carry search descriptions and Organization schema, so buyers searching for Sri Lankan fruit and spice exporters can find Noor Lanka.',
+    ],
+    deliverables: [
+      { glyph: 'browser', title: 'Website design', text: 'A clean green and orange design that presents Noor Lanka as a dependable exporter.' },
+      { glyph: 'code', title: 'Next.js build', text: 'A fast Next.js site with pre-rendered pages for every product.' },
+      { glyph: 'doc', title: 'Product catalogue', text: 'Pages for 8 fruits and spices, grouped into fresh fruits and Sri Lankan spices.' },
+      { glyph: 'flow', title: 'Export process', text: 'Six steps from enquiry to shipment, so buyers know what happens next.' },
+      { glyph: 'funnel', title: 'Quotation requests', text: 'A form that captures product, quantity, packing and destination for every enquiry.' },
+      { glyph: 'chat', title: 'WhatsApp and contact', text: 'WhatsApp, phone and email reachable from every page.' },
+      { glyph: 'search', title: 'SEO and structured data', text: 'Titles, descriptions, Open Graph and Organization schema for search and AI answers.' },
+      { glyph: 'user', title: 'Mobile responsive', text: 'Every page adapts to phones, tablets and desktops.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
