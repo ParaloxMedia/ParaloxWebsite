@@ -26,6 +26,10 @@ import malibanFilm from '../assets/projects/maliban/film.jpg';
 import renaultHero from '../assets/projects/renault/hero.jpg';
 import krestAiHero from '../assets/projects/keells-krest/ai-recipes-hero.jpg';
 import bbqHero from '../assets/projects/bbq-ceylon/hero.jpg';
+import mdHero from '../assets/projects/md-beverages/hero.jpg';
+import dimoHero from '../assets/projects/dimo-petronas/hero.jpg';
+import dimoChampion from '../assets/projects/dimo-petronas/world-champion.jpg';
+import dimoItalianGp from '../assets/projects/dimo-petronas/italian-gp.jpg';
 
 export const PROJECTS = [
   {
@@ -423,6 +427,80 @@ export const PROJECTS = [
       { glyph: 'user', title: 'Family stories', text: 'Short films with five mothers and their children.' },
       { glyph: 'play', title: 'Social content', text: 'Reels and posts, cut for the Keells Krest Instagram page.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'dimo-petronas-f1-creatives',
+    client: 'DIMO Automotives × PETRONAS',
+    title: 'DIMO × PETRONAS Formula 1 creatives',
+    kicker: 'Production partner to WPP Media',
+    headline: 'Celebrating Kimi Antonelli for PETRONAS in Sri Lanka.',
+    summary: 'Social creatives for DIMO Automotives, the official importer, distributor and marketer of PETRONAS lubricants in Sri Lanka, celebrating Kimi Antonelli’s Italian Grand Prix win and his Formula 1 World Championship. Produced by Paralox Media, with WPP Media as lead agency.',
+    hero: dimoHero,
+    heroShade: 'side',
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-11-05',
+    facts: [
+      ['Client', 'DIMO Automotives'],
+      ['Brand', 'PETRONAS lubricants'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Social media creatives'],
+      ['Platform', 'Facebook'],
+    ],
+    story: [
+      'DIMO Automotives is the official importer, distributor and marketer of PETRONAS lubricants in Sri Lanka. PETRONAS is the title partner of the Mercedes-AMG PETRONAS Formula 1 team, so the team’s big moments are DIMO’s moments too. WPP Media led the work and brought in Paralox Media as its production house.',
+      'When Kimi Antonelli won his home race, the Italian Grand Prix, we made a congratulations creative for DIMO’s page, built around the driver, the car and the PETRONAS colours.',
+      'When he became World Champion at 20, we followed with a celebration creative: Kimi with the trophy and the car at speed, signed off with DIMO as the official distributor of PETRONAS in Sri Lanka.',
+    ],
+    photos: [
+      { src: dimoChampion, caption: 'World Champion: Kimi Antonelli, posted 5 November 2026.', whole: true },
+      { src: dimoItalianGp, caption: 'Winner, Italian Grand Prix: congratulations to Kimi Antonelli, posted 24 September 2026.', whole: true },
+    ],
+    deliverables: [
+      { glyph: 'spark', title: 'Race-moment creatives', text: 'Celebration posts made fast, on the day of the result.' },
+      { glyph: 'check', title: 'Brand-led design', text: 'PETRONAS teal, the Mercedes-AMG car and DIMO’s distributor sign-off.' },
+      { glyph: 'chat', title: 'Captions', text: 'Copy and hashtags for DIMO’s Facebook page.' },
+      { glyph: 'user', title: 'Feed-ready formats', text: '4:5 posts made for Facebook and Instagram.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'md-beverages-social-creatives',
+    client: 'MD Beverages',
+    title: 'MD Beverages social creatives',
+    kicker: 'Production partner to WPP Media',
+    headline: 'MD Nectar and Cordial, made for the feed.',
+    summary: 'Social media creatives for MD Beverages: Sinhala-language posts for MD Nectar, MD Cordial and MD Orange Nectar, and a find-the-hidden-bottles engagement post. Produced by Paralox Media, with WPP Media as lead agency.',
+    hero: mdHero,
+    heroShade: 'side',
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-11-14',
+    facts: [
+      ['Client', 'MD Beverages'],
+      ['Lead agency', 'WPP Media'],
+      ['Our role', 'Social media creatives'],
+      ['Products', 'MD Nectar, MD Cordial, MD Orange Nectar'],
+      ['Platform', 'Instagram and Facebook'],
+      ['Pillar', 'Media'],
+    ],
+    story: [
+      'MD is one of Sri Lanka’s best-known drink brands. We created social media creatives for its Nectar and Cordial ranges, written in Sinhala for the people who grew up with the brand. WPP Media led the work and brought in Paralox Media as its production house.',
+      'Each post puts the drink in a moment people know: friends sharing five MD Nectar flavours, the family gathered around MD Cordial made from real fruit, and an MD Orange Nectar that brings back energy in the middle of a busy workday.',
+      'To get people interacting rather than scrolling past, one post hides six MD Nectar bottles in a kitchen scene and asks followers to find them all and comment with a screenshot.',
+    ],
+    instagram: [
+      { title: 'Product creatives', text: 'MD Nectar, MD Cordial and MD Orange Nectar, in Sinhala.', posts: ['Dfo23ynCnyG', 'DfPOxMMkUr8', 'DejAMsbASwD'] },
+      { title: 'Engagement post', text: 'Find the six hidden MD Nectar bottles, and comment with a screenshot.', posts: ['DejAltIAYGU'] },
+    ],
+    deliverables: [
+      { glyph: 'spark', title: 'Product creatives', text: 'Key visuals for MD Nectar, MD Cordial and MD Orange Nectar.' },
+      { glyph: 'chat', title: 'Sinhala copy', text: 'Headlines and captions written in Sinhala for a local audience.' },
+      { glyph: 'user', title: 'Everyday moments', text: 'Friends, family and the workday, with the drink at the centre.' },
+      { glyph: 'growth', title: 'Engagement post', text: 'A hidden-bottles challenge that gets followers commenting.' },
+      { glyph: 'check', title: 'Feed-ready formats', text: '4:5 posts made for Instagram and Facebook.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },

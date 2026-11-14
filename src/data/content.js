@@ -19,6 +19,8 @@ import malibanCard from '../assets/projects/maliban/poster-card.jpg';
 import renaultCard from '../assets/projects/renault/card.jpg';
 import krestAiCard from '../assets/projects/keells-krest/ai-recipes-card.jpg';
 import bbqCard from '../assets/projects/bbq-ceylon/card.jpg';
+import mdCard from '../assets/projects/md-beverages/card.jpg';
+import dimoCard from '../assets/projects/dimo-petronas/card.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -37,6 +39,7 @@ import abidsLogo from '../assets/clients/abids.png';
 import eliteLogo from '../assets/clients/elite-indian.jpeg';
 import pngLogo from '../assets/clients/png-embroidery.jpeg';
 import embraxLogo from '../assets/clients/embrax.png';
+import mdLogo from '../assets/clients/md-beverages.jpg';
 
 export const CONTACT = {
   email: 'info@paraloxmedia.com',
@@ -85,6 +88,7 @@ export const CLIENTS = [
   { name: 'Elite Indian Restaurant', logo: eliteLogo, fit: 'cover' },
   { name: 'PNG Embroidery', logo: pngLogo, fit: 'cover' },
   { name: 'EMBRAX', logo: embraxLogo, fit: 'contain' },
+  { name: 'MD Beverages', logo: mdLogo, fit: 'cover' },
 ];
 
 export const TICKER = [
@@ -228,6 +232,8 @@ export const FLOWS = [
 // `year` defaults to 2026.
 export const WORK = [
   { code: 'AI film', glyph: 'play', meta: 'Media · AI film', title: 'Renault Sri Lanka AI film', pillars: ['media'], text: 'An AI-generated film for Renault in Sri Lanka, made in one day: Sri Lanka’s wild, and the Triber, Kwid, Kiger and Duster unleashed.', chips: ['AI film', 'One-day turnaround', 'Post-production'], href: '/work/renault-ai-tvc', image: renaultCard },
+  { code: 'F1 creatives', glyph: 'spark', meta: 'Media · With WPP Media', title: 'DIMO × PETRONAS Formula 1 creatives', pillars: ['media'], home: false, text: 'Social creatives for DIMO, the official distributor of PETRONAS lubricants in Sri Lanka, celebrating Kimi Antonelli’s Italian Grand Prix win and World Championship.', chips: ['Social creatives', 'Formula 1', 'PETRONAS'], href: '/work/dimo-petronas-f1-creatives', image: dimoCard },
+  { code: 'Social creatives', glyph: 'spark', meta: 'Media · With WPP Media', title: 'MD Beverages social creatives', pillars: ['media'], home: false, text: 'Sinhala social creatives for MD Nectar, MD Cordial and MD Orange Nectar, plus a find-the-hidden-bottles engagement post.', chips: ['Social creatives', 'Sinhala', 'Engagement'], href: '/work/md-beverages-social-creatives', image: mdCard },
   { code: 'Launch video', glyph: 'play', meta: 'Media · Launch video', title: 'BBQ Ceylon opening video', pillars: ['media'], home: false, text: 'A 20-second vertical launch video for BBQ Ceylon at Port City Beach Plaza: a sunset flight over Colombo, the banner flown past the skyline, and the grill on fire.', chips: ['Launch video', 'Vertical', 'Social'], href: '/work/bbq-ceylon-opening-video', image: bbqCard },
   { code: 'AI recipe videos', glyph: 'play', meta: 'Media · AI video', title: 'Keells Krest AI recipe videos', pillars: ['media', 'ai'], home: false, text: 'AI-generated recipe videos for Keells Krest, from beef curry to fusilli pasta, plus creative statics for Halloween, Kirata Mirisata meatballs and Jumbo Peanuts.', chips: ['AI video', 'Recipe content', 'Creative statics'], href: '/work/keells-krest-ai-recipe-videos', image: krestAiCard },
   { code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
