@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Mr9jhqrzGT1jQrJNonR9Hbxng6aXnrbtYCD2imXFrtk=' https://bzrcdn.openai.com https://www.instagram.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://formspree.io https://script.google.com https://script.googleusercontent.com https://bzr.openai.com https://bzrcdn.openai.com; frame-src https://www.instagram.com https://www.youtube-nocookie.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io https://script.google.com; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Paralox Media</title>
     <meta name="description" content="Paralox Media combines AI, engineering, media and growth to build intelligent solutions for modern businesses." />
@@ -16,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
     <script>
+      // Refuse to render inside another site's frame (clickjacking); static hosting can't send frame headers.
+      if (window.top !== window.self) { try { window.top.location.replace(window.location.href); } catch (e) { document.documentElement.style.display = 'none'; } }
       // Hold the hero entrance until the intro loader opens (skipped for reduced motion).
       if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
         document.documentElement.classList.add('is-loading');
