@@ -18,6 +18,7 @@ import webxpayCard from '../assets/projects/webxpay/card.jpg';
 import malibanCard from '../assets/projects/maliban/poster-card.jpg';
 import renaultCard from '../assets/projects/renault/card.jpg';
 import krestAiCard from '../assets/projects/keells-krest/ai-recipes-card.jpg';
+import bbqCard from '../assets/projects/bbq-ceylon/card.jpg';
 import nissanLogo from '../assets/clients/nissan.png';
 import combankLogo from '../assets/clients/combank.jpg';
 import keellsLogo from '../assets/clients/keells.png';
@@ -227,6 +228,7 @@ export const FLOWS = [
 // `year` defaults to 2026.
 export const WORK = [
   { code: 'AI film', glyph: 'play', meta: 'Media · AI film', title: 'Renault Sri Lanka AI film', pillars: ['media'], text: 'An AI-generated film for Renault in Sri Lanka, made in one day: Sri Lanka’s wild, and the Triber, Kwid, Kiger and Duster unleashed.', chips: ['AI film', 'One-day turnaround', 'Post-production'], href: '/work/renault-ai-tvc', image: renaultCard },
+  { code: 'Launch video', glyph: 'play', meta: 'Media · Launch video', title: 'BBQ Ceylon opening video', pillars: ['media'], home: false, text: 'A 20-second vertical launch video for BBQ Ceylon at Port City Beach Plaza: a sunset flight over Colombo, the banner flown past the skyline, and the grill on fire.', chips: ['Launch video', 'Vertical', 'Social'], href: '/work/bbq-ceylon-opening-video', image: bbqCard },
   { code: 'AI recipe videos', glyph: 'play', meta: 'Media · AI video', title: 'Keells Krest AI recipe videos', pillars: ['media', 'ai'], home: false, text: 'AI-generated recipe videos for Keells Krest, from beef curry to fusilli pasta, plus creative statics for Halloween, Kirata Mirisata meatballs and Jumbo Peanuts.', chips: ['AI video', 'Recipe content', 'Creative statics'], href: '/work/keells-krest-ai-recipe-videos', image: krestAiCard },
   { code: 'Launch films', glyph: 'play', meta: 'Media · With WPP Media', title: 'Nissan Gravite launch', pillars: ['media'], text: 'Three AI-generated launch films for the Nissan Gravite, then the after-movie and reels from launch night. Produced for Nissan as WPP Media\u2019s production house.', chips: ['AI launch films', 'Event after-movie', 'Social reels'], href: '/work/nissan-gravite', image: '/work/nissan-gravite/launch-film.jpg' },
   { code: 'Vendor portal', glyph: 'browser', meta: 'Engineering · Design and development', title: 'ExxonMobil × PNG Embroidery vendor portal', pillars: ['engineering'], text: 'A mobile-responsive vendor portal for ExxonMobil’s uniform orders: ordering and tracking for staff, with quotations, invoicing and a CRM for PNG Embroidery.', chips: ['Mobile responsive', 'Ordering', 'Quotations', 'Invoicing', 'CRM'], href: '/work/exxonmobil-png-embroidery-vendor-portal', image: pngCard },

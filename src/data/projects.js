@@ -25,6 +25,7 @@ import malibanCover from '../assets/projects/maliban/poster-wide.jpg';
 import malibanFilm from '../assets/projects/maliban/film.jpg';
 import renaultHero from '../assets/projects/renault/hero.jpg';
 import krestAiHero from '../assets/projects/keells-krest/ai-recipes-hero.jpg';
+import bbqHero from '../assets/projects/bbq-ceylon/hero.jpg';
 
 export const PROJECTS = [
   {
@@ -422,6 +423,42 @@ export const PROJECTS = [
       { glyph: 'user', title: 'Family stories', text: 'Short films with five mothers and their children.' },
       { glyph: 'play', title: 'Social content', text: 'Reels and posts, cut for the Keells Krest Instagram page.' },
       { glyph: 'check', title: 'Post-production', text: 'Edit, colour and sound handled in-house by our video team.' },
+    ],
+    cta: { label: 'Start a project', href: '/contact' },
+  },
+  {
+    id: 'bbq-ceylon-opening-video',
+    client: 'BBQ Ceylon',
+    title: 'BBQ Ceylon opening video',
+    kicker: 'Launch video · Port City Colombo',
+    headline: 'BBQ Ceylon is open: announced from the sky over Port City.',
+    summary: 'A 20-second vertical launch video for BBQ Ceylon, the new barbecue restaurant at Port City Beach Plaza, Colombo. A sunset flight over the coast, the BBQ Ceylon banner flown past the Port City skyline, and the grill on fire. Produced by Paralox Media.',
+    hero: bbqHero,
+    heroShade: 'side',
+    pillar: 'Media',
+    year: '2026',
+    iso: '2026-11-14',
+    facts: [
+      ['Client', 'BBQ Ceylon'],
+      ['Our role', 'Launch video production'],
+      ['Format', '20-second vertical video'],
+      ['Location', 'Port City Beach Plaza, Colombo'],
+      ['Pillar', 'Media'],
+    ],
+    story: [
+      'BBQ Ceylon opened at Port City Beach Plaza in Colombo and needed a launch video that matched the location: the sea, the skyline and the sunset.',
+      'The video opens on a sunset flight along the Colombo coast, sweeps over Port City and meets a helicopter flying the BBQ Ceylon banner past the towers. It then cuts to the grill, with flames, smoke and meat on the fire, and lands on the logo: We’re open now, Port City Beach Plaza.',
+      'Made vertical for Instagram, TikTok and Facebook, it tells people what opened, where it is and why to go, in 20 seconds.',
+    ],
+    videos: [
+      { src: '/work/bbq-ceylon/opening.mp4', poster: '/work/bbq-ceylon/opening.jpg', duration: 'PT20S', portrait: true, title: 'We’re open now', text: 'The launch video, from the sunset flight over Port City to the grill.' },
+    ],
+    deliverables: [
+      { glyph: 'play', title: 'Launch video', text: 'A 20-second opening announcement for BBQ Ceylon.' },
+      { glyph: 'camera', title: 'Aerial story', text: 'A sunset flight over the Colombo coast and Port City, with the banner flown past the skyline.' },
+      { glyph: 'spark', title: 'Food close-ups', text: 'The grill, the flames and the meat, cut to make people hungry.' },
+      { glyph: 'user', title: 'Vertical for social', text: 'Made 9:16 for Instagram Reels, TikTok and Facebook.' },
+      { glyph: 'check', title: 'Clear call to action', text: 'Ends on the logo, the opening and the address: Port City Beach Plaza.' },
     ],
     cta: { label: 'Start a project', href: '/contact' },
   },
